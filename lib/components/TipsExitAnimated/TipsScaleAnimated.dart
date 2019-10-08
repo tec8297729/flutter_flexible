@@ -3,7 +3,9 @@ import 'package:flutter/animation.dart';
 
 class TipsScaleAnimated extends AnimatedWidget {
   // 传入animation动画对象给 继承类中的listenable属性(代表监听此对象)
-  TipsScaleAnimated({Key key, Animation<double> animation, @required this.child}) : super(key: key, listenable: animation);
+  TipsScaleAnimated(
+      {Key key, Animation<double> animation, @required this.child})
+      : super(key: key, listenable: animation);
 
   final child;
 
@@ -12,11 +14,16 @@ class TipsScaleAnimated extends AnimatedWidget {
 
     return AnimatedBuilder(
       animation: _animation, // 定义动画效果
-      child: Container(
-        width: 160.0,
-        padding: EdgeInsets.only(top: 6.0, bottom: 6.0),
-        color: Color.fromRGBO(0, 0, 0, 0.6),
-        child: child,
+      child: PhysicalModel(
+        color: Colors.transparent, // 设置背景颜色
+        borderRadius: BorderRadius.circular(15), // 定义裁剪圆度
+        clipBehavior: Clip.antiAlias, // 常规，使用什么方式剪裁
+        child: Container(
+          width: 160.0,
+          padding: EdgeInsets.only(top: 6.0, bottom: 6.0),
+          color: Color.fromRGBO(0, 0, 0, 0.6),
+          child: child,
+        ),
       ),
       // 指定动画效果
       builder: (BuildContext context, Widget child) {

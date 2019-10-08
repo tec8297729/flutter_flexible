@@ -8,7 +8,8 @@ class TipsExitAnimated extends StatefulWidget {
   _TipsExitAnimatedState createState() => _TipsExitAnimatedState();
 }
 
-class _TipsExitAnimatedState extends State<TipsExitAnimated> with SingleTickerProviderStateMixin {
+class _TipsExitAnimatedState extends State<TipsExitAnimated>
+    with SingleTickerProviderStateMixin {
   Animation<double> animation; // 动画对象
   AnimationController controller;
   DateTime _lastPressedAt; // 上次点击时间
@@ -53,7 +54,8 @@ class _TipsExitAnimatedState extends State<TipsExitAnimated> with SingleTickerPr
 
   // 验校几秒内二次返回键退出APP，默认2秒
   Future<bool> handleWillPop() async {
-    if (_lastPressedAt == null || DateTime.now().difference(_lastPressedAt) > Duration(seconds: 2)) {
+    if (_lastPressedAt == null ||
+        DateTime.now().difference(_lastPressedAt) > Duration(seconds: 2)) {
       //两次点击间隔超过2秒则重新计时
       _lastPressedAt = DateTime.now();
       this.runTips(); // 显示tips提示

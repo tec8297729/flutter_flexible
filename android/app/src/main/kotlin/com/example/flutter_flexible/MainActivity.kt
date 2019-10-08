@@ -1,4 +1,4 @@
-package com.example.flexible_shelf
+package com.example.flutter_flexible
 
 import android.os.Bundle
 

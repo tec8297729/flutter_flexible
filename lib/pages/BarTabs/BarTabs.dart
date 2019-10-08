@@ -50,7 +50,8 @@ class _BarTabsState extends State<BarTabs> with SingleTickerProviderStateMixin {
     if (widget.params != null) {
       setState(() {
         // 默认加载页面
-        currentIndex = widget.params['pageId'] > 3 ? 3 : widget.params['pageId'];
+        currentIndex =
+            widget.params['pageId'] > 3 ? 3 : widget.params['pageId'];
       });
     }
   }
@@ -78,15 +79,15 @@ class _BarTabsState extends State<BarTabs> with SingleTickerProviderStateMixin {
 
       // 底部栏
       bottomNavigationBar: BottomAppBar(
-        color: Colors.lightBlue,
+        // color: Colors.lightBlue,
         shape: CircularNotchedRectangle(),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed, // 只有设置fixed类型，底部bar才会显示所有的文字
           currentIndex: currentIndex, // 当前活动的bar索引
-          // 点击了的时候把当前索引存起来
+          // 点击事件
           onTap: (int idx) {
             setState(() {
-              currentIndex = idx; // 更新视图
+              currentIndex = idx; // 存当前点击索引值
             });
           },
           items: this.generateBottomBars(), // 底部菜单导航
@@ -102,14 +103,14 @@ class _BarTabsState extends State<BarTabs> with SingleTickerProviderStateMixin {
       list.add(BottomNavigationBarItem(
         icon: Icon(
           barData[idx]['icon'], // 图标
-          color: (currentIndex == idx ? Colors.blueGrey : Colors.black), // 颜色
           size: 32.0,
         ),
         title: Text(
           barData[idx]['title'],
-          style: TextStyle(
-            color: (currentIndex == idx ? Colors.blueGrey : Colors.black),
-          ),
+          // 自定义样式
+          // style: TextStyle(
+          //   color: (currentIndex == idx ? Colors.blueGrey : Colors.black),
+          // ),
         ),
       ));
     }

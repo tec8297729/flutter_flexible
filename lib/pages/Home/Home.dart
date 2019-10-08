@@ -20,18 +20,13 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     super.initState();
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies(); // 生命周期组件变化的时候触发
-  }
-
   void _incrementCounter() {
     _counter.increment(); // mobx中的值 加加value
-    // _counter.fetchData();
+
     // 请求组件使用，同dio组件request方法
-    safeRequest('http://yapi.demo.qunar.com/mock/1311/data').then((res) {
-      print(res['num']);
-    });
+    // safeRequest('http://yapi.demo.qunar.com/mock/1311/data').then((res) {
+    //   print(res['num']);
+    // });
   }
 
   @override
@@ -64,14 +59,6 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                     '${_counter.value}',
                     style: Theme.of(context).textTheme.display1,
                   ),
-                ),
-                ColorFiltered(
-                  // 颜色过滤参数（颜色，混合模式）
-                  colorFilter:
-                      ColorFilter.mode(Colors.pink, BlendMode.softLight),
-                  // 显示的组件
-                  child: Image.network(
-                      'https://ss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=1387154205,2414066132&fm=202&mola=new&crop=v1'),
                 ),
               ],
             ),
