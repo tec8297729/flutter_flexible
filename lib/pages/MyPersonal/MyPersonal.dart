@@ -5,7 +5,12 @@ import 'package:flexible/constants/themes/themePink.dart';
 import 'package:flexible/constants/themes/themeBlueGrey.dart';
 import 'package:flexible/constants/themes/themeLightBlue.dart';
 
-class MyPersonal extends StatelessWidget {
+class MyPersonal extends StatefulWidget {
+  @override
+  _MyPersonalState createState() => _MyPersonalState();
+}
+
+class _MyPersonalState extends State<MyPersonal> {
   ThemeStore _theme;
 
   @override
