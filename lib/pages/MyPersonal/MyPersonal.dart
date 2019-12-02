@@ -1,4 +1,4 @@
-import 'package:flexible/stores/themeStore/themeStore.dart';
+import 'package:flexible/model/themeStore/themeStore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flexible/constants/themes/themePink.dart';

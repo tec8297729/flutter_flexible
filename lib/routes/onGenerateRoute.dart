@@ -1,3 +1,4 @@
+import 'package:flexible/pages/ErrorPage/ErrorPage.dart';
 import 'package:flutter/material.dart';
 import 'routesInit.dart'; // 路由页面定义
 
@@ -8,7 +9,12 @@ Function onGenerateRoute = (RouteSettings settings) {
   final Function pageContentBuilder = routesInit[name]; // 获取路由指定组件函数
 
   // 没有指定路由配置时
-  if (pageContentBuilder == null) return null;
+  if (pageContentBuilder == null) {
+    print('ERROR===>ROUTER WAS NOT FONUND!!!');
+    return MaterialPageRoute(
+      builder: (BuildContext context) => ErrorPage(params: args ?? null),
+    );
+  }
   // 默认跳转路由
   Route router = MaterialPageRoute(
     builder: (BuildContext context) => pageContentBuilder(context),

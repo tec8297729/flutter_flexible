@@ -1,35 +1,32 @@
-# flexible
+# flexible脚手架介绍
 
-使用了Mobx和Provider在Flutter项目中为作为状态管理。
-可单独直接使用Provider管理你的状态。
+无需任何复杂繁琐配置，简单上手即可开发项目的脚手架。
+功能不断完善，欢迎留下您的宝贵意见！
 
-如果出现不兼容新版本情况，请使用以下指定版本
-v1.9.1+hotfix.4
-Dart 2.5.0
+内置功能：
+1、状态管理：集成Mobx和Provider在Flutter项目中（任意选择使用）。并且你可以选择去中心化管理你的store值。
+2、内置路由构建，支持别名传参，简单易有，无需任何插件支持
+3、页面路由跳转容错处理，未声明路由跳转错误，指定跳转到错误页面。不需要任何配置，你只需要在ErrorPage页面更改你的样式即可。
+4、全局主题换色，只需要配置好你的主题颜色放入到指定的lib/constants/themes 目录中即可
+
+
+
+# 快速上手
 
 ## 启动项目
-**第一步：**
 下载此仓库文件后，进入项目目录文件夹
 转到项目根目录并在控制台中执行以下命令以获取所需的依赖关系：
+手动操作三步曲：
 ```
 flutter pub get
-```
-
-**第二步：**
-该项目使用inject可用于代码生成的库，执行以下命令来生成文件：
-```
-flutter packages pub run build_runner build --delete-conflicting-outputs
-```
-
-或watch命令以保持源代码自动同步：
-```
-flutter packages pub run build_runner watch
-```
-
-**第三步**
-启动项目
-```
+npm run watch
 flutter run
+```
+
+一键省心操作：
+提前开好你的APP模拟器，然后运行
+```
+npm run init
 ```
 
 
@@ -38,23 +35,15 @@ flutter run
 
 ## 文件夹结构
 
-这是flutter提供的核心文件夹结构。
-
-    flutter-app/
-    |- android
-    |- build
-    |- ios
-    |- lib
-    |- test
 
 这是项目中一直会使用的结构
-
     lib/
     |- constants/ # 常量文件夹
     |- components/ # 共用widget组件封装
-    |- stores/ # 状态管理store数据
+    |- model/ # 全局状态管理store数据
     |- pages/ # 页面ui层，每个独立完整的页面
     |- utils/ # 公共方法抽离
+    |- service/ # 请求接口抽离层
     |- routes/
       |- routesInit.dart # 定义路由页面
     |- main.dart # 入口文件

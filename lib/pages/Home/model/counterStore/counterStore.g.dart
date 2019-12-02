@@ -26,13 +26,6 @@ mixin _$CounterStore on _CounterStore, Store {
     }, _$valueAtom, name: '${_$valueAtom.name}_set');
   }
 
-  final _$fetchDataAsyncAction = AsyncAction('fetchData');
-
-  @override
-  Future<void> fetchData() {
-    return _$fetchDataAsyncAction.run(() => super.fetchData());
-  }
-
   final _$_CounterStoreActionController =
       ActionController(name: '_CounterStore');
 

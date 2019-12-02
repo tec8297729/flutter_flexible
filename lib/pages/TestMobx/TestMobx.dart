@@ -1,8 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:flexible/stores/counterStore/counterStore.dart'; // 状态管理
+import 'package:flexible/pages/Home/model/counterStore/counterStore.dart'; // 状态管理
 
 class TestMobx extends StatefulWidget {
   TestMobx({Key key, this.params}) : super(key: key);
@@ -14,7 +13,6 @@ class TestMobx extends StatefulWidget {
 
 class _TestMobxState extends State<TestMobx> {
   CounterStore _counter;
-  Timer _timer;
   @override
   void initState() {
     super.initState();
@@ -23,21 +21,6 @@ class _TestMobxState extends State<TestMobx> {
 
   void _incrementCounter() {
     _counter.increment(); // mobx中的值 加加value
-
-    if (_timer != null) {
-      _timer.cancel(); // 取消定时器
-      _timer = null; // 清空
-    }
-    _timer = Timer(Duration(seconds: 2), () {
-      Navigator.pushNamed(context, '/', arguments: {'pageId': 1});
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    _timer = null;
-    super.dispose();
   }
 
   @override
@@ -59,10 +42,14 @@ class _TestMobxState extends State<TestMobx> {
                 ),
                 Observer(
                   builder: (_) => Text(
-                    '${_counter.value}',
+                    '状态共享值：${_counter.value}',
                     style: Theme.of(context).textTheme.display1,
                   ),
-                )
+                ),
+                Text(
+                  '路由接收参数》》${widget.params}',
+                  style: TextStyle(fontSize: 18),
+                ),
               ],
             ),
           );
@@ -70,8 +57,8 @@ class _TestMobxState extends State<TestMobx> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: '增加mobx中的值，并且跳转去hot页面',
-        child: Icon(Icons.arrow_back_ios),
+        tooltip: '增加mobx中的值',
+        child: Icon(Icons.add),
       ), //
     );
   }

@@ -1,8 +1,9 @@
+import 'package:flexible/service/service_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:flexible/utils/dio/safeRequest.dart'; // 请求底层
-import 'package:flexible/stores/counterStore/counterStore.dart'; // 状态管理
+import 'package:flexible/pages/Home/model/counterStore/counterStore.dart'; // 状态管理
 
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
@@ -18,15 +19,16 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    initFetch();
+  }
+
+  void initFetch() async {
+    var res = await getHomeData();
+    print('接口数据》》》${res}');
   }
 
   void _incrementCounter() {
-    _counter.increment(); // mobx中的值 加加value
-
-    // 请求组件使用，同dio组件request方法
-    // safeRequest('http://yapi.demo.qunar.com/mock/1311/data').then((res) {
-    //   print(res['num']);
-    // });
+    _counter.increment(); // 状态管理mobx中的值 加加value
   }
 
   @override
@@ -44,21 +46,34 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                InkWell(
-                  child: Text(
-                    '点我去testMobx页',
-                    style: TextStyle(fontSize: 32),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/testMobx',
-                        arguments: {'data': '路由传参'});
+                _button(
+                  '点我去testMobx页',
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/testMobx',
+                      arguments: {'data': '别名路由传参666'},
+                    );
                   },
                 ),
                 Observer(
                   builder: (_) => Text(
-                    '${_counter.value}',
+                    '状态管理值：${_counter.value}',
                     style: Theme.of(context).textTheme.display1,
                   ),
+                ),
+                _button(
+                  '错误页',
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/onOk',
+                      arguments: {
+                        // 'data': DateTime.now().toString(),
+                        'data': 234,
+                      },
+                    );
+                  },
                 ),
               ],
             ),
@@ -73,8 +88,18 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     );
   }
 
-  // 显示的每个组件的显示的内容，这里面只是简单演示渲染
-  List<String> toggleItem = ['1', '2', '3'];
-  // 记录每个按钮选中状态
-  List<bool> isSelected = [false, false, false];
+  Widget _button(String text, {Function onPressed}) {
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      child: RaisedButton(
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 26),
+        ),
+        onPressed: () {
+          onPressed();
+        },
+      ),
+    );
+  }
 }

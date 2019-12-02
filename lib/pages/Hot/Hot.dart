@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:flexible/stores/counterStore/counterStore.dart'; // 状态管理
+import 'package:flexible/pages/Home/model/counterStore/counterStore.dart'; // 状态管理
 
 class Hot extends StatefulWidget {
   Hot({Key key, this.params}) : super(key: key);
