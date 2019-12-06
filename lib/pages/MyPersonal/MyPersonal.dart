@@ -1,9 +1,7 @@
 import 'package:flexible/model/themeStore/themeStore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flexible/constants/themes/themePink.dart';
-import 'package:flexible/constants/themes/themeBlueGrey.dart';
-import 'package:flexible/constants/themes/themeLightBlue.dart';
+import 'package:flexible/config/themes/index_theme.dart';
 
 class MyPersonal extends StatefulWidget {
   @override

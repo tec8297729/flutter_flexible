@@ -2,8 +2,7 @@ import 'package:flexible/service/service_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:flexible/utils/dio/safeRequest.dart'; // 请求底层
-import 'package:flexible/pages/Home/model/counterStore/counterStore.dart'; // 状态管理
+import 'model/counterStore/counterStore.dart'; // 状态管理
 
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
@@ -13,7 +12,7 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with WidgetsBindingObserver {
+class _HomeState extends State<Home> {
   CounterStore _counter; // mobx中的counter实例化
 
   @override
@@ -22,6 +21,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
     initFetch();
   }
 
+  // 测试演示-初始化接口请求
   void initFetch() async {
     var res = await getHomeData();
     print('接口数据》》》${res}');
@@ -62,19 +62,6 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                     style: Theme.of(context).textTheme.display1,
                   ),
                 ),
-                _button(
-                  '错误页',
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/onOk',
-                      arguments: {
-                        // 'data': DateTime.now().toString(),
-                        'data': 234,
-                      },
-                    );
-                  },
-                ),
               ],
             ),
           );
@@ -96,9 +83,7 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
           text,
           style: TextStyle(fontSize: 26),
         ),
-        onPressed: () {
-          onPressed();
-        },
+        onPressed: onPressed,
       ),
     );
   }

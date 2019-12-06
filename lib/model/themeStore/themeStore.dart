@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flexible/constants/themes/themeBlueGrey.dart';
+import 'package:flexible/config/themes/index_theme.dart';
 
 class ThemeStore with ChangeNotifier {
   ThemeData _themeData = themeBlueGrey;
