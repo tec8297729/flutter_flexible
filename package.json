@@ -4,6 +4,11 @@
     "initApp": "flutter pub get && npm run watch:fix",
     "start": "flutter run",
     "watch": "flutter packages pub run build_runner watch",
-    "watch:fix": "flutter packages pub run build_runner watch --delete-conflicting-outputs"
+    "watch:fix": "flutter packages pub run build_runner watch --delete-conflicting-outputs",
+    "build": "npm run build:apk && npm run build:ios",
+    "build:apk": "flutter build apk",
+    "build:ios": "flutter build ios",
+    "build:web": "flutter build web",
+    "upsdk": "flutter upgrade"
   }
 }

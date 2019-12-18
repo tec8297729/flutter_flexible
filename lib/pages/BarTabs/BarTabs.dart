@@ -5,10 +5,17 @@ import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
 import '../Hot/Hot.dart';
 import '../Home/Home.dart';
 
-class Params {
-  int pageId;
-}
-
+/// [params] 别名路由传递的参数
+/// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，手动传入参数跳转路由方式如下：
+///```dart
+/// Navigator.of(context).push(
+///   MaterialPageRoute(
+///     builder: (context) => BarTabs(
+///       params: {'pageId': 2}, // 跳转到tabs的第三个页面
+///     ),
+///   )
+/// );
+/// ```
 class BarTabs extends StatefulWidget {
   final params;
 
