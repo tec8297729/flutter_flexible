@@ -24,11 +24,6 @@ class _TestMobxState extends State<TestMobx>
 
   void _incrementCounter() {
     _counter.increment(); // mobx中的值 加加value
-    // if (Navigator.canPop(context)) {
-    //   Navigator.popUntil(context, ModalRoute.withName('/'));
-    // }
-    // Navigator.of(context).pushNamed('/');
-    print(ModalRoute.of(context).settings);
   }
 
   @override

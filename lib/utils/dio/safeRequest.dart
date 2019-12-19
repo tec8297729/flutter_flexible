@@ -1,18 +1,21 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'dioErrorUtil.dart';
+import 'interceptors/header_interceptor.dart';
+import 'interceptors/log_interceptor.dart';
 
-String handleBaseUrl() {
-  // 环境处理请求前缀...
-  return '/';
-}
-
+/// 请求方式
+///
+///```dart
+///safeRequest(
+///  "/test",
+///  data: {"id": 12, "name": "xx"},
+///  options: Options(method: "POST"),
+///);
+///```
 Future safeRequest(String url, {Object data, Options options}) async {
   try {
     BaseOptions baseOpts = new BaseOptions(
-      baseUrl: handleBaseUrl(), // 请求前缀url
+      // baseUrl: '/', // 请求前缀url
       // connectTimeout: 5000, // 连接服务器超时时间，单位是毫秒
       // receiveTimeout: 3000, // 接收数据的最长时限
       responseType: ResponseType.plain, // 数据类型
@@ -24,21 +27,10 @@ Future safeRequest(String url, {Object data, Options options}) async {
 
     Dio dio = new Dio(baseOpts); // 实例化请求，可以传入options参数
 
-    dio.interceptors.add(InterceptorsWrapper(
-      // 请求拦截
-      onRequest: (RequestOptions options) async {
-        return options; //continue
-      },
-      // 响应拦截
-      onResponse: (Response response) async {
-        return response; // continue
-      },
-      // 当请求失败时做一些预处理
-      onError: (DioError e) async {
-        throw HttpException(DioErrorUtil.handleError(e));
-        // return DioErrorUtil.handleError(e);
-      },
-    ));
+    dio.interceptors.addAll([
+      new HeaderInterceptors(),
+      new LogsInterceptors(),
+    ]);
 
     return dio
         .request(
