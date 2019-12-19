@@ -20,7 +20,7 @@ class _ErrorPageState extends State<ErrorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ErrorPage页面'),
+        title: Text('ErrorPage'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +33,7 @@ class _ErrorPageState extends State<ErrorPage> {
             ),
           ),
           Text(
-            '页面错误',
+            '错误：未定义的路由，请跳转到已声明路由',
             style: TextStyle(fontSize: 22),
           ),
         ],

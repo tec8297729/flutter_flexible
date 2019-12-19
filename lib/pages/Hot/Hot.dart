@@ -12,9 +12,11 @@ class Hot extends StatefulWidget {
   _HotState createState() => _HotState();
 }
 
-class _HotState extends State<Hot> {
+class _HotState extends State<Hot> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
   CounterStore _counter;
-  Timer _timer;
+
   @override
   void initState() {
     super.initState();
@@ -23,23 +25,16 @@ class _HotState extends State<Hot> {
 
   void _incrementCounter() {
     _counter.increment(); // mobx中的值 加加value
-
-    try {
-      _timer = Timer(Duration(seconds: 3), () {
-        print('定时器');
-        Navigator.pushNamed(context, '/', arguments: {'pageId': 5});
-      });
-    } catch (e) {}
   }
 
   @override
   void dispose() {
-    _timer = null;
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     _counter = Provider.of<CounterStore>(context);
     return Scaffold(
       appBar: AppBar(

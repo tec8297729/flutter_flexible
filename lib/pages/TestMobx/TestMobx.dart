@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:flexible/pages/Home/model/counterStore/counterStore.dart'; // 状态管理
+import 'package:flexible/pages/Home/model/counterStore/counterStore.dart';
 
 class TestMobx extends StatefulWidget {
   TestMobx({Key key, this.params}) : super(key: key);
@@ -11,7 +11,10 @@ class TestMobx extends StatefulWidget {
   _TestMobxState createState() => _TestMobxState();
 }
 
-class _TestMobxState extends State<TestMobx> {
+class _TestMobxState extends State<TestMobx>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
   CounterStore _counter;
   @override
   void initState() {
@@ -21,10 +24,16 @@ class _TestMobxState extends State<TestMobx> {
 
   void _incrementCounter() {
     _counter.increment(); // mobx中的值 加加value
+    // if (Navigator.canPop(context)) {
+    //   Navigator.popUntil(context, ModalRoute.withName('/'));
+    // }
+    // Navigator.of(context).pushNamed('/');
+    print(ModalRoute.of(context).settings);
   }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     _counter = Provider.of<CounterStore>(context);
     return Scaffold(
       appBar: AppBar(

@@ -3,11 +3,37 @@
 无需任何复杂繁琐配置，简单上手即可开发项目的脚手架。
 功能不断完善，欢迎留下您的宝贵意见！
 
-内置功能：
 1、状态管理：集成Mobx和Provider在Flutter项目中（任意选择使用）。并且你可以选择去中心化管理你的store值。
-2、使用flutter内置路由构建，支持别名传参，无需任何插件支持！简单易用，无学习成本。
+
+2、支持别名传参，子组件参数接收，无需任何插件支持！简单易用，无学习成本。
+```
+Navigator.pushNamed(
+  context,
+  '/testMobx',
+  arguments: {'data': 'hello world'},
+);
+
+// 子组件使用及接收
+class TestMobx extends StatefulWidget {
+  TestMobx({Key key, this.params}) : super(key: key);
+  final params;
+
+  @override
+  _TestMobxState createState() => _TestMobxState();
+}
+class _TestMobxState extends State<TestMobx>{
+  @override
+  void initState() {
+    super.initState();
+    print(widget.params); // 别名参数接收
+  }
+}
+```
+
 3、页面路由跳转容错处理，未声明路由跳转错误，指定跳转到错误页面。能让你第一时间发现低级错误bug，友好提示页面清晰明了。
+
 4、全局主题换色，只需要配置好你的主题颜色放入到指定的lib/constants/themes 目录中即可
+
 
 ## 文件夹结构
 这是项目中一直会使用的结构

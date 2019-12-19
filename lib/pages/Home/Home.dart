@@ -12,19 +12,41 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   CounterStore _counter; // mobx中的counter实例化
+  var homeData;
 
   @override
   void initState() {
     super.initState();
-    initFetch();
+    fetchHomeData();
+    print('home》》initState');
   }
 
-  // 测试演示-初始化接口请求
-  void initFetch() async {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print('home》》didChangeDependencies');
+  }
+
+  @override
+  void didUpdateWidget(oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print('home》》didUpdateWidget');
+  }
+
+  Future fetchHomeData() async {
     var res = await getHomeData();
-    print('接口数据》》》${res}');
+    setState(() {
+      homeData = res;
+    });
+  }
+
+  initFetch() async {
+    return homeData;
   }
 
   void _incrementCounter() {
@@ -33,6 +55,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     _counter = Provider.of<CounterStore>(context); // 实例化类，可多页共享数据
 
     return Scaffold(
@@ -40,38 +63,51 @@ class _HomeState extends State<Home> {
         title: Text('home页面'),
         automaticallyImplyLeading: false,
       ),
-      body: ListView(
-        children: List.generate(1, (index) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                _button(
-                  '点我去testMobx页',
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/testMobx',
-                      arguments: {'data': '别名路由传参666'},
-                    );
-                  },
-                ),
-                Observer(
-                  builder: (_) => Text(
-                    '状态管理值：${_counter.value}',
-                    style: Theme.of(context).textTheme.display1,
-                  ),
-                ),
-              ],
-            ),
-          );
-        }),
-      ),
+      body: FutureBuilder(
+          future: initFetch(),
+          builder: (context, snap) {
+            if (snap.data != null) {
+              return contextWidget();
+            }
+            return Container(
+              child: Text('内容加载中...'),
+            );
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
+    );
+  }
+
+  Widget contextWidget() {
+    return ListView(
+      children: List.generate(1, (index) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              _button(
+                '点我去testMobx页',
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/testMobx',
+                    arguments: {'data': '别名路由传参666'},
+                  );
+                },
+              ),
+              Observer(
+                builder: (_) => Text(
+                  '状态管理值：${_counter.value}',
+                  style: Theme.of(context).textTheme.display1,
+                ),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 

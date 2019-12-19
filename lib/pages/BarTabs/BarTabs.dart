@@ -1,20 +1,29 @@
 import 'package:flexible/pages/MyPersonal/MyPersonal.dart';
 import 'package:flexible/pages/Search/Search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
 import '../Hot/Hot.dart';
 import '../Home/Home.dart';
+import 'model/barTabsStore.dart';
 
 /// [params] 别名路由传递的参数
-/// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，手动传入参数跳转路由方式如下：
+/// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，推荐别名路由跳转方式。
 ///```dart
+/// // 手动传入参数跳转路由方式如下：
 /// Navigator.of(context).push(
 ///   MaterialPageRoute(
 ///     builder: (context) => BarTabs(
 ///       params: {'pageId': 2}, // 跳转到tabs的第三个页面
-///     ),
+///     ),pageId
 ///   )
 /// );
+///
+/// // 别名路由跳转方式如下：
+/// Navigator.pushNamed(context, '/', arguments: {
+///   'pageId': 2,
+/// });
 /// ```
 class BarTabs extends StatefulWidget {
   final params;
@@ -28,7 +37,7 @@ class BarTabs extends StatefulWidget {
   _BarTabsState createState() => _BarTabsState();
 }
 
-class _BarTabsState extends State<BarTabs> with SingleTickerProviderStateMixin {
+class _BarTabsState extends State<BarTabs> {
   int currentIndex = 0; // 接收bar当前点击索引
   PageController pageController;
 
@@ -59,18 +68,12 @@ class _BarTabsState extends State<BarTabs> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    if (widget.params != null) {
-      setState(() {
-        // 默认加载页面
-        currentIndex =
-            widget.params['pageId'] > 3 ? 3 : widget.params['pageId'];
-      });
-    }
+    handleCurrentIndex();
 
     // 初始化tab内容区域参数
     pageController = PageController(
-      initialPage: currentIndex, // 默认显示哪个widget组件
-      keepPage: true, // 是否开启缓存，即回退也会在当时的滚动位置
+      initialPage: currentIndex, // 默认widget组件索引
+      keepPage: true, // 缓存
     );
   }
 
@@ -80,8 +83,25 @@ class _BarTabsState extends State<BarTabs> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+  // 处理默认显示索引
+  handleCurrentIndex() {
+    if (widget.params != null) {
+      setState(() {
+        // 默认加载页面
+        currentIndex = widget.params['pageId'] >= (barData.length)
+            ? (barData.length - 1)
+            : widget.params['pageId'];
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    // 初始化设计稿尺寸
+    ScreenUtil.instance =
+        ScreenUtil(width: 750, height: 1334, allowFontScaling: true)
+          ..init(context);
+    Provider.of<BarTabsStore>(context).saveController(pageController);
     return Scaffold(
       body: PageView(
         controller: pageController,
@@ -98,13 +118,10 @@ class _BarTabsState extends State<BarTabs> with SingleTickerProviderStateMixin {
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed, // 只有设置fixed类型，底部bar才会显示所有的文字
+          type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex, // 当前活动的bar索引
-          // 点击事件
           onTap: (int idx) {
-            setState(() {
-              currentIndex = idx; // 存当前点击索引值
-            });
+            currentIndex = idx; // 存当前点击索引值
             pageController.jumpToPage(idx); // 跳转到指定页
           },
           items: generateBottomBars(), // 底部菜单导航
