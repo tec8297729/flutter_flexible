@@ -13,9 +13,9 @@ Function onGenerateRoute = (RouteSettings settings) {
     arguments: args,
   );
 
-  // 没有指定路由配置时
+  // 容错路由
   if (pageContentBuilder == null) {
-    print('ERROR===>ROUTER WAS NOT FONUND!!!');
+    print('ERROR===>router was not fonuud!!!');
     return MaterialPageRoute(
       builder: (BuildContext context) => ErrorPage(params: args ?? null),
       settings: settingsData,
@@ -24,17 +24,14 @@ Function onGenerateRoute = (RouteSettings settings) {
 
   // 默认跳转路由
   Route router = MaterialPageRoute(
-    builder: (BuildContext context) => pageContentBuilder(context),
+    builder: (BuildContext context) {
+      if (args != null) {
+        return pageContentBuilder(context, params: args);
+      }
+      return pageContentBuilder(context);
+    },
     settings: settingsData,
   );
 
-  // 跳转路由有参数情况下
-  if (args != null) {
-    router = MaterialPageRoute(
-      // 附加传递参数给指定路由组件
-      builder: (context) => pageContentBuilder(context, params: args),
-      settings: settingsData,
-    );
-  }
   return router;
 };

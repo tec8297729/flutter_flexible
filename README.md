@@ -3,25 +3,25 @@
 无需任何复杂繁琐配置，简单上手即可开发项目的脚手架。
 功能不断完善，欢迎留下您的宝贵意见！
 
-1、状态管理：集成Mobx和Provider在Flutter项目中（任意选择使用）。并且你可以选择去中心化管理你的store值。
+1、状态管理：集成Provider在Flutter项目中
 
 2、支持别名传参，子组件参数接收，无需任何插件支持！简单易用，无学习成本。
 ```
 Navigator.pushNamed(
   context,
-  '/testMobx',
+  '/testDemo',
   arguments: {'data': 'hello world'},
 );
 
 // 子组件使用及接收
-class TestMobx extends StatefulWidget {
-  TestMobx({Key key, this.params}) : super(key: key);
+class testDemo extends StatefulWidget {
+  testDemo({Key key, this.params}) : super(key: key);
   final params;
 
   @override
-  _TestMobxState createState() => _TestMobxState();
+  _testDemoState createState() => _testDemoState();
 }
-class _TestMobxState extends State<TestMobx>{
+class _testDemoState extends State<testDemo>{
   @override
   void initState() {
     super.initState();

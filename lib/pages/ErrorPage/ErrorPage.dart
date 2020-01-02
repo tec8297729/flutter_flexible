@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 // 错误页面
 class ErrorPage extends StatefulWidget {
-  ErrorPage({Key key, this.params}) : super(key: key);
+  ErrorPage({Key key, this.params, this.title}) : super(key: key);
   final params;
+  final String title;
 
   @override
   _ErrorPageState createState() => _ErrorPageState();
@@ -13,7 +14,6 @@ class _ErrorPageState extends State<ErrorPage> {
   @override
   void initState() {
     super.initState();
-    print('路由接收参数》》${widget.params['data']}');
   }
 
   @override
@@ -33,7 +33,7 @@ class _ErrorPageState extends State<ErrorPage> {
             ),
           ),
           Text(
-            '错误：未定义的路由，请跳转到已声明路由',
+            widget.title ?? '错误：未定义的路由',
             style: TextStyle(fontSize: 22),
           ),
         ],

@@ -3,6 +3,7 @@ part 'counterStore.g.dart';
 
 class CounterStore = _CounterStore with _$CounterStore;
 
+// mobx使用案例
 abstract class _CounterStore with Store {
   @observable
   int value = 10;

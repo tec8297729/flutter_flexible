@@ -3,15 +3,15 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:flexible/pages/Home/model/counterStore/counterStore.dart';
 
-class TestMobx extends StatefulWidget {
-  TestMobx({Key key, this.params}) : super(key: key);
+class TestDemo extends StatefulWidget {
+  TestDemo({Key key, this.params}) : super(key: key);
   final params;
 
   @override
-  _TestMobxState createState() => _TestMobxState();
+  _testDemoState createState() => _testDemoState();
 }
 
-class _TestMobxState extends State<TestMobx>
+class _testDemoState extends State<TestDemo>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
@@ -32,7 +32,7 @@ class _TestMobxState extends State<TestMobx>
     _counter = Provider.of<CounterStore>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('TestMobx页面'),
+        title: Text('Test页面'),
       ),
       body: ListView(
         children: List.generate(1, (index) {

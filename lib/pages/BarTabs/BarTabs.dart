@@ -86,12 +86,10 @@ class _BarTabsState extends State<BarTabs> {
   // 处理默认显示索引
   handleCurrentIndex() {
     if (widget.params != null) {
-      setState(() {
-        // 默认加载页面
-        currentIndex = widget.params['pageId'] >= (barData.length)
-            ? (barData.length - 1)
-            : widget.params['pageId'];
-      });
+      // 默认加载页面
+      currentIndex = widget.params['pageId'] >= (barData.length)
+          ? (barData.length - 1)
+          : widget.params['pageId'];
     }
   }
 
@@ -109,9 +107,11 @@ class _BarTabsState extends State<BarTabs> {
           ...bodyWidget(),
         ],
         // 监听当前滑动到的页数
-        onPageChanged: (index) => setState(() {
-          currentIndex = index;
-        }),
+        onPageChanged: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
       ),
 
       // 底部栏
@@ -121,7 +121,9 @@ class _BarTabsState extends State<BarTabs> {
           type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex, // 当前活动的bar索引
           onTap: (int idx) {
-            currentIndex = idx; // 存当前点击索引值
+            setState(() {
+              currentIndex = idx; // 存当前点击索引值
+            });
             pageController.jumpToPage(idx); // 跳转到指定页
           },
           items: generateBottomBars(), // 底部菜单导航

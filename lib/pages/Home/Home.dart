@@ -1,8 +1,9 @@
+import 'package:flexible/components/PageLoding/PageLoding.dart';
 import 'package:flexible/service/service_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'model/counterStore/counterStore.dart'; // 状态管理
+import 'model/counterStore/counterStore.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
@@ -16,7 +17,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
-  CounterStore _counter; // mobx中的counter实例化
+  CounterStore _counter;
   var homeData;
 
   @override
@@ -24,18 +25,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     super.initState();
     fetchHomeData();
     print('home》》initState');
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    print('home》》didChangeDependencies');
-  }
-
-  @override
-  void didUpdateWidget(oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    print('home》》didUpdateWidget');
   }
 
   Future fetchHomeData() async {
@@ -46,11 +35,12 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   }
 
   initFetch() async {
+    Future.delayed(Duration(seconds: 3));
     return homeData;
   }
 
   void _incrementCounter() {
-    _counter.increment(); // 状态管理mobx中的值 加加value
+    _counter.increment(); // 状态管理mobx中的值
   }
 
   @override
@@ -69,9 +59,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
             if (snap.data != null) {
               return contextWidget();
             }
-            return Container(
-              child: Text('内容加载中...'),
-            );
+            return PageLoading();
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
@@ -89,11 +77,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               _button(
-                '点我去testMobx页',
+                '点我去test页',
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    '/testMobx',
+                    '/testDemo',
                     arguments: {'data': '别名路由传参666'},
                   );
                 },
