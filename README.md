@@ -1,9 +1,8 @@
 # flexible脚手架介绍
 
-无需任何复杂繁琐配置，简单上手即可开发项目的脚手架。
-功能不断完善，欢迎留下您的宝贵意见！
+无需任何复杂繁琐初期配置，让你更加专注与UI层。
 
-1、状态管理：集成Provider在Flutter项目中
+1、状态管理：集成Provider在Flutter项目中，任何页面声明好store，注入providers_config.dart文件内即可使用。
 
 2、支持别名传参，子组件参数接收，无需任何插件支持！简单易用，无学习成本。
 ```
@@ -32,7 +31,16 @@ class _testDemoState extends State<testDemo>{
 
 3、页面路由跳转容错处理，未声明路由跳转错误，指定跳转到错误页面。能让你第一时间发现低级错误bug，友好提示页面清晰明了。
 
-4、全局主题换色，只需要配置好你的主题颜色放入到指定的lib/constants/themes 目录中即可
+4、内置全局主题一键换色，只需要配置好你的主题颜色放入到指定的lib/constants/themes 目录中即可
+```dart
+import 'package:flexible/model/themeStore/themeStore.dart'; // 引入store
+ThemeData themeData = ThemeData.dark();
+_theme.setTheme(themeData); // 更换你的主题颜色
+```
+
+5、内置全局浮动调试组件，让你在真机上也能便利的获取错误捕获，在我的页面》右下按钮 查看效果
+
+
 
 
 ## 文件夹结构

@@ -2,11 +2,12 @@ import 'package:flexible/pages/MyPersonal/MyPersonal.dart';
 import 'package:flexible/pages/Search/Search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
 import '../Hot/Hot.dart';
 import '../Home/Home.dart';
-import 'model/barTabsStore.dart';
+import 'model/HomeBarTabsStore.dart';
 
 /// [params] 别名路由传递的参数
 /// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，推荐别名路由跳转方式。
@@ -21,23 +22,23 @@ import 'model/barTabsStore.dart';
 /// );
 ///
 /// // 别名路由跳转方式如下：
-/// Navigator.pushNamed(context, '/', arguments: {
+/// Navigator.pushNamed(context, '/testDemo', arguments: {
 ///   'pageId': 2,
 /// });
 /// ```
-class BarTabs extends StatefulWidget {
+class HomeBarTabs extends StatefulWidget {
   final params;
 
-  BarTabs({
+  HomeBarTabs({
     Key key,
     this.params,
   }) : super(key: key);
 
   @override
-  _BarTabsState createState() => _BarTabsState();
+  _HomeBarTabsState createState() => _HomeBarTabsState();
 }
 
-class _BarTabsState extends State<BarTabs> {
+class _HomeBarTabsState extends State<HomeBarTabs> {
   int currentIndex = 0; // 接收bar当前点击索引
   PageController pageController;
 
@@ -69,12 +70,7 @@ class _BarTabsState extends State<BarTabs> {
   void initState() {
     super.initState();
     handleCurrentIndex();
-
-    // 初始化tab内容区域参数
-    pageController = PageController(
-      initialPage: currentIndex, // 默认widget组件索引
-      keepPage: true, // 缓存
-    );
+    initTools();
   }
 
   @override
@@ -83,7 +79,7 @@ class _BarTabsState extends State<BarTabs> {
     super.dispose();
   }
 
-  // 处理默认显示索引
+  /// 处理tab默认显示索引
   handleCurrentIndex() {
     if (widget.params != null) {
       // 默认加载页面
@@ -91,6 +87,22 @@ class _BarTabsState extends State<BarTabs> {
           ? (barData.length - 1)
           : widget.params['pageId'];
     }
+
+    // 初始化tab控制器
+    pageController = PageController(
+      initialPage: currentIndex, // 默认widget组件
+      keepPage: true,
+    );
+  }
+
+  /// 初始化第三方插件插件
+  initTools() {
+    // jhDebug全局调试插件初始化
+    jhDebug.init(
+      context: context,
+      // 调试窗口按钮1事件
+      btnTap1: () {},
+    );
   }
 
   @override
@@ -99,7 +111,7 @@ class _BarTabsState extends State<BarTabs> {
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1334, allowFontScaling: true)
           ..init(context);
-    Provider.of<BarTabsStore>(context).saveController(pageController);
+    Provider.of<HomeBarTabsStore>(context).saveController(pageController);
     return Scaffold(
       body: PageView(
         controller: pageController,
@@ -126,7 +138,7 @@ class _BarTabsState extends State<BarTabs> {
             });
             pageController.jumpToPage(idx); // 跳转到指定页
           },
-          items: generateBottomBars(), // 底部菜单导航
+          items: _generateBottomBars(), // 底部菜单导航
         ),
       ),
     );
@@ -143,7 +155,7 @@ class _BarTabsState extends State<BarTabs> {
             if (itemWidget['body'] != null)
               itemWidget['body'],
 
-            // 自定义退出APP的动画组件
+            // 连续二次回退键才可退出APP
             Positioned(
               bottom: 30,
               child: TipsExitAnimated(),
@@ -158,13 +170,13 @@ class _BarTabsState extends State<BarTabs> {
   }
 
   // 生成底部菜单导航
-  List<BottomNavigationBarItem> generateBottomBars() {
-    List<BottomNavigationBarItem> list = [];
+  List<BottomNavigationBarItem> _generateBottomBars() {
+    List<BottomNavigationBarItem> barList = [];
     for (var idx = 0; idx < barData.length; idx++) {
-      list.add(BottomNavigationBarItem(
+      barList.add(BottomNavigationBarItem(
         icon: Icon(
           barData[idx]['icon'], // 图标
-          size: 32.0,
+          size: ScreenUtil().setSp(55),
         ),
         title: Text(
           barData[idx]['title'],
@@ -175,6 +187,6 @@ class _BarTabsState extends State<BarTabs> {
         ),
       ));
     }
-    return list;
+    return barList;
   }
 }

@@ -8,10 +8,10 @@ class TestDemo extends StatefulWidget {
   final params;
 
   @override
-  _testDemoState createState() => _testDemoState();
+  _TestDemoState createState() => _TestDemoState();
 }
 
-class _testDemoState extends State<TestDemo>
+class _TestDemoState extends State<TestDemo>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;

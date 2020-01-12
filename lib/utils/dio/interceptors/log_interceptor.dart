@@ -11,11 +11,8 @@ class LogsInterceptors extends InterceptorsWrapper {
   @override
   onRequest(RequestOptions options) async {
     if (AppConfig.DEBUG) {
-      print("""
-        请求url：${options.path}
-        请求类型：${options.method}
-        请求头：${options.headers.toString()}
-      """);
+      print(
+          """请求url：${options.path}\n请求类型：${options.method}\n请求头：${options.headers.toString()}""");
       if (options.data != null) {
         print('请求参数: ' + options.data.toString());
       }
@@ -41,7 +38,7 @@ class LogsInterceptors extends InterceptorsWrapper {
       print('请求异常: ' + err.toString());
       print('请求异常信息: ' + err.response?.toString() ?? "");
     }
-    throw HttpException(DioErrorUtil.handleError(err));
-    // return err; // continue;
+    // throw HttpException(DioErrorUtil.handleError(err));
+    return err; // continue;
   }
 }

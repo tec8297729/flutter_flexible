@@ -29,6 +29,7 @@ class _TipsExitAnimatedState extends State<TipsExitAnimated>
 
   @override
   void dispose() {
+    _tipsTimer?.cancel();
     controller.dispose();
     super.dispose();
   }
@@ -37,7 +38,7 @@ class _TipsExitAnimatedState extends State<TipsExitAnimated>
   Widget build(BuildContext context) {
     return WillPopScope(
       // 监听返回事件
-      onWillPop: this.handleWillPop,
+      onWillPop: handleWillPop,
       child: TipsScaleAnimated(
         animation: animation, // 传入动画效果的animation
         child: Text(
