@@ -1,9 +1,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'TipsScaleAnimated.dart';
 
-// 退出提示动画组件
 class TipsExitAnimated extends StatefulWidget {
+  /// 退出提示动画组件
+  TipsExitAnimated({this.title});
+
+  /// 提示文字
+  final String title;
+
   @override
   _TipsExitAnimatedState createState() => _TipsExitAnimatedState();
 }
@@ -38,13 +44,13 @@ class _TipsExitAnimatedState extends State<TipsExitAnimated>
   Widget build(BuildContext context) {
     return WillPopScope(
       // 监听返回事件
-      onWillPop: handleWillPop,
+      onWillPop: this.handleWillPop,
       child: TipsScaleAnimated(
         animation: animation, // 传入动画效果的animation
         child: Text(
-          '再按一次退出',
+          widget.title ?? '再按一次退出',
           style: TextStyle(
-            fontSize: 20.0,
+            fontSize: ScreenUtil().setSp(28),
             color: Colors.white.withOpacity(0.8),
           ),
           textAlign: TextAlign.center,

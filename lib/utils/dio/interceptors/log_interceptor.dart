@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flexible/config/app_config.dart';
 import '../dioErrorUtil.dart';
@@ -38,7 +39,7 @@ class LogsInterceptors extends InterceptorsWrapper {
       print('请求异常: ' + err.toString());
       print('请求异常信息: ' + err.response?.toString() ?? "");
     }
-    // throw HttpException(DioErrorUtil.handleError(err));
-    return err; // continue;
+    throw HttpException(DioErrorUtil.handleError(err));
+    // return err; // continue;
   }
 }

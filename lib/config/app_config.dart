@@ -1,5 +1,7 @@
 class AppConfig {
   static const DEBUG = true; // 是否开启调试打印
+  /// 是否直接跳过闪屏页面，
+  static const notSplash = false;
 
   /// dio请求前缀
   static String host = '/';

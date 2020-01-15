@@ -1,9 +1,8 @@
 import 'package:flexible/components/PageLoding/PageLoding.dart';
 import 'package:flexible/service/service_home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'model/counterStore/counterStore.dart';
+import 'provider/counterStore.p.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
@@ -86,11 +85,13 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                   );
                 },
               ),
-              Observer(
-                builder: (_) => Text(
-                  '状态管理值：${_counter.value}',
-                  style: Theme.of(context).textTheme.display1,
-                ),
+              Consumer<CounterStore>(
+                builder: (_, counterStore, child) {
+                  return Text(
+                    '状态管理值：${counterStore.value}',
+                    style: Theme.of(context).textTheme.display1,
+                  );
+                },
               ),
             ],
           ),

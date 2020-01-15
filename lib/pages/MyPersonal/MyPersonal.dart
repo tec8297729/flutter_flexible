@@ -1,19 +1,23 @@
-import 'package:flexible/model/themeStore/themeStore.dart';
 import 'package:flutter/material.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
-import 'package:flexible/config/themes/index_theme.dart';
+import '../../provider/themeStore.p.dart';
+import '../../config/themes/index_theme.dart';
 
 class MyPersonal extends StatefulWidget {
   @override
   _MyPersonalState createState() => _MyPersonalState();
 }
 
-class _MyPersonalState extends State<MyPersonal> {
+class _MyPersonalState extends State<MyPersonal>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
   ThemeStore _theme;
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     _theme = Provider.of<ThemeStore>(context);
 
     return Scaffold(

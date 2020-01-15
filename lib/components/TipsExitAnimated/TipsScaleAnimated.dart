@@ -19,8 +19,7 @@ class TipsScaleAnimated extends AnimatedWidget {
         borderRadius: BorderRadius.circular(15), // 定义裁剪圆度
         clipBehavior: Clip.antiAlias, // 常规，使用什么方式剪裁
         child: Container(
-          width: 160.0,
-          padding: EdgeInsets.only(top: 6.0, bottom: 6.0),
+          padding: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 14, right: 14),
           color: Color.fromRGBO(0, 0, 0, 0.6),
           child: child,
         ),

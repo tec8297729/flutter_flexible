@@ -1,7 +1,7 @@
 {
   "name": "tool",
   "scripts": {
-    "initApp": "flutter pub get && npm run watch:fix",
+    "initApp": "flutter pub get && npm run start",
     "start": "flutter run",
     "watch": "flutter packages pub run build_runner watch",
     "watch:fix": "flutter packages pub run build_runner watch --delete-conflicting-outputs",

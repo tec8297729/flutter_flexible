@@ -31,12 +31,7 @@ class _testDemoState extends State<testDemo>{
 
 3、页面路由跳转容错处理，未声明路由跳转错误，指定跳转到错误页面。能让你第一时间发现低级错误bug，友好提示页面清晰明了。
 
-4、内置全局主题一键换色，只需要配置好你的主题颜色放入到指定的lib/constants/themes 目录中即可
-```dart
-import 'package:flexible/model/themeStore/themeStore.dart'; // 引入store
-ThemeData themeData = ThemeData.dark();
-_theme.setTheme(themeData); // 更换你的主题颜色
-```
+4、内置全局主题一键换色
 
 5、内置全局浮动调试组件，让你在真机上也能便利的获取错误捕获，在我的页面》右下按钮 查看效果
 
@@ -73,20 +68,13 @@ safeRequest('http://url').then((res) {});
 初始化安装依赖包以及启用APP（记的开启你的模拟器）
 输入以下命令：
 ```
-npm run initApp
-npm start
+npm run initApp // 方式一
+
+// 方式二：手动输入flutter命令
+flutter pub get
+flutter run
 ```
-二条命令需要开启二个窗口，或是initApp初始化后，直接vscode中按F5启动项目也可。
 <br/>
-
-
-tips：如果你是使用mobx状态管理开发的，日常需要开始监听文件夹实时编译mobx相关文件（可以在你项目启动完后开启），输入以下命令:
-
-```
-npm run watch
-```
-
-否则的话直接启动项目npm start
 
 ----------
 
@@ -114,13 +102,11 @@ npm run build:web // 打包web的文件
 
 # 命令行参数说明
 
-|       命令        |                                说明                                 |
-| :---------------: | :-----------------------------------------------------------------: |
-|     npm start     |               启动APP项目，请提前开好模拟器或连接真机               |
-|   npm run watch   |          监听mobx相关文件变动，如有变动实时生成.g.dart文件          |
-| npm run watch:fix | 进行修复mobx生成的文件并且开始监听，如wacth模式不行，尝试此模式修复 |
-|   npm run build   |              打包项目生成APP，会打包安卓和IOS二个版本               |
-| npm run build:apk |                        打包生成安卓的APP文件                        |
-| npm run build:ios |                        打包生成IOS的APP文件                         |
-| npm run build:web |                       打包生成纯前端web的文件                       |
-|   npm run upsdk   |        更新sdk版本，全局的flutter和dart版本将更新为最新版本         |
+|       命令        |                         说明                         |
+| :---------------: | :--------------------------------------------------: |
+|     npm start     |       启动APP项目，请提前开好模拟器或连接真机        |
+|   npm run build   |       打包项目生成APP，会打包安卓和IOS二个版本       |
+| npm run build:apk |                打包生成安卓的APP文件                 |
+| npm run build:ios |                 打包生成IOS的APP文件                 |
+| npm run build:web |               打包生成纯前端web的文件                |
+|   npm run upsdk   | 更新sdk版本，全局的flutter和dart版本将更新为最新版本 |

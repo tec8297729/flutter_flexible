@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
 import '../Hot/Hot.dart';
 import '../Home/Home.dart';
-import 'model/HomeBarTabsStore.dart';
+import 'provider/homeBarTabsStore.p.dart';
 
 /// [params] 别名路由传递的参数
 /// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，推荐别名路由跳转方式。

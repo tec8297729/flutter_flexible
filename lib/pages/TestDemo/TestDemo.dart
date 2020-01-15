@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:flexible/pages/Home/model/counterStore/counterStore.dart';
+import '../../pages/Home/provider/counterStore.p.dart';
 
 class TestDemo extends StatefulWidget {
   TestDemo({Key key, this.params}) : super(key: key);
@@ -44,9 +43,9 @@ class _TestDemoState extends State<TestDemo>
                   'mobx共享值测试',
                   style: TextStyle(fontSize: 32),
                 ),
-                Observer(
-                  builder: (_) => Text(
-                    '状态共享值：${_counter.value}',
+                Consumer<CounterStore>(
+                  builder: (_, counterStore, child) => Text(
+                    '状态共享值：${counterStore.value}',
                     style: Theme.of(context).textTheme.display1,
                   ),
                 ),

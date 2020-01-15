@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:provider/provider.dart';
-import 'package:flexible/pages/Home/model/counterStore/counterStore.dart'; // 状态管理
 
 class Hot extends StatefulWidget {
   Hot({Key key, this.params}) : super(key: key);
@@ -14,16 +11,11 @@ class Hot extends StatefulWidget {
 class _HotState extends State<Hot> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
-  CounterStore _counter;
 
   @override
   void initState() {
     super.initState();
     print(widget.params);
-  }
-
-  void _incrementCounter() {
-    _counter.increment(); // mobx中的值 加加value
   }
 
   @override
@@ -34,7 +26,6 @@ class _HotState extends State<Hot> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    _counter = Provider.of<CounterStore>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('hot页面'),
@@ -47,25 +38,14 @@ class _HotState extends State<Hot> with AutomaticKeepAliveClientMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'mobx共享值(hot)',
+                  'hot页面',
                   style: TextStyle(fontSize: 32),
                 ),
-                Observer(
-                  builder: (_) => Text(
-                    '${_counter.value}',
-                    style: Theme.of(context).textTheme.display1,
-                  ),
-                )
               ],
             ),
           );
         }),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.import_contacts),
-      ), //
     );
   }
 }
