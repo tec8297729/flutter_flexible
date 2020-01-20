@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
-import '../../provider/themeStore.p.dart';
-import '../../config/themes/index_theme.dart';
+import '../../../provider/themeStore.p.dart';
+import '../../../config/themes/index_theme.dart';
 
 class MyPersonal extends StatefulWidget {
   @override
@@ -40,6 +40,7 @@ class _MyPersonalState extends State<MyPersonal>
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'myPerBtn1',
         onPressed: () {
           jhDebug.showDebugBtn(); // 全局显示调试按钮
         },
@@ -47,10 +48,6 @@ class _MyPersonalState extends State<MyPersonal>
         child: Icon(Icons.import_contacts),
       ), //
     );
-  }
-
-  switchTheme(ThemeData themeData) {
-    _theme.setTheme(themeData);
   }
 
   btnWidget(String title, ThemeData themeData, Color color) {
@@ -61,7 +58,7 @@ class _MyPersonalState extends State<MyPersonal>
       ),
       color: color,
       onPressed: () {
-        switchTheme(themeData);
+        _theme.setTheme(themeData);
       },
     );
   }

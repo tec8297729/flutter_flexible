@@ -4,7 +4,7 @@
 
 1、状态管理：集成Provider在Flutter项目中，任何页面声明好store，注入providers_config.dart文件内即可使用。
 
-2、支持别名传参，子组件参数接收，无需任何插件支持！简单易用，无学习成本。
+2、页面组件支持别名路由跳转传参（参数接收更短更便捷），无需任何插件支持！简单易用，无学习成本。
 ```
 Navigator.pushNamed(
   context,
@@ -42,24 +42,20 @@ class _testDemoState extends State<testDemo>{
 这是项目中一直会使用的结构
     lib/
     |- constants/ # 常量文件夹
+    |- config/ # 配置参数
     |- components/ # 共用widget组件封装
-    |- model/ # 全局状态管理store数据
+    |- provider/ # 全局状态
     |- pages/ # 页面ui层，每个独立完整的页面
     |- utils/ # 公共方法抽离
+      |- dio/ # dio底层请求封装safeRequest
     |- service/ # 请求接口抽离层
     |- routes/
       |- routesInit.dart # 定义路由页面
     |- main.dart # 入口文件
 
 <br/>
-公共方法中已经抽离请求组件dio，可直接使用
-```
-import 'package:flexible/utils/dio/safeRequest.dart';
-// 请求组件使用，同dio组件request方法
-safeRequest('http://url').then((res) {});
-```
-
 <br/>
+
 # 快速上手
 
 ## 启动项目
@@ -110,3 +106,30 @@ npm run build:web // 打包web的文件
 | npm run build:ios |                 打包生成IOS的APP文件                 |
 | npm run build:web |               打包生成纯前端web的文件                |
 |   npm run upsdk   | 更新sdk版本，全局的flutter和dart版本将更新为最新版本 |
+
+<br>
+
+# 功能介绍
+
+## dio请求底层封装使用
+已经抽离请求组件dio，可直接使用
+```
+import 'package:flexible/utils/dio/safeRequest.dart';
+// 请求组件使用，同dio组件request方法
+getHomeData() async {
+  Map resData = await safeRequest(
+    'http://url',
+    queryParameters: {'version': version},
+    options: Options(method: 'GET'),
+  );
+}
+```
+
+## 更换启动图
+#### 安卓启动图
+
+在目录 android\app\src\main\res\mipmap-** 内，有好几个分别率目录，每个目录内的splash_bg.png文件替换成你自己的启动图片
+
+<!-- #### ios启动图
+
+在目录ios\Runner\Assets.xcassets\LaunchImage.imageset 内，把LaunchImage.png、LaunchImage@2x.png、LaunchImage@3x.png 几个图片文件替换成你的启动图片 -->

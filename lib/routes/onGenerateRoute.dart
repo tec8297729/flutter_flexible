@@ -1,4 +1,4 @@
-import 'package:flexible/pages/ErrorPage/ErrorPage.dart';
+import '../pages/ErrorPage/ErrorPage.dart';
 import 'package:flutter/material.dart';
 import 'routesInit.dart'; // 路由页面定义
 
@@ -15,7 +15,7 @@ Function onGenerateRoute = (RouteSettings settings) {
 
   // 容错路由
   if (pageContentBuilder == null) {
-    print('ERROR===>router was not fonuud!!!');
+    // print('ERROR===>router was not fonuud!!!');
     return MaterialPageRoute(
       builder: (BuildContext context) => ErrorPage(params: args ?? null),
       settings: settingsData,
@@ -25,9 +25,8 @@ Function onGenerateRoute = (RouteSettings settings) {
   // 默认跳转路由
   Route router = MaterialPageRoute(
     builder: (BuildContext context) {
-      if (args != null) {
-        return pageContentBuilder(context, params: args);
-      }
+      if (args != null) return pageContentBuilder(context, params: args);
+
       return pageContentBuilder(context);
     },
     settings: settingsData,

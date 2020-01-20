@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flexible/config/app_config.dart';
+import '../../config/app_config.dart';
 import 'interceptors/header_interceptor.dart';
 import 'interceptors/log_interceptor.dart';
 

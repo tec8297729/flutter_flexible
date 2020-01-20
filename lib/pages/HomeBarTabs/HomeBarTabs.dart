@@ -1,12 +1,16 @@
-import 'package:flexible/pages/MyPersonal/MyPersonal.dart';
-import 'package:flexible/pages/Search/Search.dart';
+import 'dart:async';
+
+import 'package:flexible/utils/perm_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
+import '../../utils/util.dart';
 import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
-import '../Hot/Hot.dart';
-import '../Home/Home.dart';
+import 'MyPersonal/MyPersonal.dart';
+import 'Search/Search.dart';
+import 'Hot/Hot.dart';
+import 'Home/Home.dart';
 import 'provider/homeBarTabsStore.p.dart';
 
 /// [params] 别名路由传递的参数
@@ -71,6 +75,12 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
     super.initState();
     handleCurrentIndex();
     initTools();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      jhDebug.showDebugBtn(); // 显示浮层按钮
+      // APP版本更新检查
+      Timer(Duration(seconds: 3), () => Util().getNewAppVer());
+    });
   }
 
   @override
@@ -83,7 +93,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
   handleCurrentIndex() {
     if (widget.params != null) {
       // 默认加载页面
-      currentIndex = widget.params['pageId'] >= (barData.length)
+      currentIndex = widget.params['pageId'] ?? 0 >= (barData.length)
           ? (barData.length - 1)
           : widget.params['pageId'];
     }
@@ -96,8 +106,10 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
   }
 
   /// 初始化第三方插件插件
-  initTools() {
-    // jhDebug全局调试插件初始化
+  initTools() async {
+    PermUtils.storagePerm(); // 权限申请
+
+    // jhDebug插件初始化
     jhDebug.init(
       context: context,
       // 调试窗口按钮1事件
@@ -108,10 +120,9 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
   @override
   Widget build(BuildContext context) {
     // 初始化设计稿尺寸
-    ScreenUtil.instance =
-        ScreenUtil(width: 750, height: 1334, allowFontScaling: true)
-          ..init(context);
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
     Provider.of<HomeBarTabsStore>(context).saveController(pageController);
+
     return Scaffold(
       body: PageView(
         controller: pageController,

@@ -20,6 +20,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
     _initAsync();
   }
 
@@ -30,7 +31,6 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _initAsync() async {
-    SystemChrome.setEnabledSystemUIOverlays([]);
     await SpUtil.getInstance();
     setState(() {
       /// 是否显示引导页。

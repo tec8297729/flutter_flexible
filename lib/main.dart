@@ -21,21 +21,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeStore>(
-      builder: (context, themeStore, child) => MaterialApp(
-        locale: Locale('zh', 'CH'),
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-        supportedLocales: [
-          const Locale('zh', 'CH'),
-          // const Locale('en', 'US'), // English
-        ],
-        theme: themeStore.getTheme,
-        initialRoute: initialRoute,
-        onGenerateRoute: onGenerateRoute, // 路由处理
-        debugShowCheckedModeBanner: false,
-      ),
+      builder: (context, themeStore, child) {
+        return MaterialApp(
+          navigatorKey: jhDebug.getNavigatorKey,
+          locale: Locale('zh', 'CH'),
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: [
+            const Locale('zh', 'CH'),
+            // const Locale('en', 'US'), // English
+          ],
+          theme: themeStore.getTheme,
+          initialRoute: initialRoute,
+          onGenerateRoute: onGenerateRoute, // 路由处理
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }

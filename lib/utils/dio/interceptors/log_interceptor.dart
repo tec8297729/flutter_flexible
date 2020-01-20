@@ -1,7 +1,6 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:flexible/config/app_config.dart';
+import '../../../config/app_config.dart';
 import '../dioErrorUtil.dart';
 
 /*

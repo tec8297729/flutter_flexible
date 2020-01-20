@@ -34,10 +34,11 @@ class _WelcomePageState extends State<WelcomePage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'welcomBtn',
+        child: Icon(Icons.navigate_next),
         onPressed: () {
           Navigator.of(context).pushReplacementNamed('/home');
         },
-        child: Icon(Icons.navigate_next),
       ),
     );
   }

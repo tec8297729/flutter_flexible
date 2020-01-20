@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../pages/Home/provider/counterStore.p.dart';
+import '../HomeBarTabs/Home/provider/counterStore.p.dart';
 
 class TestDemo extends StatefulWidget {
   TestDemo({Key key, this.params}) : super(key: key);
@@ -10,10 +10,7 @@ class TestDemo extends StatefulWidget {
   _TestDemoState createState() => _TestDemoState();
 }
 
-class _TestDemoState extends State<TestDemo>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  bool get wantKeepAlive => true;
+class _TestDemoState extends State<TestDemo> {
   CounterStore _counter;
   @override
   void initState() {
@@ -27,7 +24,6 @@ class _TestDemoState extends State<TestDemo>
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     _counter = Provider.of<CounterStore>(context);
     return Scaffold(
       appBar: AppBar(
@@ -59,6 +55,7 @@ class _TestDemoState extends State<TestDemo>
         }),
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'testDemoBtn1',
         onPressed: _incrementCounter,
         tooltip: '增加mobx中的值',
         child: Icon(Icons.add),
