@@ -1,6 +1,10 @@
 # flexible脚手架介绍
+基础环境版本
+• Flutter version 1.12.13+hotfix.7
+• Dart version 2.7.0 
 
-无需任何复杂繁琐初期配置，让你更加专注与UI层。
+
+内置集成功能：
 
 1、状态管理：集成Provider在Flutter项目中，任何页面声明好store，注入providers_config.dart文件内即可使用。
 
@@ -31,9 +35,9 @@ class _testDemoState extends State<testDemo>{
 
 3、页面路由跳转容错处理，未声明路由跳转错误，指定跳转到错误页面。能让你第一时间发现低级错误bug，友好提示页面清晰明了。
 
-4、内置全局主题一键换色
+4、内置全局主题一键换色，只需要配置你的主题颜色，调用方法即可。
 
-5、内置全局浮动调试组件，让你在真机上也能便利的获取错误捕获，在我的页面》右下按钮 查看效果
+5、内置全局浮动调试组件，让你在真机上也能便利的获取错误捕获，在我的页面》右下按钮 查看效果。
 
 
 
@@ -115,7 +119,7 @@ npm run build:web // 打包web的文件
 已经抽离请求组件dio，可直接使用
 ```
 import 'package:flexible/utils/dio/safeRequest.dart';
-// 请求组件使用，同dio组件request方法
+// get请求使用方法，同dio组件request方法
 getHomeData() async {
   Map resData = await safeRequest(
     'http://url',
@@ -123,13 +127,47 @@ getHomeData() async {
     options: Options(method: 'GET'),
   );
 }
+// post请求
+getHomeData() async {
+  Map resData = await safeRequest(
+    'http://url',
+    data: {'version': version}, // 传递参数
+    options: Options(method: 'POST'),
+  );
+}
 ```
 
-## 更换启动图
-#### 安卓启动图
 
-在目录 android\app\src\main\res\mipmap-** 内，有好几个分别率目录，每个目录内的splash_bg.png文件替换成你自己的启动图片
+## APP版本更新
+1、添加安卓的存储权限申请标签，默认已添加，如有删除安卓目录生成过的，请自行添加一下。
 
-<!-- #### ios启动图
+安卓权限配置文件 android\app\src\main\AndroidManifest.xml
+```
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.flutter_flexible">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application>...其它配置忽略</application>
+</manifest>
+```
 
-在目录ios\Runner\Assets.xcassets\LaunchImage.imageset 内，把LaunchImage.png、LaunchImage@2x.png、LaunchImage@3x.png 几个图片文件替换成你的启动图片 -->
+2、在/utils/utils.dart文件中，getNewAppVer方法直接运行更新APP版本，但有少部份需要自己实现，已标注TODO位置，指定APP下载地址和获取新版本的接口替换。
+```dart
+// TODO:替换成自己的获取新版本APP的接口
+Map resData = await getNewVersion();
+// 模拟参数结构如下  {"code":"0","message":"success","data":{"version":"1.1.0","info":["修复bug提升性能","增加彩蛋有趣的功能页面","测试功能"]}}
+
+UpdateAppVersion(
+    // TODO: 传入新版本APP相关参数、版本号、更新内容、下载地址等
+    version: resData['version'] ?? '', // 版本号
+    info: (resData['info'] as List).cast<String>() ?? [], // 更新内容介绍
+    // ios是苹果应用商店地址
+    iosUrl: 'itms-apps://itunes.apple.com/cn/app/id414478124?mt=8',
+    // 安卓APK下载地址
+    androidUrl:
+        'https://b6.market.xiaomi.com/download/AppStore/08fee50a2945783f419a5945f8e89707f2640c6b0/com.ss.android.ugc.aweme.apk',
+  ),
+)
+```
+默认在lib\pages\HomeBarTabs\HomeBarTabs.dart中，运行检查更新APP函数，你可以指定其它位置运行检查新版本。
+
+

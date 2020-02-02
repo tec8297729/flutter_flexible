@@ -1,5 +1,4 @@
 import '../../../components/PageLoding/PageLoding.dart';
-import '../../../utils/sp_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'provider/counterStore.p.dart';
@@ -49,19 +48,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       floatingActionButton: FloatingActionButton(
         heroTag: 'homeBtn1',
         onPressed: () async {
-          // _counter.increment(); // 状态管理mobx中的值
-          DateTime y2k = new DateTime(2020, 01, 19, 22, 11, 22, 666);
-          DateTime nowTime = new DateTime.now(); // 当前时间
-          Duration diffTime = nowTime.difference(y2k);
-          // print(nowTime);
-          // var res = await SpUtil.setData('checkAppVerTime', nowTime.toString());
-          // SpUtil.clear();
-          // DateTime newTime = new DateTime.now(); // 当前时间
-          // String oldTimeStr = SpUtil.getData<String>('checkAppVerTime',
-          //     defValue: newTime.toString());
-          // DateTime oldTime = DateTime.parse(oldTimeStr);
-          // Duration diffTime = newTime.difference(oldTime);
-          print(diffTime.inHours);
+          _counter.increment(); // 状态管理mobx中的值
         },
         tooltip: '加加store值',
         child: Icon(Icons.add),
@@ -88,10 +75,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
               ),
               Consumer<CounterStore>(
                 builder: (_, counterStore, child) {
-                  return Text(
-                    '状态管理值：${counterStore.value}',
-                    style: Theme.of(context).textTheme.display1,
-                  );
+                  return Text('状态管理值：${counterStore.value}');
                 },
               ),
             ],
@@ -107,7 +91,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       child: RaisedButton(
         child: Text(
           text,
-          style: TextStyle(fontSize: 26),
+          style: TextStyle(fontSize: 22),
         ),
         onPressed: onPressed,
       ),

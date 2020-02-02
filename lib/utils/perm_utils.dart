@@ -1,14 +1,8 @@
 import 'dart:io';
-
 import 'package:permission_handler/permission_handler.dart';
 
 /// 权限申请相关方法
 class PermUtils {
-  /// 基础权限申请
-  static Future initPermissions() async {
-    storagePerm();
-  }
-
   /// 存储权限申请
   static Future<bool> storagePerm() async {
     if (Platform.isAndroid) {

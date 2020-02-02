@@ -21,7 +21,7 @@ import 'provider/homeBarTabsStore.p.dart';
 ///   MaterialPageRoute(
 ///     builder: (context) => BarTabs(
 ///       params: {'pageId': 2}, // 跳转到tabs的第三个页面
-///     ),pageId
+///     ),
 ///   )
 /// );
 ///
@@ -44,6 +44,7 @@ class HomeBarTabs extends StatefulWidget {
 
 class _HomeBarTabsState extends State<HomeBarTabs> {
   int currentIndex = 0; // 接收bar当前点击索引
+  bool physicsFlag = false; // 是否禁止滑动跳转页面
   PageController pageController;
 
   // 导航菜单渲染数据源
@@ -78,7 +79,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       jhDebug.showDebugBtn(); // 显示浮层按钮
-      // APP版本更新检查
+      // 更新APP版本检查
       Timer(Duration(seconds: 3), () => Util().getNewAppVer());
     });
   }
@@ -126,10 +127,9 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
     return Scaffold(
       body: PageView(
         controller: pageController,
-        children: <Widget>[
-          ...bodyWidget(),
-        ],
-        // 监听当前滑动到的页数
+        physics: physicsFlag ? NeverScrollableScrollPhysics() : null,
+        children: bodyWidget(),
+        // 监听滑动
         onPageChanged: (index) {
           setState(() {
             currentIndex = index;
@@ -138,19 +138,19 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
       ),
 
       // 底部栏
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: currentIndex, // 当前活动的bar索引
-          onTap: (int idx) {
-            setState(() {
-              currentIndex = idx; // 存当前点击索引值
-            });
-            pageController.jumpToPage(idx); // 跳转到指定页
-          },
-          items: _generateBottomBars(), // 底部菜单导航
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: currentIndex, // 当前活动的bar索引
+        elevation: 5.0,
+        selectedFontSize: ScreenUtil().setSp(26), // 选中的字体大小
+        unselectedFontSize: ScreenUtil().setSp(26), // 未选中的字体大小
+        onTap: (int idx) {
+          setState(() {
+            currentIndex = idx;
+          });
+          pageController.jumpToPage(idx); // 跳转到指定页
+        },
+        items: _generateBottomBars(), // 底部菜单导航
       ),
     );
   }
@@ -187,7 +187,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
       barList.add(BottomNavigationBarItem(
         icon: Icon(
           barData[idx]['icon'], // 图标
-          size: ScreenUtil().setSp(55),
+          size: ScreenUtil().setSp(44),
         ),
         title: Text(
           barData[idx]['title'],

@@ -24,14 +24,15 @@ class MyApp extends StatelessWidget {
       builder: (context, themeStore, child) {
         return MaterialApp(
           navigatorKey: jhDebug.getNavigatorKey,
-          locale: Locale('zh', 'CH'),
-          localizationsDelegates: [
+          locale: const Locale('zh', 'CH'),
+          localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: [
-            const Locale('zh', 'CH'),
-            // const Locale('en', 'US'), // English
+          supportedLocales: const [
+            Locale('zh', 'CH'),
+            Locale('en', 'US'),
           ],
           theme: themeStore.getTheme,
           initialRoute: initialRoute,

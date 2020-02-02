@@ -28,9 +28,7 @@ dependencies:
   dio: ^3.0.8
   provider: ^4.0.2
   flutter_screenutil: ^1.0.2
-  # jh_debug: ^0.3.1
-  jh_debug: 
-    path: '../jh_debug'
+  jh_debug: ^0.3.1
   shared_preferences: ^0.5.6
   synchronized: ^2.1.1
   ota_update: ^2.1.0 # 支持Android应用内下载更新

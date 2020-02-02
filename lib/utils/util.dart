@@ -36,7 +36,7 @@ class Util {
   /// [hours] app多久检查更新，默认12小时，未到指定时间内，使用此函数不在请求接口
   ///
   /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
-  Future getNewAppVer({int hours = 12, bool forceUpdate = true}) async {
+  Future getNewAppVer({int hours = 12, bool forceUpdate = false}) async {
     const String spKey = 'checkAppVerTime'; // 缓存key
     DateTime newTime = new DateTime.now(); // 当前时间
     String newTimeStr = newTime.toString();
@@ -47,7 +47,9 @@ class Util {
     // 指定时间内不在触发检查更新APP
     if (!(diffTime.inHours >= hours) && !forceUpdate) return;
 
-    Map resData = await getNewVersion(); // 获取接口APP新版本, 自定义
+    // TODO:获取最新APP版本, 自定义getNewVersion接口获取
+    Map resData = await getNewVersion();
+
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     // APP版本号对比检查
     if (resData['version'] == packageInfo.version && !forceUpdate) return;
