@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import '../../utils/util.dart';
-import '../../components/TipsExitAnimated/TipsExitAnimated.dart';
+import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
 import 'MyPersonal/MyPersonal.dart';
 import 'Search/Search.dart';
 import 'Hot/Hot.dart';
@@ -169,7 +169,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
             // 连续二次回退键才可退出APP
             Positioned(
               bottom: 30,
-              child: TipsExitAnimated(),
+              child: DoubleBackExitApp(),
             ),
           ],
         );

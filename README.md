@@ -1,9 +1,11 @@
 # flexible脚手架介绍
 基础环境版本
+
 • Flutter version 1.12.13+hotfix.7
+
 • Dart version 2.7.0 
 
-
+<br>
 内置集成功能：
 
 1、状态管理：集成Provider在Flutter项目中，任何页面声明好store，注入providers_config.dart文件内即可使用。
@@ -38,8 +40,6 @@ class _testDemoState extends State<testDemo>{
 4、内置全局主题一键换色，只需要配置你的主题颜色，调用方法即可。
 
 5、内置全局浮动调试组件，让你在真机上也能便利的获取错误捕获，在我的页面》右下按钮 查看效果。
-
-
 
 
 ## 文件夹结构

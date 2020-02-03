@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'TipsScaleAnimated.dart';
 
-class TipsExitAnimated extends StatefulWidget {
+class DoubleBackExitApp extends StatefulWidget {
   /// 退出提示动画组件
-  TipsExitAnimated({this.title});
+  DoubleBackExitApp({this.title});
 
   /// 提示文字
   final String title;
 
   @override
-  _TipsExitAnimatedState createState() => _TipsExitAnimatedState();
+  _DoubleBackExitAppState createState() => _DoubleBackExitAppState();
 }
 
-class _TipsExitAnimatedState extends State<TipsExitAnimated>
+class _DoubleBackExitAppState extends State<DoubleBackExitApp>
     with SingleTickerProviderStateMixin {
   Animation<double> animation; // 动画对象
   AnimationController controller;
