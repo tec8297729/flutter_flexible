@@ -139,7 +139,7 @@ getHomeData() async {
 
 
 ## APP版本更新
-1、添加安卓的存储权限申请标签，默认已添加，如有删除安卓目录生成过的，请自行添加一下。
+1、添加安卓的存储权限申请标签(默认已添加, 可跳过此步)，如有删除安卓目录生成过的，请自行添加一下。
 
 安卓权限配置文件 android\app\src\main\AndroidManifest.xml
 ```
@@ -150,7 +150,7 @@ getHomeData() async {
 </manifest>
 ```
 
-2、在/utils/utils.dart文件中，getNewAppVer方法直接运行更新APP版本，但有少部份需要自己实现，已标注TODO位置，指定APP下载地址和获取新版本的接口替换。
+2、在lib\components\UpdateAppVersion\getNewAppVer.dart文件中，getNewAppVer方法直接运行更新APP版本，但有少部份需要自己实现，已标注TODO位置，指定APP下载地址和获取新版本的接口替换。
 ```dart
 // TODO:替换成自己的获取新版本APP的接口
 Map resData = await getNewVersion();

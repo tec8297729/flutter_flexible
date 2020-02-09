@@ -8,6 +8,8 @@ import '../../utils/util.dart';
 import 'components/UpdateHeader.dart';
 import 'components/UpdateInstr.dart';
 
+export 'getNewAppVer.dart';
+
 /// 更新APP组件
 class UpdateAppVersion extends StatefulWidget {
   UpdateAppVersion({

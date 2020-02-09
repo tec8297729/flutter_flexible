@@ -1,10 +1,13 @@
 import 'dart:async';
-
-import 'package:flexible/utils/perm_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
+
+import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
+    show getNewAppVer;
+import '../../config/app_config.dart';
+import '../../utils/perm_utils.dart';
 import '../../utils/util.dart';
 import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
 import 'MyPersonal/MyPersonal.dart';
@@ -78,9 +81,11 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
     initTools();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      jhDebug.showDebugBtn(); // 显示浮层按钮
+      if (AppConfig.showJhDebugBtn) {
+        jhDebug.showDebugBtn(); // jhDebug 调试按钮
+      }
       // 更新APP版本检查
-      Timer(Duration(seconds: 3), () => Util().getNewAppVer());
+      Timer(Duration(seconds: 3), () => getNewAppVer());
     });
   }
 
@@ -108,7 +113,7 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
 
   /// 初始化第三方插件插件
   initTools() async {
-    PermUtils.storagePerm(); // 权限申请
+    PermUtils.initPermissions(); // 基础权限申请
 
     // jhDebug插件初始化
     jhDebug.init(
