@@ -57,8 +57,7 @@ class _testDemoState extends State<testDemo>{
       |- routesInit.dart # 定义路由页面
     |- main.dart # 入口文件
 
-<br/>
-<br/>
+<br/><br/>
 
 # 快速上手
 
@@ -114,6 +113,12 @@ npm run build:web // 打包web的文件
 <br>
 
 # 功能介绍
+## 获取全局context
+```dart
+import 'package:flexible/ioc/locator.dart' show locator, CommonService;
+CommonService _commonIoc = locator.get<CommonService>();
+_commonIoc.getGlobalContext; // 全局context对象
+```
 
 ## dio请求底层封装使用
 已经抽离请求组件dio，可直接使用
@@ -168,6 +173,18 @@ UpdateAppVersion(
   ),
 )
 ```
-默认在lib\pages\HomeBarTabs\HomeBarTabs.dart中，运行检查更新APP函数，你可以指定其它位置运行检查新版本。
+
+3、在指定页面运行 检查APP版本函数，默认在lib\pages\HomeBarTabs\HomeBarTabs.dart中，运行检查更新APP函数，你可以指定其它位置运行检查新版本。
+
+```dart
+import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show getNewAppVer;
+
+getNewAppVer();
+```
+
+## 埋点功能
+在lib\ioc\services\analytics_service.dart文件中添加埋点统计代码即可，已标注TODO位置。
+
+闪屏页面需要手动添加统计，其它常规页面都可统计到，无需手动埋点。
 
 
