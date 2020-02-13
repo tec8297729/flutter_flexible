@@ -9,10 +9,10 @@ bool _showFlag = false;
 
 /// 检查最新版本APP更新
 ///
-/// [hours] app多久检查更新，默认12小时，未到指定时间内，使用此函数不在请求接口
+/// [seconds] app多久检查更新，单位分钟，默认12小时，未到指定时间内，使用此函数不在请求接口
 ///
 /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
-Future getNewAppVer({int hours = 12, bool forceUpdate = false}) async {
+Future getNewAppVer({int seconds = 3600 * 12, bool forceUpdate = false}) async {
   if (_showFlag) return;
   _showFlag = true;
 
@@ -25,7 +25,9 @@ Future getNewAppVer({int hours = 12, bool forceUpdate = false}) async {
   Duration diffTime = newTime.difference(oldTime);
 
   // 指定时间内不在触发检查更新APP
-  if (!(diffTime.inHours >= hours) && !forceUpdate) return;
+  if (!forceUpdate) {
+    if (diffTime.inSeconds <= seconds) return;
+  }
 
   // TODO:获取最新APP版本, 自定义getNewVersion接口获取
   Map resData = await getNewVersion();

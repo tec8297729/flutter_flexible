@@ -179,7 +179,7 @@ UpdateAppVersion(
 ```dart
 import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show getNewAppVer;
 
-getNewAppVer();
+getNewAppVer(); // 执行更新检查
 ```
 
 ## 埋点功能
