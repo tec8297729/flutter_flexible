@@ -9,6 +9,7 @@
     "build:apk": "flutter build apk",
     "build:ios": "flutter build ios",
     "build:web": "flutter build web",
+    "appkey": "keytool -printcert -jarfile .\/build\/app\/outputs\/apk\/release\/app-release.apk",
     "upsdk": "flutter upgrade"
   }
 }

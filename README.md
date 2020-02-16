@@ -109,7 +109,7 @@ npm run build:web // 打包web的文件
 | npm run build:ios |                 打包生成IOS的APP文件                 |
 | npm run build:web |               打包生成纯前端web的文件                |
 |   npm run upsdk   | 更新sdk版本，全局的flutter和dart版本将更新为最新版本 |
-
+|  npm run appkey   |             验证打包后的安卓apk签名信息              |
 <br>
 
 # 功能介绍
