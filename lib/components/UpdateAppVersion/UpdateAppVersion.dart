@@ -89,7 +89,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
           },
         );
       } catch (e) {
-        print('更新失败，请稍后再试');
+        LogUtil.d('更新失败，请稍后再试');
       }
     }
   }

@@ -1,5 +1,10 @@
 class AppConfig {
-  static const DEBUG = true; // 是否开启接口请求打印
+  // 是否开启dio接口请求打印
+  static const DEBUG = true;
+
+  /// 是否开启LogUtil类打印方法
+  static const printFlag = true;
+
   /// 是否直接跳过闪屏页面，
   static const notSplash = false;
 

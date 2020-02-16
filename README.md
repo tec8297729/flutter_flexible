@@ -1,7 +1,7 @@
 # flexible脚手架介绍
 基础环境版本
 
-• Flutter version 1.12.13+hotfix.7
+• Flutter version 1.12.13+hotfix.8
 
 • Dart version 2.7.0 
 

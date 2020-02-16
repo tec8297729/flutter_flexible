@@ -1,3 +1,4 @@
+import '../../../utils/util.dart';
 import 'package:flutter/material.dart';
 
 class Hot extends StatefulWidget {
@@ -15,7 +16,7 @@ class _HotState extends State<Hot> with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
-    print(widget.params);
+    LogUtil.d(widget.params);
   }
 
   @override

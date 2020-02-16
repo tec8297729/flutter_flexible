@@ -1,3 +1,4 @@
+import '../../utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../HomeBarTabs/Home/provider/counterStore.p.dart';
@@ -15,7 +16,7 @@ class _TestDemoState extends State<TestDemo> {
   @override
   void initState() {
     super.initState();
-    print(widget.params);
+    LogUtil.d(widget.params);
   }
 
   void _incrementCounter() {
