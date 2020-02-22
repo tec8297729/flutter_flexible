@@ -52,6 +52,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: child,
+      resizeToAvoidBottomInset: false,
     );
   }
 }

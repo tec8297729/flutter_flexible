@@ -7,7 +7,6 @@ import 'routes/routesData.dart'; // 路由配置
 import 'providers_config.dart'; // providers配置文件
 import 'provider/themeStore.p.dart'; // 全局主题
 import 'ioc/locator.dart' show setupLocator, locator, CommonService;
-import 'routes/analyticsObserver.dart';
 
 void main() {
   setupLocator();
@@ -44,7 +43,6 @@ class MyApp extends StatelessWidget {
           initialRoute: initialRoute,
           onGenerateRoute: onGenerateRoute, // 路由处理
           debugShowCheckedModeBanner: false,
-          navigatorObservers: [AnalyticsObserver()],
         );
       },
     );

@@ -182,9 +182,6 @@ import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show
 getNewAppVer(); // 执行更新检查
 ```
 
-## 埋点功能
-在lib\ioc\services\analytics_service.dart文件中添加埋点统计代码即可，已标注TODO位置。
 
-闪屏页面需要手动添加统计，其它常规页面都可统计到，无需手动埋点。
 
 
