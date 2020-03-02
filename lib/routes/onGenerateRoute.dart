@@ -2,7 +2,7 @@ import '../pages/ErrorPage/ErrorPage.dart';
 import 'package:flutter/material.dart';
 import 'routesData.dart'; // 路由页面定义
 
-// 统一封装路由传递参数（支持别名跳转路由）
+// 统一封装路由传递参数
 Function onGenerateRoute = (RouteSettings settings) {
   final String name = settings.name; // 当前传入的路由名称
   final Object args = settings.arguments; // 路由参数

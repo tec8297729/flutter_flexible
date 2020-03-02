@@ -43,6 +43,7 @@ class _testDemoState extends State<testDemo>{
 
 
 ## 文件夹结构
+
 这是项目中一直会使用的结构
     lib/
     |- constants/ # 常量文件夹
@@ -114,14 +115,22 @@ npm run build:web // 打包web的文件
 
 # 功能介绍
 ## 获取全局context
+
+全局Key和全局context都注入存放在IOC容器当中，而IOC容器实现是使用了get_it实现。
+
+使用方式引入ioc/locator.dart 容器实例文件，直接使用你之前已经注入的类方法。
+
+PS：你可以把一些全局的类都可以注入到IOC容器中使用，从而实现页面更加简洁，不需要在某个组件或页面中导入更多的import
+
 ```dart
-import 'package:flexible/ioc/locator.dart' show locator, CommonService;
-CommonService _commonIoc = locator.get<CommonService>();
+import 'package:flexible/ioc/locator.dart' show locator, CommonService; // 引入容器实例
+CommonService _commonIoc = locator.get<CommonService>(); // 获取指定IOC容器的方法
 _commonIoc.getGlobalContext; // 全局context对象
 ```
 
 ## dio请求底层封装使用
 已经抽离请求组件dio，可直接使用
+
 ```
 import 'package:flexible/utils/dio/safeRequest.dart';
 // get请求使用方法，同dio组件request方法
@@ -144,9 +153,11 @@ getHomeData() async {
 
 
 ## APP版本更新
+
 1、添加安卓的存储权限申请标签(默认已添加, 可跳过此步)，如有删除安卓目录生成过的，请自行添加一下。
 
 安卓权限配置文件 android\app\src\main\AndroidManifest.xml
+
 ```
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.flutter_flexible">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -182,6 +193,28 @@ import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show
 getNewAppVer(); // 执行更新检查
 ```
 
+### 全局主题更换
 
+把你的主题配置参数文件放入lib\config\themes文件夹中，然后part到index_theme.dart文件中统一管理，内容如下：
+
+```dart
+import 'package:flutter/material.dart';
+// 以下你配置的全局主题颜色参数
+part 'themeBlueGrey.dart';
+part 'themeLightBlue.dart';
+part 'themePink.dart';
+
+```
+
+主题配色具体可以参考是关配色文件 themeBlueGrey.dart等。
+
+在需要替换主题的页面中调用如下：
+
+```dart
+import 'package:flexible/config/themes/index_theme.dart' show themeBlueGrey; // 主题文件
+import 'package:flexible/provider/themeStore.p.dart'; // 全局主题状态管理
+ThemeStore _theme = Provider.of<ThemeStore>(context);
+_theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
+```
 
 

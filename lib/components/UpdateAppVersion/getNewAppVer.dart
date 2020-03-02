@@ -13,7 +13,7 @@ bool _showFlag = false;
 /// [seconds] app多久检查更新，单位分钟，默认12小时，未到指定时间内，使用此函数不在请求接口
 ///
 /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
-Future getNewAppVer({int seconds = 3600 * 12, bool forceUpdate = false}) async {
+Future getNewAppVer({int seconds = 360 * 12, bool forceUpdate = false}) async {
   try {
     if (_showFlag) return;
     _showFlag = true;
