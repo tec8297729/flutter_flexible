@@ -113,8 +113,6 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
 
   /// 初始化第三方插件插件
   initTools() async {
-    PermUtils.initPermissions(); // 基础权限申请
-
     // jhDebug插件初始化
     jhDebug.init(
       context: context,

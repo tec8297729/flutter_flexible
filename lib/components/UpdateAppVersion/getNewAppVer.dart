@@ -1,6 +1,6 @@
 import '../../utils/log_util.dart';
 import '../../ioc/locator.dart' show locator, CommonService;
-import '../../utils/util.dart' show SpUtil;
+import '../../utils/util.dart' show PermUtils, SpUtil;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import '../../services/service_method.dart'; // 接口
@@ -14,6 +14,7 @@ bool _showFlag = false;
 ///
 /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
 Future getNewAppVer({int seconds = 360 * 12, bool forceUpdate = false}) async {
+  if (!(await PermUtils.storagePerm())) return; // 权限申请
   try {
     if (_showFlag) return;
     _showFlag = true;

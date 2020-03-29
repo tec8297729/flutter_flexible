@@ -1,5 +1,5 @@
-import 'package:flexible/routes/routeName.dart';
 import 'package:flutter/material.dart';
+import 'routeName.dart';
 import '../pages/ErrorPage/ErrorPage.dart';
 import '../pages/HomeBarTabs/HomeBarTabs.dart';
 import '../pages/SplashPage/SplashPage.dart';
