@@ -10,7 +10,7 @@ class AppConfig {
   /// 是否直接跳过闪屏页面，
   static const notSplash = false;
 
-  /// 刷新后直达某页面，方便调试，需notSplash参数为true才有效果
+  /// 闪屏后跳转的页面（方便调试），需notSplash参数为true才有效果
   static String directPageName = RouteName.home;
 
   /// 是否显示jh_debug浮动按钮

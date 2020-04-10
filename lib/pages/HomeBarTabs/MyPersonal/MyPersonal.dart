@@ -1,8 +1,10 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import '../../../provider/themeStore.p.dart';
 import '../../../config/themes/index_theme.dart';
+import '../provider/homeBarTabsStore.p.dart';
 
 class MyPersonal extends StatefulWidget {
   @override
@@ -14,11 +16,13 @@ class _MyPersonalState extends State<MyPersonal>
   @override
   bool get wantKeepAlive => true;
   ThemeStore _theme;
+  HomeBarTabsStore homeBarStore;
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
     _theme = Provider.of<ThemeStore>(context);
+    homeBarStore = Provider.of<HomeBarTabsStore>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -36,6 +40,7 @@ class _MyPersonalState extends State<MyPersonal>
             btnWidget('切换天空蓝主题', themeLightBlue, Colors.lightBlue),
             btnWidget(
                 '暗模式', ThemeData.dark(), ThemeData.dark().backgroundColor),
+            grayBtn(),
           ],
         ),
       ),
@@ -45,12 +50,25 @@ class _MyPersonalState extends State<MyPersonal>
           jhDebug.showDebugBtn(); // 全局显示调试按钮
         },
         tooltip: '显示全局浮动调试按钮',
-        child: Icon(Icons.import_contacts),
+        child: Icon(Icons.bug_report),
       ), //
     );
   }
 
-  btnWidget(String title, ThemeData themeData, Color color) {
+  /// 灰度按钮
+  Widget grayBtn() {
+    return RaisedButton(
+      child: Text(
+        '灰度模式--${homeBarStore.getGrayTheme ? "开启" : "关闭"}',
+        style: TextStyle(fontSize: 22),
+      ),
+      onPressed: () {
+        homeBarStore.setGrayTheme(!homeBarStore.getGrayTheme);
+      },
+    );
+  }
+
+  Widget btnWidget(String title, ThemeData themeData, Color color) {
     return RaisedButton(
       child: Text(
         title,

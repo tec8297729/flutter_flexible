@@ -1,5 +1,5 @@
 {
-  "name": "tool",
+  "name": "flexible_tool",
   "scripts": {
     "initApp": "flutter pub get && npm run start",
     "start": "flutter run",

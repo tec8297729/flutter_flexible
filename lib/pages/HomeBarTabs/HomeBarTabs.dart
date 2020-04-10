@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
-
 import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../config/app_config.dart';
-import '../../utils/perm_utils.dart';
-import '../../utils/util.dart';
 import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
 import 'MyPersonal/MyPersonal.dart';
 import 'Search/Search.dart';
@@ -125,35 +122,42 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
   Widget build(BuildContext context) {
     // 初始化设计稿尺寸
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
-    Provider.of<HomeBarTabsStore>(context).saveController(pageController);
+    HomeBarTabsStore homeBarTabsStore = Provider.of<HomeBarTabsStore>(context);
+    homeBarTabsStore.saveController(pageController);
 
-    return Scaffold(
-      body: PageView(
-        controller: pageController,
-        physics: physicsFlag ? NeverScrollableScrollPhysics() : null,
-        children: bodyWidget(),
-        // 监听滑动
-        onPageChanged: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
+    return ColorFiltered(
+      colorFilter: ColorFilter.mode(
+        homeBarTabsStore.getGrayTheme ? Color(0xff757575) : Colors.transparent,
+        BlendMode.color,
       ),
+      child: Scaffold(
+        body: PageView(
+          controller: pageController,
+          physics: physicsFlag ? NeverScrollableScrollPhysics() : null,
+          children: bodyWidget(),
+          // 监听滑动
+          onPageChanged: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+        ),
 
-      // 底部栏
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: currentIndex, // 当前活动的bar索引
-        elevation: 5.0,
-        selectedFontSize: ScreenUtil().setSp(26), // 选中的字体大小
-        unselectedFontSize: ScreenUtil().setSp(26), // 未选中的字体大小
-        onTap: (int idx) {
-          setState(() {
-            currentIndex = idx;
-          });
-          pageController.jumpToPage(idx); // 跳转到指定页
-        },
-        items: _generateBottomBars(), // 底部菜单导航
+        // 底部栏
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: currentIndex, // 当前活动的bar索引
+          elevation: 5.0,
+          selectedFontSize: ScreenUtil().setSp(26), // 选中的字体大小
+          unselectedFontSize: ScreenUtil().setSp(26), // 未选中的字体大小
+          onTap: (int idx) {
+            setState(() {
+              currentIndex = idx;
+            });
+            pageController.jumpToPage(idx); // 跳转到指定页
+          },
+          items: _generateBottomBars(), // 底部菜单导航
+        ),
       ),
     );
   }

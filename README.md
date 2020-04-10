@@ -1,9 +1,9 @@
 # flexible脚手架介绍
 基础环境版本
 
-• Flutter version 1.12.13+hotfix.8
+• Flutter version 1.12.13+hotfix.9
 
-• Dart version 2.7.0 
+• Dart version 2.7.2
 
 <br>
 内置集成功能：
@@ -195,7 +195,9 @@ getNewAppVer(); // 执行更新检查
 
 ### 全局主题更换
 
-把你的主题配置参数文件放入lib\config\themes文件夹中，然后part到index_theme.dart文件中统一管理，内容如下：
+把你的主题配置参数文件放入lib\config\themes文件夹中，然后part到index_theme.dart文件中统一管理，另外还有灰度模式。
+
+案例内容如下：
 
 ```dart
 import 'package:flutter/material.dart';
@@ -217,4 +219,13 @@ ThemeStore _theme = Provider.of<ThemeStore>(context);
 _theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
 ```
 
+#### 灰度模式
+
+首页灰度模式不需要单独配置主题文件，使用方式如下：
+
+```dart
+import 'package:flexible/pages/HomeBarTabs/provider/homeBarTabsStore.p.dart';
+HomeBarTabsStore homeBarStore = Provider.of<HomeBarTabsStore>(context);
+homeBarStore.setGrayTheme(true); // 设置灰度模式
+```
 
