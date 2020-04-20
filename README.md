@@ -114,6 +114,7 @@ npm run build:web // 打包web的文件
 <br>
 
 # 功能介绍
+
 ## 获取全局context
 
 全局Key和全局context都注入存放在IOC容器当中，而IOC容器实现是使用了get_it实现。
@@ -152,7 +153,7 @@ getHomeData() async {
 ```
 
 
-## APP版本更新
+## 更新APP版本组件
 
 1、添加安卓的存储权限申请标签(默认已添加, 可跳过此步)，如有删除安卓目录生成过的，请自行添加一下。
 
