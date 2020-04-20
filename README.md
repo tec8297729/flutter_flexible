@@ -1,39 +1,20 @@
 # flexible脚手架介绍
-基础环境版本
 
+基础环境版本<br>
+```
 • Flutter version 1.12.13+hotfix.9
 
 • Dart version 2.7.2
+
+• npm 6+以上版本
+```
 
 <br>
 内置集成功能：
 
 1、状态管理：集成Provider在Flutter项目中，任何页面声明好store，注入providers_config.dart文件内即可使用。
 
-2、页面组件支持别名路由跳转传参（参数接收更短更便捷），无需任何插件支持！简单易用，无学习成本。
-```
-Navigator.pushNamed(
-  context,
-  '/testDemo',
-  arguments: {'data': 'hello world'},
-);
-
-// 子组件使用及接收
-class testDemo extends StatefulWidget {
-  testDemo({Key key, this.params}) : super(key: key);
-  final params;
-
-  @override
-  _testDemoState createState() => _testDemoState();
-}
-class _testDemoState extends State<testDemo>{
-  @override
-  void initState() {
-    super.initState();
-    print(widget.params); // 别名参数接收
-  }
-}
-```
+2、页面组件支持别名路由跳转传参（参数接收更便捷），无需任何插件支持！简单易用，无学习成本。
 
 3、页面路由跳转容错处理，未声明路由跳转错误，指定跳转到错误页面。能让你第一时间发现低级错误bug，友好提示页面清晰明了。
 
@@ -154,6 +135,62 @@ getHomeData() async {
 }
 ```
 
+## 别名路由传参
+别名路由传递参数，在接收过程更便捷利与使用。<br>
+
+1、进入路由配置文件routes/routesData.dart，加入别名传参支持。<br>
+
+```dart
+// routesData.dart文件
+import 'package:flutter/material.dart';
+import '../pages/ErrorPage/ErrorPage.dart';
+import '../pages/HomeBarTabs/HomeBarTabs.dart';
+import '../pages/TestDemo/TestDemo.dart';
+
+final Map<String, WidgetBuilder> routesData = {
+  // 路由/和/testDemo加入 别名路由传参支持。
+  '/': (BuildContext context, {params}) => HomeBarTabs(params: params),
+  '/testDemo': (BuildContext context, {params}) => TestDemo(params: params),
+  // error路由不加入别名传参功能，
+  '/error': (BuildContext context, {params}) => ErrorPage(),
+};
+
+```
+
+<br>
+2、在页面中使用别名跳转，直接使用原生别名跳转方法即可<br>
+
+```dart
+// 某页面跳转
+Navigator.pushNamed(
+  context,
+  '/testDemo',
+  arguments: {'data': 'hello world'}, //　传递参数
+);
+
+```
+
+<br>
+3、在接收的子页面直接读取params参数变量即可。<br>
+
+```dart
+// 子页面组件使用及接收
+class testDemo extends StatefulWidget {
+  testDemo({Key key, this.params}) : super(key: key);
+  final params; // 别名传参接收变量
+
+  @override
+  _testDemoState createState() => _testDemoState();
+}
+class _testDemoState extends State<testDemo>{
+  @override
+  void initState() {
+    super.initState();
+    print(widget.params); // 路由别名参数
+  }
+}
+```
+<br>
 
 ## 更新APP版本组件
 
