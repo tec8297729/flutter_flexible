@@ -44,19 +44,21 @@ class _testDemoState extends State<testDemo>{
 
 ## 文件夹结构
 
-这是项目中一直会使用的结构
-    lib/
-    |- constants/ # 常量文件夹
-    |- config/ # 配置参数
-    |- components/ # 共用widget组件封装
-    |- provider/ # 全局状态
-    |- pages/ # 页面ui层，每个独立完整的页面
-    |- utils/ # 公共方法抽离
-      |- dio/ # dio底层请求封装safeRequest
-    |- service/ # 请求接口抽离层
-    |- routes/
-      |- routesInit.dart # 定义路由页面
-    |- main.dart # 入口文件
+这是项目中一直会使用的结构<br>
+```
+  lib/
+  |- constants/ # 常量文件夹
+  |- config/ # 配置参数
+  |- components/ # 共用widget组件封装
+  |- provider/ # 全局状态
+  |- pages/ # 页面ui层，每个独立完整的页面
+  |- utils/ # 公共方法抽离
+    |- dio/ # dio底层请求封装safeRequest
+  |- service/ # 请求接口抽离层
+  |- routes/
+    |- routesInit.dart # 定义路由页面
+  |- main.dart # 入口文件
+```
 
 <br/><br/>
 
