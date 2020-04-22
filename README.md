@@ -271,7 +271,9 @@ homeBarStore.setGrayTheme(true); // 设置灰度模式
 
 ## 全局AOP的监听页面路由
 
-默认监听全局路由页面，只需要添加你的第三方统计埋点即可，如需要某页面tab监听还需要手动继承类，并且实现相关方法。
+默认监听全局路由页面，只需要添加你的第三方统计埋点即可，如需要某页面tab监听还需要你手动继承类，并且实现相关方法。<br>
+
+具体实现由ana_page_loop插件完成，详细插件文档》》 https://github.com/tec8297729/ana_page_loop <br>
 
 1、先找到如下文件 lib\utils\myAppSetup\anaPageLoopInit.dart，配置第三方统计方法，如果想指定路由不监听处理事件，写入相关路由名称即可。<br>
 
@@ -300,9 +302,9 @@ PageViewListenerMixin类：用于监听类PageView组件
 TabViewListenerMixin类：用于监听类TabBar组件
 ```
 
-具体完成使用查看插件文档》》 https://github.com/tec8297729/ana_page_loop
 
 演示在PageView组件中的使用如下：<br>
+
 ```dart
 // 当前路由页面名称是 /home
 class _HomeBarTabsState extends State<HomeBarTabs> with PageViewListenerMixin {
