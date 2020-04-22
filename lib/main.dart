@@ -7,6 +7,8 @@ import 'routes/routesData.dart'; // 路由配置
 import 'providers_config.dart'; // providers配置文件
 import 'provider/themeStore.p.dart'; // 全局主题
 import 'ioc/locator.dart' show setupLocator, locator, CommonService;
+import 'package:ana_page_loop/ana_page_loop.dart' show anaAllObs;
+import 'utils/myAppSetup/index.dart' show myAppSetup;
 
 void main() {
   setupLocator();
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     jhDebug.setGlobalKey = locator.get<CommonService>().getGlobalKey;
-
+    myAppSetup();
     return Consumer<ThemeStore>(
       builder: (context, themeStore, child) {
         return MaterialApp(
@@ -43,6 +45,7 @@ class MyApp extends StatelessWidget {
           initialRoute: initialRoute,
           onGenerateRoute: onGenerateRoute, // 路由处理
           debugShowCheckedModeBanner: false,
+          navigatorObservers: [...anaAllObs()],
         );
       },
     );

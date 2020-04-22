@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:ana_page_loop/ana_page_loop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
@@ -42,7 +43,7 @@ class HomeBarTabs extends StatefulWidget {
   _HomeBarTabsState createState() => _HomeBarTabsState();
 }
 
-class _HomeBarTabsState extends State<HomeBarTabs> {
+class _HomeBarTabsState extends State<HomeBarTabs> with PageViewListenerMixin {
   int currentIndex = 0; // 接收bar当前点击索引
   bool physicsFlag = false; // 是否禁止滑动跳转页面
   PageController pageController;
@@ -116,6 +117,35 @@ class _HomeBarTabsState extends State<HomeBarTabs> {
       // 调试窗口按钮1事件
       btnTap1: () {},
     );
+  }
+
+  /// 实现PageViewListenerMixin类上的方法，供页面埋点使用
+  @override
+  PageViewMixinData initPageViewListener() {
+    return PageViewMixinData(
+      controller: pageController,
+      tabsData: barData.map((data) => data['title'] as String).toList(),
+    );
+  }
+
+  @override
+  void didPopNext() {
+    super.didPopNext();
+  }
+
+  @override
+  void didPop() {
+    super.didPop();
+  }
+
+  @override
+  void didPush() {
+    super.didPush();
+  }
+
+  @override
+  void didPushNext() {
+    super.didPushNext();
   }
 
   @override

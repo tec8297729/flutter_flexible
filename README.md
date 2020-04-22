@@ -233,7 +233,7 @@ import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show
 getNewAppVer(); // 执行更新检查
 ```
 
-### 全局主题更换
+## 全局主题更换
 
 把你的主题配置参数文件放入lib\config\themes文件夹中，然后part到index_theme.dart文件中统一管理，另外还有灰度模式。
 
@@ -259,7 +259,7 @@ ThemeStore _theme = Provider.of<ThemeStore>(context);
 _theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
 ```
 
-#### 灰度模式
+### 灰度模式
 
 首页灰度模式不需要单独配置主题文件，使用方式如下：
 
@@ -268,4 +268,99 @@ import 'package:flexible/pages/HomeBarTabs/provider/homeBarTabsStore.p.dart';
 HomeBarTabsStore homeBarStore = Provider.of<HomeBarTabsStore>(context);
 homeBarStore.setGrayTheme(true); // 设置灰度模式
 ```
+
+## 全局AOP的监听页面路由
+
+默认监听全局路由页面，只需要添加你的第三方统计埋点即可，如需要某页面tab监听还需要手动继承类，并且实现相关方法。
+
+1、先找到如下文件 lib\utils\myAppSetup\anaPageLoopInit.dart，配置第三方统计方法，如果想指定路由不监听处理事件，写入相关路由名称即可。<br>
+
+```dart
+// 找到如下文件 lib\utils\myAppSetup\anaPageLoopInit.dart
+void anaPageLoopInit() {
+  anaPageLoop.init(
+    beginPageFn: (name) {
+      // TODO: 第三方埋点统计开始
+    },
+    endPageFn: (name) {
+      // TODO: 第三方埋点统计结束
+    },
+    routeRegExp: ['/home'], // 过滤路由
+    debug: false,
+  );
+}
+```
+
+如果你的项目很简单，不需要独立统计PageView或是Tab组件，即可跳过完成。
+
+2、首先提供了二个mixin继承类使用，用在你需要独立统计的页面，并且记得把当前独立统计的页面路由过滤掉，例如/home页面是独立统计四个页面，所以需要过滤整体的/home路由。<br>
+
+```
+PageViewListenerMixin类：用于监听类PageView组件
+TabViewListenerMixin类：用于监听类TabBar组件
+```
+
+具体完成使用查看插件文档》》 https://github.com/tec8297729/ana_page_loop
+
+演示在PageView组件中的使用如下：<br>
+```dart
+// 当前路由页面名称是 /home
+class _HomeBarTabsState extends State<HomeBarTabs> with PageViewListenerMixin {
+  PageController pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    pageController?.dispose();
+    super.dispose();
+  }
+
+  // 实现PageViewListenerMixin类上的方法
+  @override
+  PageViewMixinData initPageViewListener() {
+    return PageViewMixinData(
+      controller: pageController, // 传递PageController控制器
+      tabsData: ['首页', '分类', '购物车', '我的中心'], // 自定义每个页面记录的名称
+    );
+  }
+
+  // 调用如下几个生命周期
+  @override
+  void didPopNext() {
+    super.didPopNext();
+  }
+
+  @override
+  void didPop() {
+    super.didPop();
+  }
+
+  @override
+  void didPush() {
+    super.didPush();
+  }
+
+  @override
+  void didPushNext() {
+    super.didPushNext();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView(
+        controller: pageController, // 控制器
+        children: <Widget>[],
+      ),
+      // ...
+    );
+  }
+}
+```
+
 
