@@ -29,15 +29,14 @@
 ```
   lib/
   |- constants/ # 常量文件夹
-  |- config/ # 配置参数
+  |- config/ # 全局的配置参数
   |- components/ # 共用widget组件封装
   |- provider/ # 全局状态
   |- pages/ # 页面ui层，每个独立完整的页面
   |- utils/ # 公共方法抽离
     |- dio/ # dio底层请求封装safeRequest
   |- service/ # 请求接口抽离层
-  |- routes/
-    |- routesInit.dart # 定义路由页面
+  |- routes/ # 定义路由相关文件夹
   |- main.dart # 入口文件
 ```
 
@@ -144,12 +143,10 @@ getHomeData() async {
 // routesData.dart文件
 import 'package:flutter/material.dart';
 import '../pages/ErrorPage/ErrorPage.dart';
-import '../pages/HomeBarTabs/HomeBarTabs.dart';
 import '../pages/TestDemo/TestDemo.dart';
 
 final Map<String, WidgetBuilder> routesData = {
-  // 路由/和/testDemo加入 别名路由传参支持。
-  '/': (BuildContext context, {params}) => HomeBarTabs(params: params),
+  // 路由/testDemo 添加别名路由传参支持。
   '/testDemo': (BuildContext context, {params}) => TestDemo(params: params),
   // error路由不加入别名传参功能，
   '/error': (BuildContext context, {params}) => ErrorPage(),
@@ -219,8 +216,7 @@ UpdateAppVersion(
     // ios是苹果应用商店地址
     iosUrl: 'itms-apps://itunes.apple.com/cn/app/id414478124?mt=8',
     // 安卓APK下载地址
-    androidUrl:
-        'https://b6.market.xiaomi.com/download/AppStore/08fee50a2945783f419a5945f8e89707f2640c6b0/com.ss.android.ugc.aweme.apk',
+    androidUrl: 'https://www.jonhuu.com/download/aweme.apk',
   ),
 )
 ```
@@ -230,7 +226,7 @@ UpdateAppVersion(
 ```dart
 import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show getNewAppVer;
 
-getNewAppVer(); // 执行更新检查
+getNewAppVer(); // 在指定组件页面 执行更新检查
 ```
 
 ## 全局主题更换

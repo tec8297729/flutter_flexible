@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomeBarTabsStore extends ChangeNotifier {
+class AppHomePageStore extends ChangeNotifier {
   PageController barTabsController;
   bool _grayTheme = false;
 

@@ -12,7 +12,7 @@ import 'MyPersonal/MyPersonal.dart';
 import 'Search/Search.dart';
 import 'Hot/Hot.dart';
 import 'Home/Home.dart';
-import 'provider/homeBarTabsStore.p.dart';
+import 'provider/appHomePageStore.p.dart';
 
 /// [params] 别名路由传递的参数
 /// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，推荐别名路由跳转方式。
@@ -31,25 +31,27 @@ import 'provider/homeBarTabsStore.p.dart';
 ///   'pageId': 2,
 /// });
 /// ```
-class HomeBarTabs extends StatefulWidget {
+class AppHomePage extends StatefulWidget {
   final params;
 
-  HomeBarTabs({
+  AppHomePage({
     Key key,
     this.params,
   }) : super(key: key);
 
   @override
-  _HomeBarTabsState createState() => _HomeBarTabsState();
+  _AppHomePageState createState() => _AppHomePageState();
 }
 
-class _HomeBarTabsState extends State<HomeBarTabs> with PageViewListenerMixin {
+class _AppHomePageState extends State<AppHomePage>
+    with AutomaticKeepAliveClientMixin, PageViewListenerMixin {
   int currentIndex = 0; // 接收bar当前点击索引
   bool physicsFlag = false; // 是否禁止滑动跳转页面
-  PageController pageController;
+  AppHomePageStore appPageStore;
+  static PageController pageController;
 
   // 导航菜单渲染数据源
-  List<Map<String, dynamic>> barData = [
+  static List<Map<String, dynamic>> barData = [
     {
       'title': '首页',
       'icon': Icons.home,
@@ -73,6 +75,9 @@ class _HomeBarTabsState extends State<HomeBarTabs> with PageViewListenerMixin {
   ];
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   void initState() {
     super.initState();
     handleCurrentIndex();
@@ -82,6 +87,8 @@ class _HomeBarTabsState extends State<HomeBarTabs> with PageViewListenerMixin {
       if (AppConfig.showJhDebugBtn) {
         jhDebug.showDebugBtn(); // jhDebug 调试按钮
       }
+      appPageStore.saveController(pageController);
+
       // 更新APP版本检查
       Timer(Duration(seconds: 3), () => getNewAppVer());
     });
@@ -150,44 +157,50 @@ class _HomeBarTabsState extends State<HomeBarTabs> with PageViewListenerMixin {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     // 初始化设计稿尺寸
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
-    HomeBarTabsStore homeBarTabsStore = Provider.of<HomeBarTabsStore>(context);
-    homeBarTabsStore.saveController(pageController);
+    appPageStore = Provider.of<AppHomePageStore>(context);
 
     return ColorFiltered(
       colorFilter: ColorFilter.mode(
-        homeBarTabsStore.getGrayTheme ? Color(0xff757575) : Colors.transparent,
+        appPageStore.getGrayTheme ? Color(0xff757575) : Colors.transparent,
         BlendMode.color,
       ),
-      child: Scaffold(
-        body: PageView(
-          controller: pageController,
-          physics: physicsFlag ? NeverScrollableScrollPhysics() : null,
-          children: bodyWidget(),
-          // 监听滑动
-          onPageChanged: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-        ),
+      child: _scaffoldBody(),
+    );
+    // return _scaffoldBody();
+  }
 
-        // 底部栏
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: currentIndex, // 当前活动的bar索引
-          elevation: 5.0,
-          selectedFontSize: ScreenUtil().setSp(26), // 选中的字体大小
-          unselectedFontSize: ScreenUtil().setSp(26), // 未选中的字体大小
-          onTap: (int idx) {
-            setState(() {
-              currentIndex = idx;
-            });
-            pageController.jumpToPage(idx); // 跳转到指定页
-          },
-          items: _generateBottomBars(), // 底部菜单导航
-        ),
+  /// 页面Scaffold层组件
+  Widget _scaffoldBody() {
+    return Scaffold(
+      body: PageView(
+        controller: pageController,
+        physics: physicsFlag ? NeverScrollableScrollPhysics() : null,
+        children: bodyWidget(),
+        // 监听滑动
+        onPageChanged: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+      ),
+
+      // 底部栏
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: currentIndex, // 当前活动的bar索引
+        elevation: 5.0,
+        selectedFontSize: ScreenUtil().setSp(26), // 选中的字体大小
+        unselectedFontSize: ScreenUtil().setSp(26), // 未选中的字体大小
+        onTap: (int idx) {
+          setState(() {
+            currentIndex = idx;
+          });
+          pageController.jumpToPage(idx); // 跳转到指定页
+        },
+        items: _generateBottomBars(), // 底部菜单导航
       ),
     );
   }

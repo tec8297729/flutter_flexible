@@ -4,7 +4,7 @@ class RouteName {
   static String splashPage = '/';
 
   /// app主页
-  static String home = '/home';
+  static String appHomePage = '/appHomePage';
 
   /// 错误页面
   static String error = '/error';

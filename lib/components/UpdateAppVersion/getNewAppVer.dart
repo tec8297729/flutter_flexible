@@ -3,7 +3,7 @@ import '../../ioc/locator.dart' show locator, CommonService;
 import '../../utils/util.dart' show PermUtils, SpUtil;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
-import '../../services/service_method.dart'; // 接口
+import '../../services/api.dart'; // 接口
 import 'UpdateAppVersion.dart';
 
 bool _showFlag = false;

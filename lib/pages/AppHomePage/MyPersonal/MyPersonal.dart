@@ -4,7 +4,7 @@ import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import '../../../provider/themeStore.p.dart';
 import '../../../config/themes/index_theme.dart';
-import '../provider/homeBarTabsStore.p.dart';
+import '../provider/appHomePageStore.p.dart';
 
 class MyPersonal extends StatefulWidget {
   @override
@@ -16,13 +16,13 @@ class _MyPersonalState extends State<MyPersonal>
   @override
   bool get wantKeepAlive => true;
   ThemeStore _theme;
-  HomeBarTabsStore homeBarStore;
+  AppHomePageStore appPageStore;
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
     _theme = Provider.of<ThemeStore>(context);
-    homeBarStore = Provider.of<HomeBarTabsStore>(context);
+    appPageStore = Provider.of<AppHomePageStore>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -59,11 +59,11 @@ class _MyPersonalState extends State<MyPersonal>
   Widget grayBtn() {
     return RaisedButton(
       child: Text(
-        '灰度模式--${homeBarStore.getGrayTheme ? "开启" : "关闭"}',
+        '灰度模式--${appPageStore.getGrayTheme ? "开启" : "关闭"}',
         style: TextStyle(fontSize: 22),
       ),
       onPressed: () {
-        homeBarStore.setGrayTheme(!homeBarStore.getGrayTheme);
+        appPageStore.setGrayTheme(!appPageStore.getGrayTheme);
       },
     );
   }

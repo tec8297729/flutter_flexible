@@ -11,7 +11,7 @@ class AppConfig {
   static const notSplash = false;
 
   /// 闪屏后跳转的页面（方便调试），需notSplash参数为true才有效果
-  static String directPageName = RouteName.home;
+  static String directPageName = RouteName.appHomePage;
 
   /// 是否显示jh_debug浮动按钮
   static const showJhDebugBtn = true;
@@ -26,5 +26,5 @@ class AppConfig {
   static const proxyAddress = '192.168.2.201';
 
   /// 反向代理端口
-  static const proxyPort = 9999;
+  static const proxyPort = 9003;
 }

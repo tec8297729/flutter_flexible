@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../routes/routeName.dart';
 
 /// 指引页面
 class WelcomePage extends StatefulWidget {
@@ -7,7 +8,7 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  String _info = '';
+  String _info = '引导页～';
 
   @override
   void initState() {
@@ -16,11 +17,7 @@ class _WelcomePageState extends State<WelcomePage> {
   }
 
   /// App引导页逻辑。
-  void _initBanner() async {
-    setState(() {
-      _info = "引导页～";
-    });
-  }
+  void _initBanner() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +30,12 @@ class _WelcomePageState extends State<WelcomePage> {
           ),
         ],
       ),
+      // 欢迎页测试按钮，手动跳转
       floatingActionButton: FloatingActionButton(
         heroTag: 'welcomBtn',
         child: Icon(Icons.navigate_next),
         onPressed: () {
-          Navigator.of(context).pushReplacementNamed('/home');
+          Navigator.of(context).pushReplacementNamed(RouteName.appHomePage);
         },
       ),
     );

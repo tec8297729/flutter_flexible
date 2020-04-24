@@ -1,5 +1,6 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'dart:async';
+import '../../../routes/routeName.dart';
 
 /// APP入口全屏广告页面
 class AdPage extends StatefulWidget {
@@ -32,7 +33,7 @@ class _AdPageState extends State<AdPage> {
 
     _timer = Timer.periodic(timeDur, (Timer t) {
       if (timeCount <= 0) {
-        Navigator.of(context).pushReplacementNamed('/home');
+        Navigator.of(context).pushReplacementNamed(RouteName.appHomePage);
         return;
       }
       setState(() {
