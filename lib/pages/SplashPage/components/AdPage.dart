@@ -61,7 +61,7 @@ class _AdPageState extends State<AdPage> {
       right: 20,
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushReplacementNamed('/home');
+          Navigator.of(context).pushReplacementNamed(RouteName.appHomePage);
         },
         child: Container(
           alignment: Alignment.center,

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:ana_page_loop/ana_page_loop.dart';
+import 'package:flexible/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
@@ -117,7 +118,7 @@ class _AppHomePageState extends State<AppHomePage>
   }
 
   /// 初始化第三方插件插件
-  initTools() async {
+  initTools() {
     // jhDebug插件初始化
     jhDebug.init(
       context: context,
@@ -169,7 +170,6 @@ class _AppHomePageState extends State<AppHomePage>
       ),
       child: _scaffoldBody(),
     );
-    // return _scaffoldBody();
   }
 
   /// 页面Scaffold层组件
@@ -194,7 +194,7 @@ class _AppHomePageState extends State<AppHomePage>
         elevation: 5.0,
         selectedFontSize: ScreenUtil().setSp(26), // 选中的字体大小
         unselectedFontSize: ScreenUtil().setSp(26), // 未选中的字体大小
-        onTap: (int idx) {
+        onTap: (int idx) async {
           setState(() {
             currentIndex = idx;
           });

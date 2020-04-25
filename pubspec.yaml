@@ -29,13 +29,13 @@ dependencies:
   provider: ^4.0.4
   flutter_screenutil: ^1.1.0
   jh_debug: ^0.3.9
-  ana_page_loop: ^0.1.1 # aop埋点处理
+  ana_page_loop: ^0.1.2 # aop埋点处理
   shared_preferences: ^0.5.6
   synchronized: ^2.2.0
   ota_update: ^2.2.1
   package_info: ^0.4.0+13 # app相关信息获取
   url_launcher: ^5.4.2
-  permission_handler: ^4.4.0+hotfix.2 # 权限
+  permission_handler: ^5.0.0+hotfix.4 # 权限
   get_it: ^4.0.1
   fluttertoast: ^4.0.1
 

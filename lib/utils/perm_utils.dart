@@ -4,32 +4,30 @@ import 'package:permission_handler/permission_handler.dart';
 class PermUtils {
   /// 基础权限申请
   static Future initPermissions() async {
-    storagePerm();
-    cameraPerm();
+    if (await Permission.contacts.request().isGranted) return;
+
+    await [
+      Permission.storage,
+      Permission.camera,
+    ].request();
   }
 
   /// 存储权限申请
   static Future<bool> storagePerm() async {
-    // 权限检查
-    PermissionStatus permission = await PermissionHandler()
-        .checkPermissionStatus(PermissionGroup.storage);
-    if (permission != PermissionStatus.granted) {
-      var permissions = await PermissionHandler()
-          .requestPermissions([PermissionGroup.storage]);
-      return permissions[PermissionGroup.storage] == PermissionStatus.granted;
+    PermissionStatus status = await Permission.storage.status;
+    if (status != PermissionStatus.granted) {
+      final statuses = await [Permission.storage].request();
+      return statuses[Permission.storage] == PermissionStatus.granted;
     }
     return true;
   }
 
   /// 相册权限申请
   static Future<bool> cameraPerm() async {
-    // 权限检查
-    PermissionStatus permission =
-        await PermissionHandler().checkPermissionStatus(PermissionGroup.camera);
-    if (permission != PermissionStatus.granted) {
-      var permissions = await PermissionHandler()
-          .requestPermissions([PermissionGroup.camera]);
-      return permissions[PermissionGroup.camera] == PermissionStatus.granted;
+    PermissionStatus status = await Permission.camera.status;
+    if (status != PermissionStatus.granted) {
+      final statuses = await [Permission.camera].request(); // 请求权限
+      return statuses[Permission.camera] == PermissionStatus.granted;
     }
     return true;
   }
