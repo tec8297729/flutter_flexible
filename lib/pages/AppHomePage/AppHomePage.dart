@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:ana_page_loop/ana_page_loop.dart';
-import 'package:flexible/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
@@ -44,12 +43,11 @@ class AppHomePage extends StatefulWidget {
   _AppHomePageState createState() => _AppHomePageState();
 }
 
-class _AppHomePageState extends State<AppHomePage>
-    with AutomaticKeepAliveClientMixin, PageViewListenerMixin {
+class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
   int currentIndex = 0; // 接收bar当前点击索引
   bool physicsFlag = false; // 是否禁止滑动跳转页面
   AppHomePageStore appPageStore;
-  static PageController pageController;
+  PageController pageController;
 
   // 导航菜单渲染数据源
   static List<Map<String, dynamic>> barData = [
@@ -76,9 +74,6 @@ class _AppHomePageState extends State<AppHomePage>
   ];
 
   @override
-  bool get wantKeepAlive => true;
-
-  @override
   void initState() {
     super.initState();
     handleCurrentIndex();
@@ -88,7 +83,6 @@ class _AppHomePageState extends State<AppHomePage>
       if (AppConfig.showJhDebugBtn) {
         jhDebug.showDebugBtn(); // jhDebug 调试按钮
       }
-      appPageStore.saveController(pageController);
 
       // 更新APP版本检查
       Timer(Duration(seconds: 3), () => getNewAppVer());
@@ -158,10 +152,10 @@ class _AppHomePageState extends State<AppHomePage>
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     // 初始化设计稿尺寸
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
     appPageStore = Provider.of<AppHomePageStore>(context);
+    appPageStore.saveController(pageController);
 
     return ColorFiltered(
       colorFilter: ColorFilter.mode(

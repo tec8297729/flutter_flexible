@@ -1,5 +1,7 @@
 import 'package:ana_page_loop/ana_page_loop.dart' show anaPageLoop;
-import 'package:flexible/utils/log_util.dart';
+import '../../config/app_config.dart' show AppConfig;
+import '../../routes/routeName.dart' show RouteName;
+import '../../utils/log_util.dart';
 
 /// 初始化埋点统计插件
 void anaPageLoopInit() {
@@ -12,7 +14,7 @@ void anaPageLoopInit() {
       // TODO: 第三方埋点统计结束
       LogUtil.d('待添加：埋点统计结束$name');
     },
-    routeRegExp: ['/home'], // 过滤路由
-    debug: false,
+    routeRegExp: [RouteName.appHomePage], // 过滤路由
+    debug: AppConfig.DEBUG, // 路由调试
   );
 }
