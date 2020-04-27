@@ -5,10 +5,8 @@ class AppHomePageStore extends ChangeNotifier {
   bool _grayTheme = false;
 
   /// 保存页面控制器
-  void saveController(PageController barTabsCont) {
-    if (barTabsController != null) return;
-    barTabsController = barTabsCont;
-  }
+  void saveController(PageController barTabsCont) =>
+      barTabsController = barTabsCont;
 
   /// 获取BarTabs的Controller控制器
   PageController get getBarTabsCont => barTabsController;

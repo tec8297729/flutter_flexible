@@ -80,12 +80,13 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
     initTools();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      appPageStore.saveController(pageController);
+
       if (AppConfig.showJhDebugBtn) {
         jhDebug.showDebugBtn(); // jhDebug 调试按钮
       }
 
-      // 更新APP版本检查
-      Timer(Duration(seconds: 3), () => getNewAppVer());
+      getNewAppVer(); // 更新APP版本检查
     });
   }
 
@@ -105,10 +106,7 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
     }
 
     // 初始化tab控制器
-    pageController = PageController(
-      initialPage: currentIndex, // 默认widget组件
-      keepPage: true,
-    );
+    pageController = PageController(initialPage: currentIndex, keepPage: true);
   }
 
   /// 初始化第三方插件插件
@@ -155,7 +153,6 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
     // 初始化设计稿尺寸
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
     appPageStore = Provider.of<AppHomePageStore>(context);
-    appPageStore.saveController(pageController);
 
     return ColorFiltered(
       colorFilter: ColorFilter.mode(
@@ -169,16 +166,26 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
   /// 页面Scaffold层组件
   Widget _scaffoldBody() {
     return Scaffold(
-      body: PageView(
-        controller: pageController,
-        physics: physicsFlag ? NeverScrollableScrollPhysics() : null,
-        children: bodyWidget(),
-        // 监听滑动
-        onPageChanged: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: <Widget>[
+          PageView(
+            controller: pageController,
+            physics: physicsFlag ? NeverScrollableScrollPhysics() : null,
+            children: bodyWidget(), // tab页面主体
+            // 监听滑动
+            onPageChanged: (index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+          ),
+          // 连续二次回退键才可退出APP
+          Positioned(
+            bottom: 30,
+            child: DoubleBackExitApp(),
+          ),
+        ],
       ),
 
       // 底部栏
@@ -199,49 +206,30 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
     );
   }
 
-  // 视图内容区域
+  // tab视图内容区域
   List<Widget> bodyWidget() {
     try {
-      List<Widget> bodyList = barData.map((itemWidget) {
-        return Stack(
-          alignment: Alignment.bottomCenter,
-          children: <Widget>[
-            // 内容区域
-            if (itemWidget['body'] != null)
-              itemWidget['body'],
-
-            // 连续二次回退键才可退出APP
-            Positioned(
-              bottom: 30,
-              child: DoubleBackExitApp(),
-            ),
-          ],
-        );
-      }).toList();
-      return bodyList;
+      return barData.map((itemData) => itemData['body'] as Widget).toList();
     } catch (e) {
-      throw Exception('barData导航菜单数据缺少body参数，或非IconData类型, errorMsg:$e');
+      throw Exception('barData导航菜单数据缺少body参数，errorMsg:$e');
     }
   }
 
   // 生成底部菜单导航
   List<BottomNavigationBarItem> _generateBottomBars() {
-    List<BottomNavigationBarItem> barList = [];
-    for (var idx = 0; idx < barData.length; idx++) {
-      barList.add(BottomNavigationBarItem(
-        icon: Icon(
-          barData[idx]['icon'], // 图标
-          size: ScreenUtil().setSp(44),
-        ),
-        title: Text(
-          barData[idx]['title'],
-          // 自定义样式
-          // style: TextStyle(
-          //   color: (currentIndex == idx ? Colors.blueGrey : Colors.black),
-          // ),
-        ),
-      ));
+    try {
+      return barData.map<BottomNavigationBarItem>((itemData) {
+        return BottomNavigationBarItem(
+          icon: Icon(
+            itemData['icon'], // 图标
+            size: ScreenUtil().setSp(44),
+          ),
+          title: Text(itemData['title']),
+        );
+      }).toList();
+    } catch (e) {
+      throw Exception(
+          'barData数据缺少title参数（String类型）、或icon参数（IconData类型）, errorMsg:$e');
     }
-    return barList;
   }
 }

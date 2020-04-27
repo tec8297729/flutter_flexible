@@ -221,7 +221,7 @@ UpdateAppVersion(
 )
 ```
 
-3、在指定页面运行 检查APP版本函数，默认在lib\pages\HomeBarTabs\HomeBarTabs.dart中，运行检查更新APP函数，你可以指定其它位置运行检查新版本。
+3、在指定页面运行 检查APP版本函数，默认在lib\pages\AppHomePage\AppHomePage.dart中，运行检查更新APP函数，你可以指定其它位置运行检查新版本。
 
 ```dart
 import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show getNewAppVer;
@@ -260,9 +260,9 @@ _theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
 首页灰度模式不需要单独配置主题文件，使用方式如下：
 
 ```dart
-import 'package:flexible/pages/HomeBarTabs/provider/homeBarTabsStore.p.dart';
-HomeBarTabsStore homeBarStore = Provider.of<HomeBarTabsStore>(context);
-homeBarStore.setGrayTheme(true); // 设置灰度模式
+import 'package:flexible/pages/AppHomePage/provider/appHomePageStore.p.dart';
+AppHomePageStore appHomePageStore = Provider.of<AppHomePageStore>(context);
+appHomePageStore.setGrayTheme(true); // 设置灰度模式
 ```
 
 ## 全局AOP的监听页面路由
@@ -283,7 +283,7 @@ void anaPageLoopInit() {
     endPageFn: (name) {
       // TODO: 第三方埋点统计结束
     },
-    routeRegExp: ['/home'], // 过滤路由
+    routeRegExp: ['/appHomePage'], // 过滤路由
     debug: false,
   );
 }
@@ -302,8 +302,8 @@ TabViewListenerMixin类：用于监听类TabBar组件
 演示在PageView组件中的使用如下：<br>
 
 ```dart
-// 当前路由页面名称是 /home
-class _HomeBarTabsState extends State<HomeBarTabs> with PageViewListenerMixin {
+// 当前路由页面名称是 /appHomePage
+class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
   PageController pageController;
 
   @override
