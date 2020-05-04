@@ -120,6 +120,21 @@ npm run build:web // 打包web的文件
 
 # 功能介绍
 
+## 启动屏
+
+启动屏图片修改到指定路径中替换成自己的图片<br>
+
+```
+// 这是安卓启动屏图片路径，默认只添加了一个文件加，需要不同分别率在mipmap-**相应文件夹内添加
+android\app\src\main\res\mipmap\splash_bg.png 
+
+// 这是IOS启动屏图片路径，LaunchImage**.png都替换成自己的启动屏图片
+ios\Runner\Assets.xcassets\LaunchImage.imageset\LaunchImage.png
+```
+
+PS：启动屏欢迎页及广告页面在flutter组件中定制功能，在lib\pages\SplashPage目录中修改
+
+
 ## 获取全局context
 
 全局Key和全局context都注入存放在IOC容器当中，而IOC容器实现是使用了get_it实现。<br>
@@ -291,7 +306,7 @@ AppHomePageStore appHomePageStore = Provider.of<AppHomePageStore>(context);
 appHomePageStore.setGrayTheme(true); // 设置灰度模式
 ```
 
-## 全局AOP的监听页面路由
+## 全局路由监听
 
 默认监听全局路由页面，只需要添加你的第三方统计埋点即可，如需要某页面tab监听还需要你手动继承类，并且实现相关方法。<br>
 
