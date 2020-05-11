@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'TipsScaleAnimated.dart';
@@ -26,7 +27,7 @@ class _DoubleBackExitAppState extends State<DoubleBackExitApp>
     super.initState();
     // 动画对象
     controller = AnimationController(
-      duration: Duration(milliseconds: 200), // 动画持续时间
+      duration: Duration(milliseconds: 200),
       vsync: this,
     );
     // 定义开始到结束的值
@@ -46,11 +47,11 @@ class _DoubleBackExitAppState extends State<DoubleBackExitApp>
       // 监听返回事件
       onWillPop: this.handleWillPop,
       child: TipsScaleAnimated(
-        animation: animation, // 传入动画效果的animation
+        animation: animation,
         child: Text(
           widget.title ?? '再按一次退出',
           style: TextStyle(
-            fontSize: ScreenUtil().setSp(28),
+            fontSize: 28.sp,
             color: Colors.white.withOpacity(0.8),
           ),
           textAlign: TextAlign.center,
@@ -65,15 +66,16 @@ class _DoubleBackExitAppState extends State<DoubleBackExitApp>
         DateTime.now().difference(_lastPressedAt) > Duration(seconds: 2)) {
       //两次点击间隔超过2秒则重新计时
       _lastPressedAt = DateTime.now();
-      this.runTips(); // 显示tips提示
+      this.runTips();
       return false;
     }
+    exit(0);
     return true;
   }
 
   // 底部提示信息动画控制
   void runTips() {
-    const oneSec = Duration(milliseconds: 1300); // tips文字显示时间
+    const oneSec = Duration(milliseconds: 1300);
     _tipsTimer = null;
 
     controller.reset(); // 重置动画

@@ -2,9 +2,9 @@
 
 基础环境版本<br>
 ```
-• Flutter version 1.12.13+hotfix.9
+• Flutter version 1.17.0
 
-• Dart version 2.7.2
+• Dart version 2.8.1
 
 • node 10+
 ```
@@ -51,7 +51,10 @@
 1、全局安装cli插件，确保你的电脑中有node环境。<br>
 
 ```
-npm i -g flib-cli
+npm i -g flib-cli // 全局安装插件
+
+// 方式二：手动下载，但没有全局指令功能
+git clone https://github.com/tec8297729/flutter_flexible.git
 ```
 
 2、打开终端输入以下指定创建项目
@@ -82,30 +85,12 @@ flutter run
 ```
 <br/>
 
-## 打包项目方式
 
-你可以使用flutter原生命令，或是使用脚手架内置好的直接使用。<br>
+### 指令参数说明
 
-同时打包android和ios二个APP文件，输入以下命令：<br>
+指令也是为了更方便记忆使用，你也可以使用原生flutter指令打包等<br>
 
-```
-npm run build
-```
-
-<br/>
-单独打包某一个平台的文件命令如下：<br>
-
-```
-npm run build:apk // 打包安卓的APK文件
-
-npm run build:ios // 打包IOS的文件
-
-npm run build:web // 打包web的文件
-```
-
-<br>
-
-# 命令行参数说明
+集成在项目中的指令如下：<br>
 
 |       命令        |                         说明                         |
 | :---------------: | :--------------------------------------------------: |
@@ -116,7 +101,7 @@ npm run build:web // 打包web的文件
 | npm run build:web |               打包生成纯前端web的文件                |
 |   npm run upsdk   | 更新sdk版本，全局的flutter和dart版本将更新为最新版本 |
 |  npm run appkey   |             验证打包后的安卓apk签名信息              |
-<br>
+<br><br><br>
 
 # 功能介绍
 

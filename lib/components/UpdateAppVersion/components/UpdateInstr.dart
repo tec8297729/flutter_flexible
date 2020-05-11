@@ -9,8 +9,8 @@ class UpdateInstr extends StatelessWidget {
   Widget build(BuildContext context) {
     int len = data?.length ?? 0;
     return Container(
-      height: ScreenUtil().setHeight(310),
-      padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+      height: 320.w,
+      padding: EdgeInsets.only(left: 20, right: 20, top: 1.w),
       color: Colors.white,
       child: ListView(
         children: <Widget>[
@@ -19,7 +19,7 @@ class UpdateInstr extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 10),
               child: Text(
                 '${i + 1}、${data[i]}',
-                style: TextStyle(fontSize: ScreenUtil().setSp(28)),
+                style: TextStyle(fontSize: 28.sp),
               ),
             ),
         ],

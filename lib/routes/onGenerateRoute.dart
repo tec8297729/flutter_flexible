@@ -9,7 +9,6 @@ Function onGenerateRoute = (RouteSettings settings) {
   final Function pageContentBuilder = routesData[name]; // 获取路由指定组件函数
   final RouteSettings settingsData = RouteSettings(
     name: name,
-    isInitialRoute: false,
     arguments: args,
   );
 

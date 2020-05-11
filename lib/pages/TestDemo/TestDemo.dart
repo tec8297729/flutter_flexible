@@ -20,7 +20,7 @@ class _TestDemoState extends State<TestDemo> {
   }
 
   void _incrementCounter() {
-    _counter.increment(); // mobx中的值 加加value
+    _counter.increment(); // 改变状态管中的值
   }
 
   @override
@@ -36,14 +36,10 @@ class _TestDemoState extends State<TestDemo> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'mobx共享值测试',
-                  style: TextStyle(fontSize: 32),
-                ),
                 Consumer<CounterStore>(
                   builder: (_, counterStore, child) => Text(
                     '状态共享值：${counterStore.value}',
-                    style: Theme.of(context).textTheme.display1,
+                    style: TextStyle(fontSize: 18),
                   ),
                 ),
                 Text(
@@ -58,7 +54,6 @@ class _TestDemoState extends State<TestDemo> {
       floatingActionButton: FloatingActionButton(
         heroTag: 'testDemoBtn1',
         onPressed: _incrementCounter,
-        tooltip: '增加mobx中的值',
         child: Icon(Icons.add),
       ), //
     );

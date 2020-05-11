@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:ana_page_loop/ana_page_loop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -193,8 +192,8 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex, // 当前活动的bar索引
         elevation: 5.0,
-        selectedFontSize: ScreenUtil().setSp(26), // 选中的字体大小
-        unselectedFontSize: ScreenUtil().setSp(26), // 未选中的字体大小
+        selectedFontSize: 26.sp, // 选中的字体大小
+        unselectedFontSize: 26.sp, // 未选中的字体大小
         onTap: (int idx) async {
           setState(() {
             currentIndex = idx;
@@ -222,7 +221,7 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
         return BottomNavigationBarItem(
           icon: Icon(
             itemData['icon'], // 图标
-            size: ScreenUtil().setSp(44),
+            size: 44.sp,
           ),
           title: Text(itemData['title']),
         );

@@ -40,7 +40,7 @@ class UpdateAppVersion extends StatefulWidget {
 }
 
 class _UpdateAppVersionState extends State<UpdateAppVersion> {
-  final double widthWrap = ScreenUtil().setWidth(550);
+  final double widthWrap = 550.w;
   bool downloadFlag = false; // 是否正在下载
   double downAppProgress = 0;
   String appVersion; // 最新版本号
@@ -98,12 +98,12 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
   Widget build(BuildContext context) {
     return Container(
       width: widthWrap,
-      height: ScreenUtil().setHeight(740),
+      height: 760.w,
       color: Colors.transparent,
       child: Column(
         children: <Widget>[
           UpdateHeader(version: appVersion), // 头部
-          UpdateInstr(data: widget?.info),
+          UpdateInstr(data: widget?.info), // 更新内容
           bottomW(),
         ],
       ),
@@ -121,7 +121,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
 
     return Container(
       width: double.infinity,
-      height: ScreenUtil().setHeight(140),
+      height: 140.w,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -138,10 +138,10 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
 
   /// 进度条
   Widget downProgressWidget() {
-    final double progWidth = ScreenUtil().setHeight(36);
+    final double progWidth = 36.w;
     return Container(
       margin: EdgeInsets.only(bottom: 5),
-      width: ScreenUtil().setWidth(360),
+      width: 360.w,
       child: PhysicalModel(
         color: Colors.transparent,
         // elevation: 2,
@@ -163,8 +163,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
                 alignment: Alignment.center,
                 child: Text(
                   downAppProgress > 0 ? '下载进度:$downAppProgress%' : '准备下载中...',
-                  style: TextStyle(
-                      color: Colors.black, fontSize: ScreenUtil().setSp(18)),
+                  style: TextStyle(color: Colors.black, fontSize: 18.sp),
                 ),
               ),
             ],
@@ -177,15 +176,15 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
   /// 底部升级按钮
   Widget upAppBtn() {
     return Container(
-      width: ScreenUtil().setWidth(360),
-      height: ScreenUtil().setHeight(76),
+      width: 300.w,
+      height: 76.w,
       child: RaisedButton(
         child: Text(
           '立即升级',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 2,
-            fontSize: ScreenUtil().setSp(34),
+            fontSize: 34.sp,
           ),
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),

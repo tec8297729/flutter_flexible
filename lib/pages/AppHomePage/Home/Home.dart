@@ -1,4 +1,3 @@
-import '../../../components/PageLoding/PageLoding.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'provider/counterStore.p.dart';
@@ -21,34 +20,21 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     super.initState();
   }
 
-  initFetch() async {
-    // TODO: 接口获取数据
-    return 'data';
-  }
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    _counter = Provider.of<CounterStore>(context); // 实例化类，可多页共享数据
+    _counter = Provider.of<CounterStore>(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text('home页面'),
         automaticallyImplyLeading: false,
       ),
-      body: FutureBuilder(
-        future: initFetch(),
-        builder: (context, snap) {
-          if (snap.data != null) {
-            return contextWidget();
-          }
-          return PageLoading();
-        },
-      ),
+      body: contextWidget(),
       floatingActionButton: FloatingActionButton(
         heroTag: 'homeBtn1',
         onPressed: () async {
-          _counter.increment(); // 状态管理mobx中的值
+          _counter.increment();
         },
         tooltip: '加加store值',
         child: Icon(Icons.add),
