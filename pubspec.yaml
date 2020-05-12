@@ -29,7 +29,7 @@ dependencies:
   provider: ^4.1.1
   flutter_screenutil: ^1.1.0
   jh_debug: ^0.3.10
-  ana_page_loop: ^0.1.6
+  ana_page_loop: ^0.1.7
   shared_preferences: ^0.5.7+1
   synchronized: ^2.2.0
   ota_update: ^2.2.1

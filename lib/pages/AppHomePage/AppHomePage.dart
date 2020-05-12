@@ -77,7 +77,6 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
     super.initState();
     handleCurrentIndex();
     initTools();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       appPageStore.saveController(pageController);
 
@@ -179,7 +178,6 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
               });
             },
           ),
-          // 连续二次回退键才可退出APP
           Positioned(
             bottom: 30,
             child: DoubleBackExitApp(),
@@ -190,7 +188,7 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
       // 底部栏
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: currentIndex, // 当前活动的bar索引
+        currentIndex: currentIndex, // 当前页
         elevation: 5.0,
         selectedFontSize: 26.sp, // 选中的字体大小
         unselectedFontSize: 26.sp, // 未选中的字体大小
@@ -198,14 +196,14 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
           setState(() {
             currentIndex = idx;
           });
-          pageController.jumpToPage(idx); // 跳转到指定页
+          pageController.jumpToPage(idx); // 跳转
         },
         items: _generateBottomBars(), // 底部菜单导航
       ),
     );
   }
 
-  // tab视图内容区域
+  /// tab视图内容区域
   List<Widget> bodyWidget() {
     try {
       return barData.map((itemData) => itemData['body'] as Widget).toList();
@@ -214,7 +212,7 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
     }
   }
 
-  // 生成底部菜单导航
+  /// 生成底部菜单导航
   List<BottomNavigationBarItem> _generateBottomBars() {
     try {
       return barData.map<BottomNavigationBarItem>((itemData) {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'TipsScaleAnimated.dart';
 
+/// 二次返回退出APP组件
 class DoubleBackExitApp extends StatefulWidget {
   /// 退出提示动画组件
   DoubleBackExitApp({this.title});
