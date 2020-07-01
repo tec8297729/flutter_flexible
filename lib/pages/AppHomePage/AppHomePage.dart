@@ -1,5 +1,6 @@
 import 'package:ana_page_loop/ana_page_loop.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
@@ -42,11 +43,14 @@ class AppHomePage extends StatefulWidget {
   _AppHomePageState createState() => _AppHomePageState();
 }
 
-class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
+class _AppHomePageState extends State<AppHomePage>
+    with PageViewListenerMixin, AutomaticKeepAliveClientMixin {
   int currentIndex = 0; // 接收bar当前点击索引
   bool physicsFlag = false; // 是否禁止滑动跳转页面
   AppHomePageStore appPageStore;
   PageController pageController;
+  @override
+  bool get wantKeepAlive => true;
 
   // 导航菜单渲染数据源
   static List<Map<String, dynamic>> barData = [
@@ -74,9 +78,9 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
 
   @override
   void initState() {
-    super.initState();
     handleCurrentIndex();
     initTools();
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       appPageStore.saveController(pageController);
 
@@ -148,6 +152,7 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     // 初始化设计稿尺寸
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
     appPageStore = Provider.of<AppHomePageStore>(context);

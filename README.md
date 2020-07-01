@@ -1,26 +1,29 @@
 # flexible脚手架介绍
 
-基础环境版本<br>
+最新测试环境版本<br>
 ```
-• Flutter version 1.17.0
+• Flutter version 1.17.5
 
-• Dart version 2.8.1
+• Dart 2.8.4
 
-• node 10+
+• node 12+ 稳定版
 ```
 
-<br>
 内置集成功能：
 
-1、状态管理：集成Provider在Flutter项目中，任何页面声明好store，注入lib/providers_config.dart文件内即可使用。
+• 状态管理：集成Provider在Flutter项目中，任何页面声明好store，注入lib/providers_config.dart文件内即可使用。
 
-2、页面组件更便捷的接收 路由别名跳转传参，底层已处理无需任何插件支持！简单易用，无学习成本。
+• 页面组件更便捷的接收 路由别名跳转传参，底层已处理无需任何插件支持！简单易用，无学习成本。
 
-3、页面路由跳转容错处理，未声明路由跳转错误，指定跳转到错误页面。能让你第一时间发现低级错误bug，友好提示页面清晰明了。
+• 页面路由跳转容错处理，未声明路由跳转错误，指定跳转到错误页面。能让你第一时间发现低级错误bug，友好提示页面清晰明了。
 
-4、内置全局主题一键换色，只需要配置你的主题颜色，调用方法即可。
+• 内置全局主题一键换色，只需要配置你的主题颜色，调用方法即可。
 
-5、内置全局浮动调试组件，让你在真机上也能便利的获取错误捕获。
+• 内置全局浮动调试组件，让你在真机上也能便利的获取错误捕获。
+
+• 全局context对象，可在任意位置获取使用，例如在状态管理provider层内使用
+
+PS：其它更多查看底部文档功能介绍及使用。
 
 
 ## 文件夹结构
@@ -30,9 +33,10 @@
   lib/
   |- components/ # 共用widget组件封装
   |- config/ # 全局的配置参数
-  |- ioc/ # git_it的IOC容器文件
+  |- ioc/ # IOC容器文件夹
+  |- constants/ # 常量文件夹
   |- provider/ # 全局状态管理
-  |- pages/ # 页面ui层，每个独立完整的页面
+  |- pages/ # 页面ui层，每个独立完整的页面，每个页面可独立放自己的provider状态管理
       |- AppHomePage/ # APP主体页面
       |- SplashPage/ # APP进入时广告页面、欢迎页
   |- service/ # 请求接口抽离层
@@ -101,6 +105,7 @@ flutter run
 | npm run build:web |               打包生成纯前端web的文件                |
 |   npm run upsdk   | 更新sdk版本，全局的flutter和dart版本将更新为最新版本 |
 |  npm run appkey   |             验证打包后的安卓apk签名信息              |
+
 <br><br><br>
 
 # 功能介绍
