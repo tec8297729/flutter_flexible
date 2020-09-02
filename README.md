@@ -1,11 +1,7 @@
 # flexible脚手架介绍
 
-最新测试环境版本<br>
+所需基础环境<br>
 ```
-• Flutter version 1.17.5
-
-• Dart 2.8.4
-
 • node 12+ 稳定版
 ```
 
