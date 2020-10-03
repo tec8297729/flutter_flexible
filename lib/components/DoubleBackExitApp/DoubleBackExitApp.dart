@@ -70,8 +70,7 @@ class _DoubleBackExitAppState extends State<DoubleBackExitApp>
       this.runTips();
       return false;
     }
-    exit(0);
-    return true;
+    return exit(0) && true;
   }
 
   // 底部提示信息动画控制

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TipsScaleAnimated extends AnimatedWidget {
   // 传入animation动画对象给 继承类中的listenable属性(代表监听此对象)

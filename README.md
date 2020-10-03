@@ -2,6 +2,7 @@
 
 所需基础环境<br>
 ```
+• flutter last
 • node 12+ 稳定版
 ```
 

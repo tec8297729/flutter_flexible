@@ -213,7 +213,7 @@ class _AppHomePageState extends State<AppHomePage>
     try {
       return barData.map((itemData) => itemData['body'] as Widget).toList();
     } catch (e) {
-      throw Exception('barData导航菜单数据缺少body参数，errorMsg:$e');
+      throw Exception('barData变量缺少body参数，errorMsg:$e');
     }
   }
 
@@ -226,12 +226,11 @@ class _AppHomePageState extends State<AppHomePage>
             itemData['icon'], // 图标
             size: 44.sp,
           ),
-          title: Text(itemData['title']),
+          label: itemData['title'],
         );
       }).toList();
     } catch (e) {
-      throw Exception(
-          'barData数据缺少title参数（String类型）、或icon参数（IconData类型）, errorMsg:$e');
+      throw Exception('barData数据缺少参数、或字段类型不匹配, errorMsg:$e');
     }
   }
 }
