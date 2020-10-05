@@ -8,10 +8,7 @@ import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../config/app_config.dart';
 import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
-import 'MyPersonal/MyPersonal.dart';
-import 'Search/Search.dart';
-import 'Hot/Hot.dart';
-import 'Home/Home.dart';
+import '../../constants/appHome.dart' show appBottomBar;
 import 'provider/appHomePageStore.p.dart';
 
 /// [params] 别名路由传递的参数
@@ -52,30 +49,6 @@ class _AppHomePageState extends State<AppHomePage>
   @override
   bool get wantKeepAlive => true;
 
-  // 导航菜单渲染数据源
-  static List<Map<String, dynamic>> barData = [
-    {
-      'title': '首页',
-      'icon': Icons.home,
-      'body': Home(),
-    },
-    {
-      'title': '热门',
-      'icon': Icons.whatshot,
-      'body': Hot(),
-    },
-    {
-      'title': '搜索',
-      'icon': Icons.search,
-      'body': Search(),
-    },
-    {
-      'title': '我的',
-      'icon': Icons.person,
-      'body': MyPersonal(),
-    },
-  ];
-
   @override
   void initState() {
     handleCurrentIndex();
@@ -102,8 +75,8 @@ class _AppHomePageState extends State<AppHomePage>
   handleCurrentIndex() {
     if (widget.params != null) {
       // 默认加载页面
-      currentIndex = widget.params['pageId'] ?? 0 >= (barData.length)
-          ? (barData.length - 1)
+      currentIndex = widget.params['pageId'] ?? 0 >= (appBottomBar.length)
+          ? (appBottomBar.length - 1)
           : widget.params['pageId'];
     }
 
@@ -126,7 +99,7 @@ class _AppHomePageState extends State<AppHomePage>
   PageViewMixinData initPageViewListener() {
     return PageViewMixinData(
       controller: pageController,
-      tabsData: barData.map((data) => data['title'] as String).toList(),
+      tabsData: appBottomBar.map((data) => data['title'] as String).toList(),
     );
   }
 
@@ -153,8 +126,10 @@ class _AppHomePageState extends State<AppHomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    WidgetsFlutterBinding.ensureInitialized();
     // 初始化设计稿尺寸
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+    ScreenUtil.init(context,
+        designSize: Size(750, 1334), allowFontScaling: true);
     appPageStore = Provider.of<AppHomePageStore>(context);
 
     return ColorFiltered(
@@ -211,16 +186,18 @@ class _AppHomePageState extends State<AppHomePage>
   /// tab视图内容区域
   List<Widget> bodyWidget() {
     try {
-      return barData.map((itemData) => itemData['body'] as Widget).toList();
+      return appBottomBar
+          .map((itemData) => itemData['body'] as Widget)
+          .toList();
     } catch (e) {
-      throw Exception('barData变量缺少body参数，errorMsg:$e');
+      throw Exception('appBottomBar变量缺少body参数，errorMsg:$e');
     }
   }
 
   /// 生成底部菜单导航
   List<BottomNavigationBarItem> _generateBottomBars() {
     try {
-      return barData.map<BottomNavigationBarItem>((itemData) {
+      return appBottomBar.map<BottomNavigationBarItem>((itemData) {
         return BottomNavigationBarItem(
           icon: Icon(
             itemData['icon'], // 图标
@@ -230,7 +207,7 @@ class _AppHomePageState extends State<AppHomePage>
         );
       }).toList();
     } catch (e) {
-      throw Exception('barData数据缺少参数、或字段类型不匹配, errorMsg:$e');
+      throw Exception('appBottomBar数据缺少参数、或字段类型不匹配, errorMsg:$e');
     }
   }
 }

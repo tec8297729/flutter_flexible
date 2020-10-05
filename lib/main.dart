@@ -9,6 +9,7 @@ import 'provider/themeStore.p.dart'; // 全局主题
 import 'ioc/locator.dart' show setupLocator, locator, CommonService;
 import 'package:ana_page_loop/ana_page_loop.dart' show anaAllObs;
 import 'utils/myAppSetup/index.dart' show myAppSetup;
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   setupLocator();

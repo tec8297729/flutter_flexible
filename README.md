@@ -277,7 +277,7 @@ part 'themePink.dart';
 在需要替换主题的页面中调用如下：<br>
 
 ```dart
-import 'package:flexible/config/themes/index_theme.dart' show themeBlueGrey; // 主题文件
+import 'package:flexible/constants/themes/index_theme.dart' show themeBlueGrey; // 主题文件
 import 'package:flexible/provider/themeStore.p.dart'; // 全局主题状态管理
 ThemeStore _theme = Provider.of<ThemeStore>(context);
 _theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
