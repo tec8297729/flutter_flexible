@@ -1,4 +1,4 @@
-import '../../../utils/util.dart';
+import '../../../utils/index.dart';
 import 'package:flutter/material.dart';
 
 class Hot extends StatefulWidget {

@@ -1,0 +1,22 @@
+{
+  "name": "",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "aed0642f716d94a3ae9b96686f55a6ab",
+      "css": "eye",
+      "code": 61550,
+      "src": "fontawesome5"
+    },
+    {
+      "uid": "60dfb149bae22fbca88a3ceced2e0c87",
+      "css": "eye_slash",
+      "code": 61552,
+      "src": "fontawesome5"
+    }
+  ]
+}

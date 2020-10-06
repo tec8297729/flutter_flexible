@@ -1,6 +1,6 @@
 import '../../utils/log_util.dart';
 import '../../ioc/locator.dart' show locator, CommonService;
-import '../../utils/util.dart' show PermUtils, SpUtil;
+import '../../utils/index.dart' show PermUtils, SpUtil;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import '../../services/api.dart'; // 接口
@@ -24,7 +24,7 @@ Future getNewAppVer({int seconds = 360 * 12, bool forceUpdate = false}) async {
     DateTime newTime = new DateTime.now(); // 当前时间
     String oldTimeStr = SpUtil.getData<String>(
       spKey,
-      defValue: newTime.add(Duration(seconds: -10)).toString(),
+      defValue: newTime.add(Duration(seconds: -100)).toString(),
     );
     DateTime oldTime = DateTime.parse(oldTimeStr);
     Duration diffTime = newTime.difference(oldTime);
