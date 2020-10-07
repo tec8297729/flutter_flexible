@@ -14,4 +14,7 @@ class RouteName {
 
   /// 登录页
   static String login = '/login';
+
+  /// 注册页
+  static String register = '/register';
 }

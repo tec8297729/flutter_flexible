@@ -1,33 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../routes/routeName.dart';
-import '../../utils/index.dart';
-import 'components/DyFormInput.dart';
+import 'components/DyInput.dart';
 
-class Login extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   TextEditingController userController = TextEditingController();
   TextEditingController pwdController = TextEditingController();
-
-  /// 登录验证
-  loginCaptcha() {
-    if (userController.text.length > 6 && pwdController.text.length > 6) {
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        RouteName.appHomePage,
-        (router) {
-          return false;
-        },
-      );
-      return;
-    }
-    toastTips('验证失败，帐号或密码错误');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +51,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  /// 注册组件
+  /// 关闭icon组件
   Widget registered() {
     return Positioned(
       top: 10.w,
@@ -128,15 +111,15 @@ class _LoginState extends State<Login> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        loginBtn(),
+        _RegisterBtn(),
       ],
     );
   }
 
   /// 登录按钮
-  Widget loginBtn() {
+  Widget _RegisterBtn() {
     return InkWell(
-      onTap: loginCaptcha,
+      onTap: () {},
       child: Container(
         alignment: Alignment.center,
         height: 100.h,

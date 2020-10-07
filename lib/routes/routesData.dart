@@ -5,6 +5,7 @@ import '../pages/AppHomePage/AppHomePage.dart';
 import '../pages/SplashPage/SplashPage.dart';
 import '../pages/TestDemo/TestDemo.dart';
 import '../pages/Login/Login.dart';
+import '../pages/Register/Register.dart';
 
 final String initialRoute = '/'; // 初始默认显示的路由
 final Map<String, WidgetBuilder> routesData = {
@@ -13,5 +14,6 @@ final Map<String, WidgetBuilder> routesData = {
   RouteName.appHomePage: (context, {params}) => AppHomePage(params: params),
   RouteName.error: (context, {params}) => ErrorPage(params: params),
   RouteName.testDemo: (context, {params}) => TestDemo(params: params),
-  RouteName.login: (context, {params}) => Login()
+  RouteName.login: (context, {params}) => Login(),
+  RouteName.register: (context, {params}) => Register(),
 };

@@ -18,10 +18,8 @@ class _SetThemeDemoState extends State<SetThemeDemo> {
     _theme = Provider.of<ThemeStore>(context);
     appPageStore = Provider.of<AppHomePageStore>(context);
 
-    return Container(
-      width: double.infinity,
+    return Expanded(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text('全局主题色切换', style: TextStyle(fontSize: 30)),
           btnWidget('切换粉色主题', themePink, Colors.pink),

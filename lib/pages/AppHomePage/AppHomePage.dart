@@ -61,7 +61,7 @@ class _AppHomePageState extends State<AppHomePage>
         jhDebug.showDebugBtn(); // jhDebug 调试按钮
       }
 
-      getNewAppVer(seconds: 1); // 更新APP版本检查
+      getNewAppVer(); // 更新APP版本检查
     });
   }
 
