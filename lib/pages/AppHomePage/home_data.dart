@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../pages/AppHomePage/MyPersonal/MyPersonal.dart';
-import '../pages/AppHomePage/Search/Search.dart';
-import '../pages/AppHomePage/Hot/Hot.dart';
-import '../pages/AppHomePage/Home/Home.dart';
+import 'MyPersonal/MyPersonal.dart';
+import 'Search/Search.dart';
+import 'Hot/Hot.dart';
+import 'Home/Home.dart';
 
 // app主页底部bar
 final List<Map<String, dynamic>> appBottomBar = [

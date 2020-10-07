@@ -8,6 +8,8 @@
 
 内置集成功能：
 
+• 动态环境构建打包，挂载在app内部全局参数中，如请求接口动态前缀url，根据不同打包环境使用不同的接口域名。
+
 • 状态管理：集成Provider在Flutter项目中，任何页面声明好store，注入lib/providers_config.dart文件内即可使用。
 
 • 页面组件更便捷的接收 路由别名跳转传参，底层已处理无需任何插件支持！简单易用，无学习成本。
@@ -78,9 +80,6 @@ flib page <name> 创建一个页面组件
 
 输入以下命令：<br>
 ```
-npm run initApp // 方式一
-
-// 方式二：手动输入flutter命令
 flutter pub get
 flutter run
 ```
@@ -93,19 +92,48 @@ flutter run
 
 集成在项目中的指令如下：<br>
 
-|       命令        |                         说明                         |
-| :---------------: | :--------------------------------------------------: |
-|     npm start     |       启动APP项目，请提前开好模拟器或连接真机        |
-|   npm run build   |       打包项目生成APP，会打包安卓和IOS二个版本       |
-| npm run build:apk |                打包生成安卓的APP文件                 |
-| npm run build:ios |                 打包生成IOS的APP文件                 |
-| npm run build:web |               打包生成纯前端web的文件                |
-|   npm run upsdk   | 更新sdk版本，全局的flutter和dart版本将更新为最新版本 |
-|  npm run appkey   |             验证打包后的安卓apk签名信息              |
+|      命令      |                         说明                         |
+| :------------: | :--------------------------------------------------: |
+| npm run start  |       启动APP项目，请提前开好模拟器或连接真机        |
+| npm run build  |           同时打包APP的安卓和IOS，prod环境           |
+| apk-build:test |              打包安卓 test环境的APP文件              |
+| apk-build:pre  |              打包安卓 pre环境的APP文件               |
+| apk-build:prod |              打包安卓 prod环境的APP文件              |
+| ios-build:test |              打包IOS test环境的APP文件               |
+| ios-build:pre  |               打包IOS pre环境的APP文件               |
+| ios-build:prod |              打包IOS prod环境的APP文件               |
+| npm run upsdk  | 更新sdk版本，全局的flutter和dart版本将更新为最新版本 |
+| npm run appkey |             验证打包后的安卓apk签名信息              |
 
 <br><br><br>
 
 # 功能介绍
+
+## 动态环境变量
+
+默认使用npm run dev或是npm run apk-build:test等内置语法，是设置好了环境变量参数的，直接运行指令即可。<br>
+
+环境变量url参数定义文件如下： lib/config/app_env.dart <br>
+
+```dart
+/// app环境
+class AppEnv {
+  /// 当前环境变量
+  static ENV_TYPE currentEnv;
+
+  /// 请求url前缀
+  static String baseUrl = {
+    ENV_TYPE.DEV: 'https://apidev.jonhuu.com',
+    ENV_TYPE.TEST: 'https://apitest.jonhuu.com',
+    ENV_TYPE.PRE: 'https://apipre.jonhuu.com',
+    ENV_TYPE.PROD: 'https://api.jonhuu.com',
+  }[currentEnv];
+}
+
+// 在其它文件中直接调用即可
+AppEnv.baseUrl // 获取当前环境的url
+```
+
 
 ## 启动屏
 

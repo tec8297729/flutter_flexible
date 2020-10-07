@@ -8,7 +8,7 @@ import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../config/app_config.dart';
 import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
-import '../../constants/appHome.dart' show appBottomBar;
+import 'home_data.dart' show appBottomBar;
 import 'provider/appHomePageStore.p.dart';
 
 /// [params] 别名路由传递的参数
@@ -61,7 +61,7 @@ class _AppHomePageState extends State<AppHomePage>
         jhDebug.showDebugBtn(); // jhDebug 调试按钮
       }
 
-      getNewAppVer(); // 更新APP版本检查
+      getNewAppVer(seconds: 1); // 更新APP版本检查
     });
   }
 

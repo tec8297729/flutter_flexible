@@ -13,7 +13,7 @@ class LogsInterceptors extends InterceptorsWrapper {
   onRequest(RequestOptions options) async {
     if (AppConfig.DEBUG) {
       LogUtil.d(
-          """请求url：${options.path}\n请求类型：${options.method}\n请求头：${options.headers.toString()}""");
+          """请求url：${options.baseUrl + options.path}\n请求类型：${options.method}\n请求头：${options.headers.toString()}""");
       if (options.data != null) {
         LogUtil.d('请求参数: ' + options.data.toString());
       }

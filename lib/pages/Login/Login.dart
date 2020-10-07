@@ -16,13 +16,13 @@ class _LoginState extends State<Login> {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [_userPasswor()],
+        children: [_userInput()],
       ),
     );
   }
 
   /// 帐号密码
-  Widget _userPasswor() {
+  Widget _userInput() {
     return Container(
       margin: EdgeInsets.fromLTRB(35, 0, 35, 35),
       decoration: BoxDecoration(

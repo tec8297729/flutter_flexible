@@ -35,13 +35,9 @@ Future safeRequest(
 }) async {
   try {
     BaseOptions baseOpts = new BaseOptions(
-      baseUrl: AppConfig.host, // 前缀url
-      // connectTimeout: 5000, // 连接服务器超时时间，单位是毫秒
-      // receiveTimeout: 3000, // 接收数据的最长时限
+      baseUrl: AppConfig.host,
+      connectTimeout: 50000, // 连接服务器超时时间，单位是毫秒
       responseType: ResponseType.plain, // 数据类型
-      // cookies: Iterable.empty(), // 可以添加一些公共cookie
-      // maxRedirects: 2, // 重定向最大次数。
-      // 当响应状态码不是成功状态(如404)时，是否接收响应内容，如果是false,则response.data将会为null
       receiveDataWhenStatusError: true,
     );
 
