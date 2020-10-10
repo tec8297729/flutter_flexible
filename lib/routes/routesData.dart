@@ -4,8 +4,8 @@ import '../pages/ErrorPage/ErrorPage.dart';
 import '../pages/AppHomePage/AppHomePage.dart';
 import '../pages/SplashPage/SplashPage.dart';
 import '../pages/TestDemo/TestDemo.dart';
-import '../pages/Login/Login.dart';
-import '../pages/Register/Register.dart';
+import '../pages/UserLogin/Login.dart';
+import '../pages/UserLogin/Register.dart';
 
 final String initialRoute = '/'; // 初始默认显示的路由
 final Map<String, WidgetBuilder> routesData = {

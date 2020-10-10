@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../components/BasicSafeArea/BasicSafeArea.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../routes/routeName.dart';
 import '../../utils/index.dart';
@@ -15,70 +16,41 @@ class _LoginState extends State<Login> {
   TextEditingController pwdController = TextEditingController();
 
   /// 登录验证
-  loginCaptcha() {
+  void onLogin() {
     if (userController.text.length > 6 && pwdController.text.length > 6) {
       Navigator.pushNamedAndRemoveUntil(
         context,
         RouteName.appHomePage,
-        (router) {
-          return false;
-        },
+        (router) => false,
       );
       return;
     }
-    toastTips('验证失败，帐号或密码错误');
+    toastTips('提示：登入失败，帐号或密码错误');
+  }
+
+  /// 注册按钮
+  void onRegister() {
+    Navigator.pushNamed(context, RouteName.register);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 260.h),
-              child: Column(
-                children: [
-                  userInput(),
-                  bottomBtn(),
-                ],
-              ),
+      body: BasicSafeArea(
+        rightText: '注册',
+        rightChildFn: onRegister,
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 260.h),
+            child: Column(
+              children: [
+                userInput(),
+                bottomBtn(),
+              ],
             ),
-            closeIcon(),
-            registered(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  /// 关闭icon组件
-  Widget closeIcon() {
-    return Positioned(
-      top: 10.w,
-      left: 15.w,
-      child: InkWell(
-        onTap: () => Navigator.pop(context),
-        child: Icon(
-          Icons.close,
-          size: 52.sp,
-        ),
-      ),
-    );
-  }
-
-  /// 注册组件
-  Widget registered() {
-    return Positioned(
-      top: 10.w,
-      right: 20.w,
-      child: InkWell(
-        onTap: () => Navigator.pop(context),
-        child: Text(
-          '注册',
-          style: TextStyle(fontSize: 36.sp),
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -136,13 +108,13 @@ class _LoginState extends State<Login> {
   /// 登录按钮
   Widget loginBtn() {
     return InkWell(
-      onTap: loginCaptcha,
+      onTap: onLogin,
       child: Container(
         alignment: Alignment.center,
-        height: 100.h,
-        width: 200.w,
+        height: 90.w,
+        width: 620.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(6),
           gradient: LinearGradient(colors: [
             Color.fromRGBO(143, 158, 251, 1),
             Color.fromRGBO(143, 158, 251, .6),

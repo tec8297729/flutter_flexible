@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../routes/routeName.dart';
 
 class HeadUserBox extends StatefulWidget {
   @override
@@ -15,13 +16,13 @@ class _HeadUserBoxState extends State<HeadUserBox> {
         btnWidget(
           title: "登入",
           onTap: () {
-            Navigator.pushNamed(context, '/login');
+            Navigator.pushNamed(context, RouteName.login);
           },
         ),
         btnWidget(
           title: "注册",
           onTap: () {
-            Navigator.pushNamed(context, '/login');
+            Navigator.pushNamed(context, RouteName.register);
           },
         ),
       ],
