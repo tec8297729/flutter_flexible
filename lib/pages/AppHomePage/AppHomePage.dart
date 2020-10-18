@@ -8,8 +8,11 @@ import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../config/app_config.dart';
 import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
-import 'home_data.dart' show appBottomBar;
 import 'provider/appHomePageStore.p.dart';
+import 'MyPersonal/MyPersonal.dart';
+import 'Search/Search.dart';
+import 'Hot/Hot.dart';
+import 'Home/Home.dart';
 
 /// [params] 别名路由传递的参数
 /// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，推荐别名路由跳转方式。
@@ -43,11 +46,35 @@ class AppHomePage extends StatefulWidget {
 class _AppHomePageState extends State<AppHomePage>
     with PageViewListenerMixin, AutomaticKeepAliveClientMixin {
   int currentIndex = 0; // 接收bar当前点击索引
-  bool physicsFlag = false; // 是否禁止滑动跳转页面
+  bool physicsFlag = true; // 是否禁止左右滑动跳转tab
   AppHomePageStore appPageStore;
   PageController pageController;
   @override
   bool get wantKeepAlive => true;
+
+  // app主页底部bar
+  final List<Map<String, dynamic>> appBottomBar = [
+    {
+      'title': '首页',
+      'icon': Icons.home,
+      'body': Home(),
+    },
+    {
+      'title': '热门',
+      'icon': Icons.whatshot,
+      'body': Hot(),
+    },
+    {
+      'title': '搜索',
+      'icon': Icons.search,
+      'body': Search(),
+    },
+    {
+      'title': '我的',
+      'icon': Icons.person,
+      'body': MyPersonal(),
+    },
+  ];
 
   @override
   void initState() {
