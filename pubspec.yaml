@@ -28,15 +28,14 @@ dependencies:
   dio: ^3.0.10
   provider: ^4.3.2+2
   flutter_screenutil: ^3.1.0
-  jh_debug: ^0.3.10
+  jh_debug: ^0.4.1
   ana_page_loop: ^0.1.7
   shared_preferences: ^0.5.12
   synchronized: ^2.2.0
   ota_update: ^2.4.1
   package_info: ^0.4.3 # app相关信息获取
-  url_launcher: ^5.7.2
+  url_launcher: ^5.7.8
   permission_handler: ^5.0.1+1 # 权限
-  get_it: ^4.0.2
   fluttertoast: ^7.1.1
 
 dev_dependencies:

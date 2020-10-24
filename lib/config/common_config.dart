@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CommonService {
+class CommonConfig {
   GlobalKey<NavigatorState> _globalKey = GlobalKey<NavigatorState>();
 
   /// 获取全局context
@@ -8,10 +8,12 @@ class CommonService {
       _globalKey?.currentState?.overlay?.context;
 
   /// 设置全局key
-  saveGolbalKey(GlobalKey<NavigatorState> globalKey) {
+  void saveGolbalKey(GlobalKey<NavigatorState> globalKey) {
     _globalKey = globalKey;
   }
 
   /// 获取全局Key
   GlobalKey get getGlobalKey => _globalKey;
 }
+
+CommonConfig commonConfig = new CommonConfig();

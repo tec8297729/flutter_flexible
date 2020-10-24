@@ -1,5 +1,4 @@
-import 'app_env.dart';
-
+import 'app_env.dart' show appEnv;
 import '../routes/routeName.dart';
 
 class AppConfig {
@@ -19,7 +18,7 @@ class AppConfig {
   static const showJhDebugBtn = true;
 
   /// dio请求前缀
-  static String host = AppEnv.baseUrl;
+  static String host = appEnv.baseUrl;
 
   /// 是否启用代理，启用代理后，反向代理IP及端口才能生效
   static const usingProxy = false;

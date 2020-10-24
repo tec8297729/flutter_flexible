@@ -24,7 +24,7 @@ class _MyPersonalState extends State<MyPersonal>
       ),
       body: Column(
         children: [
-          HeadUserBox(),
+          // HeadUserBox(),
           SetThemeDemo(),
         ],
       ),

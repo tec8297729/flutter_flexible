@@ -18,17 +18,21 @@ class _SetThemeDemoState extends State<SetThemeDemo> {
     _theme = Provider.of<ThemeStore>(context);
     appPageStore = Provider.of<AppHomePageStore>(context);
 
-    return Expanded(
-      child: Column(
-        children: <Widget>[
-          Text('全局主题色切换', style: TextStyle(fontSize: 30)),
-          btnWidget('切换粉色主题', themePink, Colors.pink),
-          btnWidget('切换蓝灰主题', themeBlueGrey, Colors.blueGrey),
-          btnWidget('切换天空蓝主题', themeLightBlue, Colors.lightBlue),
-          btnWidget('暗模式', ThemeData.dark(), ThemeData.dark().backgroundColor),
-          grayBtn(),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Column(
+          children: <Widget>[
+            Text('全局主题色切换', style: TextStyle(fontSize: 30)),
+            btnWidget('切换粉色主题', themePink, Colors.pink),
+            btnWidget('切换蓝灰主题', themeBlueGrey, Colors.blueGrey),
+            btnWidget('切换天空蓝主题', themeLightBlue, Colors.lightBlue),
+            btnWidget(
+                '暗模式', ThemeData.dark(), ThemeData.dark().backgroundColor),
+            grayBtn(),
+          ],
+        ),
+      ],
     );
   }
 

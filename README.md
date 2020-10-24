@@ -1,8 +1,9 @@
 # flexible脚手架介绍
 
-所需基础环境<br>
+最新测试基础环境版本<br>
 ```
-• flutter last
+• flutter 1.22.2
+• dart 3.10
 • node 12+ 稳定版
 ```
 
@@ -22,7 +23,7 @@
 
 • 全局context对象，可在任意位置获取使用，例如在状态管理provider层内使用
 
-PS：其它更多查看底部文档功能介绍及使用。
+PS：其它更多查看底部文档功能介绍及使用，或自行体验探索。
 
 
 ## 文件夹结构
@@ -32,7 +33,6 @@ PS：其它更多查看底部文档功能介绍及使用。
   lib/
   |- components/ # 共用widget组件封装
   |- config/ # 全局的配置参数
-  |- ioc/ # IOC容器文件夹
   |- constants/ # 常量文件夹
   |- provider/ # 全局状态管理
   |- pages/ # 页面ui层，每个独立完整的页面，每个页面可独立放自己的provider状态管理
@@ -113,25 +113,13 @@ flutter run
 
 默认使用npm run dev或是npm run apk-build:test等内置语法，是设置好了环境变量参数的，直接运行指令即可。<br>
 
-环境变量url参数定义文件如下： lib/config/app_env.dart <br>
+1、在文件下定义环境参数： lib/config/app_env.dart，例如定义环境变量baseUrl <br>
+
+2、在其它组件页面中直接调用即可
 
 ```dart
-/// app环境
-class AppEnv {
-  /// 当前环境变量
-  static ENV_TYPE currentEnv;
-
-  /// 请求url前缀
-  static String baseUrl = {
-    ENV_TYPE.DEV: 'https://apidev.jonhuu.com',
-    ENV_TYPE.TEST: 'https://apitest.jonhuu.com',
-    ENV_TYPE.PRE: 'https://apipre.jonhuu.com',
-    ENV_TYPE.PROD: 'https://api.jonhuu.com',
-  }[currentEnv];
-}
-
-// 在其它文件中直接调用即可
-AppEnv.baseUrl // 获取当前环境的url
+import 'config/app_env.dart' show appEnv;
+appEnv.baseUrl // 获取当前环境的url
 ```
 
 
@@ -152,16 +140,13 @@ PS：启动屏欢迎页及广告页面在flutter组件中定制功能，在lib\p
 
 ## 获取全局context
 
-全局Key和全局context都注入存放在IOC容器当中，而IOC容器实现是使用了get_it实现。<br>
+全局Key和全局context都存放在全局common_config.dart文件中。<br>
 
-使用方式引入ioc/locator.dart 容器实例文件，直接使用你之前已经注入的类方法。<br>
-
-PS：你可以把一些全局的类都可以注入到IOC容器中使用，从而实现页面更加简洁，不需要在某个组件或页面中导入更多的import<br>
+PS：你可以把一些全局的类都可以此中使用，从而实现页面更加方便管理<br>
 
 ```dart
-import 'package:flexible/ioc/locator.dart' show locator, CommonService; // 引入容器实例
-CommonService _commonIoc = locator.get<CommonService>(); // 获取指定IOC容器的方法
-_commonIoc.getGlobalContext; // 全局context对象
+import 'config/common_config.dart' show commonConfig;
+commonConfig.getGlobalKey;; // 全局context对象
 ```
 
 ## dio请求底层封装使用

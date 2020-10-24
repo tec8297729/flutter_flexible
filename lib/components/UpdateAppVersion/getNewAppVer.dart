@@ -1,5 +1,4 @@
-import '../../utils/log_util.dart';
-import '../../ioc/locator.dart' show locator, CommonService;
+import '../../config/common_config.dart' show commonConfig;
 import '../../utils/index.dart' show PermUtils, SpUtil;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
@@ -10,25 +9,23 @@ bool _showFlag = false;
 
 /// 检查最新版本APP更新
 ///
-/// [seconds] app多久检查更新，单位分钟，默认12小时
+/// [seconds] app多久检查更新，默认12小时
 ///
 /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
-Future getNewAppVer({int seconds = 360 * 12, bool forceUpdate = false}) async {
+Future getNewAppVer(
+    {int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
   if (!(await PermUtils.storagePerm())) return; // 权限申请
   try {
     if (_showFlag) return;
-    LogUtil.d('检查APP更新开始');
-
-    CommonService _commonIoc = locator.get<CommonService>();
     const String spKey = 'checkAppVerTime'; // 缓存key
     DateTime newTime = new DateTime.now(); // 当前时间
     String oldTimeStr = SpUtil.getData<String>(
       spKey,
-      defValue: newTime.add(Duration(seconds: -100)).toString(),
+      defValue: DateTime.now().add(Duration(days: -10)).toString(),
     );
+
     DateTime oldTime = DateTime.parse(oldTimeStr);
     Duration diffTime = newTime.difference(oldTime);
-
     // 指定时间内不在触发检查更新APP
     if (!forceUpdate) {
       if (diffTime.inSeconds < seconds) {
@@ -46,7 +43,7 @@ Future getNewAppVer({int seconds = 360 * 12, bool forceUpdate = false}) async {
     _showFlag = true;
     // 弹层更新
     showGeneralDialog(
-      context: _commonIoc.getGlobalContext,
+      context: commonConfig.getGlobalContext,
       barrierDismissible: true, // 是否点击其他区域消失
       barrierLabel: "",
       barrierColor: Colors.black54, // 遮罩层背景色
