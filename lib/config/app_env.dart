@@ -1,4 +1,4 @@
-import 'package:flutter_flexible/utils/index.dart';
+import '../utils/index.dart';
 
 enum ENV_TYPE {
   DEV,

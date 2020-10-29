@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_flexible/pages/AppHomePage/MyPersonal/components/SetThemeDemo.dart';
+import '../../AppHomePage/MyPersonal/components/SetThemeDemo.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'components/HeadUserBox.dart';
 
