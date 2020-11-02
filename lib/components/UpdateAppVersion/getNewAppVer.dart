@@ -1,5 +1,5 @@
 import '../../config/common_config.dart' show commonConfig;
-import '../../utils/index.dart' show PermUtils, SpUtil;
+import '../../utils/index.dart' show PermUtil, SpUtil;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import '../../services/api.dart'; // 接口
@@ -14,7 +14,7 @@ bool _showFlag = false;
 /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
 Future getNewAppVer(
     {int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
-  if (!(await PermUtils.storagePerm())) return; // 权限申请
+  if (!(await PermUtil.storagePerm())) return; // 权限申请
   try {
     if (_showFlag) return;
     const String spKey = 'checkAppVerTime'; // 缓存key

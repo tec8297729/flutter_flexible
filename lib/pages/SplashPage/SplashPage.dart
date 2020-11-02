@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'components/AdPage.dart';
 import 'components/WelcomePage.dart';
 import '../../config/app_config.dart';
-import '../../utils/sp_util.dart';
+import '../../utils/tool/sp_util.dart';
 import 'package:flutter/material.dart';
 
 /// 闪屏页。

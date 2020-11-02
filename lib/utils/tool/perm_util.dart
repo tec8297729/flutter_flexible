@@ -1,7 +1,7 @@
 import 'package:permission_handler/permission_handler.dart';
 
 /// 权限申请相关方法
-class PermUtils {
+class PermUtil {
   /// 基础权限申请
   static Future initPermissions() async {
     if (await Permission.contacts.request().isGranted) return;

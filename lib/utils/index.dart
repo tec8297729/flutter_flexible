@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:fluttertoast/fluttertoast.dart';
 
-export 'sp_util.dart' show SpUtil;
-export 'perm_utils.dart' show PermUtils;
-export 'log_util.dart' show LogUtil;
+export 'tool/sp_util.dart' show SpUtil;
+export 'tool/perm_util.dart' show PermUtil;
+export 'tool/log_util.dart' show LogUtil;
 
 /// 防抖函数
 Function debounce(Function fn, [int t = 30]) {
