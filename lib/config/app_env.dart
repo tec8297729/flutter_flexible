@@ -7,6 +7,13 @@ enum ENV_TYPE {
   PROD,
 }
 
+final Map<ENV_TYPE, String> _baseUrl = {
+  ENV_TYPE.DEV: 'https://lumiereapitest.kaikeba.com',
+  ENV_TYPE.TEST: 'https://lumiereapitest.kaikeba.com',
+  ENV_TYPE.PRE: 'https://lumiereapi.kaikeba.com',
+  ENV_TYPE.PROD: 'https://lumiereapi.kaikeba.com',
+};
+
 /// app环境
 class AppEnv {
   /// 当前环境变量
@@ -33,14 +40,14 @@ class AppEnv {
     LogUtil.d('当前环境$currentEnv');
   }
 
-  /// 请求url前缀
+  /// 设置当前环境
+  set setEnv(ENV_TYPE env) {
+    currentEnv = env;
+  }
+
+  /// 获取url前缀
   String get baseUrl {
-    return {
-      ENV_TYPE.DEV: 'https://apidev.jonhuu.com',
-      ENV_TYPE.TEST: 'https://apitest.jonhuu.com',
-      ENV_TYPE.PRE: 'https://apipre.jonhuu.com',
-      ENV_TYPE.PROD: 'https://api.jonhuu.com',
-    }[currentEnv];
+    return _baseUrl[currentEnv];
   }
 }
 

@@ -31,10 +31,10 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _initAsync() async {
-    await SpUtil.getInstance();
+    var isNew = await SpUtil.getData<bool>("key_guide", defValue: true);
     setState(() {
       /// 是否显示引导页。
-      if (SpUtil.getData<bool>("key_guide", defValue: true)) {
+      if (isNew) {
         SpUtil.setData("key_guide", false);
         child = WelcomePage();
       } else {

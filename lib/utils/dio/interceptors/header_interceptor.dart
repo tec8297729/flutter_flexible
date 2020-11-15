@@ -11,4 +11,10 @@ class HeaderInterceptors extends InterceptorsWrapper {
 
     return options;
   }
+
+  // 响应拦截
+  @override
+  onResponse(Response response) async {
+    return response;
+  }
 }

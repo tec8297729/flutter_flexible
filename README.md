@@ -301,8 +301,8 @@ _theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
 首页灰度模式不需要单独配置主题文件，使用方式如下：<br>
 
 ```dart
-import 'package:flexible/pages/AppHomePage/provider/appHomePageStore.p.dart';
-AppHomePageStore appHomePageStore = Provider.of<AppHomePageStore>(context);
+import './lib/provider/global.p.dart';
+GlobalStore appHomePageStore = Provider.of<GlobalStore>(context);
 appHomePageStore.setGrayTheme(true); // 设置灰度模式
 ```
 

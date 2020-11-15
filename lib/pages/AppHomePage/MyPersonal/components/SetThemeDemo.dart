@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../provider/themeStore.p.dart';
 import '../../../../constants/themes/index_theme.dart';
-import '../../provider/appHomePageStore.p.dart';
+import '../../../../provider/global.p.dart';
 
 class SetThemeDemo extends StatefulWidget {
   @override
@@ -11,12 +11,12 @@ class SetThemeDemo extends StatefulWidget {
 
 class _SetThemeDemoState extends State<SetThemeDemo> {
   ThemeStore _theme;
-  AppHomePageStore appPageStore;
+  GlobalStore appPageStore;
 
   @override
   Widget build(BuildContext context) {
     _theme = Provider.of<ThemeStore>(context);
-    appPageStore = Provider.of<AppHomePageStore>(context);
+    appPageStore = Provider.of<GlobalStore>(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

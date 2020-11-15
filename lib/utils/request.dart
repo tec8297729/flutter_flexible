@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import '../../config/app_config.dart';
-import 'interceptors/header_interceptor.dart';
-import 'interceptors/log_interceptor.dart';
+import '../config/app_config.dart';
+import 'dio/interceptors/header_interceptor.dart';
+import 'dio/interceptors/log_interceptor.dart';
 
 /// 底层请求方法说明
 ///
@@ -47,7 +47,7 @@ Future safeRequest(
       adapter.onHttpClientCreate = (client) {
         // 设置Http代理
         client.findProxy = (uri) {
-          return "PROXY ${AppConfig.proxyAddress}:${AppConfig.proxyPort}'";
+          return "PROXY ${AppConfig.proxyAddress}";
         };
         // https证书校验
         client.badCertificateCallback = (cert, host, port) => true;
@@ -55,8 +55,8 @@ Future safeRequest(
     }
 
     dioClient.interceptors.addAll([
-      new HeaderInterceptors(),
-      new LogsInterceptors(),
+      HeaderInterceptors(),
+      LogsInterceptors(),
     ]);
 
     return dioClient
@@ -70,5 +70,50 @@ Future safeRequest(
         .then((data) => jsonDecode(data.data));
   } catch (e) {
     throw e;
+  }
+}
+
+class Request {
+  /// get请求
+  static Future<T> get<T>(
+    String url, {
+    Options options,
+    Map<String, dynamic> queryParameters,
+  }) async {
+    return safeRequest(
+      url,
+      options: options,
+      queryParameters: queryParameters,
+    );
+  }
+
+  /// post请求
+  static Future<T> post<T>(
+    String url, {
+    Options options,
+    Object data,
+    Map<String, dynamic> queryParameters,
+  }) async {
+    return safeRequest(
+      url,
+      options: options?.merge(method: 'POST') ?? Options(method: 'POST'),
+      data: data,
+      queryParameters: queryParameters,
+    );
+  }
+
+  /// put请求
+  static Future<T> put<T>(
+    String url, {
+    Options options,
+    Object data,
+    Map<String, dynamic> queryParameters,
+  }) async {
+    return safeRequest(
+      url,
+      options: options?.merge(method: 'PUT') ?? Options(method: 'PUT'),
+      data: data,
+      queryParameters: queryParameters,
+    );
   }
 }

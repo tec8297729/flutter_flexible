@@ -6,9 +6,10 @@ import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
+import '../../config/app_env.dart' show appEnv, ENV_TYPE;
 import '../../config/app_config.dart';
 import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
-import 'provider/appHomePageStore.p.dart';
+import '../../provider/global.p.dart';
 import 'MyPersonal/MyPersonal.dart';
 import 'Search/Search.dart';
 import 'Hot/Hot.dart';
@@ -47,7 +48,7 @@ class _AppHomePageState extends State<AppHomePage>
     with PageViewListenerMixin, AutomaticKeepAliveClientMixin {
   int currentIndex = 0; // 接收bar当前点击索引
   bool physicsFlag = true; // 是否禁止左右滑动跳转tab
-  AppHomePageStore appPageStore;
+  GlobalStore appPageStore;
   PageController pageController;
   @override
   bool get wantKeepAlive => true;
@@ -116,8 +117,18 @@ class _AppHomePageState extends State<AppHomePage>
     // jhDebug插件初始化
     jhDebug.init(
       context: context,
-      // 调试窗口按钮1事件
-      btnTap1: () {},
+      btnTitle1: '开发',
+      btnTap1: () {
+        appEnv.setEnv = ENV_TYPE.DEV;
+        AppConfig.host = appEnv.baseUrl;
+      },
+      btnTitle2: '调试',
+      btnTap2: () {},
+      btnTitle3: '生产',
+      btnTap3: () {
+        appEnv.setEnv = ENV_TYPE.PROD;
+        AppConfig.host = appEnv.baseUrl;
+      },
     );
   }
 
@@ -157,7 +168,7 @@ class _AppHomePageState extends State<AppHomePage>
     // 初始化设计稿尺寸
     ScreenUtil.init(context,
         designSize: Size(750, 1334), allowFontScaling: true);
-    appPageStore = Provider.of<AppHomePageStore>(context);
+    appPageStore = Provider.of<GlobalStore>(context);
 
     return ColorFiltered(
       colorFilter: ColorFilter.mode(

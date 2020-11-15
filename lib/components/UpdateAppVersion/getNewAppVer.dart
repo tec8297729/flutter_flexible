@@ -2,7 +2,7 @@ import '../../config/common_config.dart' show commonConfig;
 import '../../utils/index.dart' show PermUtil, SpUtil;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
-import '../../services/api.dart'; // 接口
+import '../../services/common_service.dart'; // 接口
 import 'UpdateAppVersion.dart';
 
 bool _showFlag = false;
@@ -19,7 +19,7 @@ Future getNewAppVer(
     if (_showFlag) return;
     const String spKey = 'checkAppVerTime'; // 缓存key
     DateTime newTime = new DateTime.now(); // 当前时间
-    String oldTimeStr = SpUtil.getData<String>(
+    String oldTimeStr = await SpUtil.getData<String>(
       spKey,
       defValue: DateTime.now().add(Duration(days: -10)).toString(),
     );

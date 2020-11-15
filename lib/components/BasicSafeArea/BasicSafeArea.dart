@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../routes/routeName.dart';
 
 /// 基础白页组件，带顶部X
 class BasicSafeArea extends StatefulWidget {

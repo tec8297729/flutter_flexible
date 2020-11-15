@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'package:fluttertoast/fluttertoast.dart';
-
 export 'tool/sp_util.dart' show SpUtil;
 export 'tool/perm_util.dart' show PermUtil;
 export 'tool/log_util.dart' show LogUtil;
@@ -16,14 +14,4 @@ Function debounce(Function fn, [int t = 30]) {
       fn(data);
     });
   };
-}
-
-/// tosat提示
-void toastTips(String text) {
-  Fluttertoast.showToast(
-    msg: text,
-    toastLength: Toast.LENGTH_SHORT,
-    // gravity: ToastGravity.CENTER, // 提示位置
-    fontSize: 18, // 提示文字大小
-  );
 }

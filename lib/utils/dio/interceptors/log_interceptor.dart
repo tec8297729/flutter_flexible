@@ -40,6 +40,5 @@ class LogsInterceptors extends InterceptorsWrapper {
       LogUtil.d('请求异常信息: ' + err.response?.toString() ?? "");
     }
     throw HttpException(DioErrorUtil.handleError(err));
-    // return err; // continue;
   }
 }

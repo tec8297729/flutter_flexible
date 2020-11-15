@@ -24,8 +24,5 @@ class AppConfig {
   static const usingProxy = false;
 
   /// 反向代理的IP/域名地址
-  static const proxyAddress = '192.168.2.201';
-
-  /// 反向代理端口
-  static const proxyPort = 9003;
+  static const proxyAddress = '192.168.2.201:9003';
 }

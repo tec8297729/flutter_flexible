@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ota_update/ota_update.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../utils/index.dart' show toastTips, LogUtil, PermUtil;
+import '../../utils/index.dart' show LogUtil, PermUtil;
+import '../../utils/tool/tips_util.dart';
 import 'components/UpdateHeader.dart';
 import 'components/UpdateInstr.dart';
 
@@ -80,7 +81,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
                 Navigator.pop(context);
                 break;
               case OtaStatus.PERMISSION_NOT_GRANTED_ERROR: // 权限错误
-                toastTips('更新失败，请稍后再试');
+                Tips.info('更新失败，请稍后再试');
                 PermUtil.storagePerm(); // 权限申请
                 break;
               default:
