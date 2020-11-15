@@ -2,7 +2,7 @@
 
 最新测试基础环境版本<br>
 ```
-• flutter 1.22.2
+• flutter 1.22.4
 • dart 3.10
 • node 12+ 稳定版
 ```
@@ -37,7 +37,7 @@ PS：其它更多查看底部文档功能介绍及使用，或自行体验探索
   |- provider/ # 全局状态管理
   |- pages/ # 页面ui层，每个独立完整的页面，每个页面可独立放自己的provider状态管理
       |- AppHomePage/ # APP主体页面
-      |- SplashPage/ # APP进入时广告页面、欢迎页
+      |- SplashPage/ # APP闪屏页
   |- service/ # 请求接口抽离层
   |- routes/ # 定义路由相关文件夹
   |- utils/ # 公共方法抽离

@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import '../../index.dart';
 import '../../../config/app_config.dart';
 import '../dioErrorUtil.dart';
 
@@ -12,10 +11,10 @@ class LogsInterceptors extends InterceptorsWrapper {
   @override
   onRequest(RequestOptions options) async {
     if (AppConfig.DEBUG) {
-      LogUtil.d(
+      print(
           """请求url：${options.baseUrl + options.path}\n请求类型：${options.method}\n请求头：${options.headers.toString()}""");
       if (options.data != null) {
-        LogUtil.d('请求参数: ' + options.data.toString());
+        print('请求参数: ' + options.data.toString());
       }
     }
     return options;
@@ -26,18 +25,18 @@ class LogsInterceptors extends InterceptorsWrapper {
   onResponse(Response response) async {
     if (AppConfig.DEBUG) {
       if (response != null) {
-        LogUtil.d('返回参数: ' + response.toString());
+        print('返回参数: ' + response.toString());
       }
     }
-    return response; // continue
+    return response;
   }
 
   // 请求失败拦截
   @override
   onError(DioError err) async {
     if (AppConfig.DEBUG) {
-      LogUtil.d('请求异常: ' + err.toString());
-      LogUtil.d('请求异常信息: ' + err.response?.toString() ?? "");
+      print('请求异常: ' + err.toString());
+      print('请求异常信息: ' + err.response?.toString() ?? "");
     }
     throw HttpException(DioErrorUtil.handleError(err));
   }

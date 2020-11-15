@@ -5,6 +5,20 @@ import '../config/app_config.dart';
 import 'dio/interceptors/header_interceptor.dart';
 import 'dio/interceptors/log_interceptor.dart';
 
+Dio _initDio() {
+  BaseOptions baseOpts = new BaseOptions(
+    connectTimeout: 50000, // 连接服务器超时时间，单位是毫秒
+    responseType: ResponseType.plain, // 数据类型
+    receiveDataWhenStatusError: true,
+  );
+  Dio dioClient = new Dio(baseOpts); // 实例化请求，可以传入options参数
+  dioClient.interceptors.addAll([
+    HeaderInterceptors(),
+    LogsInterceptors(),
+  ]);
+  return dioClient;
+}
+
 /// 底层请求方法说明
 ///
 /// [options] dio请求的配置参数，默认get请求
@@ -34,16 +48,9 @@ Future safeRequest(
   CancelToken cancelToken,
 }) async {
   try {
-    BaseOptions baseOpts = new BaseOptions(
-      baseUrl: AppConfig.host,
-      connectTimeout: 50000, // 连接服务器超时时间，单位是毫秒
-      responseType: ResponseType.plain, // 数据类型
-      receiveDataWhenStatusError: true,
-    );
-
-    Dio dioClient = new Dio(baseOpts); // 实例化请求，可以传入options参数
     if (AppConfig.usingProxy) {
-      final adapter = dioClient.httpClientAdapter as DefaultHttpClientAdapter;
+      final adapter =
+          Request.dioClient.httpClientAdapter as DefaultHttpClientAdapter;
       adapter.onHttpClientCreate = (client) {
         // 设置Http代理
         client.findProxy = (uri) {
@@ -54,12 +61,7 @@ Future safeRequest(
       };
     }
 
-    dioClient.interceptors.addAll([
-      HeaderInterceptors(),
-      LogsInterceptors(),
-    ]);
-
-    return dioClient
+    return Request.dioClient
         .request(
           url,
           data: data,
@@ -74,6 +76,8 @@ Future safeRequest(
 }
 
 class Request {
+  static Dio dioClient = _initDio();
+
   /// get请求
   static Future<T> get<T>(
     String url, {
