@@ -63,13 +63,15 @@ git clone https://github.com/tec8297729/flutter_flexible.git
 2、打开终端输入以下指定创建项目
 
 ```
-flib create  // 根据提示步骤往下进行，都有默认参数可直接回车
+flib updata // 更新下载模板
+flib create  // 创建项目，根据提示步骤往下进行，都有默认参数可直接回车
 ```
 <br>
 
 相关指令介绍<br>
 ```
 flib create 创建一个flutter项目
+flib updata 更新最新flutter模板
 flib page <name> 创建一个页面组件
 ```
 

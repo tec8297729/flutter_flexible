@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'components/AdPage.dart';
 import 'components/WelcomePage.dart';
+import '../../routes/routeName.dart';
 import '../../config/app_config.dart';
 import '../../utils/tool/sp_util.dart';
-import 'package:flutter/material.dart';
 
 /// 闪屏页。
 class SplashPage extends StatefulWidget {
@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
 
     /// 调试阶段，直接跳过此组件
     if (AppConfig.notSplash) {
-      Navigator.of(context).pushReplacementNamed(AppConfig.directPageName);
+      Navigator.of(context).pushReplacementNamed(RouteName.appHomePage);
     }
   }
 

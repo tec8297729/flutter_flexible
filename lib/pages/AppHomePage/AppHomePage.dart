@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
+import '../../routes/routeName.dart';
 import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../config/app_env.dart' show appEnv, ENV_TYPE;
@@ -90,6 +91,12 @@ class _AppHomePageState extends State<AppHomePage>
       }
 
       getNewAppVer(); // 更新APP版本检查
+
+      /// 调试阶段，直接跳过此组件
+      if (AppConfig.notSplash &&
+          AppConfig.directPageName != RouteName.appHomePage) {
+        Navigator.of(context).pushNamed(AppConfig.directPageName);
+      }
     });
   }
 
