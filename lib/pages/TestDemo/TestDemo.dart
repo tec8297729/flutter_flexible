@@ -1,7 +1,7 @@
 import '../../utils/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../AppHomePage/Home/provider/counterStore.p.dart';
+import '../AppMain/Home/provider/counterStore.p.dart';
 
 class TestDemo extends StatefulWidget {
   TestDemo({Key key, this.params}) : super(key: key);

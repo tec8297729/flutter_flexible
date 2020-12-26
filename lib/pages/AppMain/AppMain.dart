@@ -33,19 +33,19 @@ import 'Home/Home.dart';
 ///   'pageId': 2,
 /// });
 /// ```
-class AppHomePage extends StatefulWidget {
+class AppMain extends StatefulWidget {
   final params;
 
-  AppHomePage({
+  AppMain({
     Key key,
     this.params,
   }) : super(key: key);
 
   @override
-  _AppHomePageState createState() => _AppHomePageState();
+  _AppMainState createState() => _AppMainState();
 }
 
-class _AppHomePageState extends State<AppHomePage>
+class _AppMainState extends State<AppMain>
     with PageViewListenerMixin, AutomaticKeepAliveClientMixin {
   int currentIndex = 0; // 接收bar当前点击索引
   bool physicsFlag = true; // 是否禁止左右滑动跳转tab
@@ -80,9 +80,10 @@ class _AppHomePageState extends State<AppHomePage>
 
   @override
   void initState() {
+    super.initState();
+
     handleCurrentIndex();
     initTools();
-    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       appPageStore.saveController(pageController);
 
@@ -94,7 +95,7 @@ class _AppHomePageState extends State<AppHomePage>
 
       /// 调试阶段，直接跳过此组件
       if (AppConfig.notSplash &&
-          AppConfig.directPageName != RouteName.appHomePage) {
+          AppConfig.directPageName != RouteName.appMain) {
         Navigator.of(context).pushNamed(AppConfig.directPageName);
       }
     });
@@ -171,7 +172,6 @@ class _AppHomePageState extends State<AppHomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    WidgetsFlutterBinding.ensureInitialized();
     // 初始化设计稿尺寸
     ScreenUtil.init(context,
         designSize: Size(750, 1334), allowFontScaling: true);

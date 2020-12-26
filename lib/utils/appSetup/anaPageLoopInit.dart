@@ -14,7 +14,7 @@ void anaPageLoopInit() {
       // TODO: 第三方埋点统计结束
       LogUtil.d('待添加：埋点统计结束$name');
     },
-    routeRegExp: [RouteName.appHomePage], // 过滤路由
+    routeRegExp: [RouteName.appMain], // 过滤路由
     debug: AppConfig.DEBUG, // 路由调试
   );
 }

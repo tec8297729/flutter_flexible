@@ -11,6 +11,7 @@ import 'package:ana_page_loop/ana_page_loop.dart' show anaAllObs;
 import 'utils/appSetup/index.dart' show appSetupInit;
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   jhDebugMain(
     appChild: MultiProvider(
       providers: providersConfig,

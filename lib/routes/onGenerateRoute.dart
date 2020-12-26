@@ -14,7 +14,6 @@ Function onGenerateRoute = (RouteSettings settings) {
 
   // 容错路由
   if (pageContentBuilder == null) {
-    // print('ERROR===>router was not fonuud!!!');
     return MaterialPageRoute(
       builder: (BuildContext context) => ErrorPage(params: args ?? null),
       settings: settingsData,

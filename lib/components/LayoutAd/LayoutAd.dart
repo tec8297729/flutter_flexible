@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import '../../../routes/routeName.dart';
+import 'package:flutter/services.dart';
 
-/// APP入口全屏广告页面
-class AdPage extends StatefulWidget {
+/// APP全屏广告组件
+class LayoutAd extends StatefulWidget {
+  LayoutAd({Key key, this.child}) : super(key: key);
+  final Widget child;
+
   @override
-  _AdPageState createState() => _AdPageState();
+  _LayoutAdState createState() => _LayoutAdState();
 }
 
-class _AdPageState extends State<AdPage> {
+class _LayoutAdState extends State<LayoutAd> {
   String _info = '';
   Timer _timer;
   int timeCount = 3;
@@ -16,12 +19,13 @@ class _AdPageState extends State<AdPage> {
   @override
   void initState() {
     _initSplash();
+    // SystemChrome.setEnabledSystemUIOverlays([]);
+    // SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     super.initState();
   }
 
   @override
   void dispose() {
-    print('销毁app');
     _timer?.cancel();
     super.dispose();
   }
@@ -30,17 +34,17 @@ class _AdPageState extends State<AdPage> {
   void _initSplash() {
     const timeDur = Duration(seconds: 1); // 1秒
 
-    _timer = Timer.periodic(timeDur, (Timer t) {
-      setState(() {
-        _info = "广告页，$timeCount 秒后跳转到主页";
-      });
-      if (timeCount <= 0) {
-        _timer?.cancel();
-        Navigator.pushReplacementNamed(context, RouteName.appMain);
-        return;
-      }
-      timeCount--;
-    });
+    // _timer = Timer.periodic(timeDur, (Timer t) {
+    //   setState(() {
+    //     _info = "广告页，$timeCount 秒后跳转到主页";
+    //   });
+    //   if (timeCount <= 0) {
+    //     _timer?.cancel();
+    //     Navigator.pushNamed(context, RouteName.appMain);
+    //     return;
+    //   }
+    //   timeCount--;
+    // });
   }
 
   @override
@@ -64,7 +68,7 @@ class _AdPageState extends State<AdPage> {
       right: 20,
       child: InkWell(
         onTap: () {
-          Navigator.pushReplacementNamed(context, RouteName.appMain);
+          // Navigator.pushReplacementNamed(context, RouteName.appMain);
         },
         child: Container(
           alignment: Alignment.center,

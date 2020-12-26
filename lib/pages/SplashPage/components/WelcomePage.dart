@@ -35,7 +35,7 @@ class _WelcomePageState extends State<WelcomePage> {
         heroTag: 'welcomBtn',
         child: Icon(Icons.navigate_next),
         onPressed: () {
-          Navigator.of(context).pushReplacementNamed(RouteName.appHomePage);
+          Navigator.pushReplacementNamed(context, RouteName.appMain);
         },
       ),
     );

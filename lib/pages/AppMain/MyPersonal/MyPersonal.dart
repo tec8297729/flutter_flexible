@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../AppHomePage/MyPersonal/components/SetThemeDemo.dart';
+import '../../AppMain/MyPersonal/components/SetThemeDemo.dart';
 import 'package:jh_debug/jh_debug.dart';
 
 class MyPersonal extends StatefulWidget {

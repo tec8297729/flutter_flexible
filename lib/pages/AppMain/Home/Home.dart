@@ -45,9 +45,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   Widget contextWidget() {
     return ListView(
       children: List.generate(1, (index) {
-        return Center(
+        return Container(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               _button(
                 '点我去test页',

@@ -1,7 +1,9 @@
 # flexible脚手架介绍
 
 最新测试基础环境版本<br>
-```
+
+``` 
+
 • flutter 1.22.4
 • dart 2.10
 • node 12+ 稳定版
@@ -25,18 +27,19 @@
 
 PS：其它更多查看底部文档功能介绍及使用，或自行体验探索。
 
-
 ## 文件夹结构
 
 这是项目中一直会使用的结构<br>
-```
+
+``` 
+
   lib/
   |- components/ # 共用widget组件封装
   |- config/ # 全局的配置参数
   |- constants/ # 常量文件夹
   |- provider/ # 全局状态管理
   |- pages/ # 页面ui层，每个独立完整的页面，每个页面可独立放自己的provider状态管理
-      |- AppHomePage/ # APP主体页面
+      |- AppMain/ # APP主体页面
       |- SplashPage/ # APP闪屏页
   |- service/ # 请求接口抽离层
   |- routes/ # 定义路由相关文件夹
@@ -53,7 +56,8 @@ PS：其它更多查看底部文档功能介绍及使用，或自行体验探索
 
 1、全局安装cli插件，确保你的电脑中有node环境。<br>
 
-```
+``` 
+
 npm i -g flib-cli // 全局安装插件
 
 // 方式二：手动下载，但没有全局指令功能
@@ -62,31 +66,36 @@ git clone https://github.com/tec8297729/flutter_flexible.git
 
 2、打开终端输入以下指定创建项目
 
-```
+``` 
+
 flib updata // 更新下载模板
 flib create  // 创建项目，根据提示步骤往下进行，都有默认参数可直接回车
 ```
+
 <br>
 
 相关指令介绍<br>
-```
+
+``` 
+
 flib create 创建一个flutter项目
 flib updata 更新最新flutter模板
 flib page <name> 创建一个页面组件
 ```
-
 
 ## 启动项目
 
 进入项目目录文件夹，初始化安装依赖包以及启用APP（记的开启你的模拟器）<br>
 
 输入以下命令：<br>
-```
+
+``` 
+
 flutter pub get
 flutter run
 ```
-<br/>
 
+<br/>
 
 ### 指令参数说明
 
@@ -119,17 +128,17 @@ flutter run
 
 2、在其它组件页面中直接调用即可
 
-```dart
+``` dart
 import 'config/app_env.dart' show appEnv;
 appEnv.baseUrl // 获取当前环境的url
 ```
-
 
 ## 启动屏
 
 启动屏图片修改到指定路径中替换成自己的图片<br>
 
-```
+``` 
+
 // 这是安卓启动屏图片路径，默认只添加了一个文件加，需要不同分别率在mipmap-**相应文件夹内添加
 android\app\src\main\res\mipmap\splash_bg.png 
 
@@ -139,14 +148,13 @@ ios\Runner\Assets.xcassets\LaunchImage.imageset\LaunchImage.png
 
 PS：启动屏欢迎页及广告页面在flutter组件中定制功能，在lib\pages\SplashPage目录中修改
 
-
 ## 获取全局context
 
 全局Key和全局context都存放在全局common_config.dart文件中。<br>
 
 PS：你可以把一些全局的类都可以此中使用，从而实现页面更加方便管理<br>
 
-```dart
+``` dart
 import 'config/common_config.dart' show commonConfig;
 commonConfig.getGlobalKey;; // 全局context对象
 ```
@@ -155,7 +163,7 @@ commonConfig.getGlobalKey;; // 全局context对象
 
 已经抽离请求组件dio，可直接使用<br>
 
-```dart
+``` dart
 import 'package:flexible/utils/dio/safeRequest.dart';
 // get请求使用方法，同dio组件request方法
 getHomeData() async {
@@ -181,7 +189,7 @@ getHomeData() async {
 
 1、进入路由配置文件routes/routesData.dart，加入别名传参支持。<br>
 
-```dart
+``` dart
 // routesData.dart文件
 import 'package:flutter/material.dart';
 import '../pages/ErrorPage/ErrorPage.dart';
@@ -199,7 +207,7 @@ final Map<String, WidgetBuilder> routesData = {
 <br>
 2、在页面中使用别名跳转，直接使用原生别名跳转方法即可<br>
 
-```dart
+``` dart
 // 某页面跳转
 Navigator.pushNamed(
   context,
@@ -212,7 +220,7 @@ Navigator.pushNamed(
 <br>
 3、在接收的子页面直接读取params参数变量即可。<br>
 
-```dart
+``` dart
 // 子页面组件使用及接收
 class testDemo extends StatefulWidget {
   testDemo({Key key, this.params}) : super(key: key);
@@ -229,6 +237,7 @@ class _testDemoState extends State<testDemo>{
   }
 }
 ```
+
 <br>
 
 ## 更新APP版本组件
@@ -237,7 +246,8 @@ class _testDemoState extends State<testDemo>{
 
 安卓权限配置文件 android\app\src\main\AndroidManifest.xml<br>
 
-```
+``` 
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.flutter_flexible">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -247,7 +257,7 @@ class _testDemoState extends State<testDemo>{
 
 2、在lib\components\UpdateAppVersion\getNewAppVer.dart文件中，getNewAppVer方法直接运行更新APP版本，但有少部份需要自己实现，已标注TODO位置，指定APP下载地址和获取新版本的接口替换。<br>
 
-```dart
+``` dart
 // TODO:替换成自己的获取新版本APP的接口
 Map resData = await getNewVersion();
 // 模拟参数结构如下  {"code":"0","message":"success","data":{"version":"1.1.0","info":["修复bug提升性能","增加彩蛋有趣的功能页面","测试功能"]}}
@@ -264,9 +274,9 @@ UpdateAppVersion(
 )
 ```
 
-3、在指定页面运行 检查APP版本函数，默认在lib\pages\AppHomePage\AppHomePage.dart中，运行检查更新APP函数，你可以指定其它位置运行检查新版本。<br>
+3、在指定页面运行 检查APP版本函数，默认在lib\pages\AppMain\AppMain.dart中，运行检查更新APP函数，你可以指定其它位置运行检查新版本。<br>
 
-```dart
+``` dart
 import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show getNewAppVer;
 
 getNewAppVer(); // 在指定组件页面 执行更新检查
@@ -278,7 +288,7 @@ getNewAppVer(); // 在指定组件页面 执行更新检查
 
 案例内容如下：<br>
 
-```dart
+``` dart
 import 'package:flutter/material.dart';
 // 以下你配置的全局主题颜色参数
 part 'themeBlueGrey.dart';
@@ -291,7 +301,7 @@ part 'themePink.dart';
 
 在需要替换主题的页面中调用如下：<br>
 
-```dart
+``` dart
 import 'package:flexible/constants/themes/index_theme.dart' show themeBlueGrey; // 主题文件
 import 'package:flexible/provider/themeStore.p.dart'; // 全局主题状态管理
 ThemeStore _theme = Provider.of<ThemeStore>(context);
@@ -302,10 +312,10 @@ _theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
 
 首页灰度模式不需要单独配置主题文件，使用方式如下：<br>
 
-```dart
+``` dart
 import './lib/provider/global.p.dart';
-GlobalStore appHomePageStore = Provider.of<GlobalStore>(context);
-appHomePageStore.setGrayTheme(true); // 设置灰度模式
+GlobalStore globalStore = Provider.of<GlobalStore>(context);
+globalStore.setGrayTheme(true); // 设置灰度模式
 ```
 
 ## 全局路由监听
@@ -316,7 +326,7 @@ appHomePageStore.setGrayTheme(true); // 设置灰度模式
 
 1、先找到如下文件 lib\utils\myAppSetup\anaPageLoopInit.dart，配置第三方统计方法，如果想指定路由不监听处理事件，写入相关路由名称即可。<br>
 
-```dart
+``` dart
 // 找到如下文件 lib\utils\myAppSetup\anaPageLoopInit.dart
 void anaPageLoopInit() {
   anaPageLoop.init(
@@ -326,7 +336,7 @@ void anaPageLoopInit() {
     endPageFn: (name) {
       // TODO: 第三方埋点统计结束
     },
-    routeRegExp: ['/appHomePage'], // 过滤路由
+    routeRegExp: ['/appMain'], // 过滤路由
     debug: false,
   );
 }
@@ -337,17 +347,17 @@ void anaPageLoopInit() {
 
 2、首先提供了二个mixin继承类使用，用在你需要独立统计的页面，并且记得把当前独立统计的页面路由过滤掉，例如/home页面是独立统计四个页面，所以需要过滤整体的/home路由。<br>
 
-```
+``` 
+
 PageViewListenerMixin类：用于监听类PageView组件
 TabViewListenerMixin类：用于监听类TabBar组件
 ```
 
-
 演示在PageView组件中的使用如下：<br>
 
-```dart
-// 当前路由页面名称是 /appHomePage
-class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
+``` dart
+// 当前路由页面名称是 /appMain
+class _AppMainState extends State<AppMain> with PageViewListenerMixin {
   PageController pageController;
 
   @override
@@ -404,5 +414,3 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
   }
 }
 ```
-
-
