@@ -4,8 +4,8 @@
 
 ``` 
 
-• flutter 1.22.4
-• dart 2.10
+• flutter 1.22.6
+• dart 2.10.4
 • node 12+ 稳定版
 ```
 
@@ -34,18 +34,17 @@ PS：其它更多查看底部文档功能介绍及使用，或自行体验探索
 ``` 
 
   lib/
-  |- components/ # 共用widget组件封装
-  |- config/ # 全局的配置参数
+  |- components/ # 共用widget组件
+  |- config/ # 全局配置参数
   |- constants/ # 常量文件夹
   |- provider/ # 全局状态管理
-  |- pages/ # 页面ui层，每个独立完整的页面，每个页面可独立放自己的provider状态管理
+  |- pages/ # 页面ui层
       |- AppMain/ # APP主体页面
       |- SplashPage/ # APP闪屏页
   |- service/ # 请求接口抽离层
-  |- routes/ # 定义路由相关文件夹
-  |- utils/ # 公共方法抽离
-    |- dio/ # dio底层请求封装safeRequest
-  |- main.dart # 入口文件
+  |- models/ # 数据类型
+  |- routes/ # 路由相关文件夹
+  |- utils/ # 工具类
 ```
 
 <br/><br/>
@@ -164,21 +163,20 @@ commonConfig.getGlobalKey;; // 全局context对象
 已经抽离请求组件dio，可直接使用<br>
 
 ``` dart
-import 'package:flexible/utils/dio/safeRequest.dart';
+import 'package:flexible/utils/request.dart';
 // get请求使用方法，同dio组件request方法
 getHomeData() async {
-  Map resData = await safeRequest(
-    'http://url',
-    queryParameters: {'version': version},
-    options: Options(method: 'GET'),
+  Map resData = await Request.get(
+    'url',
+    queryParameters: {'key': 'value'}, // 在url后追加参数?key=value
   );
 }
 // post请求
 getHomeData() async {
-  Map resData = await safeRequest(
+  Map resData = await Request.post(
     'http://url',
     data: {'version': version}, // 传递参数
-    options: Options(method: 'POST'),
+    queryParameters: {'key': 'value'}, // 在url后追加参数?key=value
   );
 }
 ```

@@ -1,3 +1,4 @@
+import '../Layouts/BasicLayout.dart';
 import '../pages/ErrorPage/ErrorPage.dart';
 import 'package:flutter/material.dart';
 import 'routesData.dart'; // 路由页面定义
@@ -15,7 +16,9 @@ Function onGenerateRoute = (RouteSettings settings) {
   // 容错路由
   if (pageContentBuilder == null) {
     return MaterialPageRoute(
-      builder: (BuildContext context) => ErrorPage(params: args ?? null),
+      builder: (BuildContext context) => BasicLayout(
+        child: ErrorPage(params: args ?? null),
+      ),
       settings: settingsData,
     );
   }
@@ -23,9 +26,13 @@ Function onGenerateRoute = (RouteSettings settings) {
   // 默认跳转路由
   Route router = MaterialPageRoute(
     builder: (BuildContext context) {
-      if (args != null) return pageContentBuilder(context, params: args);
+      if (args != null) {
+        return BasicLayout(
+          child: pageContentBuilder(context, params: args),
+        );
+      }
 
-      return pageContentBuilder(context);
+      return BasicLayout(child: pageContentBuilder(context));
     },
     settings: settingsData,
   );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'provider/counterStore.p.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
@@ -77,7 +78,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       child: RaisedButton(
         child: Text(
           text,
-          style: TextStyle(fontSize: 22),
+          style: TextStyle(fontSize: 22.sp),
         ),
         onPressed: onPressed,
       ),

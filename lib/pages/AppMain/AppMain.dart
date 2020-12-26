@@ -172,9 +172,9 @@ class _AppMainState extends State<AppMain>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    // 初始化设计稿尺寸
-    ScreenUtil.init(context,
-        designSize: Size(750, 1334), allowFontScaling: true);
+
+    // ScreenUtil.init(BoxConstraints(),
+    // designSize: Size(750, 1334), allowFontScaling: true);
     appPageStore = Provider.of<GlobalStore>(context);
 
     return ColorFiltered(

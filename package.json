@@ -4,7 +4,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "flutter run --dart-define=INIT_ENV=dev",
-    "dev:h5": "flutter run -d chrome --dart-define=INIT_ENV=dev",
+    "dev:web": "flutter run -d chrome --dart-define=INIT_ENV=dev",
     "open:ios": "open -a Simulator",
     "build": "npm run apk-build:prod && npm run ios-build:prod",
     "apk-build:test": "flutter build apk --dart-define=INIT_ENV=test",

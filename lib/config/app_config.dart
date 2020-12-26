@@ -1,7 +1,12 @@
+import 'package:flutter/material.dart';
+
 import 'app_env.dart' show appEnv;
 import '../routes/routeName.dart';
 
 class AppConfig {
+  /// 设计稿尺寸 宽750 高1334
+  static Size screenSize = Size(750, 1334);
+
   /// 是否开启dio接口详细信息输出，以及其它相关插件调试信息
   static const DEBUG = true;
 
