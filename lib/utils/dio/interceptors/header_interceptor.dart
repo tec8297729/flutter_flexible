@@ -5,6 +5,7 @@ import '../../../config/app_config.dart';
  * header拦截器
  */
 class HeaderInterceptors extends InterceptorsWrapper {
+  // 请求拦截
   @override
   onRequest(RequestOptions options) async {
     options.connectTimeout = 15000;
@@ -17,4 +18,8 @@ class HeaderInterceptors extends InterceptorsWrapper {
   onResponse(Response response) async {
     return response;
   }
+
+  // 请求失败拦截
+  @override
+  onError(DioError err) async {}
 }

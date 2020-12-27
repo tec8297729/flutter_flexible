@@ -17,22 +17,40 @@
 
 • 页面组件更便捷的接收 路由别名跳转传参，底层已处理无需任何插件支持！简单易用，无学习成本。
 
-• 页面路由跳转容错处理，未声明路由跳转错误，指定跳转到错误页面。能让你第一时间发现低级错误bug，友好提示页面清晰明了。
+• 全局主题一键换色，只需要配置你的主题颜色，调用方法即可。
 
-• 内置全局主题一键换色，只需要配置你的主题颜色，调用方法即可。
-
-• 内置全局浮动调试组件，让你在真机上也能便利的获取错误捕获。
+• 全局浮动调试组件，让你在真机上也能便利的获取错误捕获。
 
 • 全局context对象，可在任意位置获取使用，例如在状态管理provider层内使用
 
-PS：其它更多查看底部文档功能介绍及使用，或自行体验探索。
+• OTA更新app功能，内置一套ui界面，轻松配置OTA更新地址。
 
-## 文件夹结构
+PS：其它更多功能介绍往下拉查看 功能介绍区文档，或自行体验探索。
 
-这是项目中一直会使用的结构<br>
+## 目录
+
+* [项目目录结构](#项目目录结构)
+* [快速入门上手](#快速入门上手)
+  + [创建项目](#创建项目)
+  + [启动项目](#启动项目)
+  + [指令参数介绍](#指令参数介绍)
+* [功能介绍](#功能介绍)
+  + [动态环境变量](#动态环境变量) 
+  + [App启动屏](#app启动屏) 
+  + [获取全局context](#获取全局context) 
+  + [dio封装](#dio封装简化使用) 
+  + [别名路由传参](#别名路由传参)
+  + [OTA更新App版本](#ota更新app版本)
+  + [全局主题切换功能](#全局主题切换功能)
+  + [全局路由监听](#全局路由监听)
+
+<br>
+
+## 项目目录结构
 
 ``` 
 
+  asset/ 静态资源
   lib/
   |- components/ # 共用widget组件
   |- config/ # 全局配置参数
@@ -92,7 +110,7 @@ flutter run
 
 <br/>
 
-### 指令参数说明
+### 指令参数介绍
 
 指令也是为了更方便记忆使用，你也可以使用原生flutter指令打包等<br>
 
@@ -128,9 +146,9 @@ import 'config/app_env.dart' show appEnv;
 appEnv.baseUrl // 获取当前环境的url
 ```
 
-## 启动屏
+## App启动屏
 
-启动屏图片修改到指定路径中替换成自己的图片<br>
+App启动屏图片修改到指定路径中替换成自己的图片<br>
 
 ``` 
 
@@ -154,9 +172,11 @@ import 'config/common_config.dart' show commonConfig;
 commonConfig.getGlobalKey;; // 全局context对象
 ```
 
-## dio请求底层封装使用
+<br>
 
-已经抽离请求组件dio，可直接使用<br>
+## dio封装简化使用
+
+已经dio请求底层封装，更简化使用<br>
 
 ``` dart
 import 'package:flexible/utils/request.dart';
@@ -167,6 +187,7 @@ getHomeData() async {
     queryParameters: {'key': 'value'}, // 在url后追加参数?key=value
   );
 }
+
 // post请求
 getHomeData() async {
   Map resData = await Request.post(
@@ -176,6 +197,37 @@ getHomeData() async {
   );
 }
 ```
+
+#### dio拦截处理
+
+在 lib/utils/dio/interceptors 目录内，扩展请求拦截处理
+
+``` dart
+/*
+ * header拦截器
+ */
+class HeaderInterceptors extends InterceptorsWrapper {
+  // 请求拦截
+  @override
+  onRequest(RequestOptions options) async {
+    options.connectTimeout = 15000;
+    options.baseUrl = AppConfig.host;
+    return options;
+  }
+
+  // 响应拦截
+  @override
+  onResponse(Response response) async {
+    return response;
+  }
+
+  // 请求失败拦截
+  @override
+  onError(DioError err) async {}
+}
+```
+
+<br>
 
 ## 别名路由传参
 
@@ -234,7 +286,7 @@ class _testDemoState extends State<testDemo>{
 
 <br>
 
-## 更新APP版本组件
+## OTA更新App版本
 
 1、添加安卓的存储权限申请标签(默认已添加, 可跳过此步)，如有删除安卓目录生成过的，请自行添加一下。<br>
 
@@ -275,11 +327,13 @@ import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show
 getNewAppVer(); // 在指定组件页面 执行更新检查
 ```
 
-## 全局主题更换
+## 全局主题切换功能
 
-把你的主题配置参数文件放入lib\config\themes文件夹中，然后part到index_theme.dart文件中统一管理，另外还有灰度模式。<br>
+目前有内置几个主题，轻松切换整体app颜色主题功能，只需专注配置app各个参数颜色
 
-案例内容如下：<br>
+如果要自定义app主题，把配置参数文件放入lib\config\themes文件夹中，然后part到index_theme.dart文件中统一管理。<br>
+
+案例如下：<br>
 
 ``` dart
 import 'package:flutter/material.dart';
@@ -301,9 +355,9 @@ ThemeStore _theme = Provider.of<ThemeStore>(context);
 _theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
 ```
 
-### 灰度模式
+### 灰度主题
 
-首页灰度模式不需要单独配置主题文件，使用方式如下：<br>
+灰度主题只有app首页生效，针对特殊场景使用，此功能不需要单独配置主题文件，直接使用即可。<br>
 
 ``` dart
 import './lib/provider/global.p.dart';
