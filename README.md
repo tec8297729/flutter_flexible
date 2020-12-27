@@ -4,9 +4,9 @@
 
 ``` 
 
-• flutter 1.22.6
+• flutter 1.22.5
 • dart 2.10.4
-• node 12+ 稳定版
+• node 14+ 稳定版
 ```
 
 内置集成功能：
@@ -55,28 +55,25 @@ PS：其它更多查看底部文档功能介绍及使用，或自行体验探索
 
 1、全局安装cli插件，确保你的电脑中有node环境。<br>
 
-``` 
-
+``` bash
 npm i -g flib-cli // 全局安装插件
 
 // 方式二：手动下载，但没有全局指令功能
 git clone https://github.com/tec8297729/flutter_flexible.git
 ```
 
-2、打开终端输入以下指定创建项目
+2、打开终端，输入以下指令创建项目
 
-``` 
-
+``` bash
 flib updata // 更新下载模板
 flib create  // 创建项目，根据提示步骤往下进行，都有默认参数可直接回车
 ```
 
 <br>
 
-相关指令介绍<br>
+cli相关指令介绍<br>
 
-``` 
-
+``` bash
 flib create 创建一个flutter项目
 flib updata 更新最新flutter模板
 flib page <name> 创建一个页面组件
@@ -88,8 +85,7 @@ flib page <name> 创建一个页面组件
 
 输入以下命令：<br>
 
-``` 
-
+``` bash
 flutter pub get
 flutter run
 ```
@@ -244,8 +240,7 @@ class _testDemoState extends State<testDemo>{
 
 安卓权限配置文件 android\app\src\main\AndroidManifest.xml<br>
 
-``` 
-
+``` xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.flutter_flexible">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -407,7 +402,6 @@ class _AppMainState extends State<AppMain> with PageViewListenerMixin {
         controller: pageController, // 控制器
         children: <Widget>[],
       ),
-      // ...
     );
   }
 }
