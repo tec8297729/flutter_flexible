@@ -7,11 +7,12 @@ enum ENV_TYPE {
   PROD,
 }
 
+// dio请求前缀
 final Map<ENV_TYPE, String> _baseUrl = {
-  ENV_TYPE.DEV: 'https://lumiereapitest.kaikeba.com',
-  ENV_TYPE.TEST: 'https://lumiereapitest.kaikeba.com',
-  ENV_TYPE.PRE: 'https://lumiereapi.kaikeba.com',
-  ENV_TYPE.PROD: 'https://lumiereapi.kaikeba.com',
+  ENV_TYPE.DEV: 'https://urldev.com',
+  ENV_TYPE.TEST: 'https://urltest.com',
+  ENV_TYPE.PRE: 'https://urlpre.com',
+  ENV_TYPE.PROD: 'https://url.com',
 };
 
 /// app环境

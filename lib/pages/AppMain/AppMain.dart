@@ -95,8 +95,9 @@ class _AppMainState extends State<AppMain>
 
       /// 调试阶段，直接跳过此组件
       if (AppConfig.notSplash &&
+          AppConfig.directPageName.isNotEmpty &&
           AppConfig.directPageName != RouteName.appMain) {
-        Navigator.of(context).pushNamed(AppConfig.directPageName);
+        Navigator.pushNamed(context, AppConfig.directPageName);
       }
     });
   }
