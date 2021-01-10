@@ -21,7 +21,6 @@ class _AdPageState extends State<AdPage> {
 
   @override
   void dispose() {
-    print('销毁app');
     _timer?.cancel();
     super.dispose();
   }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'components/AdPage.dart';
-import 'components/WelcomePage.dart';
+import '../../constants/cache_constants.dart';
 import '../../routes/routeName.dart';
 import '../../config/app_config.dart';
 import '../../utils/tool/sp_util.dart';
+import 'components/AdPage.dart';
+import 'components/WelcomePage.dart';
 
 /// 闪屏页。
 class SplashPage extends StatefulWidget {
@@ -31,11 +32,12 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _initAsync() async {
-    var isNew = await SpUtil.getData<bool>("key_guide", defValue: true);
+    var isNew =
+        await SpUtil.getData<bool>(CacheConstants.guideKey, defValue: true);
     setState(() {
       /// 是否显示引导页。
       if (isNew) {
-        SpUtil.setData("key_guide", false);
+        SpUtil.setData(CacheConstants.guideKey, false);
         child = WelcomePage();
       } else {
         child = AdPage();
