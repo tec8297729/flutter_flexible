@@ -12,7 +12,8 @@ bool _showFlag = false;
 /// [seconds] app多久检查更新，默认12小时
 ///
 /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
-Future getNewAppVer({int seconds = 0, bool forceUpdate = false}) async {
+Future getNewAppVer(
+    {int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
   if (!(await PermUtil.storagePerm())) return; // 权限申请
   try {
     if (_showFlag) return;

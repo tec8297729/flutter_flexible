@@ -14,3 +14,8 @@ Function debounce(Function fn, [int t = 30]) {
     });
   };
 }
+
+/// 是否是手机号
+bool isPhone(String value) {
+  return new RegExp(r"^1(3|4|5|7|8)\d{9}$").hasMatch(value);
+}
