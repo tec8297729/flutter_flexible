@@ -178,7 +178,18 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
     return Container(
       width: 300.w,
       height: 76.w,
-      child: RaisedButton(
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+            Color(0xff009FF9),
+          ),
+          elevation: MaterialStateProperty.all(4),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18),
+            ),
+          ),
+        ),
         child: Text(
           '立即升级',
           style: TextStyle(
@@ -187,9 +198,6 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
             fontSize: 34.sp,
           ),
         ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        elevation: 4,
-        color: Color(0xff009FF9),
         onPressed: () {
           _updateVersion(); // 版本检查及升级
           setState(() {

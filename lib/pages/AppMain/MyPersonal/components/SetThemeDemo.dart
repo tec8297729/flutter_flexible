@@ -38,7 +38,7 @@ class _SetThemeDemoState extends State<SetThemeDemo> {
 
   /// 灰度按钮
   Widget grayBtn() {
-    return RaisedButton(
+    return ElevatedButton(
       child: Text(
         '灰度模式--${appPageStore.getGrayTheme ? "开启" : "关闭"}',
         style: TextStyle(fontSize: 22),
@@ -50,15 +50,17 @@ class _SetThemeDemoState extends State<SetThemeDemo> {
   }
 
   Widget btnWidget(String title, ThemeData themeData, Color color) {
-    return RaisedButton(
+    return ElevatedButton(
       child: Text(
         title,
         style: TextStyle(fontSize: 22, color: Colors.white70),
       ),
-      color: color,
       onPressed: () {
         _theme.setTheme(themeData);
       },
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(color),
+      ),
     );
   }
 }

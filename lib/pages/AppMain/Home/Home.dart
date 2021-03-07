@@ -75,7 +75,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   Widget _button(String text, {Function onPressed}) {
     return Container(
       margin: EdgeInsets.only(top: 10),
-      child: RaisedButton(
+      child: ElevatedButton(
         child: Text(
           text,
           style: TextStyle(fontSize: 22.sp),

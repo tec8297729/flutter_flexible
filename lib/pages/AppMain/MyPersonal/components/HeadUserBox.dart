@@ -35,14 +35,18 @@ class _HeadUserBoxState extends State<HeadUserBox> {
 
   Widget btnWidget({String title, VoidCallback onTap}) {
     return baseBox(
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: onTap,
         child: Text(
           title,
           style: TextStyle(fontSize: 33.sp),
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+          ),
         ),
       ),
     );
