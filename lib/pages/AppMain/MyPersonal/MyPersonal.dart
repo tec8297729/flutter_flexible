@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../AppMain/MyPersonal/components/SetThemeDemo.dart';
 import 'package:jh_debug/jh_debug.dart';
 
+import 'components/HeadUserBox.dart';
+
 class MyPersonal extends StatefulWidget {
   @override
   _MyPersonalState createState() => _MyPersonalState();
@@ -23,7 +25,7 @@ class _MyPersonalState extends State<MyPersonal>
       ),
       body: Column(
         children: [
-          // HeadUserBox(),
+          HeadUserBox(),
           SetThemeDemo(),
         ],
       ),

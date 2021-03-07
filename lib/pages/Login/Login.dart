@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../AppMain/Home/provider/counterStore.p.dart';
 import '../../utils/index.dart';
+import '../AppMain/Home/provider/counterStore.p.dart';
 
-class TestDemo extends StatefulWidget {
-  TestDemo({Key key, this.params}) : super(key: key);
+class Login extends StatefulWidget {
+  Login({Key key, this.params}) : super(key: key);
   final params;
 
   @override
-  _TestDemoState createState() => _TestDemoState();
+  _LoginState createState() => _LoginState();
 }
 
-class _TestDemoState extends State<TestDemo> {
+class _LoginState extends State<Login> {
   CounterStore _counter;
   @override
   void initState() {
@@ -52,7 +52,7 @@ class _TestDemoState extends State<TestDemo> {
         }),
       ),
       floatingActionButton: FloatingActionButton(
-        heroTag: 'testDemoBtn1',
+        heroTag: 'LoginBtn1',
         onPressed: _incrementCounter,
         child: Icon(Icons.add),
       ), //

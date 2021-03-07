@@ -18,7 +18,9 @@ class BasicLayout extends StatelessWidget {
     return ScreenUtilInit(
       designSize: designSize ?? AppConfig.screenSize,
       allowFontScaling: allowFontScaling,
-      child: child,
+      builder: () {
+        return child;
+      },
     );
   }
 }

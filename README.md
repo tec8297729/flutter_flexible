@@ -1,19 +1,19 @@
-# flexible脚手架介绍
+# flexible 脚手架介绍
 
 最新测试基础环境版本<br>
 
-``` 
+```bash
 
-• flutter 1.22.5
-• dart 2.10.4
+• flutter 2.0.1
+• dart 2.12.0
 • node 14+ 稳定版
 ```
 
 内置集成功能：
 
-• 动态环境构建打包，挂载在app内部全局参数中，如请求接口动态前缀url，根据不同打包环境使用不同的接口域名。
+• 动态环境构建打包，挂载在 app 内部全局参数中，如请求接口动态前缀 url，根据不同打包环境使用不同的接口域名。
 
-• 状态管理：集成Provider在Flutter项目中，任何页面声明好store，注入lib/providers_config.dart文件内即可使用。
+• 状态管理：集成 Provider 在 Flutter 项目中，任何页面声明好 store，注入 lib/providers_config.dart 文件内即可使用。
 
 • 页面组件更便捷的接收 路由别名跳转传参，底层已处理无需任何插件支持！简单易用，无学习成本。
 
@@ -21,34 +21,35 @@
 
 • 全局浮动调试组件，让你在真机上也能便利的获取错误捕获。
 
-• 全局context对象，可在任意位置获取使用，例如在状态管理provider层内使用
+• 全局 context 对象，可在任意位置获取使用，例如在状态管理 provider 层内使用
 
-• OTA更新app功能，内置一套ui界面，轻松配置OTA更新地址。
+• OTA 更新 app 功能，内置一套 ui 界面，轻松配置 OTA 更新地址。
 
 PS：其它更多功能介绍往下拉查看 功能介绍区文档，或自行体验探索。
 
 ## 目录
 
-* [项目目录结构](#项目目录结构)
-* [快速入门上手](#快速入门上手)
-  + [创建项目](#创建项目)
-  + [启动项目](#启动项目)
-  + [指令参数介绍](#指令参数介绍)
-* [功能介绍](#功能介绍)
-  + [动态环境变量](#动态环境变量) 
-  + [App启动屏](#app启动屏) 
-  + [获取全局context](#获取全局context) 
-  + [dio封装](#dio封装简化使用) 
-  + [别名路由传参](#别名路由传参)
-  + [OTA更新App版本](#ota更新app版本)
-  + [全局主题切换功能](#全局主题切换功能)
-  + [全局路由监听](#全局路由监听)
+- [项目结构](#项目目录结构)
+- [快速入门上手](#快速入门上手)
+  - [创建项目](#创建项目)
+  - [启动项目](#启动项目)
+  - [指令参数介绍](#指令参数介绍)
+- [功能介绍](#功能介绍)
+  - [动态环境变量](#动态环境变量)
+  - [App 启动屏](#app启动屏)
+  - [获取全局 context](#获取全局context)
+  - [dio 封装](#dio封装简化使用)
+  - [别名路由传参](#别名路由传参)
+  - [OTA 更新 App 版本](#ota更新app版本)
+  - [全局主题切换功能](#全局主题切换功能)
+  - [全局路由监听](#全局路由监听)
+- [历史更新](CHANGELOG.md)
 
 <br>
 
-## 项目目录结构
+## 项目结构
 
-``` bash
+```bash
   asset/ # 静态资源
   lib/
   |- components/ # 共用widget组件
@@ -71,9 +72,9 @@ PS：其它更多功能介绍往下拉查看 功能介绍区文档，或自行�
 
 ## 创建项目
 
-1、全局安装cli插件，确保你的电脑中有node环境。<br>
+1、全局安装 cli 插件，确保你的电脑中有 node 环境。<br>
 
-``` bash
+```bash
 npm i -g flib-cli // 全局安装插件
 
 // 方式二：手动下载，但没有全局指令功能
@@ -82,16 +83,16 @@ git clone https://github.com/tec8297729/flutter_flexible.git
 
 2、打开终端，输入以下指令创建项目
 
-``` bash
+```bash
 flib updata // 更新下载模板
 flib create  // 创建项目，根据提示步骤往下进行，都有默认参数可直接回车
 ```
 
 <br>
 
-cli相关指令介绍<br>
+cli 相关指令介绍<br>
 
-``` bash
+```bash
 flib create 创建一个flutter项目
 flib updata 更新最新flutter模板
 flib page <name> 创建一个页面组件
@@ -99,11 +100,11 @@ flib page <name> 创建一个页面组件
 
 ## 启动项目
 
-进入项目目录文件夹，初始化安装依赖包以及启用APP（记的开启你的模拟器）<br>
+进入项目目录文件夹，初始化安装依赖包以及启用 APP（记的开启你的模拟器）<br>
 
 输入以下命令：<br>
 
-``` bash
+```bash
 flutter pub get
 flutter run
 ```
@@ -112,22 +113,22 @@ flutter run
 
 ### 指令参数介绍
 
-指令也是为了更方便记忆使用，你也可以使用原生flutter指令打包等<br>
+指令也是为了更方便记忆使用，你也可以使用原生 flutter 指令打包等<br>
 
 集成在项目中的指令如下：<br>
 
-|      命令      |                         说明                         |
-| :------------: | :--------------------------------------------------: |
-| npm run start  |       启动APP项目，请提前开好模拟器或连接真机        |
-| npm run build  |           同时打包APP的安卓和IOS，prod环境           |
-| apk-build:test |              打包安卓 test环境的APP文件              |
-| apk-build:pre  |              打包安卓 pre环境的APP文件               |
-| apk-build:prod |              打包安卓 prod环境的APP文件              |
-| ios-build:test |              打包IOS test环境的APP文件               |
-| ios-build:pre  |               打包IOS pre环境的APP文件               |
-| ios-build:prod |              打包IOS prod环境的APP文件               |
-| npm run upsdk  | 更新sdk版本，全局的flutter和dart版本将更新为最新版本 |
-| npm run appkey |             验证打包后的安卓apk签名信息              |
+|      命令      |                            说明                            |
+| :------------: | :--------------------------------------------------------: |
+| npm run start  |         启动 APP 项目，请提前开好模拟器或连接真机          |
+| npm run build  |            同时打包 APP 的安卓和 IOS，prod 环境            |
+| apk-build:test |               打包安卓 test 环境的 APP 文件                |
+| apk-build:pre  |                打包安卓 pre 环境的 APP 文件                |
+| apk-build:prod |               打包安卓 prod 环境的 APP 文件                |
+| ios-build:test |               打包 IOS test 环境的 APP 文件                |
+| ios-build:pre  |                打包 IOS pre 环境的 APP 文件                |
+| ios-build:prod |               打包 IOS prod 环境的 APP 文件                |
+| npm run upsdk  | 更新 sdk 版本，全局的 flutter 和 dart 版本将更新为最新版本 |
+| npm run appkey |               验证打包后的安卓 apk 签名信息                |
 
 <br><br><br>
 
@@ -135,50 +136,50 @@ flutter run
 
 ## 动态环境变量
 
-默认使用npm run dev或是npm run apk-build:test等内置语法，是设置好了环境变量参数的，直接运行指令即可。<br>
+默认使用 npm run dev 或是 npm run apk-build:test 等内置语法，是设置好了环境变量参数的，直接运行指令即可。<br>
 
-1、在文件下定义环境参数： lib/config/app_env.dart，例如定义环境变量baseUrl <br>
+1、在文件下定义环境参数： lib/config/app_env.dart，例如定义环境变量 baseUrl <br>
 
 2、在其它组件页面中直接调用即可
 
-``` dart
+```dart
 import 'config/app_env.dart' show appEnv;
 appEnv.baseUrl // 获取当前环境的url
 ```
 
-## App启动屏
+## App 启动屏
 
-App启动屏图片修改到指定路径中替换成自己的图片<br>
+App 启动屏图片修改到指定路径中替换成自己的图片<br>
 
-``` 
+```
 
 // 这是安卓启动屏图片路径，默认只添加了一个文件加，需要不同分别率在mipmap-**相应文件夹内添加
-android\app\src\main\res\mipmap\splash_bg.png 
+android\app\src\main\res\mipmap\splash_bg.png
 
 // 这是IOS启动屏图片路径，LaunchImage**.png都替换成自己的启动屏图片
 ios\Runner\Assets.xcassets\LaunchImage.imageset\LaunchImage.png
 ```
 
-PS：启动屏欢迎页及广告页面在flutter组件中定制功能，在lib\pages\SplashPage目录中修改
+PS：启动屏欢迎页及广告页面在 flutter 组件中定制功能，在 lib\pages\SplashPage 目录中修改
 
-## 获取全局context
+## 获取全局 context
 
-全局Key和全局context都存放在全局common_config.dart文件中。<br>
+全局 Key 和全局 context 都存放在全局 common_config.dart 文件中。<br>
 
 PS：你可以把一些全局的类都可以此中使用，从而实现页面更加方便管理<br>
 
-``` dart
+```dart
 import 'config/common_config.dart' show commonConfig;
 commonConfig.getGlobalKey;; // 全局context对象
 ```
 
 <br>
 
-## dio封装简化使用
+## dio 封装简化使用
 
-已经dio请求底层封装，更简化使用<br>
+已经 dio 请求底层封装，更简化使用<br>
 
-``` dart
+```dart
 import 'package:flexible/utils/request.dart';
 // get请求使用方法，同dio组件request方法
 getHomeData() async {
@@ -198,11 +199,11 @@ getHomeData() async {
 }
 ```
 
-#### dio拦截处理
+#### dio 拦截处理
 
 在 lib/utils/dio/interceptors 目录内，扩展请求拦截处理
 
-``` dart
+```dart
 /*
  * header拦截器
  */
@@ -233,9 +234,9 @@ class HeaderInterceptors extends InterceptorsWrapper {
 
 别名路由传递参数，在接收过程更便捷利与使用。<br>
 
-1、进入路由配置文件routes/routesData.dart，加入别名传参支持。<br>
+1、进入路由配置文件 routes/routesData.dart，加入别名传参支持。<br>
 
-``` dart
+```dart
 // routesData.dart文件
 import 'package:flutter/material.dart';
 import '../pages/ErrorPage/ErrorPage.dart';
@@ -253,7 +254,7 @@ final Map<String, WidgetBuilder> routesData = {
 <br>
 2、在页面中使用别名跳转，直接使用原生别名跳转方法即可<br>
 
-``` dart
+```dart
 // 某页面跳转
 Navigator.pushNamed(
   context,
@@ -266,7 +267,7 @@ Navigator.pushNamed(
 <br>
 3、在接收的子页面直接读取params参数变量即可。<br>
 
-``` dart
+```dart
 // 子页面组件使用及接收
 class testDemo extends StatefulWidget {
   testDemo({Key key, this.params}) : super(key: key);
@@ -286,13 +287,13 @@ class _testDemoState extends State<testDemo>{
 
 <br>
 
-## OTA更新App版本
+## OTA 更新 App 版本
 
 1、添加安卓的存储权限申请标签(默认已添加, 可跳过此步)，如有删除安卓目录生成过的，请自行添加一下。<br>
 
 安卓权限配置文件 android\app\src\main\AndroidManifest.xml<br>
 
-``` xml
+```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.flutter_flexible">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -300,9 +301,9 @@ class _testDemoState extends State<testDemo>{
 </manifest>
 ```
 
-2、在lib\components\UpdateAppVersion\getNewAppVer.dart文件中，getNewAppVer方法直接运行更新APP版本，但有少部份需要自己实现，已标注TODO位置，指定APP下载地址和获取新版本的接口替换。<br>
+2、在 lib\components\UpdateAppVersion\getNewAppVer.dart 文件中，getNewAppVer 方法直接运行更新 APP 版本，但有少部份需要自己实现，已标注 TODO 位置，指定 APP 下载地址和获取新版本的接口替换。<br>
 
-``` dart
+```dart
 // TODO:替换成自己的获取新版本APP的接口
 Map resData = await getNewVersion();
 // 模拟参数结构如下  {"code":"0","message":"success","data":{"version":"1.1.0","info":["修复bug提升性能","增加彩蛋有趣的功能页面","测试功能"]}}
@@ -319,9 +320,9 @@ UpdateAppVersion(
 )
 ```
 
-3、在指定页面运行 检查APP版本函数，默认在lib\pages\AppMain\AppMain.dart中，运行检查更新APP函数，你可以指定其它位置运行检查新版本。<br>
+3、在指定页面运行 检查 APP 版本函数，默认在 lib\pages\AppMain\AppMain.dart 中，运行检查更新 APP 函数，你可以指定其它位置运行检查新版本。<br>
 
-``` dart
+```dart
 import 'package:flexible/components/UpdateAppVersion/UpdateAppVersion.dart' show getNewAppVer;
 
 getNewAppVer(); // 在指定组件页面 执行更新检查
@@ -329,13 +330,13 @@ getNewAppVer(); // 在指定组件页面 执行更新检查
 
 ## 全局主题切换功能
 
-目前有内置几个主题，轻松切换整体app颜色主题功能，只需专注配置app各个参数颜色
+目前有内置几个主题，轻松切换整体 app 颜色主题功能，只需专注配置 app 各个参数颜色
 
-如果要自定义app主题，把配置参数文件放入lib\config\themes文件夹中，然后part到index_theme.dart文件中统一管理。<br>
+如果要自定义 app 主题，把配置参数文件放入 lib\config\themes 文件夹中，然后 part 到 index_theme.dart 文件中统一管理。<br>
 
 案例如下：<br>
 
-``` dart
+```dart
 import 'package:flutter/material.dart';
 // 以下你配置的全局主题颜色参数
 part 'themeBlueGrey.dart';
@@ -344,11 +345,11 @@ part 'themePink.dart';
 
 ```
 
-主题配色具体可以参考是关配色文件 themeBlueGrey.dart等。<br>
+主题配色具体可以参考是关配色文件 themeBlueGrey.dart 等。<br>
 
 在需要替换主题的页面中调用如下：<br>
 
-``` dart
+```dart
 import 'package:flexible/constants/themes/index_theme.dart' show themeBlueGrey; // 主题文件
 import 'package:flexible/provider/themeStore.p.dart'; // 全局主题状态管理
 ThemeStore _theme = Provider.of<ThemeStore>(context);
@@ -357,9 +358,9 @@ _theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
 
 ### 灰度主题
 
-灰度主题只有app首页生效，针对特殊场景使用，此功能不需要单独配置主题文件，直接使用即可。<br>
+灰度主题只有 app 首页生效，针对特殊场景使用，此功能不需要单独配置主题文件，直接使用即可。<br>
 
-``` dart
+```dart
 import './lib/provider/global.p.dart';
 GlobalStore globalStore = Provider.of<GlobalStore>(context);
 globalStore.setGrayTheme(true); // 设置灰度模式
@@ -367,13 +368,13 @@ globalStore.setGrayTheme(true); // 设置灰度模式
 
 ## 全局路由监听
 
-默认监听全局路由页面，只需要添加你的第三方统计埋点即可，如需要某页面tab监听还需要你手动继承类，并且实现相关方法。<br>
+默认监听全局路由页面，只需要添加你的第三方统计埋点即可，如需要某页面 tab 监听还需要你手动继承类，并且实现相关方法。<br>
 
-具体实现由ana_page_loop插件完成，详细插件文档》》 https://github.com/tec8297729/ana_page_loop <br>
+具体实现由 ana_page_loop 插件完成，详细插件文档》》 https://github.com/tec8297729/ana_page_loop <br>
 
 1、先找到如下文件 lib\utils\myAppSetup\anaPageLoopInit.dart，配置第三方统计方法，如果想指定路由不监听处理事件，写入相关路由名称即可。<br>
 
-``` dart
+```dart
 // 找到如下文件 lib\utils\myAppSetup\anaPageLoopInit.dart
 void anaPageLoopInit() {
   anaPageLoop.init(
@@ -390,19 +391,19 @@ void anaPageLoopInit() {
 ```
 
 如果你的项目很简单，此时你已经完整了全局埋点处理，只需要添加一下第三方埋点方法即可。<br>
-要是你需要独立统计PageView或是Tab组件中页面的，接着往第二步操作。<br>
+要是你需要独立统计 PageView 或是 Tab 组件中页面的，接着往第二步操作。<br>
 
-2、首先提供了二个mixin继承类使用，用在你需要独立统计的页面，并且记得把当前独立统计的页面路由过滤掉，例如/home页面是独立统计四个页面，所以需要过滤整体的/home路由。<br>
+2、首先提供了二个 mixin 继承类使用，用在你需要独立统计的页面，并且记得把当前独立统计的页面路由过滤掉，例如/home 页面是独立统计四个页面，所以需要过滤整体的/home 路由。<br>
 
-``` 
+```
 
 PageViewListenerMixin类：用于监听类PageView组件
 TabViewListenerMixin类：用于监听类TabBar组件
 ```
 
-演示在PageView组件中的使用如下：<br>
+演示在 PageView 组件中的使用如下：<br>
 
-``` dart
+```dart
 // 当前路由页面名称是 /appMain
 class _AppMainState extends State<AppMain> with PageViewListenerMixin {
   PageController pageController;
