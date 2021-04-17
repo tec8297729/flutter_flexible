@@ -1,5 +1,9 @@
 # 更新历史
 
+## v1.8.1
+
+> 替换主题 theme 中准备废弃字段：textSelectionColor、cursorColor、textSelectionHandleColor
+
 ## v1.8.0
 
 > flutter2 兼容升级，替换 RaisedButton 废弃组件
