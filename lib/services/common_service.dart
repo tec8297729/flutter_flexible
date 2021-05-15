@@ -1,5 +1,21 @@
 import '../utils/request.dart';
 
+/// 请求示例
+Future getDemo() async {
+  return Request.get(
+    '/api',
+    queryParameters: {'key': 'value'},
+  );
+}
+
+Future postDemo() async {
+  return Request.post('/api', data: {});
+}
+
+Future putDemo() async {
+  return Request.put('/api', data: {});
+}
+
 /// 获取APP最新版本号, 演示更新APP组件
 Future<Map> getNewVersion([String version]) async {
   Map resData = {

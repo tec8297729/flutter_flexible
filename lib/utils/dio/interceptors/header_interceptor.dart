@@ -7,19 +7,22 @@ import '../../../config/app_config.dart';
 class HeaderInterceptors extends InterceptorsWrapper {
   // 请求拦截
   @override
-  onRequest(RequestOptions options) async {
+  onRequest(RequestOptions options, handler) async {
     options.connectTimeout = 15000;
     options.baseUrl = AppConfig.host;
-    return options;
+    return handler.next(options);
   }
 
   // 响应拦截
   @override
-  onResponse(Response response) async {
-    return response;
+  onResponse(response, handler) {
+    // Do something with response data
+    return handler.next(response); // continue
   }
 
   // 请求失败拦截
   @override
-  onError(DioError err) async {}
+  onError(DioError e, handler) async {
+    return handler.next(e); //continue
+  }
 }

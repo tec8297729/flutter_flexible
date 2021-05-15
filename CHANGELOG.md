@@ -1,6 +1,9 @@
 # 更新历史
 
+## v1.8.1
+
 > 替换主题 theme 中准备废弃字段：textSelectionColor、cursorColor、textSelectionHandleColor
+> 升级第三方插件，替换相应废弃 api
 
 ## v1.8.0
 

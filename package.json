@@ -1,6 +1,6 @@
 {
   "name": "flutter_flexible",
-  "version": "1.7.0",
+  "version": "1.8.1",
   "scripts": {
     "start": "npm run dev",
     "dev": "flutter run --dart-define=INIT_ENV=dev",
@@ -13,7 +13,7 @@
     "ios-build:test": "flutter build ios --dart-define=INIT_ENV=test",
     "ios-build:pre": "flutter build ios --dart-define=INIT_ENV=pre",
     "ios-build:prod": "flutter build ios --dart-define=INIT_ENV=prod",
-    "appkey": "keytool -printcert -jarfile .\/build\/app\/outputs\/apk\/release\/app-release.apk",
+    "appkey": "keytool -printcert -jarfile ./build/app/outputs/apk/release/app-release.apk",
     "upsdk": "flutter upgrade"
   }
 }

@@ -100,7 +100,7 @@ class Request {
   }) async {
     return safeRequest(
       url,
-      options: options?.merge(method: 'POST') ?? Options(method: 'POST'),
+      options: options?.copyWith(method: 'POST') ?? Options(method: 'POST'),
       data: data,
       queryParameters: queryParameters,
     );
@@ -115,7 +115,7 @@ class Request {
   }) async {
     return safeRequest(
       url,
-      options: options?.merge(method: 'PUT') ?? Options(method: 'PUT'),
+      options: options?.copyWith(method: 'PUT') ?? Options(method: 'PUT'),
       data: data,
       queryParameters: queryParameters,
     );
