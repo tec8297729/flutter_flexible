@@ -16,11 +16,17 @@ class AppConfig {
   /// 是否直接跳过闪屏页面，
   static const notSplash = false;
 
+  /// 是否跳过引导页面
+  static const isShowWelcome = false;
+
   /// 闪屏后跳转的页面（方便调试），需notSplash参数为true才有效果
   static String directPageName = RouteName.appMain;
 
   /// 是否显示jh_debug浮动按钮
   static const showJhDebugBtn = true;
+
+  /// 是否开启更新app
+  static const isUpdateApp = true;
 
   /// dio请求前缀
   static String host = appEnv.baseUrl;

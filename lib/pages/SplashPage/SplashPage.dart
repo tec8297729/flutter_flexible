@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../constants/cache_constants.dart';
 import '../../routes/routeName.dart';
-import '../../config/app_config.dart';
+import '../../config/app_config.dart' show AppConfig;
 import '../../utils/tool/sp_util.dart';
 import 'components/AdPage.dart';
 import 'components/WelcomePage.dart';
@@ -32,8 +32,8 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _initAsync() async {
-    var isNew =
-        await SpUtil.getData<bool>(CacheConstants.guideKey, defValue: true);
+    var isNew = await SpUtil.getData<bool>(CacheConstants.guideKey,
+        defValue: !AppConfig.isShowWelcome);
     setState(() {
       /// 是否显示引导页。
       if (isNew) {
