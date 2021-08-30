@@ -4,7 +4,7 @@ import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import 'routes/onGenerateRoute.dart';
 import 'routes/routesData.dart'; // 路由配置
-import 'providers_config.dart'; // providers配置文件
+import 'providers_config.dart' show providersConfig; // providers配置文件
 import 'provider/themeStore.p.dart'; // 全局主题
 import 'config/common_config.dart' show commonConfig;
 import 'package:ana_page_loop/ana_page_loop.dart' show anaAllObs;
