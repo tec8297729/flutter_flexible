@@ -8,7 +8,7 @@ import '../../utils/tool/tips_util.dart';
 import 'components/UpdateHeader.dart';
 import 'components/UpdateInstr.dart';
 
-export 'getNewAppVer.dart';
+export 'check_app_version.dart';
 
 /// 更新APP组件
 class UpdateAppVersion extends StatefulWidget {

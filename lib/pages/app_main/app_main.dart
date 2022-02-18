@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
 import '../../routes/routeName.dart';
-import '../../components/update_app_version/getNewAppVer.dart'
-    show getNewAppVer;
+import '../../components/update_app/check_app_version.dart'
+    show checkAppVersion;
 import '../../config/app_env.dart' show appEnv, ENV_TYPE;
 import '../../config/app_config.dart';
 import '../../components/exit_app_interceptor/exit_app_interceptor.dart';
@@ -96,7 +96,7 @@ class _AppMainState extends State<AppMain>
         jhDebug.showDebugBtn(); // jhDebug 调试按钮
       }
 
-      getNewAppVer(); // 更新APP版本检查
+      checkAppVersion(); // 更新APP版本检查
 
       /// 调试阶段，直接跳过此组件
       if (AppConfig.notSplash &&

@@ -4,7 +4,7 @@ import '../../utils/index.dart' show PermUtil, SpUtil;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import '../../services/common_service.dart'; // 接口
-import 'update_app_version.dart';
+import 'update_app.dart';
 
 bool _showFlag = false;
 
@@ -13,7 +13,7 @@ bool _showFlag = false;
 /// [seconds] app多久检查更新，默认12小时
 ///
 /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
-Future getNewAppVer(
+Future checkAppVersion(
     {int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
   if (!AppConfig.isUpdateApp) return;
   if (!(await PermUtil.storagePerm())) return; // 权限申请
