@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../components/update_app/check_app_version.dart';
 import '../../../routes/routeName.dart';
 import 'provider/counterStore.p.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,6 +64,12 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 '减-',
                 onPressed: () {
                   _counter.decrement();
+                },
+              ),
+              _button(
+                '强制更新App',
+                onPressed: () {
+                  checkAppVersion(forceUpdate: true);
                 },
               ),
             ],

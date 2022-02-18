@@ -46,7 +46,7 @@ Future checkAppVersion(
     // 弹层更新
     showGeneralDialog(
       context: commonConfig.getGlobalContext,
-      barrierDismissible: true, // 是否点击其他区域消失
+      barrierDismissible: !forceUpdate, // 是否点击其他区域消失
       barrierLabel: "",
       barrierColor: Colors.black54, // 遮罩层背景色
       transitionDuration: Duration(milliseconds: 150), // 弹出的过渡时长

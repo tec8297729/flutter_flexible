@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 class DioErrorUtil {
-  // general methods:------------------------------------------------------------
   static String handleError(DioError error) {
     String errorDescription = "";
     if (error is DioError) {

@@ -58,6 +58,7 @@ Future safeRequest(
         };
         // https证书校验
         client.badCertificateCallback = (cert, host, port) => true;
+        return client;
       };
     }
 
