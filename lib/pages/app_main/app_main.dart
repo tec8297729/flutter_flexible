@@ -9,12 +9,12 @@ import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../config/app_env.dart' show appEnv, ENV_TYPE;
 import '../../config/app_config.dart';
-import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
+import '../../components/DoubleBackExitApp/double_back_exitapp.dart';
 import '../../provider/global.p.dart';
-import 'MyPersonal/MyPersonal.dart';
+import 'my_personal/my_personal.dart';
 import 'Search/Search.dart';
 import 'Hot/Hot.dart';
-import 'Home/Home.dart';
+import 'Home/home.dart';
 
 /// [params] 别名路由传递的参数
 /// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，推荐别名路由跳转方式。
@@ -34,15 +34,20 @@ import 'Home/Home.dart';
 /// });
 /// ```
 class AppMain extends StatefulWidget {
-  final params;
+  final dynamic params;
 
-  AppMain({
+  const AppMain({
     Key key,
     this.params,
   }) : super(key: key);
 
   @override
   _AppMainState createState() => _AppMainState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('params', params));
+  }
 }
 
 class _AppMainState extends State<AppMain>
@@ -177,7 +182,9 @@ class _AppMainState extends State<AppMain>
 
     return ColorFiltered(
       colorFilter: ColorFilter.mode(
-        appPageStore.getGrayTheme ? Color(0xff757575) : Colors.transparent,
+        appPageStore.getGrayTheme
+            ? const Color(0xff757575)
+            : Colors.transparent,
         BlendMode.color,
       ),
       child: _scaffoldBody(),
@@ -192,7 +199,7 @@ class _AppMainState extends State<AppMain>
         children: <Widget>[
           PageView(
             controller: pageController,
-            physics: physicsFlag ? NeverScrollableScrollPhysics() : null,
+            physics: physicsFlag ? const NeverScrollableScrollPhysics() : null,
             children: bodyWidget(), // tab页面主体
             // 监听滑动
             onPageChanged: (index) {
@@ -201,7 +208,7 @@ class _AppMainState extends State<AppMain>
               });
             },
           ),
-          Positioned(
+          const Positioned(
             bottom: 30,
             child: DoubleBackExitApp(),
           ),

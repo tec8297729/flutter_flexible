@@ -4,11 +4,8 @@ final ThemeData themeBlueGrey = ThemeData(
   primarySwatch: Colors.blueGrey,
   brightness: Brightness.light,
   primaryColor: Color(0xff607d8b), // 导航bar背景色
-  primaryColorBrightness: Brightness.dark,
   primaryColorLight: Color(0xffcfd8dc),
   primaryColorDark: Color(0xff455a64),
-  accentColor: Color(0xff607d8b),
-  accentColorBrightness: Brightness.dark,
   canvasColor: Color(0xfffafafa),
   scaffoldBackgroundColor: Color(0xfffafafa),
   bottomAppBarColor: Color(0xffffffff),
@@ -19,7 +16,6 @@ final ThemeData themeBlueGrey = ThemeData(
   selectedRowColor: Color(0xfff5f5f5),
   unselectedWidgetColor: Color(0x8a000000),
   disabledColor: Color(0x61000000),
-  buttonColor: Color(0xffe0e0e0),
   toggleableActiveColor: Color(0xff546e7a),
   secondaryHeaderColor: Color(0xffeceff1),
   textSelectionTheme: TextSelectionThemeData(
@@ -54,9 +50,9 @@ final ThemeData themeBlueGrey = ThemeData(
     hoverColor: Color(0x0a000000),
     colorScheme: ColorScheme(
       primary: Color(0xff607d8b),
-      primaryVariant: Color(0xff455a64),
+      primaryContainer: Color(0xff455a64),
       secondary: Color(0xff607d8b),
-      secondaryVariant: Color(0xff455a64),
+      secondaryContainer: Color(0xff455a64),
       surface: Color(0xffffffff),
       background: Color(0xffb0bec5),
       error: Color(0xffd32f2f),
@@ -150,86 +146,6 @@ final ThemeData themeBlueGrey = ThemeData(
   ),
   // appBar组件文字颜色
   primaryTextTheme: TextTheme(
-    headline1: TextStyle(
-      color: Color(0xb3ffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    headline2: TextStyle(
-      color: Color(0xb3ffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    headline3: TextStyle(
-      color: Color(0xb3ffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    headline4: TextStyle(
-      color: Color(0xb3ffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    headline5: TextStyle(
-      color: Color(0xffffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    headline6: TextStyle(
-      color: Color(0xffffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    subtitle1: TextStyle(
-      color: Color(0xffffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    bodyText1: TextStyle(
-      color: Color(0xffffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    bodyText2: TextStyle(
-      color: Color(0xffffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    caption: TextStyle(
-      color: Color(0xb3ffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    button: TextStyle(
-      color: Color(0xffffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    subtitle2: TextStyle(
-      color: Color(0xffffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-    overline: TextStyle(
-      color: Color(0xffffffff),
-      fontSize: null,
-      fontWeight: FontWeight.w400,
-      fontStyle: FontStyle.normal,
-    ),
-  ),
-  accentTextTheme: TextTheme(
     headline1: TextStyle(
       color: Color(0xb3ffffff),
       fontSize: null,
@@ -415,11 +331,6 @@ final ThemeData themeBlueGrey = ThemeData(
   ),
   // appBar头组件icon颜色
   primaryIconTheme: IconThemeData(
-    color: Color(0xffffffff),
-    opacity: 1,
-    size: 24,
-  ),
-  accentIconTheme: IconThemeData(
     color: Color(0xffffffff),
     opacity: 1,
     size: 24,

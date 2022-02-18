@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'routeName.dart';
-import '../pages/ErrorPage/ErrorPage.dart';
-import '../pages/AppMain/AppMain.dart';
-import '../pages/SplashPage/SplashPage.dart';
-import '../pages/TestDemo/TestDemo.dart';
+import '../pages/error_page/error_page.dart';
+import '../pages/app_main/app_main.dart';
+import '../pages/splash/splash.dart';
+import '../pages/test_demo/test_demo.dart';
 import '../pages/Login/Login.dart';
 
 final String initialRoute = RouteName.splashPage; // 初始默认显示的路由

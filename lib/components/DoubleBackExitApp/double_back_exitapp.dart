@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'TipsScaleAnimated.dart';
+import 'tips_scale_animated.dart';
 
 /// 二次返回退出APP组件
 class DoubleBackExitApp extends StatefulWidget {
   /// 退出提示动画组件
-  DoubleBackExitApp({this.title});
+  const DoubleBackExitApp({this.title});
 
   /// 提示文字
   final String title;

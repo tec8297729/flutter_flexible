@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Layouts/BasicLayout.dart';
-import '../pages/ErrorPage/ErrorPage.dart';
+import '../pages/error_page/error_page.dart';
 import 'routesData.dart'; // 路由页面定义
 
 // 统一封装路由传递参数

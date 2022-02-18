@@ -23,7 +23,7 @@ class EyeIcon {
   EyeIcon._();
 
   static const _kFontFam = 'EyeIcon';
-  static const _kFontPkg = null;
+  static const _kFontPkg = '';
 
   static const IconData eye =
       IconData(0xf06e, fontFamily: _kFontFam, fontPackage: _kFontPkg);

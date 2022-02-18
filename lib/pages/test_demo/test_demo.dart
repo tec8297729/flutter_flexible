@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../AppMain/Home/provider/counterStore.p.dart';
+import '../app_main/Home/provider/counterStore.p.dart';
 import '../../utils/index.dart';
 
 class TestDemo extends StatefulWidget {
