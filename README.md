@@ -284,19 +284,40 @@ class _testDemoState extends State<testDemo>{
 
 ## OTA 更新 App 版本
 
-1、添加安卓的存储权限申请标签(默认已添加, 可跳过此步)，如有删除安卓目录生成过的，请自行添加一下。<br>
+1、添加安卓的存储权限申请标签(默认已添加, 可跳过此步)，如有删除安卓目录生成过的，请自行添加一下。
 
-安卓权限配置文件 android\app\src\main\AndroidManifest.xml<br>
+安卓权限配置文件 android\app\src\main\AndroidManifest.xml
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.flutter_flexible">
+    <!-- 添加读写权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <application>...其它配置忽略</application>
+    <application>
+      <!-- 将以下提供程序引用添加到节点内 -->
+      <provider
+          android:name="sk.fourq.otaupdate.OtaUpdateFileProvider"
+          android:authorities="${applicationId}.ota_update_provider"
+          android:exported="false"
+          android:grantUriPermissions="true">
+          <meta-data
+              android:name="android.support.FILE_PROVIDER_PATHS"
+              android:resource="@xml/filepaths" />
+      </provider>
+    </application>
 </manifest>
 ```
 
-2、在 lib\components\UpdateAppVersion\getNewAppVer.dart 文件中，getNewAppVer 方法直接运行更新 APP 版本，但有少部份需要自己实现，已标注 TODO 位置，指定 APP 下载地址和获取新版本的接口替换。<br>
+2、创建android/app/src/main/res/xml/filepaths.xml文件，并粘贴以下内容！这将允许插件访问下载文件夹以开始更新。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+  <files-path name="internal_apk_storage" path="ota_update/"/>
+</paths>
+```
+
+3、在 lib\components\UpdateAppVersion\getNewAppVer.dart 文件中，getNewAppVer 方法直接运行更新 APP 版本，但有少部份需要自己实现，已标注 TODO 位置，指定 APP 下载地址和获取新版本的接口替换。<br>
 
 ```dart
 // TODO:替换成自己的获取新版本APP的接口

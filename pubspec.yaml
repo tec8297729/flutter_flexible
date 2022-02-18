@@ -31,7 +31,7 @@ dependencies:
   ana_page_loop: ^0.1.7
   shared_preferences: 2.0.9 # 持久性存储
   synchronized: 3.0.0
-  ota_update: 3.1.1
+  ota_update: 4.0.1
   package_info: 2.0.2 # app相关信息获取
   url_launcher: 6.0.15
   permission_handler: 8.3.0 # 权限
