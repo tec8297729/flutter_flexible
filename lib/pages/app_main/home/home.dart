@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../routes/routeName.dart';
 import 'provider/counterStore.p.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,14 +33,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         automaticallyImplyLeading: false,
       ),
       body: contextWidget(),
-      floatingActionButton: FloatingActionButton(
-        heroTag: 'homeBtn1',
-        onPressed: () async {
-          _counter.increment();
-        },
-        tooltip: '加加store值',
-        child: Icon(Icons.add),
-      ),
     );
   }
 
@@ -48,14 +41,13 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       children: List.generate(1, (index) {
         return Container(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               _button(
-                '点我去test页',
+                '跳转test页',
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
-                    '/testDemo',
+                    RouteName.testDemo,
                     arguments: {'data': '别名路由传参666'},
                   );
                 },
@@ -63,6 +55,18 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
               Consumer<CounterStore>(
                 builder: (_, counterStore, child) {
                   return Text('状态管理值：${counterStore.value}');
+                },
+              ),
+              _button(
+                '加+',
+                onPressed: () {
+                  _counter.increment();
+                },
+              ),
+              _button(
+                '减-',
+                onPressed: () {
+                  _counter.decrement();
                 },
               ),
             ],

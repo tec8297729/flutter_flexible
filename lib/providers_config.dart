@@ -2,7 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'pages/app_main/home/provider/counterStore.p.dart';
 import 'provider/global.p.dart';
-import 'provider/themeStore.p.dart';
+import 'provider/theme_store.p.dart';
 
 List<SingleChildWidget> providersConfig = [
   ChangeNotifierProvider<ThemeStore>.value(value: ThemeStore()), // 主题颜色
