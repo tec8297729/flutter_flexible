@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'components/BasicBtn/BasicBtn.dart';
 import 'components/CustomCheckbox/CustomCheckbox.dart';
 import 'components/CustomInput/CustomInput.dart';
-import '../../models/login_mobile.dart';
+import '../../models/login.m.dart';
 import '../../utils/tool/user_util.dart';
 import '../../utils/tool/tips_util.dart';
 import '../../utils/index.dart';
