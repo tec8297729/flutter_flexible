@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UpdateInstr extends StatelessWidget {
-  UpdateInstr({@required this.data});
+  const UpdateInstr({@required this.data});
   final List<String> data;
 
   @override
@@ -16,7 +16,7 @@ class UpdateInstr extends StatelessWidget {
         children: <Widget>[
           for (var i = 0; i < len; i++)
             Container(
-              margin: EdgeInsets.only(bottom: 10),
+              margin: const EdgeInsets.only(bottom: 10),
               child: Text(
                 '${i + 1}、${data[i]}',
                 style: TextStyle(fontSize: 28.sp),

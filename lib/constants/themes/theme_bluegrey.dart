@@ -1,34 +1,34 @@
 part of 'index_theme.dart';
 
-final ThemeData themePink = ThemeData(
-  primarySwatch: Colors.pink,
+final ThemeData themeBlueGrey = ThemeData(
+  primarySwatch: Colors.blueGrey,
   brightness: Brightness.light,
-  primaryColor: Color(0xffe91e63),
-  primaryColorLight: Color(0xfff8bbd0),
-  primaryColorDark: Color(0xffc2185b),
-  canvasColor: Color(0xfffafafa),
-  scaffoldBackgroundColor: Color(0xfffafafa),
-  bottomAppBarColor: Color(0xffffffff),
-  cardColor: Color(0xffffffff),
-  dividerColor: Color(0x1f000000),
-  highlightColor: Color(0x66bcbcbc),
-  splashColor: Color(0x66c8c8c8),
-  selectedRowColor: Color(0xfff5f5f5),
-  unselectedWidgetColor: Color(0x8a000000),
-  disabledColor: Color(0x61000000),
-  toggleableActiveColor: Color(0xffd81b60),
-  secondaryHeaderColor: Color(0xfffce4ec),
-  textSelectionTheme: TextSelectionThemeData(
-    selectionColor: Color(0xfff48fb1),
+  primaryColor: const Color(0xff607d8b), // 导航bar背景色
+  primaryColorLight: const Color(0xffcfd8dc),
+  primaryColorDark: const Color(0xff455a64),
+  canvasColor: const Color(0xfffafafa),
+  scaffoldBackgroundColor: const Color(0xfffafafa),
+  bottomAppBarColor: const Color(0xffffffff),
+  cardColor: const Color(0xffffffff),
+  dividerColor: const Color(0x1f000000),
+  highlightColor: const Color(0x66bcbcbc),
+  splashColor: const Color(0x66c8c8c8),
+  selectedRowColor: const Color(0xfff5f5f5),
+  unselectedWidgetColor: const Color(0x8a000000),
+  disabledColor: const Color(0x61000000),
+  toggleableActiveColor: const Color(0xff546e7a),
+  secondaryHeaderColor: const Color(0xffeceff1),
+  textSelectionTheme: const TextSelectionThemeData(
+    selectionColor: Color(0xffb0bec5),
     cursorColor: Color(0xff4285f4),
-    selectionHandleColor: Color(0xfff06292),
+    selectionHandleColor: Color(0xff90a4ae),
   ),
-  backgroundColor: Color(0xfff48fb1),
-  dialogBackgroundColor: Color(0xffffffff),
-  indicatorColor: Color(0xffe91e63),
-  hintColor: Color(0x8a000000),
-  errorColor: Color(0xffd32f2f),
-  buttonTheme: ButtonThemeData(
+  backgroundColor: const Color(0xffb0bec5),
+  dialogBackgroundColor: const Color(0xffffffff),
+  indicatorColor: const Color(0xff607d8b),
+  hintColor: const Color(0x8a000000),
+  errorColor: const Color(0xffd32f2f),
+  buttonTheme: const ButtonThemeData(
     textTheme: ButtonTextTheme.normal,
     minWidth: 88,
     height: 36,
@@ -49,12 +49,12 @@ final ThemeData themePink = ThemeData(
     focusColor: Color(0x1f000000),
     hoverColor: Color(0x0a000000),
     colorScheme: ColorScheme(
-      primary: Color(0xffe91e63),
-      primaryContainer: Color(0xffc2185b),
-      secondary: Color(0xffe91e63),
-      secondaryContainer: Color(0xffc2185b),
+      primary: Color(0xff607d8b),
+      primaryContainer: Color(0xff455a64),
+      secondary: Color(0xff607d8b),
+      secondaryContainer: Color(0xff455a64),
       surface: Color(0xffffffff),
-      background: Color(0xfff48fb1),
+      background: Color(0xffb0bec5),
       error: Color(0xffd32f2f),
       onPrimary: Color(0xffffffff),
       onSecondary: Color(0xffffffff),
@@ -64,7 +64,7 @@ final ThemeData themePink = ThemeData(
       brightness: Brightness.light,
     ),
   ),
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     headline1: TextStyle(
       color: Color(0x8a000000),
       fontSize: null,
@@ -144,7 +144,8 @@ final ThemeData themePink = ThemeData(
       fontStyle: FontStyle.normal,
     ),
   ),
-  primaryTextTheme: TextTheme(
+  // appBar组件文字颜色
+  primaryTextTheme: const TextTheme(
     headline1: TextStyle(
       color: Color(0xb3ffffff),
       fontSize: null,
@@ -224,7 +225,7 @@ final ThemeData themePink = ThemeData(
       fontStyle: FontStyle.normal,
     ),
   ),
-  inputDecorationTheme: InputDecorationTheme(
+  inputDecorationTheme: const InputDecorationTheme(
     labelStyle: TextStyle(
       color: Color(0xdd000000),
       fontSize: null,
@@ -323,17 +324,18 @@ final ThemeData themePink = ThemeData(
       borderRadius: BorderRadius.all(Radius.circular(4.0)),
     ),
   ),
-  iconTheme: IconThemeData(
+  iconTheme: const IconThemeData(
     color: Color(0xdd000000),
     opacity: 1,
     size: 24,
   ),
-  primaryIconTheme: IconThemeData(
+  // appBar头组件icon颜色
+  primaryIconTheme: const IconThemeData(
     color: Color(0xffffffff),
     opacity: 1,
     size: 24,
   ),
-  sliderTheme: SliderThemeData(
+  sliderTheme: const SliderThemeData(
     activeTrackColor: null,
     inactiveTrackColor: null,
     disabledActiveTrackColor: null,
@@ -356,12 +358,12 @@ final ThemeData themePink = ThemeData(
       fontStyle: FontStyle.normal,
     ),
   ),
-  tabBarTheme: TabBarTheme(
+  tabBarTheme: const TabBarTheme(
     indicatorSize: TabBarIndicatorSize.tab,
     labelColor: Color(0xffffffff),
     unselectedLabelColor: Color(0xb2ffffff),
   ),
-  chipTheme: ChipThemeData(
+  chipTheme: const ChipThemeData(
     backgroundColor: Color(0x1f000000),
     brightness: Brightness.light,
     deleteIconColor: Color(0xde000000),
@@ -380,7 +382,7 @@ final ThemeData themePink = ThemeData(
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
-    secondarySelectedColor: Color(0x3de91e63),
+    secondarySelectedColor: Color(0x3d607d8b),
     selectedColor: Color(0x3d000000),
     shape: StadiumBorder(
         side: BorderSide(
@@ -389,7 +391,7 @@ final ThemeData themePink = ThemeData(
       style: BorderStyle.none,
     )),
   ),
-  dialogTheme: DialogTheme(
+  dialogTheme: const DialogTheme(
       shape: RoundedRectangleBorder(
     side: BorderSide(
       color: Color(0xff000000),

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../config/app_config.dart';
 
 class BasicLayout extends StatelessWidget {
-  BasicLayout({
+  const BasicLayout({
     Key key,
     @required this.child,
     this.designSize,

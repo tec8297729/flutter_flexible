@@ -5,14 +5,14 @@ import 'package:ota_update/ota_update.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../utils/index.dart' show LogUtil, PermUtil;
 import '../../utils/tool/tips_util.dart';
-import 'components/UpdateHeader.dart';
-import 'components/UpdateInstr.dart';
+import 'components/update_header.dart';
+import 'components/update_instr.dart';
 
 export 'check_app_version.dart';
 
 /// 更新APP组件
 class UpdateAppVersion extends StatefulWidget {
-  UpdateAppVersion({
+  const UpdateAppVersion({
     @required this.version,
     this.info,
     @required this.iosUrl,
@@ -122,7 +122,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
     return Container(
       width: double.infinity,
       height: 140.w,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(8),
@@ -140,22 +140,22 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
   Widget downProgressWidget() {
     final double progWidth = 36.w;
     return Container(
-      margin: EdgeInsets.only(bottom: 5),
+      margin: const EdgeInsets.only(bottom: 5),
       width: 360.w,
       child: PhysicalModel(
         color: Colors.transparent,
         // elevation: 2,
         borderRadius: BorderRadius.circular(8), // 裁剪圆度
         clipBehavior: Clip.antiAlias,
-        child: Container(
+        child: SizedBox(
           height: progWidth,
           child: Stack(
             children: <Widget>[
-              Container(
+              SizedBox(
                 height: progWidth,
                 child: LinearProgressIndicator(
                   value: downAppProgress / 100, // 加载进度
-                  valueColor: AlwaysStoppedAnimation(Color(0xff009FF9)),
+                  valueColor: const AlwaysStoppedAnimation(Color(0xff009FF9)),
                   backgroundColor: Colors.black12,
                 ),
               ),
@@ -175,13 +175,13 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
 
   /// 底部升级按钮
   Widget upAppBtn() {
-    return Container(
+    return SizedBox(
       width: 300.w,
       height: 76.w,
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(
-            Color(0xff009FF9),
+            const Color(0xff009FF9),
           ),
           elevation: MaterialStateProperty.all(4),
           shape: MaterialStateProperty.all(

@@ -10,20 +10,18 @@ class DemoMobile {
   DemoMobile.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     msg = json['msg'];
-    data = json['data'] != null
-        ? new LoginMobileData.fromJson(json['data'])
-        : null;
+    data = json['data'] != null ? LoginMobileData.fromJson(json['data']) : null;
     type = json['type'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['msg'] = this.msg;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['code'] = code;
+    data['msg'] = msg;
     if (this.data != null) {
       data['data'] = this.data.toJson();
     }
-    data['type'] = this.type;
+    data['type'] = type;
     return data;
   }
 }

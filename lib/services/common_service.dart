@@ -1,18 +1,18 @@
 import '../utils/request.dart';
 
 /// 请求示例
-Future getDemo() async {
+Future<Object> getDemo() async {
   return Request.get(
     '/api',
     queryParameters: {'key': 'value'},
   );
 }
 
-Future postDemo() async {
+Future<Object> postDemo() async {
   return Request.post('/api', data: {});
 }
 
-Future putDemo() async {
+Future<Object> putDemo() async {
   return Request.put('/api', data: {});
 }
 

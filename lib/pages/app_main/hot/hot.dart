@@ -2,8 +2,8 @@ import '../../../utils/index.dart';
 import 'package:flutter/material.dart';
 
 class Hot extends StatefulWidget {
-  Hot({Key key, this.params}) : super(key: key);
-  final params;
+  const Hot({Key key, this.params}) : super(key: key);
+  final dynamic params;
 
   @override
   _HotState createState() => _HotState();
@@ -29,7 +29,7 @@ class _HotState extends State<Hot> with AutomaticKeepAliveClientMixin {
     super.build(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('hot页面'),
+        title: const Text('hot页面'),
         automaticallyImplyLeading: false,
       ),
       body: ListView(
@@ -37,7 +37,7 @@ class _HotState extends State<Hot> with AutomaticKeepAliveClientMixin {
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+              children: const <Widget>[
                 Text(
                   'hot页面',
                   style: TextStyle(fontSize: 32),

@@ -1,34 +1,34 @@
 part of 'index_theme.dart';
 
-final ThemeData themeLightBlue = ThemeData(
-  primarySwatch: Colors.lightBlue,
+final ThemeData themePink = ThemeData(
+  primarySwatch: Colors.pink,
   brightness: Brightness.light,
-  primaryColor: Color(0xff03a9f4),
-  primaryColorLight: Color(0xffb3e5fc),
-  primaryColorDark: Color(0xff0288d1),
-  canvasColor: Color(0xfffafafa),
-  scaffoldBackgroundColor: Color(0xfffafafa),
-  bottomAppBarColor: Color(0xffffffff),
-  cardColor: Color(0xffffffff),
-  dividerColor: Color(0x1f000000),
-  highlightColor: Color(0x66bcbcbc),
-  splashColor: Color(0x66c8c8c8),
-  selectedRowColor: Color(0xfff5f5f5),
-  unselectedWidgetColor: Color(0x8a000000),
-  disabledColor: Color(0x61000000),
-  toggleableActiveColor: Color(0xff039be5),
-  secondaryHeaderColor: Color(0xffe1f5fe),
-  textSelectionTheme: TextSelectionThemeData(
-    selectionColor: Color(0xff81d4fa),
+  primaryColor: const Color(0xffe91e63),
+  primaryColorLight: const Color(0xfff8bbd0),
+  primaryColorDark: const Color(0xffc2185b),
+  canvasColor: const Color(0xfffafafa),
+  scaffoldBackgroundColor: const Color(0xfffafafa),
+  bottomAppBarColor: const Color(0xffffffff),
+  cardColor: const Color(0xffffffff),
+  dividerColor: const Color(0x1f000000),
+  highlightColor: const Color(0x66bcbcbc),
+  splashColor: const Color(0x66c8c8c8),
+  selectedRowColor: const Color(0xfff5f5f5),
+  unselectedWidgetColor: const Color(0x8a000000),
+  disabledColor: const Color(0x61000000),
+  toggleableActiveColor: const Color(0xffd81b60),
+  secondaryHeaderColor: const Color(0xfffce4ec),
+  textSelectionTheme: const TextSelectionThemeData(
+    selectionColor: Color(0xfff48fb1),
     cursorColor: Color(0xff4285f4),
-    selectionHandleColor: Color(0xff4fc3f7),
+    selectionHandleColor: Color(0xfff06292),
   ),
-  backgroundColor: Color(0xff81d4fa),
-  dialogBackgroundColor: Color(0xffffffff),
-  indicatorColor: Color(0xff03a9f4),
-  hintColor: Color(0x8a000000),
-  errorColor: Color(0xffd32f2f),
-  buttonTheme: ButtonThemeData(
+  backgroundColor: const Color(0xfff48fb1),
+  dialogBackgroundColor: const Color(0xffffffff),
+  indicatorColor: const Color(0xffe91e63),
+  hintColor: const Color(0x8a000000),
+  errorColor: const Color(0xffd32f2f),
+  buttonTheme: const ButtonThemeData(
     textTheme: ButtonTextTheme.normal,
     minWidth: 88,
     height: 36,
@@ -49,22 +49,22 @@ final ThemeData themeLightBlue = ThemeData(
     focusColor: Color(0x1f000000),
     hoverColor: Color(0x0a000000),
     colorScheme: ColorScheme(
-      primary: Color(0xff03a9f4),
-      primaryContainer: Color(0xff0288d1),
-      secondary: Color(0xff03a9f4),
-      secondaryContainer: Color(0xff0288d1),
+      primary: Color(0xffe91e63),
+      primaryContainer: Color(0xffc2185b),
+      secondary: Color(0xffe91e63),
+      secondaryContainer: Color(0xffc2185b),
       surface: Color(0xffffffff),
-      background: Color(0xff81d4fa),
+      background: Color(0xfff48fb1),
       error: Color(0xffd32f2f),
-      onPrimary: Color(0xff000000),
-      onSecondary: Color(0xff000000),
+      onPrimary: Color(0xffffffff),
+      onSecondary: Color(0xffffffff),
       onSurface: Color(0xff000000),
-      onBackground: Color(0xff000000),
+      onBackground: Color(0xffffffff),
       onError: Color(0xffffffff),
       brightness: Brightness.light,
     ),
   ),
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     headline1: TextStyle(
       color: Color(0x8a000000),
       fontSize: null,
@@ -144,87 +144,87 @@ final ThemeData themeLightBlue = ThemeData(
       fontStyle: FontStyle.normal,
     ),
   ),
-  primaryTextTheme: TextTheme(
+  primaryTextTheme: const TextTheme(
     headline1: TextStyle(
-      color: Color(0x8a000000),
+      color: Color(0xb3ffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     headline2: TextStyle(
-      color: Color(0x8a000000),
+      color: Color(0xb3ffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     headline3: TextStyle(
-      color: Color(0x8a000000),
+      color: Color(0xb3ffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     headline4: TextStyle(
-      color: Color(0x8a000000),
+      color: Color(0xb3ffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     headline5: TextStyle(
-      color: Color(0xdd000000),
+      color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     headline6: TextStyle(
-      color: Color(0xdd000000),
+      color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     subtitle1: TextStyle(
-      color: Color(0xdd000000),
+      color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     bodyText1: TextStyle(
-      color: Color(0xdd000000),
+      color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     bodyText2: TextStyle(
-      color: Color(0xdd000000),
+      color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     caption: TextStyle(
-      color: Color(0x8a000000),
+      color: Color(0xb3ffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     button: TextStyle(
-      color: Color(0xdd000000),
+      color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     subtitle2: TextStyle(
-      color: Color(0xff000000),
+      color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     overline: TextStyle(
-      color: Color(0xff000000),
+      color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
   ),
-  inputDecorationTheme: InputDecorationTheme(
+  inputDecorationTheme: const InputDecorationTheme(
     labelStyle: TextStyle(
       color: Color(0xdd000000),
       fontSize: null,
@@ -323,17 +323,17 @@ final ThemeData themeLightBlue = ThemeData(
       borderRadius: BorderRadius.all(Radius.circular(4.0)),
     ),
   ),
-  iconTheme: IconThemeData(
+  iconTheme: const IconThemeData(
     color: Color(0xdd000000),
     opacity: 1,
     size: 24,
   ),
-  primaryIconTheme: IconThemeData(
-    color: Color(0xff000000),
+  primaryIconTheme: const IconThemeData(
+    color: Color(0xffffffff),
     opacity: 1,
     size: 24,
   ),
-  sliderTheme: SliderThemeData(
+  sliderTheme: const SliderThemeData(
     activeTrackColor: null,
     inactiveTrackColor: null,
     disabledActiveTrackColor: null,
@@ -350,18 +350,18 @@ final ThemeData themeLightBlue = ThemeData(
     // valueIndicatorShape: null(),
     showValueIndicator: null,
     valueIndicatorTextStyle: TextStyle(
-      color: Color(0xdd000000),
+      color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
   ),
-  tabBarTheme: TabBarTheme(
+  tabBarTheme: const TabBarTheme(
     indicatorSize: TabBarIndicatorSize.tab,
-    labelColor: Color(0xdd000000),
-    unselectedLabelColor: Color(0xb2000000),
+    labelColor: Color(0xffffffff),
+    unselectedLabelColor: Color(0xb2ffffff),
   ),
-  chipTheme: ChipThemeData(
+  chipTheme: const ChipThemeData(
     backgroundColor: Color(0x1f000000),
     brightness: Brightness.light,
     deleteIconColor: Color(0xde000000),
@@ -380,7 +380,7 @@ final ThemeData themeLightBlue = ThemeData(
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
-    secondarySelectedColor: Color(0x3d03a9f4),
+    secondarySelectedColor: Color(0x3de91e63),
     selectedColor: Color(0x3d000000),
     shape: StadiumBorder(
         side: BorderSide(
@@ -389,7 +389,7 @@ final ThemeData themeLightBlue = ThemeData(
       style: BorderStyle.none,
     )),
   ),
-  dialogTheme: DialogTheme(
+  dialogTheme: const DialogTheme(
       shape: RoundedRectangleBorder(
     side: BorderSide(
       color: Color(0xff000000),

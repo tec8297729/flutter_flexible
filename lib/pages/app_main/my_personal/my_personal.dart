@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../app_main/my_personal/components/SetThemeDemo.dart';
+import 'components/set_theme_demo.dart';
 import 'package:jh_debug/jh_debug.dart';
 
-import 'components/HeadUserBox.dart';
+import 'components/head_userbox.dart';
 
 class MyPersonal extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _MyPersonalState extends State<MyPersonal>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('MyPersonal页面'),
+        title: const Text('MyPersonal页面'),
         automaticallyImplyLeading: false,
       ),
       body: Column(
@@ -35,7 +35,7 @@ class _MyPersonalState extends State<MyPersonal>
           jhDebug.showDebugBtn(); // 全局显示调试按钮
         },
         tooltip: '显示全局浮动调试按钮',
-        child: Icon(Icons.bug_report),
+        child: const Icon(Icons.bug_report),
       ), //
     );
   }

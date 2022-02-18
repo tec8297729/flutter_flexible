@@ -24,11 +24,11 @@ class _HeadUserBoxState extends State<HeadUserBox> {
   }
 
   Widget baseBox({Widget child}) {
-    final double interval = 20;
+    const double interval = 20;
     return Container(
       alignment: Alignment.center,
       height: 130,
-      margin: EdgeInsets.fromLTRB(interval, 0, interval, 0),
+      margin: const EdgeInsets.fromLTRB(interval, 0, interval, 0),
       child: child,
     );
   }

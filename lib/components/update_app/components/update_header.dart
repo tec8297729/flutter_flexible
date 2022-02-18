@@ -12,7 +12,7 @@ class UpdateHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: boxHeight,
       child: Stack(
@@ -25,7 +25,7 @@ class UpdateHeader extends StatelessWidget {
             fit: BoxFit.fill,
           ),
           Container(
-            margin: EdgeInsets.only(left: 20, top: 32),
+            margin: const EdgeInsets.only(left: 20, top: 32),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start, // 左对齐
               children: <Widget>[
@@ -39,7 +39,7 @@ class UpdateHeader extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 3, top: 6),
+                  margin: const EdgeInsets.only(left: 3, top: 6),
                   child: Text(
                     version != null ? 'v$version' : '', // 最新版本号
                     style: TextStyle(

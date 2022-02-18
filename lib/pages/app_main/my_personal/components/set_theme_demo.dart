@@ -23,7 +23,7 @@ class _SetThemeDemoState extends State<SetThemeDemo> {
       children: [
         Column(
           children: <Widget>[
-            Text('全局主题色切换', style: TextStyle(fontSize: 30)),
+            const Text('全局主题色切换', style: TextStyle(fontSize: 30)),
             btnWidget('切换粉色主题', themePink, Colors.pink),
             btnWidget('切换蓝灰主题', themeBlueGrey, Colors.blueGrey),
             btnWidget('切换天空蓝主题', themeLightBlue, Colors.lightBlue),
@@ -41,7 +41,7 @@ class _SetThemeDemoState extends State<SetThemeDemo> {
     return ElevatedButton(
       child: Text(
         '灰度模式--${appPageStore.getGrayTheme ? "开启" : "关闭"}',
-        style: TextStyle(fontSize: 22),
+        style: const TextStyle(fontSize: 22),
       ),
       onPressed: () {
         appPageStore.setGrayTheme(!appPageStore.getGrayTheme);
@@ -53,7 +53,7 @@ class _SetThemeDemoState extends State<SetThemeDemo> {
     return ElevatedButton(
       child: Text(
         title,
-        style: TextStyle(fontSize: 22, color: Colors.white70),
+        style: const TextStyle(fontSize: 22, color: Colors.white70),
       ),
       onPressed: () {
         _theme.setTheme(themeData);
