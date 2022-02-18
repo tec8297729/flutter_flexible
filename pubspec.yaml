@@ -68,7 +68,7 @@ flutter:
   fonts:
     - family: eye_icon
       fonts:
-        - asset: asset/fonts/eye_icon.ttf
+        - asset: asset/fonts/EyeIcon.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
