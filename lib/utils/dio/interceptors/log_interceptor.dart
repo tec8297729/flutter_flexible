@@ -20,7 +20,7 @@ class LogsInterceptors extends InterceptorsWrapper {
 
   // 响应拦截
   @override
-  onResponse(Response response, handler) async {
+  onResponse(response, handler) async {
     if (AppConfig.DEBUG) {
       if (response != null) {
         print('返回参数: ' + response.toString());
@@ -32,11 +32,11 @@ class LogsInterceptors extends InterceptorsWrapper {
 
   // 请求失败拦截
   @override
-  onError(DioError e, handler) async {
+  onError(DioError err, handler) async {
     if (AppConfig.DEBUG) {
-      print('请求异常: ' + e.toString());
-      print('请求异常信息: ' + e.response?.toString() ?? "");
+      print('请求异常: ' + err.toString());
+      print('请求异常信息: ' + err.response?.toString() ?? "");
     }
-    return handler.next(e);
+    return handler.next(err);
   }
 }

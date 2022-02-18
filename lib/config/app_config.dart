@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app_env.dart' show appEnv;
-import '../routes/routeName.dart';
+import '../routes/route_name.dart';
 
 class AppConfig {
   /// 设计稿尺寸 宽750 高1334

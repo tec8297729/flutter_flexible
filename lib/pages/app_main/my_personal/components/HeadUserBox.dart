@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../routes/routeName.dart';
+import '../../../../routes/route_name.dart';
 
 class HeadUserBox extends StatefulWidget {
   @override

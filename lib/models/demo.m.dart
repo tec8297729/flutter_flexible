@@ -51,12 +51,12 @@ class LoginMobileData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['authorization'] = this.authorization;
-    data['userId'] = this.userId;
-    data['mobile'] = this.mobile;
-    data['nickname'] = this.nickname;
-    data['avatar'] = this.avatar;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['authorization'] = authorization;
+    data['userId'] = userId;
+    data['mobile'] = mobile;
+    data['nickname'] = nickname;
+    data['avatar'] = avatar;
     return data;
   }
 }

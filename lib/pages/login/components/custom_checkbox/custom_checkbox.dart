@@ -62,7 +62,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
       },
       child: AnimatedContainer(
         alignment: Alignment.center,
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         curve: Curves.fastLinearToSlowEaseIn,
         decoration: BoxDecoration(
           color: checkBoxColor(),

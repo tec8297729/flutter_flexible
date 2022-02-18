@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
-import '../../routes/routeName.dart';
+import '../../routes/route_name.dart';
 import '../../components/update_app/check_app_version.dart'
     show checkAppVersion;
 import '../../config/app_env.dart' show appEnv, ENV_TYPE;

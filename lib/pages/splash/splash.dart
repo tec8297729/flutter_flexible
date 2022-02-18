@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../constants/cache_constants.dart';
-import '../../routes/routeName.dart';
+import '../../routes/route_name.dart';
 import '../../config/app_config.dart' show AppConfig;
 import '../../utils/tool/sp_util.dart';
-import 'components/AdPage.dart';
-import 'components/WelcomePage.dart';
+import 'components/ad_page.dart';
+import 'components/welcome_page.dart';
 
 /// 闪屏页。
 class SplashPage extends StatefulWidget {
-  SplashPage({Key key}) : super(key: key);
-
   @override
   _SplashPageState createState() => _SplashPageState();
 }

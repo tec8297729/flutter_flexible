@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../components/update_app/check_app_version.dart';
-import '../../../routes/routeName.dart';
+import '../../../routes/route_name.dart';
 import 'provider/counterStore.p.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

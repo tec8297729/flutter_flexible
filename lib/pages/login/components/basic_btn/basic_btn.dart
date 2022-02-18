@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BasicBtn extends StatelessWidget {
-  BasicBtn({
+  const BasicBtn({
     Key key,
     this.onPressed,
     this.title,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
-import 'routes/onGenerateRoute.dart';
-import 'routes/routesData.dart'; // 路由配置
+import 'routes/generate_route.dart' show generateRoute;
+import 'routes/routes_data.dart'; // 路由配置
 import 'providers_config.dart' show providersConfig; // providers配置文件
 import 'provider/theme_store.p.dart'; // 全局主题
 import 'config/common_config.dart' show commonConfig;
@@ -15,13 +15,15 @@ void main() {
   jhDebugMain(
     appChild: MultiProvider(
       providers: providersConfig,
-      child: MyApp(),
+      child: const MyApp(),
     ),
     debugMode: DebugMode.inConsole,
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     jhDebug.setGlobalKey = commonConfig.getGlobalKey;
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
           ],
           theme: themeStore.getTheme,
           initialRoute: initialRoute,
-          onGenerateRoute: onGenerateRoute, // 路由处理
+          onGenerateRoute: generateRoute, // 路由处理
           debugShowCheckedModeBanner: false,
           navigatorObservers: [...anaAllObs()],
         );

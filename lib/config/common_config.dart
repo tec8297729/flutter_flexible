@@ -16,4 +16,4 @@ class CommonConfig {
   GlobalKey get getGlobalKey => _globalKey;
 }
 
-CommonConfig commonConfig = new CommonConfig();
+CommonConfig commonConfig = CommonConfig();

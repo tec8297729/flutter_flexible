@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import '../../../routes/routeName.dart';
+import '../../../routes/route_name.dart';
 
 /// APP入口全屏广告页面
 class AdPage extends StatefulWidget {
@@ -49,7 +49,7 @@ class _AdPageState extends State<AdPage> {
       child: Stack(
         children: <Widget>[
           Center(
-            child: Text("$_info"),
+            child: Text(_info),
           ),
           flotSkipWidget(),
         ],
@@ -57,7 +57,7 @@ class _AdPageState extends State<AdPage> {
     );
   }
 
-  flotSkipWidget() {
+  Widget flotSkipWidget() {
     return Positioned(
       top: MediaQuery.of(context).padding.top + 20,
       right: 20,
@@ -73,12 +73,12 @@ class _AdPageState extends State<AdPage> {
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.3),
-                offset: Offset(0, 2.0),
+                offset: const Offset(0, 2.0),
                 blurRadius: 2.0,
               ),
             ],
           ),
-          child: Text('跳过', style: TextStyle(color: Colors.white)),
+          child: const Text('跳过', style: TextStyle(color: Colors.white)),
         ),
       ),
     );

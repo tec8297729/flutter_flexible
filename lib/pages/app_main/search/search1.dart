@@ -5,7 +5,7 @@ class Search extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search页面'),
+        title: const Text('Search页面'),
         automaticallyImplyLeading: false,
       ),
       body: Container(
@@ -13,7 +13,7 @@ class Search extends StatelessWidget {
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: const <Widget>[
             Text('搜索内容'),
           ],
         ),

@@ -12,13 +12,13 @@ class UserUtil {
   }
 
   /// 保存用户信息
-  static Future saveUserInfo(LoginMobileData data) async {
+  static Future<void> saveUserInfo(LoginMobileData data) async {
     data.avatar = data.avatar?.replaceAll(RegExp(r'http://'), 'https://');
     SpUtil.setMapData(userInfoKey, data.toJson());
   }
 
   /// 清除用户信息缓存
-  static Future cleanUserInfo() async {
+  static Future<void> cleanUserInfo() async {
     SpUtil.remove(userInfoKey);
   }
 
@@ -29,14 +29,14 @@ class UserUtil {
   }
 
   /// 设置token
-  static Future setToken(String value) async {
+  static Future<void> setToken(String value) async {
     var userInfo = await getUserInfo();
     userInfo.authorization = value;
     saveUserInfo(userInfo);
   }
 
   /// 清除token
-  static Future cleanToKen() async {
+  static Future<void> cleanToKen() async {
     var userInfo = await getUserInfo();
     userInfo.authorization = '';
     saveUserInfo(userInfo);

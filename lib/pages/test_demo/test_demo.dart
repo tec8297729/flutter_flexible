@@ -5,8 +5,8 @@ import '../app_main/home/provider/counterStore.p.dart';
 import '../../utils/index.dart';
 
 class TestDemo extends StatefulWidget {
-  TestDemo({Key key, this.params}) : super(key: key);
-  final params;
+  const TestDemo({Key key, this.params}) : super(key: key);
+  final dynamic params;
 
   @override
   _TestDemoState createState() => _TestDemoState();
@@ -25,7 +25,7 @@ class _TestDemoState extends State<TestDemo> {
     _counter = Provider.of<CounterStore>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Test页面'),
+        title: const Text('Test页面'),
       ),
       body: ListView(
         children: List.generate(1, (index) {
@@ -36,12 +36,12 @@ class _TestDemoState extends State<TestDemo> {
                 Consumer<CounterStore>(
                   builder: (_, counterStore, child) => Text(
                     '状态共享值：${counterStore.value}',
-                    style: TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18),
                   ),
                 ),
                 Text(
                   '路由接收参数》》${widget.params}',
-                  style: TextStyle(fontSize: 18),
+                  style: const TextStyle(fontSize: 18),
                 ),
                 _button(
                   '加+',
@@ -65,7 +65,7 @@ class _TestDemoState extends State<TestDemo> {
 
   Widget _button(String text, {Function onPressed}) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 10),
       child: ElevatedButton(
         child: Text(
           text,

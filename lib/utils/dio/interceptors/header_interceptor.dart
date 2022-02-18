@@ -22,7 +22,8 @@ class HeaderInterceptors extends InterceptorsWrapper {
 
   // 请求失败拦截
   @override
-  onError(DioError e, handler) async {
-    return handler.next(e); //continue
+  onError(err, handler) async {
+    assert(err != null);
+    return handler.next(err); //continue
   }
 }

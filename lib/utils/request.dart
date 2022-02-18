@@ -6,12 +6,12 @@ import 'dio/interceptors/header_interceptor.dart';
 import 'dio/interceptors/log_interceptor.dart';
 
 Dio _initDio() {
-  BaseOptions baseOpts = new BaseOptions(
+  BaseOptions baseOpts = BaseOptions(
     connectTimeout: 50000, // 连接服务器超时时间，单位是毫秒
     responseType: ResponseType.plain, // 数据类型
     receiveDataWhenStatusError: true,
   );
-  Dio dioClient = new Dio(baseOpts); // 实例化请求，可以传入options参数
+  Dio dioClient = Dio(baseOpts); // 实例化请求，可以传入options参数
   dioClient.interceptors.addAll([
     HeaderInterceptors(),
     LogsInterceptors(),
@@ -40,7 +40,7 @@ Dio _initDio() {
 ///// 取消请求
 ///token.cancel("cancelled");
 ///```
-Future safeRequest(
+Future<T> safeRequest<T>(
   String url, {
   Object data,
   Options options,
@@ -70,9 +70,9 @@ Future safeRequest(
           options: options,
           cancelToken: cancelToken,
         )
-        .then((data) => jsonDecode(data.data));
+        .then((data) => jsonDecode(data.data as String) as T);
   } catch (e) {
-    throw e;
+    rethrow;
   }
 }
 
@@ -85,7 +85,7 @@ class Request {
     Options options,
     Map<String, dynamic> queryParameters,
   }) async {
-    return safeRequest(
+    return safeRequest<T>(
       url,
       options: options,
       queryParameters: queryParameters,
@@ -99,7 +99,7 @@ class Request {
     Object data,
     Map<String, dynamic> queryParameters,
   }) async {
-    return safeRequest(
+    return safeRequest<T>(
       url,
       options: options?.copyWith(method: 'POST') ?? Options(method: 'POST'),
       data: data,
@@ -114,7 +114,7 @@ class Request {
     Object data,
     Map<String, dynamic> queryParameters,
   }) async {
-    return safeRequest(
+    return safeRequest<T>(
       url,
       options: options?.copyWith(method: 'PUT') ?? Options(method: 'PUT'),
       data: data,

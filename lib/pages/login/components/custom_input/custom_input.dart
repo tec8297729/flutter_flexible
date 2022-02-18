@@ -68,7 +68,7 @@ class CustomInput extends StatefulWidget {
 class _CustomInputState extends State<CustomInput> {
   TextEditingController _controller;
   double baseTextSize = 32.sp;
-  Color desTextColor = Color(0xFFB4B9C6);
+  Color desTextColor = const Color(0xFFB4B9C6);
   String captchaText = '获取验证码';
   bool changeFlag = false; // 是否正在变动中
   Timer _timer; // 定时对象
@@ -118,7 +118,7 @@ class _CustomInputState extends State<CustomInput> {
       padding: EdgeInsets.symmetric(horizontal: 48.w),
       margin: widget.margin,
       decoration: BoxDecoration(
-        color: Color(0xFFF5F7F9),
+        color: const Color(0xFFF5F7F9),
         borderRadius: BorderRadius.circular(48),
       ),
       child: Stack(
@@ -168,7 +168,7 @@ class _CustomInputState extends State<CustomInput> {
               captchaText,
               style: TextStyle(
                 // 是否灰色
-                color: changeFlag ? Color(0xFFC4C7CD) : Colors.blue,
+                color: changeFlag ? const Color(0xFFC4C7CD) : Colors.blue,
                 fontSize: baseTextSize,
               ),
             ),
@@ -209,7 +209,7 @@ class _CustomInputState extends State<CustomInput> {
       captchaText = '重新发送 ${seconds}s';
     });
 
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       seconds--;
       setState(() {
         captchaText = '重新发送 ${seconds}s';

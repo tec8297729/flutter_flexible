@@ -9,8 +9,8 @@ import '../../utils/tool/tips_util.dart';
 import '../../utils/index.dart';
 
 class Login extends StatefulWidget {
-  Login({Key key, this.params}) : super(key: key);
-  final params;
+  const Login({Key key, this.params}) : super(key: key);
+  final dynamic params;
 
   @override
   _LoginState createState() => _LoginState();
@@ -19,12 +19,12 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final double baseTextSize = 32.sp; // 输入框文字
   final double _slaSize = 26.sp; // 协议文字大小
-  Color desTextColor = Color(0xFFB4B9C6);
+  Color desTextColor = const Color(0xFFB4B9C6);
   final _phoneController = TextEditingController();
   final _captchaController = TextEditingController();
-  Color btnDisableColor = Color(0xffAFD1FC); // 禁用按钮颜色
+  Color btnDisableColor = const Color(0xffAFD1FC); // 禁用按钮颜色
   bool isSelected = false; // 协议勾选
-  GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-  Future initData() async {
+  Future<void> initData() async {
     LoginMobileData userInfo = await UserUtil.getUserInfo();
     if (userInfo.mobile?.isNotEmpty ?? false) {
       _phoneController.text = userInfo?.mobile;
@@ -145,7 +145,7 @@ class _LoginState extends State<Login> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.only(right: 5),
+          margin: const EdgeInsets.only(right: 5),
           child: CustomCheckbox(
             value: isSelected,
             onChanged: (value) {
@@ -161,7 +161,7 @@ class _LoginState extends State<Login> {
           textAlign: TextAlign.center,
           text: TextSpan(
             style: TextStyle(
-              color: Color(0xFFB4B9C6),
+              color: const Color(0xFFB4B9C6),
               fontSize: _slaSize,
             ),
             text: '已阅读并接受',
@@ -172,7 +172,7 @@ class _LoginState extends State<Login> {
                   style: TextStyle(fontSize: _slaSize),
                 ),
               ),
-              TextSpan(text: '和'),
+              const TextSpan(text: '和'),
               WidgetSpan(
                 child: Text(
                   '《隐私政策》',
