@@ -52,11 +52,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                   );
                 },
               ),
-              Consumer<CounterStore>(
-                builder: (_, counterStore, child) {
-                  return Text('状态管理值：${counterStore.value}');
-                },
-              ),
+              Text('状态管理值：${context.watch<CounterStore>().value}'),
               _button(
                 '加+',
                 onPressed: () {

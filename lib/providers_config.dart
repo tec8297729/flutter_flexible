@@ -5,7 +5,10 @@ import 'provider/global.p.dart';
 import 'provider/theme_store.p.dart';
 
 List<SingleChildWidget> providersConfig = [
-  ChangeNotifierProvider<ThemeStore>.value(value: ThemeStore()), // 主题颜色
-  ChangeNotifierProvider<GlobalStore>.value(value: GlobalStore()),
-  ChangeNotifierProvider<CounterStore>.value(value: CounterStore()),
+  // ChangeNotifierProvider<ThemeStore>.value(value: ThemeStore()), // 主题颜色
+  // ChangeNotifierProvider<GlobalStore>.value(value: GlobalStore()),
+  // ChangeNotifierProvider<CounterStore>.value(value: CounterStore()),
+  ChangeNotifierProvider(create: (_) => ThemeStore()),
+  ChangeNotifierProvider(create: (_) => GlobalStore()),
+  ChangeNotifierProvider(create: (_) => CounterStore()),
 ];

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../app_main/Home/provider/counterStore.p.dart';
+import '../app_main/home/provider/counterStore.p.dart';
 import '../../utils/index.dart';
 
 class TestDemo extends StatefulWidget {
@@ -17,10 +18,6 @@ class _TestDemoState extends State<TestDemo> {
   void initState() {
     super.initState();
     LogUtil.d(widget.params);
-  }
-
-  void _incrementCounter() {
-    _counter.increment(); // 改变状态管中的值
   }
 
   @override
@@ -46,16 +43,36 @@ class _TestDemoState extends State<TestDemo> {
                   '路由接收参数》》${widget.params}',
                   style: TextStyle(fontSize: 18),
                 ),
+                _button(
+                  '加+',
+                  onPressed: () {
+                    _counter.increment();
+                  },
+                ),
+                _button(
+                  '减-',
+                  onPressed: () {
+                    _counter.decrement();
+                  },
+                ),
               ],
             ),
           );
         }),
-      ),
-      floatingActionButton: FloatingActionButton(
-        heroTag: 'testDemoBtn1',
-        onPressed: _incrementCounter,
-        child: Icon(Icons.add),
       ), //
+    );
+  }
+
+  Widget _button(String text, {Function onPressed}) {
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      child: ElevatedButton(
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 22.sp),
+        ),
+        onPressed: onPressed,
+      ),
     );
   }
 }
