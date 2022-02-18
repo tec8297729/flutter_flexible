@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'tips_scale_animated.dart';
 
 /// 二次返回退出APP组件
-class DoubleBackExitApp extends StatefulWidget {
+class ExitAppInterceptor extends StatefulWidget {
   /// 退出提示动画组件
-  const DoubleBackExitApp({this.title});
+  const ExitAppInterceptor({this.title});
 
   /// 提示文字
   final String title;
@@ -16,7 +16,7 @@ class DoubleBackExitApp extends StatefulWidget {
   _DoubleBackExitAppState createState() => _DoubleBackExitAppState();
 }
 
-class _DoubleBackExitAppState extends State<DoubleBackExitApp>
+class _DoubleBackExitAppState extends State<ExitAppInterceptor>
     with SingleTickerProviderStateMixin {
   Animation<double> animation; // 动画对象
   AnimationController controller;

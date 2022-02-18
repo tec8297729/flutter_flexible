@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'package:dio/dio.dart';
 import '../../../config/app_config.dart';
-import '../dioErrorUtil.dart';
 
 /*
  * Log 拦截器
@@ -39,7 +37,6 @@ class LogsInterceptors extends InterceptorsWrapper {
       print('请求异常: ' + e.toString());
       print('请求异常信息: ' + e.response?.toString() ?? "");
     }
-    // throw HttpException(DioErrorUtil.handleError(e));
     return handler.next(e);
   }
 }

@@ -9,12 +9,12 @@ import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../config/app_env.dart' show appEnv, ENV_TYPE;
 import '../../config/app_config.dart';
-import '../../components/DoubleBackExitApp/double_back_exitapp.dart';
+import '../../components/exit_app_interceptor/exit_app_interceptor.dart';
 import '../../provider/global.p.dart';
 import 'my_personal/my_personal.dart';
-import 'Search/Search.dart';
-import 'Hot/Hot.dart';
-import 'Home/home.dart';
+import 'search/search.dart';
+import 'hot/hot.dart';
+import 'home/home.dart';
 
 /// [params] 别名路由传递的参数
 /// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，推荐别名路由跳转方式。
@@ -210,7 +210,7 @@ class _AppMainState extends State<AppMain>
           ),
           const Positioned(
             bottom: 30,
-            child: DoubleBackExitApp(),
+            child: ExitAppInterceptor(),
           ),
         ],
       ),

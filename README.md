@@ -53,8 +53,8 @@ PS：其它更多功能介绍往下拉查看 功能介绍区文档，或自行�
   |- constants/ # 常量文件夹
   |- provider/ # 全局状态管理
   |- pages/ # 页面ui层
-      |- AppMain/ # APP主体页面
-      |- SplashPage/ # APP闪屏页
+      |- app_main/ # APP主体页面
+      |- splash/ # APP闪屏页
   |- service/ # 请求接口抽离层
   |- models/ # 数据类型
   |- routes/ # 路由相关文件夹
@@ -365,7 +365,7 @@ globalStore.setGrayTheme(true); // 设置灰度模式
 
 默认监听全局路由页面，只需要添加你的第三方统计埋点即可，如需要某页面 tab 监听还需要你手动继承类，并且实现相关方法。<br>
 
-具体实现由 ana_page_loop 插件完成，详细插件文档》》 https://github.com/tec8297729/ana_page_loop <br>
+具体实现由 ana_page_loop 插件完成，详细插件文档》》 <https://github.com/tec8297729/ana_page_loop> <br>
 
 1、先找到如下文件 lib\utils\myAppSetup\anaPageLoopInit.dart，配置第三方统计方法，如果想指定路由不监听处理事件，写入相关路由名称即可。<br>
 

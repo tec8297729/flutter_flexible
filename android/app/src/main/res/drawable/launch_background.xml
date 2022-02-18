@@ -5,8 +5,8 @@
 
     <!-- You can insert your own image assets here -->
     <!-- <item>
-        <bitmap android:gravity="center" android:src="@mipmap/launch_image" />
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/launch_image" />
     </item> -->
-    <!-- 这样写可以通过图片铺满整个屏幕，不同屏幕可能会有拉伸 -->
-    <item android:drawable="@mipmap/splash_bg"></item>
 </layer-list>

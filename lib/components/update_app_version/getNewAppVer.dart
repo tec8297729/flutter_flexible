@@ -4,7 +4,7 @@ import '../../utils/index.dart' show PermUtil, SpUtil;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import '../../services/common_service.dart'; // 接口
-import 'UpdateAppVersion.dart';
+import 'update_app_version.dart';
 
 bool _showFlag = false;
 
