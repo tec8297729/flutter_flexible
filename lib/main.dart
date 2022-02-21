@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:jh_debug/jh_debug.dart';
 import 'package:provider/provider.dart';
+import 'package:jh_debug/jh_debug.dart' show DebugMode, jhDebug, jhDebugMain;
 import 'routes/generate_route.dart' show generateRoute;
 import 'routes/routes_data.dart'; // 路由配置
 import 'providers_config.dart' show providersConfig; // providers配置文件
@@ -22,7 +22,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

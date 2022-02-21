@@ -18,6 +18,7 @@ analyzer:
   errors:
     argument_type_not_assignable: ignore
     invalid_assignment: ignore
+    not_assigned_potentially_non_nullable_local_variable: ignore
 
 linter:
   # The lint rules applied to this project can be customized in the

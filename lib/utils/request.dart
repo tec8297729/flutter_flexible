@@ -42,10 +42,10 @@ Dio _initDio() {
 ///```
 Future<T> safeRequest<T>(
   String url, {
-  Object data,
-  Options options,
-  Map<String, dynamic> queryParameters,
-  CancelToken cancelToken,
+  Object? data,
+  Options? options,
+  Map<String, dynamic>? queryParameters,
+  CancelToken? cancelToken,
 }) async {
   try {
     if (AppConfig.usingProxy) {
@@ -82,8 +82,8 @@ class Request {
   /// get请求
   static Future<T> get<T>(
     String url, {
-    Options options,
-    Map<String, dynamic> queryParameters,
+    Options? options,
+    Map<String, dynamic>? queryParameters,
   }) async {
     return safeRequest<T>(
       url,
@@ -95,9 +95,9 @@ class Request {
   /// post请求
   static Future<T> post<T>(
     String url, {
-    Options options,
-    Object data,
-    Map<String, dynamic> queryParameters,
+    Options? options,
+    Object? data,
+    Map<String, dynamic>? queryParameters,
   }) async {
     return safeRequest<T>(
       url,
@@ -110,9 +110,9 @@ class Request {
   /// put请求
   static Future<T> put<T>(
     String url, {
-    Options options,
-    Object data,
-    Map<String, dynamic> queryParameters,
+    Options? options,
+    Object? data,
+    Map<String, dynamic>? queryParameters,
   }) async {
     return safeRequest<T>(
       url,

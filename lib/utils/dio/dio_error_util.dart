@@ -20,7 +20,7 @@ class DioErrorUtil {
           break;
         case DioErrorType.response:
           errorDescription =
-              "Received invalid status code: ${error.response.statusCode}";
+              "Received invalid status code: ${error.response?.statusCode}";
           break;
         case DioErrorType.sendTimeout:
           errorDescription = "Send timeout in connection with API server";
