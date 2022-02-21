@@ -23,7 +23,7 @@ class _HeadUserBoxState extends State<HeadUserBox> {
     );
   }
 
-  Widget baseBox({Widget child}) {
+  Widget baseBox({Widget? child}) {
     const double interval = 20;
     return Container(
       alignment: Alignment.center,
@@ -33,7 +33,7 @@ class _HeadUserBoxState extends State<HeadUserBox> {
     );
   }
 
-  Widget btnWidget({String title, VoidCallback onTap}) {
+  Widget btnWidget({String? title, VoidCallback? onTap}) {
     return baseBox(
       child: ElevatedButton(
         onPressed: onTap,

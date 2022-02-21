@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GlobalStore extends ChangeNotifier {
-  PageController barTabsController;
+  late PageController barTabsController;
   bool _grayTheme = false;
 
   /// 保存页面控制器

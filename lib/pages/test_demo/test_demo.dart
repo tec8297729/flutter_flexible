@@ -5,7 +5,7 @@ import '../app_main/home/provider/counterStore.p.dart';
 import '../../utils/index.dart';
 
 class TestDemo extends StatefulWidget {
-  const TestDemo({Key key, this.params}) : super(key: key);
+  const TestDemo({Key? key, this.params}) : super(key: key);
   final dynamic params;
 
   @override
@@ -13,7 +13,7 @@ class TestDemo extends StatefulWidget {
 }
 
 class _TestDemoState extends State<TestDemo> {
-  CounterStore _counter;
+  late CounterStore _counter;
   @override
   void initState() {
     super.initState();
@@ -63,7 +63,7 @@ class _TestDemoState extends State<TestDemo> {
     );
   }
 
-  Widget _button(String text, {Function onPressed}) {
+  Widget _button(String text, {Function? onPressed}) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
       child: ElevatedButton(

@@ -10,7 +10,7 @@ class ExitAppInterceptor extends StatefulWidget {
   const ExitAppInterceptor({this.title});
 
   /// 提示文字
-  final String title;
+  final String? title;
 
   @override
   _DoubleBackExitAppState createState() => _DoubleBackExitAppState();
@@ -18,17 +18,17 @@ class ExitAppInterceptor extends StatefulWidget {
 
 class _DoubleBackExitAppState extends State<ExitAppInterceptor>
     with SingleTickerProviderStateMixin {
-  Animation<double> animation; // 动画对象
-  AnimationController controller;
-  DateTime _lastPressedAt; // 上次点击时间
-  Timer _tipsTimer;
+  late Animation<double> animation; // 动画对象
+  late AnimationController controller;
+  late DateTime? _lastPressedAt; // 上次点击时间
+  late Timer? _tipsTimer;
 
   @override
   void initState() {
     super.initState();
     // 动画对象
     controller = AnimationController(
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       vsync: this,
     );
     // 定义开始到结束的值
@@ -46,7 +46,7 @@ class _DoubleBackExitAppState extends State<ExitAppInterceptor>
   Widget build(BuildContext context) {
     return WillPopScope(
       // 监听返回事件
-      onWillPop: this.handleWillPop,
+      onWillPop: handleWillPop,
       child: TipsScaleAnimated(
         animation: animation,
         child: Text(
@@ -64,13 +64,14 @@ class _DoubleBackExitAppState extends State<ExitAppInterceptor>
   // 验校几秒内二次返回键退出APP，默认2秒
   Future<bool> handleWillPop() async {
     if (_lastPressedAt == null ||
-        DateTime.now().difference(_lastPressedAt) > Duration(seconds: 2)) {
+        DateTime.now().difference(_lastPressedAt) >
+            const Duration(seconds: 2)) {
       //两次点击间隔超过2秒则重新计时
       _lastPressedAt = DateTime.now();
-      this.runTips();
+      runTips();
       return false;
     }
-    return exit(0) && true;
+    return exit(0);
   }
 
   // 底部提示信息动画控制

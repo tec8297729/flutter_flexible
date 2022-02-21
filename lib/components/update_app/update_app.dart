@@ -13,21 +13,21 @@ export 'check_app_version.dart';
 /// 更新APP组件
 class UpdateAppVersion extends StatefulWidget {
   const UpdateAppVersion({
-    @required this.version,
     this.info,
-    @required this.iosUrl,
-    @required this.androidUrl,
     this.filename,
+    required this.version,
+    required this.iosUrl,
+    required this.androidUrl,
   });
 
   /// APP版本号
   final String version;
 
   /// 更新内容介绍
-  final List<String> info;
+  final List<String>? info;
 
   /// app下载后存储文件的名称
-  final String filename;
+  final String? filename;
 
   /// IOS应用更新地址
   final String iosUrl;
@@ -43,7 +43,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
   final double widthWrap = 550.w;
   bool downloadFlag = false; // 是否正在下载
   double downAppProgress = 0;
-  String appVersion; // 最新版本号
+  late String appVersion; // 最新版本号
 
   @override
   void initState() {
@@ -103,7 +103,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
       child: Column(
         children: <Widget>[
           UpdateHeader(version: appVersion), // 头部
-          UpdateInstr(data: widget?.info), // 更新内容
+          UpdateInstr(data: widget.info), // 更新内容
           bottomW(),
         ],
       ),

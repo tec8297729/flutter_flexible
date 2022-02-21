@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 // 错误页面
 class ErrorPage extends StatefulWidget {
-  const ErrorPage({Key key, this.params, this.title, this.errorText})
+  const ErrorPage({Key? key, this.params, this.title, this.errorText})
       : super(key: key);
   final dynamic params;
 
   /// 页面标题
-  final String title;
+  final String? title;
 
   /// 页面内容
-  final String errorText;
+  final String? errorText;
 
   @override
   _ErrorPageState createState() => _ErrorPageState();

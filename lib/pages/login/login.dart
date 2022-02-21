@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'components/BasicBtn/BasicBtn.dart';
-import 'components/CustomCheckbox/CustomCheckbox.dart';
-import 'components/CustomInput/CustomInput.dart';
+import 'components/basic_btn/basic_btn.dart';
+import 'components/custom_checkbox/custom_checkbox.dart';
+import 'components/custom_input/custom_input.dart';
 import '../../models/login.m.dart';
 import '../../utils/tool/user_util.dart';
 import '../../utils/tool/tips_util.dart';
 import '../../utils/index.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key key, this.params}) : super(key: key);
+  const Login({Key? key, this.params}) : super(key: key);
   final dynamic params;
 
   @override
@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
   Future<void> initData() async {
     LoginMobileData userInfo = await UserUtil.getUserInfo();
     if (userInfo.mobile?.isNotEmpty ?? false) {
-      _phoneController.text = userInfo?.mobile;
+      _phoneController.text = userInfo.mobile;
     }
   }
 

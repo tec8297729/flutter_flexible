@@ -6,7 +6,7 @@ import 'provider/counterStore.p.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key key, this.params}) : super(key: key);
+  const Home({Key? key, this.params}) : super(key: key);
   final dynamic params;
 
   @override
@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
-  CounterStore _counter;
+  late CounterStore _counter;
 
   @override
   void initState() {
@@ -77,7 +77,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     );
   }
 
-  Widget _button(String text, {Function onPressed}) {
+  Widget _button(String text, {Function? onPressed}) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
       child: ElevatedButton(

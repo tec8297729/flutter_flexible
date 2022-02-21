@@ -12,7 +12,7 @@ class UserUtil {
 
   /// 保存用户信息
   static Future<void> saveUserInfo(LoginMobileData data) async {
-    data.avatar = data.avatar.replaceAll(RegExp(r'http://'), 'https://');
+    data.avatar = data.avatar?.replaceAll(RegExp(r'http://'), 'https://');
     SpUtil.setMapData(userInfoKey, data.toJson());
   }
 
@@ -24,7 +24,7 @@ class UserUtil {
   /// 获取token
   static Future<String> getToken() async {
     var userInfo = await getUserInfo();
-    return userInfo.authorization;
+    return userInfo.authorization ?? '';
   }
 
   /// 设置token

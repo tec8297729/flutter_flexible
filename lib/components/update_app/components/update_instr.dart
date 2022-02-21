@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UpdateInstr extends StatelessWidget {
   const UpdateInstr({@required this.data});
-  final List<String> data;
+  final List<String>? data;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class UpdateInstr extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(bottom: 10),
               child: Text(
-                '${i + 1}、${data[i]}',
+                '${i + 1}、${data![i]}',
                 style: TextStyle(fontSize: 28.sp),
               ),
             ),

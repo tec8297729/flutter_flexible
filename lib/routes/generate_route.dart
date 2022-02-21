@@ -12,7 +12,7 @@ final generateRoute = (RouteSettings settings) {
   final String name = settings.name; // 当前传入的路由名称
   final Object args = settings.arguments; // 路由参数
   // typedef Type Name(params);
-  final RouterDataV pageContentBuilder = routesData[name]; // 获取路由指定组件函数
+  final RouterDataV? pageContentBuilder = routesData[name]; // 获取路由指定组件函数
   final RouteSettings settingsData = RouteSettings(
     name: name,
     arguments: args,
@@ -32,11 +32,9 @@ final generateRoute = (RouteSettings settings) {
   // ignore: strict_raw_type
   Route router = MaterialPageRoute(
     builder: (BuildContext context) {
-      if (args != null) {
-        return BasicLayout(
-          child: pageContentBuilder(context, params: args),
-        );
-      }
+      return BasicLayout(
+        child: pageContentBuilder(context, params: args),
+      );
       return BasicLayout(child: pageContentBuilder(context));
     },
     settings: settingsData,

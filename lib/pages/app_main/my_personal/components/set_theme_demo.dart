@@ -10,8 +10,8 @@ class SetThemeDemo extends StatefulWidget {
 }
 
 class _SetThemeDemoState extends State<SetThemeDemo> {
-  ThemeStore _theme;
-  GlobalStore appPageStore;
+  late ThemeStore _theme;
+  late GlobalStore appPageStore;
 
   @override
   Widget build(BuildContext context) {

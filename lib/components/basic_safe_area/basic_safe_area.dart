@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// 基础白页组件，带顶部X
 class BasicSafeArea extends StatefulWidget {
-  BasicSafeArea({
-    Key key,
+  const BasicSafeArea({
+    Key? key,
     this.children,
     this.closeFn,
     this.isShowRightChild = true,
@@ -13,19 +13,19 @@ class BasicSafeArea extends StatefulWidget {
   }) : super(key: key);
 
   /// 内容组件N个
-  final List<Widget> children;
+  final List<Widget>? children;
 
   /// 顶部左侧icon事件
-  final VoidCallback closeFn;
+  final VoidCallback? closeFn;
 
   /// 顶部右侧icon事件
-  final VoidCallback rightChildFn;
+  final VoidCallback? rightChildFn;
 
   /// 是否显示右侧组件
   final bool isShowRightChild;
 
   /// 右侧icon文字
-  final String rightText;
+  final String? rightText;
 
   @override
   _BasicSafeAreaState createState() => _BasicSafeAreaState();
@@ -37,7 +37,7 @@ class _BasicSafeAreaState extends State<BasicSafeArea> {
     return SafeArea(
       child: Stack(
         children: [
-          ...widget.children,
+          ...?widget.children,
           closeIcon(),
           headerRight(),
         ],
@@ -53,7 +53,7 @@ class _BasicSafeAreaState extends State<BasicSafeArea> {
       child: InkWell(
         onTap: () {
           if (widget.closeFn != null) {
-            return widget.closeFn();
+            return widget.closeFn!();
           }
           Navigator.pop(context);
         },

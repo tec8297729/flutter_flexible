@@ -265,7 +265,7 @@ Navigator.pushNamed(
 ```dart
 // 子页面组件使用及接收
 class testDemo extends StatefulWidget {
-  testDemo({Key key, this.params}) : super(key: key);
+  testDemo({Key? key, this.params}) : super(key: key);
   final params; // 别名传参接收变量
 
   @override

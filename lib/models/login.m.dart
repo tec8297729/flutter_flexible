@@ -1,9 +1,9 @@
 /// 用户登录接口返回类型
 class LoginMobile {
-  int code;
-  String msg;
-  LoginMobileData data;
-  String type;
+  int? code;
+  String? msg;
+  LoginMobileData? data;
+  String? type;
 
   LoginMobile({this.code, this.msg, this.data, this.type});
 
@@ -19,7 +19,7 @@ class LoginMobile {
     data['code'] = code;
     data['msg'] = msg;
     if (this.data != null) {
-      data['data'] = this.data.toJson();
+      data['data'] = this.data!.toJson();
     }
     data['type'] = type;
     return data;
@@ -27,11 +27,11 @@ class LoginMobile {
 }
 
 class LoginMobileData {
-  String authorization;
-  int userId;
-  String mobile;
-  String nickname;
-  String avatar;
+  String? authorization;
+  int? userId;
+  String? mobile;
+  String? nickname;
+  String? avatar;
 
   LoginMobileData(
       {this.authorization,

@@ -5,7 +5,7 @@ class UpdateHeader extends StatelessWidget {
   UpdateHeader({this.version});
 
   /// 最新版本号
-  final String version;
+  final String? version;
   final String headerImg = 'asset/images/updateVersion/header/up_header.png';
   final Color strColor = Colors.white; // 文字颜色
   final double boxHeight = 290.w; // 盒子高度

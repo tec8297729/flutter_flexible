@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomCheckbox extends StatefulWidget {
   /// 多选框按钮
   const CustomCheckbox({
-    @required this.value,
+    required this.value,
     this.size = 30,
     this.iconSize,
     this.radius = 5,
@@ -11,8 +11,7 @@ class CustomCheckbox extends StatefulWidget {
     this.selectedColor,
     @required this.onChanged,
     this.borderColor = Colors.grey,
-  })  : assert(size != null),
-        assert(radius != null);
+  });
 
   /// 是否选中
   final bool value;
@@ -21,22 +20,22 @@ class CustomCheckbox extends StatefulWidget {
   final double size;
 
   /// icon图标大小
-  final double iconSize;
+  final double? iconSize;
 
   /// 圆角大小
-  final double radius;
+  final double? radius;
 
   /// 未选中时背景色
-  final Color unSelectedColor;
+  final Color? unSelectedColor;
 
   /// 选中时背景色
-  final Color selectedColor;
+  final Color? selectedColor;
 
   /// 边框颜色
-  final Color borderColor;
+  final Color? borderColor;
 
   /// 点击事件
-  final void Function(bool value) onChanged;
+  final void Function(bool value)? onChanged;
 
   @override
   _CustomCheckboxState createState() => _CustomCheckboxState();
@@ -56,9 +55,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (widget.onChanged != null) {
-          widget.onChanged(widget.value);
-        }
+        widget.onChanged!(widget.value);
       },
       child: AnimatedContainer(
         alignment: Alignment.center,

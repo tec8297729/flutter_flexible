@@ -18,8 +18,8 @@ enum INPUT_TYPE {
 }
 
 class CustomInput extends StatefulWidget {
-  CustomInput({
-    Key key,
+  const CustomInput({
+    Key? key,
     this.controller,
     this.inputFormatters,
     this.hintText,
@@ -32,46 +32,46 @@ class CustomInput extends StatefulWidget {
     this.onTapCaptcha,
   }) : super(key: key);
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
 
   /// 输入框类型
   final INPUT_TYPE inputType;
 
   /// 提示内容
-  final String hintText;
+  final String? hintText;
 
   /// 验证规则
-  final List<TextInputFormatter> inputFormatters;
+  final List<TextInputFormatter>? inputFormatters;
 
   /// 是否自动聚集光标
-  final bool autofocus;
+  final bool? autofocus;
 
   /// 右侧自定义组件
-  final Widget rightCustom;
+  final Widget? rightCustom;
 
   /// 验证码点击事件
-  final Future<bool> Function(int value) onTapCaptcha;
+  final Future<bool> Function(int value)? onTapCaptcha;
 
   /// 输入框内容改变后事件
-  final void Function(String value) onChanged;
+  final void Function(String value)? onChanged;
 
   /// 键盘弹起类型，默认纯数字
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
 
   /// 外层边距距离
-  final EdgeInsetsGeometry margin;
+  final EdgeInsetsGeometry? margin;
 
   @override
   _CustomInputState createState() => _CustomInputState();
 }
 
 class _CustomInputState extends State<CustomInput> {
-  TextEditingController _controller;
+  late TextEditingController _controller;
   double baseTextSize = 32.sp;
   Color desTextColor = const Color(0xFFB4B9C6);
   String captchaText = '获取验证码';
   bool changeFlag = false; // 是否正在变动中
-  Timer _timer; // 定时对象
+  late Timer? _timer; // 定时对象
   final FocusNode _focusNode = FocusNode(); // 光标
   bool isFocus = false; // 是否聚集
 
@@ -88,8 +88,8 @@ class _CustomInputState extends State<CustomInput> {
 
   @override
   void dispose() {
-    if (_timer != null) _timer.cancel();
-    _controller?.dispose();
+    if (_timer != null) _timer?.cancel();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -127,7 +127,7 @@ class _CustomInputState extends State<CustomInput> {
             controller: _controller,
             focusNode: _focusNode,
             autofocus: widget.autofocus,
-            keyboardType: widget.keyboardType ?? TextInputType.number, // 默认键盘类型
+            keyboardType: widget.keyboardType, // 默认键盘类型
             inputFormatters: widget.inputFormatters ?? dyFormatters(),
             decoration: InputDecoration(
               hintText: widget.hintText ?? '',
@@ -143,7 +143,7 @@ class _CustomInputState extends State<CustomInput> {
             ),
             onChanged: (value) {
               if (widget.onChanged != null) {
-                widget.onChanged(value);
+                widget.onChanged!(value);
               }
             },
           ),
@@ -200,9 +200,9 @@ class _CustomInputState extends State<CustomInput> {
     if (changeFlag) return;
     int seconds = 59;
     if (widget.onTapCaptcha != null) {
-      bool flag = await widget.onTapCaptcha(seconds);
+      bool flag = await widget.onTapCaptcha!(seconds);
       // 外层控制是否执行
-      if (flag || flag == null) return;
+      if (flag) return;
     }
     setState(() {
       changeFlag = true;

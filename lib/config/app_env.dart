@@ -48,7 +48,7 @@ class AppEnv {
 
   /// 获取url前缀
   String get baseUrl {
-    return _baseUrl[currentEnv];
+    return _baseUrl[currentEnv] ?? '';
   }
 }
 
