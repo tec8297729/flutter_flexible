@@ -13,17 +13,16 @@ bool _showFlag = false;
 /// [seconds] app多久检查更新，默认12小时
 ///
 /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
-Future checkAppVersion(
-    {int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
+checkAppVersion({int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
   if (!AppConfig.isUpdateApp) return;
   if (!(await PermUtil.storagePerm())) return; // 权限申请
   try {
     if (_showFlag) return;
     const String spKey = 'checkAppVerTime'; // 缓存key
-    DateTime newTime = new DateTime.now(); // 当前时间
+    DateTime newTime = DateTime.now(); // 当前时间
     String oldTimeStr = await SpUtil.getData<String>(
       spKey,
-      defValue: DateTime.now().add(Duration(days: -10)).toString(),
+      defValue: DateTime.now().add(const Duration(days: -10)).toString(),
     );
 
     DateTime oldTime = DateTime.parse(oldTimeStr);
@@ -37,11 +36,11 @@ Future checkAppVersion(
     }
 
     // TODO:获取最新APP版本, 自定义getNewVersion接口获取
-    Map resData = await getNewVersion();
+    var resData = await getNewVersion();
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     // APP版本号对比检查
-    if (resData['version'] == packageInfo.version && !forceUpdate) return;
+    if (resData.version == packageInfo.version && !forceUpdate) return;
     _showFlag = true;
     // 弹层更新
     showGeneralDialog(
@@ -49,7 +48,7 @@ Future checkAppVersion(
       barrierDismissible: !forceUpdate, // 是否点击其他区域消失
       barrierLabel: "",
       barrierColor: Colors.black54, // 遮罩层背景色
-      transitionDuration: Duration(milliseconds: 150), // 弹出的过渡时长
+      transitionDuration: const Duration(milliseconds: 150), // 弹出的过渡时长
       transitionBuilder: (
         BuildContext context,
         Animation<double> animation,
@@ -67,8 +66,8 @@ Future checkAppVersion(
           backgroundColor: Colors.transparent, // 背景颜色
           child: UpdateAppVersion(
             // TODO: 传入新版本APP相关参数、版本号、更新内容、下载地址等
-            version: resData['version'] ?? '', // 版本号
-            info: (resData['info'] as List).cast<String>() ?? [], // 更新内容介绍
+            version: resData.version ?? '', // 版本号
+            info: (resData.info as List).cast<String>(), // 更新内容介绍
             // ios是苹果应用商店地址
             iosUrl: 'itms-apps://itunes.apple.com/cn/app/id414478124?mt=8',
             androidUrl:

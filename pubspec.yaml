@@ -27,14 +27,14 @@ dependencies:
   dio: 4.0.3
   provider: 6.0.2
   flutter_screenutil: 5.0.0+2
-  jh_debug: ^0.5.0
-  ana_page_loop: ^0.1.7
-  shared_preferences: 2.0.9 # 持久性存储
+  jh_debug: ^1.0.0
+  ana_page_loop: ^1.0.0
+  shared_preferences: 2.0.13 # 持久性存储
   synchronized: 3.0.0
   ota_update: 4.0.1
   package_info: 2.0.2 # app相关信息获取
-  url_launcher: 6.0.15
-  permission_handler: 8.3.0 # 权限
+  url_launcher: 6.0.20
+  permission_handler: 9.2.0 # 权限
   fluttertoast: 8.0.8
 
 dev_dependencies:

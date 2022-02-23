@@ -18,6 +18,7 @@ void main() {
       child: const MyApp(),
     ),
     debugMode: DebugMode.inConsole,
+    errorCallback: (details) {},
   );
 }
 

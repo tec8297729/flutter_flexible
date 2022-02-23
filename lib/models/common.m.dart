@@ -1,14 +1,14 @@
-class NewVersionData {
+class NewVersionRes {
   String? code;
   String? message;
-  Data? data;
+  NewVersionData? data;
 
-  NewVersionData({this.code, this.message, this.data});
+  NewVersionRes({this.code, this.message, this.data});
 
-  NewVersionData.fromJson(Map<String, dynamic> json) {
+  NewVersionRes.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? NewVersionData.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -22,13 +22,13 @@ class NewVersionData {
   }
 }
 
-class Data {
+class NewVersionData {
   String? version;
   List<String>? info;
 
-  Data({this.version, this.info});
+  NewVersionData({this.version, this.info});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  NewVersionData.fromJson(Map<String, dynamic> json) {
     version = json['version'];
     info = json['info'].cast<String>();
   }

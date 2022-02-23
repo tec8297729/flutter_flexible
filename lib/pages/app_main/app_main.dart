@@ -54,8 +54,8 @@ class _AppMainState extends State<AppMain>
     with PageViewListenerMixin, AutomaticKeepAliveClientMixin {
   int currentIndex = 0; // 接收bar当前点击索引
   bool physicsFlag = true; // 是否禁止左右滑动跳转tab
-  GlobalStore appPageStore;
-  PageController pageController;
+  late GlobalStore appPageStore;
+  late PageController pageController;
   @override
   bool get wantKeepAlive => true;
 
@@ -64,12 +64,12 @@ class _AppMainState extends State<AppMain>
     {
       'title': '首页',
       'icon': Icons.home,
-      'body': Home(),
+      'body': const Home(),
     },
     {
       'title': '热门',
       'icon': Icons.whatshot,
-      'body': Hot(),
+      'body': const Hot(),
     },
     {
       'title': '搜索',
@@ -89,7 +89,7 @@ class _AppMainState extends State<AppMain>
 
     handleCurrentIndex();
     initTools();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
       appPageStore.saveController(pageController);
 
       if (AppConfig.showJhDebugBtn) {
@@ -117,9 +117,11 @@ class _AppMainState extends State<AppMain>
   handleCurrentIndex() {
     if (widget.params != null) {
       // 默认加载页面
-      currentIndex = widget.params['pageId'] ?? 0 >= (appBottomBar.length)
-          ? (appBottomBar.length - 1)
-          : widget.params['pageId'];
+      if ((widget.params["pageId"] ?? 0) as int >= appBottomBar.length) {
+        currentIndex = (appBottomBar.length - 1);
+      } else {
+        currentIndex = widget.params['pageId'];
+      }
     }
 
     // 初始化tab控制器
