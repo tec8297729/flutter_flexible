@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
   Future<void> initData() async {
     LoginMobileData userInfo = await UserUtil.getUserInfo();
     if (userInfo.mobile?.isNotEmpty ?? false) {
-      _phoneController.text = userInfo.mobile;
+      _phoneController.text = userInfo.mobile!;
     }
   }
 

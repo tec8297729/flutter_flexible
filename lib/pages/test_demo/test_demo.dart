@@ -63,7 +63,7 @@ class _TestDemoState extends State<TestDemo> {
     );
   }
 
-  Widget _button(String text, {Function? onPressed}) {
+  Widget _button(String text, {VoidCallback? onPressed}) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
       child: ElevatedButton(

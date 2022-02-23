@@ -26,7 +26,7 @@ class SpUtil {
   /// 支持String、int、double、bool类型，
   static Future<bool> setData<T>(String key, T value) async {
     if (_prefs == null) await getInstance();
-    bool resData = false;
+    bool? resData = false;
     switch (value.runtimeType) {
       case String:
         resData = await _prefs?.setString(key, value as String);
@@ -42,7 +42,7 @@ class SpUtil {
         break;
       default:
     }
-    return resData;
+    return resData as bool;
   }
 
   /// 设置list类型到缓存中去

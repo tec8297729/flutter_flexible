@@ -120,7 +120,7 @@ class _AppMainState extends State<AppMain>
       if ((widget.params["pageId"] ?? 0) as int >= appBottomBar.length) {
         currentIndex = (appBottomBar.length - 1);
       } else {
-        currentIndex = widget.params['pageId'];
+        currentIndex = widget.params['pageId'] as int;
       }
     }
 
@@ -252,10 +252,10 @@ class _AppMainState extends State<AppMain>
       return appBottomBar.map<BottomNavigationBarItem>((itemData) {
         return BottomNavigationBarItem(
           icon: Icon(
-            itemData['icon'], // 图标
+            itemData['icon'] as IconData, // 图标
             size: 44.sp,
           ),
-          label: itemData['title'],
+          label: itemData['title'] as String,
         );
       }).toList();
     } catch (e) {

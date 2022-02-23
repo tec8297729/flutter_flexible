@@ -13,7 +13,7 @@ class CommonConfig {
   }
 
   /// 获取全局Key
-  GlobalKey get getGlobalKey => _globalKey;
+  GlobalKey<NavigatorState> get getGlobalKey => _globalKey;
 }
 
 CommonConfig commonConfig = CommonConfig();

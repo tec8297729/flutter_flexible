@@ -64,7 +64,7 @@ class _DoubleBackExitAppState extends State<ExitAppInterceptor>
   // 验校几秒内二次返回键退出APP，默认2秒
   Future<bool> handleWillPop() async {
     if (_lastPressedAt == null ||
-        DateTime.now().difference(_lastPressedAt) >
+        DateTime.now().difference(_lastPressedAt!) >
             const Duration(seconds: 2)) {
       //两次点击间隔超过2秒则重新计时
       _lastPressedAt = DateTime.now();

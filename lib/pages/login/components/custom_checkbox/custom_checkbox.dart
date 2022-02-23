@@ -63,12 +63,12 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
         curve: Curves.fastLinearToSlowEaseIn,
         decoration: BoxDecoration(
           color: checkBoxColor(),
-          borderRadius: BorderRadius.circular(widget.radius),
+          borderRadius: BorderRadius.circular(widget.radius!),
           border: widget.value
               ? null
               : Border.all(
                   width: 2,
-                  color: widget.borderColor,
+                  color: widget.borderColor!,
                 ),
         ),
         width: widget.size,

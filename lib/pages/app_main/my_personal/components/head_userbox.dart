@@ -33,7 +33,7 @@ class _HeadUserBoxState extends State<HeadUserBox> {
     );
   }
 
-  Widget btnWidget({String? title, VoidCallback? onTap}) {
+  Widget btnWidget({required String title, VoidCallback? onTap}) {
     return baseBox(
       child: ElevatedButton(
         onPressed: onTap,

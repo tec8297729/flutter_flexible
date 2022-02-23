@@ -7,7 +7,7 @@ typedef RouterDataV = StatefulWidget Function(BuildContext context,
     {dynamic params});
 
 // 统一封装路由传递参数
-generateRoute(RouteSettings settings) {
+Route<dynamic> generateRoute(RouteSettings settings) {
   final String? name = settings.name; // 当前传入的路由名称
   final Object? args = settings.arguments; // 路由参数
   final RouterDataV? pageContentBuilder = routesData[name]; // 获取路由指定组件函数

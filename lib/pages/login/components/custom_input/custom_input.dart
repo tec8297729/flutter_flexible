@@ -126,7 +126,7 @@ class _CustomInputState extends State<CustomInput> {
           TextField(
             controller: _controller,
             focusNode: _focusNode,
-            autofocus: widget.autofocus,
+            autofocus: widget.autofocus!,
             keyboardType: widget.keyboardType, // 默认键盘类型
             inputFormatters: widget.inputFormatters ?? dyFormatters(),
             decoration: InputDecoration(

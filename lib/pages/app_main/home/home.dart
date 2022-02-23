@@ -77,7 +77,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     );
   }
 
-  Widget _button(String text, {Function? onPressed}) {
+  Widget _button(String text, {VoidCallback? onPressed}) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
       child: ElevatedButton(
