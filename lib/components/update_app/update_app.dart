@@ -71,7 +71,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
             switch (event.status) {
               case OtaStatus.DOWNLOADING: // 下载中
                 setState(() {
-                  downAppProgress = double.parse(event.value);
+                  downAppProgress = double.parse(event.value!);
                 });
                 break;
               case OtaStatus.INSTALLING: //安装中

@@ -20,7 +20,7 @@ class _DoubleBackExitAppState extends State<ExitAppInterceptor>
     with SingleTickerProviderStateMixin {
   late Animation<double> animation; // 动画对象
   late AnimationController controller;
-  late DateTime? _lastPressedAt; // 上次点击时间
+  DateTime? _lastPressedAt; // 上次点击时间
   late Timer? _tipsTimer;
 
   @override
@@ -66,7 +66,7 @@ class _DoubleBackExitAppState extends State<ExitAppInterceptor>
     if (_lastPressedAt == null ||
         DateTime.now().difference(_lastPressedAt!) >
             const Duration(seconds: 2)) {
-      //两次点击间隔超过2秒则重新计时
+      // 两次点击间隔超过2秒则重新计时
       _lastPressedAt = DateTime.now();
       runTips();
       return false;

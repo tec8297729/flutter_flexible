@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 
 class TipsScaleAnimated extends AnimatedWidget {
   const TipsScaleAnimated(
-      {Key? key, required Animation<double> animation, required this.child})
+      {Key? key, required this.animation, required this.child})
       : super(key: key, listenable: animation);
 
   final Widget child;
+  final Animation<double> animation;
 
   @override
   Widget build(BuildContext context) {
-    final Animation<double> _animation = listenable; // 获取动画监听对象animation
-
     return AnimatedBuilder(
-      animation: _animation, // 定义动画效果
+      animation: animation, // 定义动画效果
       child: PhysicalModel(
         color: Colors.transparent, // 设置背景颜色
         borderRadius: BorderRadius.circular(15), // 定义裁剪圆度
@@ -25,10 +24,10 @@ class TipsScaleAnimated extends AnimatedWidget {
         ),
       ),
       // 指定动画效果
-      builder: (BuildContext context, Widget child) {
+      builder: (context, child) {
         return Transform.scale(
           origin: const Offset(0, 50), // 缩放后的偏移x,y位置
-          scale: _animation.value,
+          scale: animation.value,
           alignment: Alignment.center, // 缩放后的相对定位位置
           child: child,
         );

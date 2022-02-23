@@ -13,11 +13,6 @@ analyzer:
   exclude: [build/**, asset/**]
   language:
     strict-raw-types: true
-  strong-mode:
-    implicit-casts: false
-  errors:
-    argument_type_not_assignable: ignore
-    invalid_assignment: ignore
 
 linter:
   # The lint rules applied to this project can be customized in the

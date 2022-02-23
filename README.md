@@ -411,8 +411,7 @@ void anaPageLoopInit() {
 
 2、首先提供了二个 mixin 继承类使用，用在你需要独立统计的页面，并且记得把当前独立统计的页面路由过滤掉，例如/home 页面是独立统计四个页面，所以需要过滤整体的/home 路由。<br>
 
-```
-
+```dart
 PageViewListenerMixin类：用于监听类PageView组件
 TabViewListenerMixin类：用于监听类TabBar组件
 ```
