@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../config/app_config.dart';
+import '../../config/app_config.dart' show AppConfig;
 
 class BasicLayout extends StatelessWidget {
   const BasicLayout({
@@ -15,6 +15,8 @@ class BasicLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: designSize ?? AppConfig.screenSize,
+      minTextAdapt: true,
+      splitScreenMode: true,
       builder: (_, __) {
         return child;
       },

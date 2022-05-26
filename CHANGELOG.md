@@ -3,6 +3,7 @@
 ## v2.0.1
 
 - 修复flutter 3中针对空安全警告
+- layouts迁移至components目录
 
 ## v2.0.0
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../layouts/basic_layout.dart';
+import '../components/layouts/basic_layout.dart';
 import '../pages/error_page/error_page.dart';
 import './routes_data.dart'; // 路由页面定义
 

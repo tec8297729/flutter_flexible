@@ -4,6 +4,13 @@
 
 flexible 通过运行一个命令来创建一个 app 应用程序。可在 macOS，Windows 和 Linux 上运行。
 
+flutter版本
+
+```bash
+Flutter 3.0.1 • channel stable
+Tools • Dart 2.17.1 • DevTools 2.12.2
+```
+
 ## 内置集成功能
 
 • 动态环境构建打包，挂载在 app 内部全局参数中，如请求接口动态前缀 url，根据不同打包环境使用不同的接口域名。
