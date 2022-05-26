@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../routes/route_name.dart';
 import '../../components/update_app/check_app_version.dart'
     show checkAppVersion;
-import '../../config/app_env.dart' show appEnv, ENV_TYPE;
+import '../../config/app_env.dart' show appEnv, ENV;
 import '../../config/app_config.dart';
 import '../../components/exit_app_interceptor/exit_app_interceptor.dart';
 import '../../provider/global.p.dart';
@@ -89,7 +89,7 @@ class _AppMainState extends State<AppMain>
 
     handleCurrentIndex();
     initTools();
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       appPageStore.saveController(pageController);
 
       if (AppConfig.showJhDebugBtn) {
@@ -135,14 +135,14 @@ class _AppMainState extends State<AppMain>
       context: context,
       btnTitle1: '开发',
       btnTap1: () {
-        appEnv.setEnv = ENV_TYPE.DEV;
+        appEnv.setEnv = ENV.DEV;
         AppConfig.host = appEnv.baseUrl;
       },
       btnTitle2: '调试',
       btnTap2: () {},
       btnTitle3: '生产',
       btnTap3: () {
-        appEnv.setEnv = ENV_TYPE.PROD;
+        appEnv.setEnv = ENV.PROD;
         AppConfig.host = appEnv.baseUrl;
       },
     );

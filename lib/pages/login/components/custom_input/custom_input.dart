@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// 输出框风格类型
-enum INPUT_TYPE {
+enum InputType {
   /// 普通类型
   normal,
 
@@ -27,7 +27,7 @@ class CustomInput extends StatefulWidget {
     this.onChanged,
     this.rightCustom,
     this.keyboardType,
-    this.inputType = INPUT_TYPE.normal,
+    this.inputType = InputType.normal,
     this.margin,
     this.onTapCaptcha,
   }) : super(key: key);
@@ -35,7 +35,7 @@ class CustomInput extends StatefulWidget {
   final TextEditingController? controller;
 
   /// 输入框类型
-  final INPUT_TYPE inputType;
+  final InputType inputType;
 
   /// 提示内容
   final String? hintText;
@@ -97,7 +97,7 @@ class _CustomInputState extends State<CustomInput> {
   List<TextInputFormatter> dyFormatters() {
     List<TextInputFormatter> formmatterList = [];
     switch (widget.inputType) {
-      case INPUT_TYPE.captcha:
+      case InputType.captcha:
         formmatterList.addAll([
           FilteringTextInputFormatter.digitsOnly,
           LengthLimitingTextInputFormatter(6),
@@ -158,7 +158,7 @@ class _CustomInputState extends State<CustomInput> {
   Widget rightFixedWidget() {
     Widget fixedChild = Container();
     switch (widget.inputType) {
-      case INPUT_TYPE.captcha:
+      case InputType.captcha:
         fixedChild = Positioned(
           right: 0,
           top: 14,
@@ -176,7 +176,7 @@ class _CustomInputState extends State<CustomInput> {
         );
         break;
       // 关闭icon组件，聚集时显示
-      case INPUT_TYPE.close:
+      case InputType.close:
         if (isFocus) {
           fixedChild = Positioned(
             right: 0,

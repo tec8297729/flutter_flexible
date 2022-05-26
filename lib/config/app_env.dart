@@ -1,6 +1,7 @@
 import '../utils/index.dart';
 
-enum ENV_TYPE {
+/// 环境类型
+enum ENV {
   DEV,
   TEST,
   PRE,
@@ -8,41 +9,41 @@ enum ENV_TYPE {
 }
 
 // dio请求前缀
-final Map<ENV_TYPE, String> _baseUrl = {
-  ENV_TYPE.DEV: 'https://urldev.com',
-  ENV_TYPE.TEST: 'https://urltest.com',
-  ENV_TYPE.PRE: 'https://urlpre.com',
-  ENV_TYPE.PROD: 'https://url.com',
+final Map<ENV, String> _baseUrl = {
+  ENV.DEV: 'https://urldev.com',
+  ENV.TEST: 'https://urltest.com',
+  ENV.PRE: 'https://urlpre.com',
+  ENV.PROD: 'https://url.com',
 };
 
 /// app环境
 class AppEnv {
   /// 当前环境变量
-  ENV_TYPE currentEnv = ENV_TYPE.DEV;
+  ENV currentEnv = ENV.DEV;
 
   void init() {
     const envStr = String.fromEnvironment("INIT_ENV", defaultValue: "prod");
     switch (envStr) {
       case "dev":
-        currentEnv = ENV_TYPE.DEV;
+        currentEnv = ENV.DEV;
         break;
       case "test":
-        currentEnv = ENV_TYPE.TEST;
+        currentEnv = ENV.TEST;
         break;
       case "pre":
-        currentEnv = ENV_TYPE.PRE;
+        currentEnv = ENV.PRE;
         break;
       case "prod":
-        currentEnv = ENV_TYPE.PROD;
+        currentEnv = ENV.PROD;
         break;
       default:
-        currentEnv = ENV_TYPE.PROD;
+        currentEnv = ENV.PROD;
     }
     LogUtil.d('当前环境$currentEnv');
   }
 
   /// 设置当前环境
-  set setEnv(ENV_TYPE env) {
+  set setEnv(ENV env) {
     currentEnv = env;
   }
 

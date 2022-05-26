@@ -15,7 +15,7 @@ class BasicLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: designSize ?? AppConfig.screenSize,
-      builder: () {
+      builder: (_, __) {
         return child;
       },
     );

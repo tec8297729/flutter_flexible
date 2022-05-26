@@ -1,8 +1,8 @@
-import '../../config/app_env.dart' show appEnv, ENV_TYPE;
+import '../../config/app_env.dart' show appEnv, ENV;
 
 class LogUtil {
   static d(Object? data) {
-    if (appEnv.currentEnv != ENV_TYPE.PROD) {
+    if (appEnv.currentEnv != ENV.PROD) {
       print(data);
     }
   }
