@@ -1,5 +1,5 @@
 import '../models/common.m.dart';
-import '../utils/request.dart';
+import '../utils/dio/request.dart' show Request;
 
 /// 请求示例
 Future<Object> getDemo() async {

@@ -45,6 +45,7 @@ PS：其它更多功能介绍往下拉查看 功能介绍区文档，或自行�
   - [OTA 更新 App 版本](#ota更新app版本)
   - [全局主题切换功能](#全局主题切换功能)
   - [全局路由监听](#全局路由监听)
+  - [Provider状态管理](#Provider状态管理)
 - [历史更新](CHANGELOG.md)
 
 <br>
@@ -207,7 +208,7 @@ getHomeData() async {
 }
 ```
 
-#### dio 拦截处理
+### dio 拦截处理
 
 在 lib/utils/dio/interceptors 目录内，扩展请求拦截处理
 
@@ -235,6 +236,89 @@ class HeaderInterceptors extends InterceptorsWrapper {
   onError(DioError err) async {}
 }
 ```
+
+<br>
+
+## Provider状态管理
+
+1、在任意目录内创建provider目录（建议页面级目录），并且在此目录内建立一个store文件
+
+```dart
+// home页面
+// pages/app_main/home/provider/counterStore.p.dart文件
+import 'package:flutter/material.dart';
+
+class CounterStore extends ChangeNotifier {
+  int value = 10;
+  void increment() {
+    value++;
+    notifyListeners();
+  }
+}
+
+```
+
+2、进入lib/providers_config.dart文件，把刚创建好的store文件在里面声明一下
+
+```dart
+import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
+import 'pages/app_main/home/provider/counterStore.p.dart';
+import 'provider/global.p.dart';
+import 'provider/theme_store.p.dart';
+
+List<SingleChildWidget> providersConfig = [
+  ChangeNotifierProvider<ThemeStore>(create: (_) => ThemeStore()),
+  ChangeNotifierProvider<GlobalStore>(create: (_) => GlobalStore()),
+  // 新增的store
+  ChangeNotifierProvider<CounterStore>(create: (_) => CounterStore()),
+];
+```
+
+3、在页面中使用provider状态管理
+
+```Dart
+// home页面中使用，精简代码
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'provider/counterStore.p.dart';
+
+class Home extends StatefulWidget {
+  const Home({Key? key, this.params}) : super(key: key);
+  final dynamic params;
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  late CounterStore _counter;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    _counter = Provider.of<CounterStore>(context);
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          ElevatedButton(
+            child: Text(
+              // 读取ConterStore中的value变量，显示10
+              Text('状态管理值：${context.watch<CounterStore>().value}'),
+            ),
+            onPressed: (){
+              _counter.increment(); // 调用ConterStore类中的increment方法
+            },
+          )
+        ]
+      ),
+    );
+  }
+}
+
+```
+
+ps：provider官方还有更多api使用方式，[文档地址](https://pub.dev/packages/provider)
 
 <br>
 

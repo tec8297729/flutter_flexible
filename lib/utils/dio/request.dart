@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import '../config/app_config.dart';
-import 'dio/interceptors/header_interceptor.dart';
-import 'dio/interceptors/log_interceptor.dart';
+import '../../config/app_config.dart';
+import 'interceptors/header_interceptor.dart';
+import 'interceptors/log_interceptor.dart';
 
 Dio _initDio() {
   BaseOptions baseOpts = BaseOptions(
