@@ -1,4 +1,6 @@
-import '../utils/index.dart';
+import 'dart:io';
+
+import '../utils/index.dart' show LogUtil;
 
 /// 环境类型
 enum ENV {
@@ -16,13 +18,20 @@ final Map<ENV, String> _baseUrl = {
   ENV.PROD: 'https://url.com',
 };
 
-/// app环境
 class AppEnv {
   /// 当前环境变量
   ENV currentEnv = ENV.DEV;
 
+  /// 安卓渠道名称
+  String _androidChannel = '';
+
   void init() {
     const envStr = String.fromEnvironment("INIT_ENV", defaultValue: "prod");
+
+    if (Platform.isAndroid) {
+      _androidChannel =
+          const String.fromEnvironment("ANDROID_CHANNEL", defaultValue: "");
+    }
     switch (envStr) {
       case "dev":
         currentEnv = ENV.DEV;
@@ -41,6 +50,9 @@ class AppEnv {
     }
     LogUtil.d('当前环境$currentEnv');
   }
+
+  /// 获取app渠道名称
+  String getAppChannel() => _androidChannel;
 
   /// 设置当前环境
   set setEnv(ENV env) {

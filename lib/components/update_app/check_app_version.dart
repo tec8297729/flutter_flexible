@@ -1,10 +1,10 @@
 import '../../config/app_config.dart' show AppConfig;
 import '../../config/common_config.dart' show commonConfig;
-import '../../utils/index.dart' show PermUtil, SpUtil;
+import '../../utils/index.dart' show PermUtil, SpUtil, compareVersion;
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import '../../services/common_service.dart'; // 接口
-import 'update_app.dart';
+import './update_app.dart';
 
 bool _showFlag = false;
 
@@ -40,7 +40,9 @@ checkAppVersion({int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     // APP版本号对比检查
-    if (resData.version == packageInfo.version && !forceUpdate) return;
+    if (!compareVersion(resData.version, packageInfo.version) && !forceUpdate) {
+      return;
+    }
     _showFlag = true;
     // 弹层更新
     showGeneralDialog(

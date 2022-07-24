@@ -23,10 +23,10 @@ class NewVersionRes {
 }
 
 class NewVersionData {
-  String? version;
-  List<String>? info;
+  late String version;
+  late List<String> info;
 
-  NewVersionData({this.version, this.info});
+  NewVersionData({required this.version, required this.info});
 
   NewVersionData.fromJson(Map<String, dynamic> json) {
     version = json['version'];

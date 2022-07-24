@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../components/update_app/check_app_version.dart';
 import '../../../routes/route_name.dart';
+import '../../../config/app_env.dart' show appEnv;
 import 'provider/counterStore.p.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, this.params}) : super(key: key);
@@ -42,6 +43,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       children: List.generate(1, (index) {
         return Column(
           children: <Widget>[
+            Text('App渠道：${appEnv.getAppChannel()}'),
             _button(
               '跳转test页',
               onPressed: () {
