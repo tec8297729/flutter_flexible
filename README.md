@@ -7,8 +7,8 @@ flexible 通过运行一个命令来创建一个 app 应用程序。可在 macOS
 flutter版本
 
 ```bash
-Flutter 3.0.1 • channel stable
-Tools • Dart 2.17.1 • DevTools 2.12.2
+Flutter 3.3.2 • channel stable
+Tools • Dart 2.18.1 • DevTools 2.15.0
 ```
 
 ## 内置集成功能
