@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 import '../utils/index.dart' show LogUtil;
 
 /// 环境类型
@@ -27,8 +29,7 @@ class AppEnv {
 
   void init() {
     const envStr = String.fromEnvironment("INIT_ENV", defaultValue: "prod");
-
-    if (Platform.isAndroid) {
+    if (!kIsWeb && Platform.isAndroid) {
       _androidChannel =
           const String.fromEnvironment("ANDROID_CHANNEL", defaultValue: "");
     }

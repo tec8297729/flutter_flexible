@@ -1,5 +1,9 @@
 # 近期更新记录
 
+## v2.0.3
+
+- 修复web端报错问题（Another exception was thrown: Unsupported operation: Platform._operatingSystem）
+
 ## v2.0.2
 
 - 新增打包window、web打包命令，并且调整打包命令，统一风格

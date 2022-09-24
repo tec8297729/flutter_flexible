@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ota_update/ota_update.dart';
@@ -53,6 +54,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
 
   /// APP版本更新
   void _updateVersion() async {
+    if (kIsWeb) return;
     if (Platform.isIOS) {
       String url = widget.iosUrl; // ios应用商店地址
       if (await canLaunch(url)) {
