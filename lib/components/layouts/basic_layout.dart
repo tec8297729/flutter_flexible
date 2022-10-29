@@ -13,6 +13,7 @@ class BasicLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('designSize ${AppConfig.screenSize}');
     return ScreenUtilInit(
       designSize: designSize ?? AppConfig.screenSize,
       minTextAdapt: true,
