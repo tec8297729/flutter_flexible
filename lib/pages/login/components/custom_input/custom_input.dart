@@ -32,6 +32,7 @@ class CustomInput extends StatefulWidget {
     this.onTapCaptcha,
   }) : super(key: key);
 
+  /// 文本controller类，如果传入需要手动销毁
   final TextEditingController? controller;
 
   /// 输入框类型
@@ -66,12 +67,12 @@ class CustomInput extends StatefulWidget {
 }
 
 class _CustomInputState extends State<CustomInput> {
-  late TextEditingController _controller;
+  TextEditingController? _controller;
   double baseTextSize = 32.sp;
   Color desTextColor = const Color(0xFFB4B9C6);
   String captchaText = '获取验证码';
   bool changeFlag = false; // 是否正在变动中
-  late Timer? _timer; // 定时对象
+  Timer? _timer; // 定时对象
   final FocusNode _focusNode = FocusNode(); // 光标
   bool isFocus = false; // 是否聚集
 
@@ -89,7 +90,7 @@ class _CustomInputState extends State<CustomInput> {
   @override
   void dispose() {
     if (_timer != null) _timer?.cancel();
-    _controller.dispose();
+    if (widget.controller == null) _controller?.dispose();
     super.dispose();
   }
 
@@ -183,7 +184,7 @@ class _CustomInputState extends State<CustomInput> {
             top: 15,
             child: GestureDetector(
               onTap: () {
-                _controller.clear();
+                _controller?.clear();
               },
               child: Icon(Icons.close, size: 36.sp),
             ),
@@ -217,7 +218,6 @@ class _CustomInputState extends State<CustomInput> {
       // 结束
       if (seconds <= 0) {
         timer.cancel();
-        _timer = null;
         setState(() {
           changeFlag = false;
           captchaText = '获取验证码';

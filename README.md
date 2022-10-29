@@ -7,8 +7,8 @@ flexible 通过运行一个命令来创建一个 app 应用程序。可在 macOS
 flutter版本
 
 ```bash
-Flutter 3.3.2 • channel stable
-Tools • Dart 2.18.1 • DevTools 2.15.0
+Flutter 3.3.6 • channel stable
+Tools • Dart 2.18.2 • DevTools 2.15.0
 ```
 
 ## 内置集成功能
@@ -46,6 +46,7 @@ PS：其它更多功能介绍往下拉查看 功能介绍区文档，或自行�
   - [全局主题切换功能](#全局主题切换功能)
   - [全局路由监听](#全局路由监听)
   - [Provider状态管理](#Provider状态管理)
+  - [build渠道标记](#build渠道标记)
 - [历史更新](CHANGELOG.md)
 
 <br>
@@ -572,4 +573,22 @@ class _AppMainState extends State<AppMain> with PageViewListenerMixin {
     );
   }
 }
+```
+
+## build渠道标记
+
+1、打包时注入ANDROID_CHANNEL参数，标记渠道参数
+
+```bash
+flutter build apk --dart-define=ANDROID_CHANNEL=flutter # 打包
+flutter run --dart-define=ANDROID_CHANNEL=flutter # 本地运行（开发）
+```
+
+PS: 打包不同渠道命令可统一写到package.json文件内，使用npm run xxxx批量执行打包，具体可参考package.json文件命令
+
+2、在flutter端获取渠道变量
+
+```dart
+import 'lib/config/app_env.dart' show appEnv; // 获取环境类
+appEnv.getAppChannel() // 获取渠道参数
 ```

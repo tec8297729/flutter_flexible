@@ -1,5 +1,11 @@
 # 近期更新记录
 
+## v2.1.0
+
+- 新增打包标记渠道变量ANDROID_CHANNEL
+- 修复全屏退出时，动态样式不正确问题
+- 修复监听键盘弹起问题
+
 ## v2.0.3
 
 - 修复web端报错问题（Another exception was thrown: Unsupported operation: Platform._operatingSystem）

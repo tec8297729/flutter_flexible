@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_flexible/components/layouts/basic_layout.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:jh_debug/jh_debug.dart' show DebugMode, jhDebug, jhDebugMain;
@@ -31,24 +32,26 @@ class MyApp extends StatelessWidget {
     appSetupInit();
     return Consumer<ThemeStore>(
       builder: (context, themeStore, child) {
-        return MaterialApp(
-          navigatorKey: jhDebug.getNavigatorKey,
-          showPerformanceOverlay: false,
-          locale: const Locale('zh', 'CH'),
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('zh', 'CH'),
-            Locale('en', 'US'),
-          ],
-          theme: themeStore.getTheme,
-          initialRoute: initialRoute,
-          onGenerateRoute: generateRoute, // 路由处理
-          debugShowCheckedModeBanner: false,
-          navigatorObservers: [...anaAllObs()],
+        return BasicLayout(
+          child: MaterialApp(
+            navigatorKey: jhDebug.getNavigatorKey,
+            showPerformanceOverlay: false,
+            locale: const Locale('zh', 'CH'),
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('zh', 'CH'),
+              Locale('en', 'US'),
+            ],
+            theme: themeStore.getTheme,
+            initialRoute: initialRoute,
+            onGenerateRoute: generateRoute, // 路由处理
+            debugShowCheckedModeBanner: false,
+            navigatorObservers: [...anaAllObs()],
+          ),
         );
       },
     );

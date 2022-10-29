@@ -19,9 +19,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   // 容错路由
   if (pageContentBuilder == null) {
     return MaterialPageRoute(
-      builder: (BuildContext context) => BasicLayout(
-        child: ErrorPage(params: args),
-      ),
+      builder: (BuildContext context) => ErrorPage(params: args),
       settings: settingsData,
     );
   }
@@ -29,9 +27,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   // 默认跳转路由
   Route<dynamic> router = MaterialPageRoute(
     builder: (BuildContext context) {
-      return BasicLayout(
-        child: pageContentBuilder(context, params: args),
-      );
+      return pageContentBuilder(context, params: args);
     },
     settings: settingsData,
   );

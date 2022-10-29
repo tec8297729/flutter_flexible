@@ -18,6 +18,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
   late CounterStore _counter;
+  FocusNode blankNode = FocusNode(); // 响应空白处的焦点的Node
 
   @override
   void initState() {
@@ -34,7 +35,13 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         title: const Text('home页面'),
         automaticallyImplyLeading: false,
       ),
-      body: contextWidget(),
+      body: GestureDetector(
+        onTap: () {
+          // 点击空白页面关闭键盘
+          FocusScope.of(context).requestFocus(blankNode);
+        },
+        child: contextWidget(),
+      ),
     );
   }
 

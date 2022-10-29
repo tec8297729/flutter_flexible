@@ -17,6 +17,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  FocusNode blankNode = FocusNode(); // 响应空白处的焦点的Node
   final double baseTextSize = 32.sp; // 输入框文字
   final double _slaSize = 26.sp; // 协议文字大小
   Color desTextColor = const Color(0xFFB4B9C6);
@@ -24,7 +25,6 @@ class _LoginState extends State<Login> {
   final _captchaController = TextEditingController();
   Color btnDisableColor = const Color(0xffAFD1FC); // 禁用按钮颜色
   bool isSelected = false; // 协议勾选
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -36,6 +36,7 @@ class _LoginState extends State<Login> {
   void dispose() {
     _phoneController.dispose();
     _captchaController.dispose();
+    FocusScope.of(context).requestFocus(blankNode);
     super.dispose();
   }
 
@@ -62,6 +63,7 @@ class _LoginState extends State<Login> {
   // 登入按钮
   login() async {
     if (!inputIsPhone()) return;
+    FocusScope.of(context).requestFocus(blankNode);
     if (!isSelected) return Tips.info('请确认已阅读用户协议和隐私协议');
     String captText = _captchaController.text;
     if (captText.isEmpty || captText.length < 6) return Tips.info('请输入正确的验证码');
@@ -78,31 +80,38 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
-      body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 48.w),
-          child: Column(
-            children: [
-              navWidget(),
-              CustomInput(
-                margin: EdgeInsets.only(bottom: 30.w),
-                controller: _phoneController,
-                autofocus: true,
-                hintText: '点击输入手机号码',
-                inputType: InputType.close,
-              ),
-              CustomInput(
-                controller: _captchaController,
-                hintText: '点击输入短信验证码',
-                inputType: InputType.captcha,
-                onTapCaptcha: onTapCaptcha,
-              ),
-              bottomBtn(),
-              slaText(),
-            ],
+      body: GestureDetector(
+        onTap: () {
+          // 点击空白页面关闭键盘
+          FocusScope.of(context).requestFocus(blankNode);
+        },
+        child: loginLayout(),
+      ),
+    );
+  }
+
+  Widget loginLayout() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 48.w),
+      child: ListView(
+        children: [
+          navWidget(),
+          CustomInput(
+            margin: EdgeInsets.only(bottom: 23.w),
+            controller: _phoneController,
+            autofocus: true,
+            hintText: '点击输入手机号码',
+            inputType: InputType.close,
           ),
-        ),
+          CustomInput(
+            controller: _captchaController,
+            hintText: '点击输入短信验证码',
+            inputType: InputType.captcha,
+            onTapCaptcha: onTapCaptcha,
+          ),
+          bottomBtn(),
+          slaText(),
+        ],
       ),
     );
   }
