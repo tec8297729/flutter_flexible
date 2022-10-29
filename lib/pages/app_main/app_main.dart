@@ -110,7 +110,6 @@ class _AppMainState extends State<AppMain>
   @override
   void dispose() {
     pageController.dispose();
-    print('销毁');
     FocusScope.of(context).requestFocus(FocusNode()); // 选择焦点，收起键盘效果
     super.dispose();
   }
