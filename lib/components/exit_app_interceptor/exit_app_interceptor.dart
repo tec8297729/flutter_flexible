@@ -13,7 +13,7 @@ class ExitAppInterceptor extends StatefulWidget {
   final String? title;
 
   @override
-  _DoubleBackExitAppState createState() => _DoubleBackExitAppState();
+  State<ExitAppInterceptor> createState() => _DoubleBackExitAppState();
 }
 
 class _DoubleBackExitAppState extends State<ExitAppInterceptor>

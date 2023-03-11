@@ -13,7 +13,7 @@ class ErrorPage extends StatefulWidget {
   final String? errorText;
 
   @override
-  _ErrorPageState createState() => _ErrorPageState();
+  State<ErrorPage> createState() => _ErrorPageState();
 }
 
 class _ErrorPageState extends State<ErrorPage> {

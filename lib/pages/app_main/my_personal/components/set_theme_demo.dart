@@ -6,7 +6,7 @@ import '../../../../provider/global.p.dart';
 
 class SetThemeDemo extends StatefulWidget {
   @override
-  _SetThemeDemoState createState() => _SetThemeDemoState();
+  State<SetThemeDemo> createState() => _SetThemeDemoState();
 }
 
 class _SetThemeDemoState extends State<SetThemeDemo> {

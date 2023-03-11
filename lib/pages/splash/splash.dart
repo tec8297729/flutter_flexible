@@ -10,7 +10,7 @@ import 'components/welcome_page.dart';
 /// 闪屏页。
 class SplashPage extends StatefulWidget {
   @override
-  _SplashPageState createState() => _SplashPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
 class _SplashPageState extends State<SplashPage> {

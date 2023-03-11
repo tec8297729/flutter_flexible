@@ -8,7 +8,7 @@ class HeaderInterceptors extends InterceptorsWrapper {
   // 请求拦截
   @override
   onRequest(RequestOptions options, handler) async {
-    options.connectTimeout = 15000;
+    options.connectTimeout = const Duration(seconds: 15000);
     options.baseUrl = AppConfig.host;
     return handler.next(options);
   }

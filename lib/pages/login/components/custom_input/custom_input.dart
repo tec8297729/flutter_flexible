@@ -63,7 +63,7 @@ class CustomInput extends StatefulWidget {
   final EdgeInsetsGeometry? margin;
 
   @override
-  _CustomInputState createState() => _CustomInputState();
+  State<CustomInput> createState() => _CustomInputState();
 }
 
 class _CustomInputState extends State<CustomInput> {

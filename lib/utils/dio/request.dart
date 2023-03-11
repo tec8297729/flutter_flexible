@@ -1,13 +1,14 @@
 import 'dart:convert';
-import 'package:dio/adapter.dart';
+import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import '../../config/app_config.dart';
 import 'interceptors/header_interceptor.dart';
 import 'interceptors/log_interceptor.dart';
 
 Dio _initDio() {
   BaseOptions baseOpts = BaseOptions(
-    connectTimeout: 50000, // 连接服务器超时时间，单位是毫秒
+    connectTimeout: const Duration(seconds: 50000),
     responseType: ResponseType.plain, // 数据类型
     receiveDataWhenStatusError: true,
   );
@@ -16,6 +17,20 @@ Dio _initDio() {
     HeaderInterceptors(),
     LogsInterceptors(),
   ]);
+
+  if (AppConfig.usingProxy) {
+    dioClient.httpClientAdapter = IOHttpClientAdapter()
+      ..onHttpClientCreate = (HttpClient client) {
+        client.findProxy = (uri) {
+          // 设置Http代理
+          return "PROXY ${AppConfig.proxyAddress}";
+        };
+        // https证书校验
+        client.badCertificateCallback =
+            (X509Certificate cert, String host, int port) => true;
+        return client;
+      };
+  }
   return dioClient;
 }
 
@@ -48,20 +63,6 @@ Future<T> safeRequest<T>(
   CancelToken? cancelToken,
 }) async {
   try {
-    if (AppConfig.usingProxy) {
-      final adapter =
-          Request.dioClient.httpClientAdapter as DefaultHttpClientAdapter;
-      adapter.onHttpClientCreate = (client) {
-        // 设置Http代理
-        client.findProxy = (uri) {
-          return "PROXY ${AppConfig.proxyAddress}";
-        };
-        // https证书校验
-        client.badCertificateCallback = (cert, host, port) => true;
-        return client;
-      };
-    }
-
     return Request.dioClient
         .request(
           url,

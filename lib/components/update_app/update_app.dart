@@ -37,7 +37,7 @@ class UpdateAppVersion extends StatefulWidget {
   final String androidUrl;
 
   @override
-  _UpdateAppVersionState createState() => _UpdateAppVersionState();
+  State<UpdateAppVersion> createState() => _UpdateAppVersionState();
 }
 
 class _UpdateAppVersionState extends State<UpdateAppVersion> {

@@ -28,7 +28,7 @@ class BasicSafeArea extends StatefulWidget {
   final String? rightText;
 
   @override
-  _BasicSafeAreaState createState() => _BasicSafeAreaState();
+  State<BasicSafeArea> createState() => _BasicSafeAreaState();
 }
 
 class _BasicSafeAreaState extends State<BasicSafeArea> {

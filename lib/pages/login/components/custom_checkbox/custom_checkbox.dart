@@ -38,7 +38,7 @@ class CustomCheckbox extends StatefulWidget {
   final void Function(bool value)? onChanged;
 
   @override
-  _CustomCheckboxState createState() => _CustomCheckboxState();
+  State<CustomCheckbox> createState() => _CustomCheckboxState();
 }
 
 class _CustomCheckboxState extends State<CustomCheckbox> {

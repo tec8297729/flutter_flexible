@@ -9,7 +9,7 @@ class TestDemo extends StatefulWidget {
   final dynamic params;
 
   @override
-  _TestDemoState createState() => _TestDemoState();
+  State<TestDemo> createState() => _TestDemoState();
 }
 
 class _TestDemoState extends State<TestDemo> {

@@ -4,7 +4,7 @@ import '../../../routes/route_name.dart';
 /// 指引页面
 class WelcomePage extends StatefulWidget {
   @override
-  _WelcomePageState createState() => _WelcomePageState();
+  State<WelcomePage> createState() => _WelcomePageState();
 }
 
 class _WelcomePageState extends State<WelcomePage> {

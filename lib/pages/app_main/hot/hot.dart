@@ -6,7 +6,7 @@ class Hot extends StatefulWidget {
   final dynamic params;
 
   @override
-  _HotState createState() => _HotState();
+  State<Hot> createState() => _HotState();
 }
 
 class _HotState extends State<Hot> with AutomaticKeepAliveClientMixin {

@@ -4,7 +4,7 @@ import '../../../../routes/route_name.dart';
 
 class HeadUserBox extends StatefulWidget {
   @override
-  _HeadUserBoxState createState() => _HeadUserBoxState();
+  State<HeadUserBox> createState() => _HeadUserBoxState();
 }
 
 class _HeadUserBoxState extends State<HeadUserBox> {

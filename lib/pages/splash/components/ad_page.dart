@@ -5,7 +5,7 @@ import '../../../routes/route_name.dart';
 /// APP入口全屏广告页面
 class AdPage extends StatefulWidget {
   @override
-  _AdPageState createState() => _AdPageState();
+  State<AdPage> createState() => _AdPageState();
 }
 
 class _AdPageState extends State<AdPage> {

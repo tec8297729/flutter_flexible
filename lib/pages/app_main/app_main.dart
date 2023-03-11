@@ -42,7 +42,7 @@ class AppMain extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AppMainState createState() => _AppMainState();
+  State<AppMain> createState() => _AppMainState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);

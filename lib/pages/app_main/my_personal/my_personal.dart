@@ -6,7 +6,7 @@ import 'components/head_userbox.dart';
 
 class MyPersonal extends StatefulWidget {
   @override
-  _MyPersonalState createState() => _MyPersonalState();
+  State<MyPersonal> createState() => _MyPersonalState();
 }
 
 class _MyPersonalState extends State<MyPersonal>

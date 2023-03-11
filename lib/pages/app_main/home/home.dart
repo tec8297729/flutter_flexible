@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
   final dynamic params;
 
   @override
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
