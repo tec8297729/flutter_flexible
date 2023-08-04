@@ -7,8 +7,8 @@ flexible 通过运行一个命令来创建一个 app 应用程序。可在 macOS
 flutter版本
 
 ```bash
-Flutter 3.3.6 • channel stable
-Tools • Dart 2.18.2 • DevTools 2.15.0
+Flutter 3.10.6 • channel stable
+Tools • Dart 3.0.6 • DevTools 2.23.1
 ```
 
 ## 内置集成功能
@@ -114,6 +114,13 @@ flutter run
 ```
 
 <br/>
+
+PS：安卓如果编译失败，请在android\local.properties更改minSdkVersion版本号
+
+```bash
+# 调整版本号到19以上，原flutter默认版本为16
+flutter.minSdkVersion=19
+```
 
 ### 指令参数介绍
 
@@ -406,16 +413,7 @@ class _testDemoState extends State<testDemo>{
 </manifest>
 ```
 
-2、创建android/app/src/main/res/xml/filepaths.xml文件，并粘贴以下内容！这将允许插件访问下载文件夹以开始更新。
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<paths xmlns:android="http://schemas.android.com/apk/res/android">
-  <files-path name="internal_apk_storage" path="ota_update/"/>
-</paths>
-```
-
-3、在 lib\components\UpdateAppVersion\getNewAppVer.dart 文件中，getNewAppVer 方法直接运行更新 APP 版本，但有少部份需要自己实现，已标注 TODO 位置，指定 APP 下载地址和获取新版本的接口替换。<br>
+2、在 lib\components\UpdateAppVersion\getNewAppVer.dart 文件中，getNewAppVer 方法直接运行更新 APP 版本，但有少部份需要自己实现，已标注 TODO 位置，指定 APP 下载地址和获取新版本的接口替换。<br>
 
 ```dart
 // TODO:替换成自己的获取新版本APP的接口
@@ -580,11 +578,26 @@ class _AppMainState extends State<AppMain> with PageViewListenerMixin {
 1、打包时注入ANDROID_CHANNEL参数，标记渠道参数
 
 ```bash
-flutter build apk --dart-define=ANDROID_CHANNEL=flutter # 打包
-flutter run --dart-define=ANDROID_CHANNEL=flutter # 本地运行（开发）
+flutter build apk --dart-define=ANDROID_CHANNEL=flutter # 打包，并标记渠道为flutter
+flutter run --dart-define=ANDROID_CHANNEL=flutter # 本地运行（开发环境），查看当前渠道
 ```
 
-PS: 打包不同渠道命令可统一写到package.json文件内，使用npm run xxxx批量执行打包，具体可参考package.json文件命令
+PS: 打包不同渠道命令可统一写到package.json文件内（生成多条指令），使用npm run xxxx批量执行打包，具体可参考package.json文件命令
+
+示例：批量执行多条指令
+
+```json
+{
+  "scripts": {
+    // 终端执行npm run build，代表同时执行build-apk:prod、build-ios:prod、build-web:prod、build-windows:prod几条指令
+    "build": "npm run build-apk:prod && npm run build-ios:prod && npm run build-web:prod && npm run build-windows:prod",
+    "build-apk:prod": "flutter build apk --dart-define=INIT_ENV=prod --dart-define=ANDROID_CHANNEL=flutter",
+    "build-ios:prod": "flutter build ios --dart-define=INIT_ENV=prod",
+    "build-web:prod": "flutter build web --dart-define=INIT_ENV=prod",
+    "build-windows:prod": "flutter build windows --dart-define=INIT_ENV=prod",
+  }
+}
+```
 
 2、在flutter端获取渠道变量
 

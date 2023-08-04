@@ -1,5 +1,11 @@
 # 近期更新记录
 
+## v2.1.2
+- 更新ios、android、linux、macos目录基础文件
+- 升级所有第三方依赖包
+- package_info 依赖包替换 package_info_plus
+- ota_update4版本升级到5
+
 ## v2.1.1
 
 - flutter 3.7.7兼容，并更新依赖包

@@ -2,7 +2,7 @@ import '../../config/app_config.dart' show AppConfig;
 import '../../config/common_config.dart' show commonConfig;
 import '../../utils/index.dart' show PermUtil, SpUtil, compareVersion;
 import 'package:flutter/material.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import '../../services/common_service.dart'; // 接口
 import './update_app.dart';
 
