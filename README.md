@@ -190,6 +190,8 @@ import 'config/common_config.dart' show commonConfig;
 commonConfig.getGlobalKey;; // 全局context对象
 ```
 
+应用场景：像弹层需要context对象，状态管理层（调用第三方插件有依赖）都可以直接使用全局的context对象透传过去
+
 <br>
 
 ## dio 封装简化使用
@@ -470,13 +472,17 @@ _theme.setTheme(themeBlueGrey); // 替换主题，注入主题配置即可
 
 ### 灰度主题
 
-灰度主题只有 app 首页生效，针对特殊场景使用，此功能不需要单独配置主题文件，直接使用即可。<br>
+灰度主题只有 app 首页生效，针对特殊场景使用，此功能不需要单独配置主题文件，直接使用即可。
+
+<br>
 
 ```dart
 import './lib/provider/global.p.dart';
 GlobalStore globalStore = Provider.of<GlobalStore>(context);
 globalStore.setGrayTheme(true); // 设置灰度模式
 ```
+
+PS：一般灰度主题模式用于特殊纪念日才使用，如需所有页面都展示此效果，可参考lib\pages\app_main\app_main.dart内build函数代码，使用到所有页面
 
 ## 全局路由监听
 
