@@ -12,7 +12,6 @@ import 'package:ana_page_loop/ana_page_loop.dart' show anaAllObs;
 import 'utils/app_setup/index.dart' show appSetupInit;
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   jhDebugMain(
     appChild: MultiProvider(
       providers: providersConfig,
@@ -30,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     jhDebug.setGlobalKey = commonConfig.getGlobalKey;
     appSetupInit();
+    WidgetsFlutterBinding.ensureInitialized();
     return Consumer<ThemeStore>(
       builder: (context, themeStore, child) {
         return BasicLayout(
