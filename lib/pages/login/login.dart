@@ -74,7 +74,7 @@ class _LoginState extends State<Login> {
     );
     // 成功后，回退上一页
     await UserUtil.saveUserInfo(userData);
-    Navigator.pop(context, true);
+    if (context.mounted) Navigator.pop(context, true);
   }
 
   @override

@@ -67,11 +67,11 @@ class _TestDemoState extends State<TestDemo> {
     return Container(
       margin: const EdgeInsets.only(top: 10),
       child: ElevatedButton(
+        onPressed: onPressed,
         child: Text(
           text,
           style: TextStyle(fontSize: 22.sp),
         ),
-        onPressed: onPressed,
       ),
     );
   }

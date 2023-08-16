@@ -37,16 +37,16 @@ class _HeadUserBoxState extends State<HeadUserBox> {
     return baseBox(
       child: ElevatedButton(
         onPressed: onTap,
-        child: Text(
-          title,
-          style: TextStyle(fontSize: 33.sp),
-        ),
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
             ),
           ),
+        ),
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 33.sp),
         ),
       ),
     );

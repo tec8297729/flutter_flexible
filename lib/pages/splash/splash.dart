@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
     });
 
     /// 调试阶段，直接跳过此组件
-    if (AppConfig.notSplash) {
+    if (AppConfig.notSplash && context.mounted) {
       Navigator.pushReplacementNamed(context, RouteName.appMain);
     }
   }

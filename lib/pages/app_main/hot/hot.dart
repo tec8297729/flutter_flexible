@@ -34,10 +34,10 @@ class _HotState extends State<Hot> with AutomaticKeepAliveClientMixin {
       ),
       body: ListView(
         children: List.generate(1, (index) {
-          return Center(
+          return const Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
+              children: <Widget>[
                 Text(
                   'hot页面',
                   style: TextStyle(fontSize: 32),

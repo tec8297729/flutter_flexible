@@ -90,11 +90,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     return Container(
       margin: const EdgeInsets.only(top: 10),
       child: ElevatedButton(
+        onPressed: onPressed,
         child: Text(
           text,
           style: TextStyle(fontSize: 22.sp),
         ),
-        onPressed: onPressed,
       ),
     );
   }

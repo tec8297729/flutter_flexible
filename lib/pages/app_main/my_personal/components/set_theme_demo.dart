@@ -27,8 +27,8 @@ class _SetThemeDemoState extends State<SetThemeDemo> {
             btnWidget('切换粉色主题', themePink, Colors.pink),
             btnWidget('切换蓝灰主题', themeBlueGrey, Colors.blueGrey),
             btnWidget('切换天空蓝主题', themeLightBlue, Colors.lightBlue),
-            btnWidget(
-                '暗模式', ThemeData.dark(), ThemeData.dark().backgroundColor),
+            btnWidget('暗模式', ThemeData.dark(),
+                ThemeData.dark().colorScheme.background),
             grayBtn(),
           ],
         ),
@@ -51,15 +51,15 @@ class _SetThemeDemoState extends State<SetThemeDemo> {
 
   Widget btnWidget(String title, ThemeData themeData, Color color) {
     return ElevatedButton(
-      child: Text(
-        title,
-        style: const TextStyle(fontSize: 22, color: Colors.white70),
-      ),
       onPressed: () {
         _theme.setTheme(themeData);
       },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(color),
+      ),
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 22, color: Colors.white70),
       ),
     );
   }

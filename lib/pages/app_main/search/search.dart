@@ -11,9 +11,9 @@ class Search extends StatelessWidget {
       body: Container(
         color: Colors.green,
         width: double.infinity,
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             Text('搜索内容'),
           ],
         ),
