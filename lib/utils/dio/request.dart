@@ -19,17 +19,19 @@ Dio _initDio() {
   ]);
 
   if (AppConfig.usingProxy) {
-    dioClient.httpClientAdapter = IOHttpClientAdapter()
-      ..onHttpClientCreate = (HttpClient client) {
+    dioClient.httpClientAdapter = IOHttpClientAdapter(
+      createHttpClient: () {
+        final client = HttpClient();
         client.findProxy = (uri) {
-          // 设置Http代理
+          // 设置Http代理，请注意，代理会在你正在运行应用的设备上生效，而不是在宿主平台生效。
           return "PROXY ${AppConfig.proxyAddress}";
         };
         // https证书校验
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) => true;
         return client;
-      };
+      },
+    );
   }
   return dioClient;
 }

@@ -56,11 +56,11 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
   void _updateVersion() async {
     if (kIsWeb) return;
     if (Platform.isIOS) {
-      String url = widget.iosUrl; // ios应用商店地址
-      if (await canLaunch(url)) {
-        await launch(url);
+      Uri uri = Uri.parse(widget.iosUrl); // ios应用商店地址
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri);
       } else {
-        throw 'Could not launch $url';
+        throw 'Could not launch ${uri.toString()}';
       }
     } else if (Platform.isAndroid) {
       // 安卓apk下载地址
@@ -114,11 +114,11 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
 
   /// 底部组件
   Widget bottomW() {
-    Widget _child = upAppBtn();
+    Widget btnChild = upAppBtn();
 
     if (downloadFlag) {
       // 下载中，进度条
-      _child = downProgressWidget();
+      btnChild = downProgressWidget();
     }
 
     return Container(
@@ -133,7 +133,7 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[_child],
+        children: <Widget>[btnChild],
       ),
     );
   }

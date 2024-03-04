@@ -21,11 +21,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   FocusNode blankNode = FocusNode(); // 响应空白处的焦点的Node
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     super.build(context);
     _counter = Provider.of<CounterStore>(context);

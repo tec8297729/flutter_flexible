@@ -44,8 +44,8 @@ class _AdPageState extends State<AdPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: Stack(
         children: <Widget>[
           Center(

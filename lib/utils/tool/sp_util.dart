@@ -51,10 +51,10 @@ class SpUtil {
   static Future<bool> setListData<T>(String key, List<T> value,
       {bool cast = false}) async {
     if (_prefs == null) await getInstance();
-    List<String> _dataList = value.map((v) {
+    List<String> dataList = value.map((v) {
       return cast ? v.toString() : json.encode(v);
     }).toList();
-    return await _prefs?.setStringList(key, _dataList) as bool;
+    return await _prefs?.setStringList(key, dataList) as bool;
   }
 
   /// 设置Map类型到缓存中去,
@@ -94,8 +94,8 @@ class SpUtil {
   /// 获取Map类型缓存，内部类型未定义
   static Future<T> getMap<T>(String key, {T? defValue}) async {
     if (_prefs == null) await getInstance();
-    String _data = _prefs?.getString(key) ?? '';
-    if (_data.isNotEmpty) return json.decode(_data) as T;
+    String data = _prefs?.getString(key) ?? '';
+    if (data.isNotEmpty) return json.decode(data) as T;
     return defValue ?? {} as T;
   }
 
@@ -113,8 +113,8 @@ class SpUtil {
     List<String> dataList =
         (_prefs?.getStringList(key) ?? defValue ?? []) as List<String>;
     return dataList.map((value) {
-      T _dataMap = json.decode(value) as T;
-      return _dataMap;
+      T dataMap = json.decode(value) as T;
+      return dataMap;
     }).toList();
   }
 

@@ -44,9 +44,10 @@ class _DoubleBackExitAppState extends State<ExitAppInterceptor>
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return PopScope(
+      canPop: false,
       // 监听返回事件
-      onWillPop: handleWillPop,
+      onPopInvoked: handleWillPop,
       child: TipsScaleAnimated(
         animation: animation,
         child: Text(
@@ -62,16 +63,17 @@ class _DoubleBackExitAppState extends State<ExitAppInterceptor>
   }
 
   // 验校几秒内二次返回键退出APP，默认2秒
-  Future<bool> handleWillPop() async {
+  handleWillPop(bool didPop) {
+    if (didPop) return;
     if (_lastPressedAt == null ||
         DateTime.now().difference(_lastPressedAt!) >
             const Duration(seconds: 2)) {
       // 两次点击间隔超过2秒则重新计时
       _lastPressedAt = DateTime.now();
       runTips();
-      return false;
+      return;
     }
-    return exit(0);
+    exit(0);
   }
 
   // 底部提示信息动画控制

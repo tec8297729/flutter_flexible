@@ -70,7 +70,7 @@ checkAppVersion({int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
           child: UpdateAppVersion(
             // TODO: 传入新版本APP相关参数、版本号、更新内容、下载地址等
             version: resData.version, // 版本号
-            info: (resData.info as List).cast<String>(), // 更新内容介绍
+            info: (resData.info).cast<String>(), // 更新内容介绍
             // ios是苹果应用商店地址
             iosUrl: 'itms-apps://itunes.apple.com/cn/app/id414478124?mt=8',
             androidUrl:

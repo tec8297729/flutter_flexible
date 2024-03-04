@@ -164,16 +164,19 @@ class _AppMainState extends State<AppMain>
   }
 
   @override
+  // ignore: unnecessary_overrides
   void didPop() {
     super.didPop();
   }
 
   @override
+  // ignore: unnecessary_overrides
   void didPush() {
     super.didPush();
   }
 
   @override
+  // ignore: unnecessary_overrides
   void didPushNext() {
     super.didPushNext();
   }
