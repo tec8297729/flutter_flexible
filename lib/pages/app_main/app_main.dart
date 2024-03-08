@@ -137,14 +137,14 @@ class _AppMainState extends State<AppMain>
       btnTitle1: '开发',
       btnTap1: () {
         appEnv.setEnv = ENV.DEV;
-        AppConfig.host = appEnv.baseUrl;
+        // AppConfig.host = appEnv.baseUrl;
       },
       btnTitle2: '调试',
       btnTap2: () {},
       btnTitle3: '生产',
       btnTap3: () {
         appEnv.setEnv = ENV.PROD;
-        AppConfig.host = appEnv.baseUrl;
+        // AppConfig.host = appEnv.baseUrl;
       },
     );
   }

@@ -45,8 +45,8 @@ checkAppVersion({int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
     }
     _showFlag = true;
     // 弹层更新
-    // ignore: use_build_context_synchronously
     showGeneralDialog(
+      // ignore: use_build_context_synchronously
       context: commonConfig.getGlobalContext,
       barrierDismissible: !forceUpdate, // 是否点击其他区域消失
       barrierLabel: "",

@@ -9,6 +9,7 @@ import 'interceptors/log_interceptor.dart';
 Dio _initDio() {
   BaseOptions baseOpts = BaseOptions(
     connectTimeout: const Duration(seconds: 50000),
+    baseUrl: AppConfig.host,
     responseType: ResponseType.plain, // 数据类型
     receiveDataWhenStatusError: true,
   );

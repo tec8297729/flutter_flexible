@@ -32,7 +32,6 @@ class LogsInterceptors extends InterceptorsWrapper {
   @override
   onError(DioException err, handler) async {
     if (AppConfig.DEBUG) {
-      print('请求异常: $err');
       print('请求异常信息: ${err.response!}');
     }
     return handler.next(err);

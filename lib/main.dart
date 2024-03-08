@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
             theme: themeStore.getTheme,
             initialRoute: initialRoute,
             onGenerateRoute: generateRoute, // 路由处理
-            // debugShowCheckedModeBanner: false,
+            debugShowCheckedModeBanner: false,
             navigatorObservers: [...anaAllObs()],
           ),
         );

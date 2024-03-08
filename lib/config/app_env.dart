@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 import '../utils/index.dart' show LogUtil;
+import 'app_config.dart';
 
 /// 环境类型
 enum ENV {
@@ -58,6 +59,7 @@ class AppEnv {
   /// 设置当前环境
   set setEnv(ENV env) {
     currentEnv = env;
+    AppConfig.host = _baseUrl[currentEnv]!;
   }
 
   /// 获取url前缀

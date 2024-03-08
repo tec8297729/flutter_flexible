@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../../../config/app_config.dart';
+import 'package:flutter_flexible/config/app_config.dart';
 
 /*
  * header拦截器
@@ -8,7 +8,6 @@ class HeaderInterceptors extends InterceptorsWrapper {
   // 请求拦截
   @override
   onRequest(RequestOptions options, handler) async {
-    options.connectTimeout = const Duration(seconds: 15000);
     options.baseUrl = AppConfig.host;
     return handler.next(options);
   }
