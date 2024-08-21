@@ -1,25 +1,25 @@
 {
-  "name": "flutter_flexible",
-  "version": "2.1.4",
-  "scripts": {
-    "start": "npm run dev",
-    "dev": "flutter run --dart-define=INIT_ENV=dev --dart-define=ANDROID_CHANNEL=flutter",
-    "dev:web": "flutter run -d chrome --dart-define=INIT_ENV=dev",
-    "open:ios": "open -a Simulator",
-    "build": "npm run build-apk:prod && npm run build-ios:prod",
-    "build-apk:test": "flutter build apk --dart-define=INIT_ENV=test --dart-define=ANDROID_CHANNEL=flutter",
-    "build-apk:pre": "flutter build apk --dart-define=INIT_ENV=pre --dart-define=ANDROID_CHANNEL=flutter",
-    "build-apk:prod": "flutter build apk --dart-define=INIT_ENV=prod --dart-define=ANDROID_CHANNEL=flutter",
-    "build-ios:test": "flutter build ios --dart-define=INIT_ENV=test",
-    "build-ios:pre": "flutter build ios --dart-define=INIT_ENV=pre",
-    "build-ios:prod": "flutter build ios --dart-define=INIT_ENV=prod",
-    "build-web:test": "flutter build web --dart-define=INIT_ENV=test",
-    "build-web:pre": "flutter build web --dart-define=INIT_ENV=pre",
-    "build-web:prod": "flutter build web --dart-define=INIT_ENV=prod",
-    "build-windows:test": "flutter build windows --dart-define=INIT_ENV=test",
-    "build-windows:pre": "flutter build windows --dart-define=INIT_ENV=pre",
-    "build-windows:prod": "flutter build windows --dart-define=INIT_ENV=prod",
-    "appkey": "keytool -printcert -jarfile ./build/app/outputs/apk/release/app-release.apk",
-    "upsdk": "flutter upgrade"
-  }
+	"name": "flutter_flexible",
+	"version": "2.1.5",
+	"scripts": {
+		"start": "npm run dev",
+		"dev": "flutter run --dart-define=INIT_ENV=dev --dart-define=ANDROID_CHANNEL=flutter",
+		"dev:web": "flutter run -d chrome --dart-define=INIT_ENV=dev",
+		"open:ios": "open -a Simulator",
+		"build": "npm run build-apk:prod && npm run build-ios:prod",
+		"build-apk:test": "flutter build apk --dart-define=INIT_ENV=test --dart-define=ANDROID_CHANNEL=flutter",
+		"build-apk:pre": "flutter build apk --dart-define=INIT_ENV=pre --dart-define=ANDROID_CHANNEL=flutter",
+		"build-apk:prod": "flutter build apk --dart-define=INIT_ENV=prod --dart-define=ANDROID_CHANNEL=flutter",
+		"build-ios:test": "flutter build ios --dart-define=INIT_ENV=test",
+		"build-ios:pre": "flutter build ios --dart-define=INIT_ENV=pre",
+		"build-ios:prod": "flutter build ios --dart-define=INIT_ENV=prod",
+		"build-web:test": "flutter build web --dart-define=INIT_ENV=test",
+		"build-web:pre": "flutter build web --dart-define=INIT_ENV=pre",
+		"build-web:prod": "flutter build web --dart-define=INIT_ENV=prod",
+		"build-windows:test": "flutter build windows --dart-define=INIT_ENV=test",
+		"build-windows:pre": "flutter build windows --dart-define=INIT_ENV=pre",
+		"build-windows:prod": "flutter build windows --dart-define=INIT_ENV=prod",
+		"appkey": "keytool -printcert -jarfile ./build/app/outputs/apk/release/app-release.apk",
+		"upsdk": "flutter upgrade"
+	}
 }
