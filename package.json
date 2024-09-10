@@ -1,6 +1,6 @@
 {
 	"name": "flutter_flexible",
-	"version": "2.1.5",
+	"version": "2.1.6",
 	"scripts": {
 		"start": "npm run dev",
 		"dev": "flutter run --dart-define=INIT_ENV=dev --dart-define=ANDROID_CHANNEL=flutter",

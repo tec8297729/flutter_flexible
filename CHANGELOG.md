@@ -1,5 +1,9 @@
 # 近期更新记录
 
+## v2.1.6
+- flutter升级3.24.2兼容处理
+- 修复web端permission_handler报错问题
+
 ## v2.1.4
 - 修复动态设置dio baseUrl
 - 更新jh_debug
