@@ -1,5 +1,9 @@
 # 近期更新记录
 
+## v2.1.7
+- 过滤web端升级APP下载弹层
+- 修复ota_update打包失败问题 [npm run build失败](https://github.com/tec8297729/flutter_flexible/issues/17)
+
 ## v2.1.6
 - flutter升级3.24.2兼容处理
 - 修复web端permission_handler报错问题

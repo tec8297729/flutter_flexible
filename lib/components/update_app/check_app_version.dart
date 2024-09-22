@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../../config/app_config.dart' show AppConfig;
 import '../../config/common_config.dart' show commonConfig;
 import '../../utils/index.dart' show PermUtil, SpUtil, compareVersion;
@@ -14,7 +16,7 @@ bool _showFlag = false;
 ///
 /// [forceUpdate] 是否强制更新, 直接显示弹层，默认false
 checkAppVersion({int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
-  if (!AppConfig.isUpdateApp) return;
+  if (!AppConfig.isUpdateApp || kIsWeb) return;
   if (!(await PermUtil.storagePerm())) return; // 权限申请
   try {
     if (_showFlag) return;
