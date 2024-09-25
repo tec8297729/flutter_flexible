@@ -22,7 +22,7 @@ Dio _initDio() {
   if (AppConfig.usingProxy) {
     dioClient.httpClientAdapter = IOHttpClientAdapter(
       createHttpClient: () {
-        final client = HttpClient();
+        final HttpClient client = HttpClient();
         client.findProxy = (uri) {
           // 设置Http代理，请注意，代理会在你正在运行应用的设备上生效，而不是在宿主平台生效。
           return "PROXY ${AppConfig.proxyAddress}";
@@ -76,6 +76,7 @@ Future<T> safeRequest<T>(
         )
         .then((data) => jsonDecode(data.data as String) as T);
   } catch (e) {
+    print("其它错误$e");
     rethrow;
   }
 }

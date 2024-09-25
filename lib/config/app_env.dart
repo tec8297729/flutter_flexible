@@ -59,7 +59,7 @@ class AppEnv {
   /// 设置当前环境
   set setEnv(ENV env) {
     currentEnv = env;
-    AppConfig.host = _baseUrl[currentEnv]!;
+    AppConfig.host = _baseUrl[currentEnv] ?? '';
   }
 
   /// 获取url前缀

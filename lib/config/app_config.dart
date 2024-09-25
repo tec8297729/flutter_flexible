@@ -34,6 +34,6 @@ class AppConfig {
   /// 是否启用代理，启用代理后，反向代理IP及端口才能生效
   static const usingProxy = false;
 
-  /// 反向代理的IP/域名地址
+  /// 反向代理的IP:端口
   static const proxyAddress = '192.168.2.201:9003';
 }

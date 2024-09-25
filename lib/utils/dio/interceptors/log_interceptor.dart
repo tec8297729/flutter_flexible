@@ -10,9 +10,9 @@ class LogsInterceptors extends InterceptorsWrapper {
   onRequest(RequestOptions options, handler) async {
     if (AppConfig.DEBUG) {
       print(
-          """请求url：${options.baseUrl + options.path}\n请求类型：${options.method}\n请求头：${options.headers.toString()}""");
+          """请求url：${options.baseUrl + options.path}\n请求类型：${options.method}\n请求头：${options.headers.toString()}\nparams参数: ${options.queryParameters}""");
       if (options.data != null) {
-        print('请求参数: ${options.data}');
+        print("""data参数: ${options.data}""");
       }
     }
     return handler.next(options);
@@ -32,7 +32,7 @@ class LogsInterceptors extends InterceptorsWrapper {
   @override
   onError(DioException err, handler) async {
     if (AppConfig.DEBUG) {
-      print('请求异常信息: ${err.response!}');
+      print('请求异常信息: ${err.error}');
     }
     return handler.next(err);
   }

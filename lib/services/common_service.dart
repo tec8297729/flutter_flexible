@@ -1,11 +1,13 @@
+import 'package:dio/dio.dart';
+
 import '../models/common.m.dart';
 import '../utils/dio/request.dart' show Request;
 
 /// 请求示例
 Future<Object> getDemo() async {
   return Request.get(
-    '/api',
-    queryParameters: {'key': 'value'},
+    '/m1/3617283-3245905-default/pet/1',
+    queryParameters: {'corpId': 'e00fd7513077401013c0'},
   );
 }
 
