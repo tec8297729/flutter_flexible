@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-
 import '../models/common.m.dart';
 import '../utils/dio/request.dart' show Request;
 

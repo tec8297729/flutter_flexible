@@ -1,5 +1,9 @@
 # 近期更新记录
 
+## v2.1.8
+- Android 权限申请多版本兼容（API 29以下和 API30+）
+- 扩展Dio相关请求错误信息捕获
+
 ## v2.1.7
 - 过滤web端升级APP下载弹层
 - 修复ota_update打包失败问题 [npm run build失败](https://github.com/tec8297729/flutter_flexible/issues/17)

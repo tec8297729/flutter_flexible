@@ -10,6 +10,8 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
+  errors:
+    file_names: ignore
   exclude: [build/**, asset/**]
   language:
     strict-raw-types: true

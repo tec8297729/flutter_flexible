@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
-
 import '../../config/app_config.dart' show AppConfig;
 import '../../config/common_config.dart' show commonConfig;
-import '../../utils/index.dart' show PermUtil, SpUtil, compareVersion;
+import '../../utils/index.dart' show SpUtil, compareVersion;
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../../services/common_service.dart'; // 接口
+import '../../utils/tool/perm_util.dart';
 import './update_app.dart';
 
 bool _showFlag = false;

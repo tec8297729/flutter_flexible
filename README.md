@@ -399,7 +399,12 @@ class _testDemoState extends State<testDemo>{
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.flutter_flexible">
     <!-- 添加读写权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+        <!--  Android 10（API 29） -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- Android 11（API 30） -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
     <application>
       <!-- 将以下提供程序引用添加到节点内 -->
       <provider
@@ -423,14 +428,13 @@ Map resData = await getNewVersion();
 // 模拟参数结构如下  {"code":"0","message":"success","data":{"version":"1.1.0","info":["修复bug提升性能","增加彩蛋有趣的功能页面","测试功能"]}}
 
 UpdateAppVersion(
-    // TODO: 传入新版本APP相关参数、版本号、更新内容、下载地址等
-    version: resData['version'] ?? '', // 版本号
-    info: (resData['info'] as List).cast<String>() ?? [], // 更新内容介绍
-    // ios是苹果应用商店地址
-    iosUrl: 'itms-apps://itunes.apple.com/cn/app/id414478124?mt=8',
-    // 安卓APK下载地址
-    androidUrl: 'https://www.jonhuu.com/download/aweme.apk',
-  ),
+  // TODO: 传入新版本APP相关参数、版本号、更新内容、下载地址等
+  version: resData['version'] ?? '', // 版本号
+  info: (resData['info'] as List).cast<String>() ?? [], // 更新内容介绍
+  // ios是苹果应用商店地址
+  iosUrl: 'itms-apps://itunes.apple.com/cn/app/id414478124?mt=8',
+  // 安卓APK下载地址
+  androidUrl: 'https://www.jonhuu.com/download/aweme.apk',
 )
 ```
 

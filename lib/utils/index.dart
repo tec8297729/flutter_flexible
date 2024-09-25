@@ -1,6 +1,5 @@
 import 'dart:async';
 export 'tool/sp_util.dart' show SpUtil;
-export 'tool/perm_util.dart' show PermUtil;
 export 'tool/log_util.dart' show LogUtil;
 
 /// 防抖函数

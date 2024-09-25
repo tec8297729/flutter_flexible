@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ota_update/ota_update.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../utils/index.dart' show LogUtil, PermUtil;
+import '../../utils/index.dart' show LogUtil;
+import '../../utils/tool/perm_util.dart';
 import '../../utils/tool/tips_util.dart';
 import 'components/update_header.dart';
 import 'components/update_instr.dart';
@@ -146,7 +147,6 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
       width: 360.w,
       child: PhysicalModel(
         color: Colors.transparent,
-        // elevation: 2,
         borderRadius: BorderRadius.circular(8), // 裁剪圆度
         clipBehavior: Clip.antiAlias,
         child: SizedBox(
@@ -182,11 +182,11 @@ class _UpdateAppVersionState extends State<UpdateAppVersion> {
       height: 76.w,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all(
             const Color(0xff009FF9),
           ),
-          elevation: MaterialStateProperty.all(4),
-          shape: MaterialStateProperty.all(
+          elevation: WidgetStateProperty.all(4),
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18),
             ),
