@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../components/update_app/check_app_version.dart';
 import '../../../routes/route_name.dart';
 import '../../../config/app_env.dart' show appEnv;
+import '../../../services/common_service.dart';
 import 'provider/counterStore.p.dart';
 
 class Home extends StatefulWidget {
@@ -75,21 +76,44 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 checkAppVersion(forceUpdate: true);
               },
             ),
+            _button(
+              _counter.fetchResult.isNotEmpty
+                  ? _counter.fetchResult
+                  : '请求demo接口',
+              icon: _counter.isLoading
+                  ? const SizedBox(
+                      width: 12.0,
+                      height: 12.0,
+                      child: CircularProgressIndicator(),
+                    )
+                  : const SizedBox.shrink(),
+              onPressed: () {
+                getFetchFn();
+              },
+            ),
           ],
         );
       }),
     );
   }
 
-  Widget _button(String text, {VoidCallback? onPressed}) {
+  getFetchFn() async {
+    _counter.setLoading(true);
+    var res = await getDemo() as Map<String, dynamic>;
+    _counter.setLoading(false);
+    _counter.setFetchResult(res['data']['name']);
+  }
+
+  Widget _button(String text, {VoidCallback? onPressed, Widget? icon}) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
-      child: ElevatedButton(
+      child: ElevatedButton.icon(
         onPressed: onPressed,
-        child: Text(
+        label: Text(
           text,
           style: TextStyle(fontSize: 22.sp),
         ),
+        icon: icon,
       ),
     );
   }
