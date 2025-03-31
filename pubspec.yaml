@@ -31,17 +31,17 @@ dependencies:
   ana_page_loop: ^1.0.1
   shared_preferences: 2.3.2 # 持久性存储
   synchronized: 3.2.0
-  ota_update: 6.0.0
+  ota_update: 7.0.1
   package_info_plus: 8.0.2 # app相关信息获取
   url_launcher: 6.3.0
   permission_handler: 11.3.1 # 权限
-  fluttertoast: 8.2.8
+  fluttertoast: 8.2.12
   device_info_plus: 10.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
