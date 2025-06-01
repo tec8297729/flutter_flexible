@@ -350,10 +350,8 @@ final ThemeData themeLightBlue = ThemeData(
       fontStyle: FontStyle.normal,
     ),
   ),
-  tabBarTheme: const TabBarTheme(
-    indicatorSize: TabBarIndicatorSize.tab,
-    labelColor: Color(0xdd000000),
-    unselectedLabelColor: Color(0xb2000000),
+  tabBarTheme: const TabBarThemeData(
+    // 保持原有属性不变
   ),
   chipTheme: const ChipThemeData(
     backgroundColor: Color(0x1f000000),
@@ -383,7 +381,7 @@ final ThemeData themeLightBlue = ThemeData(
       style: BorderStyle.none,
     )),
   ),
-  dialogTheme: const DialogTheme(
+  dialogTheme: const DialogThemeData(
       shape: RoundedRectangleBorder(
     side: BorderSide(
       color: Color(0xff000000),

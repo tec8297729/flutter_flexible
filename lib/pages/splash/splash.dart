@@ -31,12 +31,14 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _initAsync() async {
-    var isNew = await SpUtil.getData<bool>(CacheConstants.guideKey,
+    // 创建 SpUtil 实例
+    final spUtil = await SpUtil.getInstance();
+    var isNew = await spUtil.getData<bool>(CacheConstants.guideKey,
         defValue: !AppConfig.isShowWelcome);
     setState(() {
       /// 是否显示引导页。
       if (isNew) {
-        SpUtil.setData(CacheConstants.guideKey, false);
+        spUtil.setData(CacheConstants.guideKey, false);
         child = WelcomePage();
       } else {
         child = AdPage();
