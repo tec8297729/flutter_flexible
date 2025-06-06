@@ -22,7 +22,10 @@ checkAppVersion({int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
     if (_showFlag) return;
     const String spKey = 'checkAppVerTime'; // 缓存key
     DateTime newTime = DateTime.now(); // 当前时间
-    String oldTimeStr = await SpUtil.getData<String>(
+    
+    // 创建 SpUtil 实例
+    final spUtil = await SpUtil.getInstance();
+    String oldTimeStr = await spUtil.getData<String>(
       spKey,
       defValue: DateTime.now().add(const Duration(days: -10)).toString(),
     );
@@ -84,7 +87,8 @@ checkAppVersion({int seconds = 60 * 60 * 12, bool forceUpdate = false}) async {
       _showFlag = false;
     });
 
-    await SpUtil.setData(spKey, newTime.toString());
+    // 在文件末尾处修改
+    await spUtil.setData(spKey, newTime.toString());
   } catch (e) {
     _showFlag = false;
   }

@@ -24,7 +24,7 @@ class SpUtil {
 
   /// 设置变量到缓存中去，返回设置缓存结果，true成功，false失败。
   /// 支持String、int、double、bool类型，
-  static Future<bool> setData<T>(String key, T value) async {
+  Future<bool> setData<T>(String key, T value) async {
     if (_prefs == null) await getInstance();
     bool? resData = false;
     switch (value.runtimeType) {
@@ -42,13 +42,15 @@ class SpUtil {
         break;
       default:
     }
-    return resData as bool;
+    // 修改前：return resData;
+    // 修改后：
+    return resData ?? false;
   }
 
   /// 设置list类型到缓存中去
   ///
   /// [cast] 是否强制转换，强制转换成字符串有可能会转换的不完整
-  static Future<bool> setListData<T>(String key, List<T> value,
+  Future<bool> setListData<T>(String key, List<T> value,
       {bool cast = false}) async {
     if (_prefs == null) await getInstance();
     List<String> dataList = value.map((v) {
@@ -59,7 +61,7 @@ class SpUtil {
 
   /// 设置Map类型到缓存中去,
   /// [cast] 是否强制转换，强制转换成字符串有可能会转换的不完整
-  static Future<bool> setMapData<T>(String key, T value,
+  Future<bool> setMapData<T>(String key, T value,
       {bool cast = false}) async {
     if (_prefs == null) await getInstance();
     String newValue = cast ? value.toString() : json.encode(value);
@@ -69,7 +71,7 @@ class SpUtil {
   /// 获取缓存数据，只能获取常规类型，如需要获取复杂类型，使用自定义获取缓存结构类型的方法。
   ///
   /// [defValue] 自定获取key时的默认值，当为空null时，会返回你自定义的默认值
-  static Future<T> getData<T>(String key, {T? defValue}) async {
+  Future<T> getData<T>(String key, {T? defValue}) async {
     if (_prefs == null) await getInstance();
     T resData;
     switch (T) {
@@ -92,7 +94,7 @@ class SpUtil {
   }
 
   /// 获取Map类型缓存，内部类型未定义
-  static Future<T> getMap<T>(String key, {T? defValue}) async {
+  Future<T> getMap<T>(String key, {T? defValue}) async {
     if (_prefs == null) await getInstance();
     String data = _prefs?.getString(key) ?? '';
     if (data.isNotEmpty) return json.decode(data) as T;
@@ -101,14 +103,14 @@ class SpUtil {
 
   /// 获取自定义的Map类型数据
   /// 第二参数Fn自定义转换结果，，并返回类型
-  static Future<T> getMapCustom<T>(String key, T Function(Object v) f) async {
+  Future<T> getMapCustom<T>(String key, T Function(Object v) f) async {
     if (_prefs == null) await getInstance();
-    Object mapData = getMap(key);
+    Object mapData = await getMap(key);
     return f(mapData);
   }
 
   /// 获取普通的List<Map>类型
-  static Future<List<T>> getList<T>(String key, {List<T>? defValue}) async {
+  Future<List<T>> getList<T>(String key, {List<T>? defValue}) async {
     if (_prefs == null) await getInstance();
     List<String> dataList =
         (_prefs?.getStringList(key) ?? defValue ?? []) as List<String>;
@@ -120,7 +122,7 @@ class SpUtil {
 
   /// 获取自定义的List类型的数据
   /// 第二参数Fn自定义转换结果，并返回类型
-  static Future<List<T>> getListCustom<T>(String key, T Function(T v) f,
+  Future<List<T>> getListCustom<T>(String key, T Function(T v) f,
       {List<T>? defValue}) async {
     if (_prefs == null) await getInstance();
     List<T> list = await getList<T>(key, defValue: defValue);
@@ -129,37 +131,37 @@ class SpUtil {
   }
 
   /// 获取缓存数据，返回dynamic类型
-  static Future<dynamic> getDynamic(String key, {Object? defValue}) async {
+  Future<dynamic> getDynamic(String key, {Object? defValue}) async {
     if (_prefs == null) await getInstance();
     return _prefs?.get(key) ?? defValue;
   }
 
   /// 获取所有Key
-  static Future<Set<String>> getKeys() async {
+  Future<Set<String>> getKeys() async {
     if (_prefs == null) await getInstance();
     return _prefs?.getKeys() as Set<String>;
   }
 
   /// 查找是否有指定key
-  static Future<bool> hasKey(String key) async {
+  Future<bool> hasKey(String key) async {
     if (_prefs == null) await getInstance();
     return _prefs?.getKeys().contains(key) as bool;
   }
 
   /// 移除指定key缓存
-  static Future<bool> remove(String key) async {
+  Future<bool> remove(String key) async {
     if (_prefs == null) await getInstance();
     return _prefs?.remove(key) as bool;
   }
 
   /// 清空所有缓存
-  static Future<bool> clear() async {
+  Future<bool> clear() async {
     if (_prefs == null) await getInstance();
     return _prefs?.clear() as bool;
   }
 
   /// 重新加载缓存数据
-  static Future<void> reload() async {
+  Future<void> reload() async {
     if (_prefs == null) await getInstance();
     _prefs?.reload();
   }
