@@ -1,5 +1,9 @@
 # 近期更新记录
 
+## v2.1.10
+
+* 修复[PR24](https://github.com/tec8297729/flutter_flexible/pull/24)
+
 ## v2.1.9
 
 * 更新第三方依赖
