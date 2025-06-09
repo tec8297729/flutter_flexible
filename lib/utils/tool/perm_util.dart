@@ -16,8 +16,8 @@ class PermUtil {
 
   /// 存储权限申请
   static Future<bool> storagePerm() async {
-    if (Platform.isIOS) return true;
-    int androidInfoSdkVersion = await getAndroidInfoSdkVersion();
+    if (Platform.isAndroid) {
+      int androidInfoSdkVersion = await getAndroidInfoSdkVersion();
 
     // 安卓高版本兼容
     if (androidInfoSdkVersion > 29) {
@@ -35,6 +35,11 @@ class PermUtil {
       }
     }
     return true;
+    } else {
+      // 其他平台暂不处理
+      return true;
+    }
+    
   }
 
   /// 相册权限申请
