@@ -16,10 +16,11 @@ class PermUtil {
 
   /// 存储权限申请
   static Future<bool> storagePerm() async {
+    if (Platform.isIOS) return true;
     int androidInfoSdkVersion = await getAndroidInfoSdkVersion();
 
     // 安卓高版本兼容
-    if (Platform.isAndroid && androidInfoSdkVersion > 29) {
+    if (androidInfoSdkVersion > 29) {
       PermissionStatus status = await Permission.manageExternalStorage.status;
       if (status != PermissionStatus.granted) {
         final statuses = await [Permission.manageExternalStorage].request();
