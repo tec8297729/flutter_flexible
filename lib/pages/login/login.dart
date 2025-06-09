@@ -9,7 +9,7 @@ import '../../utils/tool/tips_util.dart';
 import '../../utils/index.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key, this.params}) : super(key: key);
+  const Login({super.key, this.params});
   final dynamic params;
 
   @override
@@ -36,7 +36,6 @@ class _LoginState extends State<Login> {
   void dispose() {
     _phoneController.dispose();
     _captchaController.dispose();
-    FocusScope.of(context).requestFocus(blankNode);
     super.dispose();
   }
 
