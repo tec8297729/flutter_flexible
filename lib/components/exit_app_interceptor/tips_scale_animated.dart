@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class TipsScaleAnimated extends AnimatedWidget {
   const TipsScaleAnimated(
-      {Key? key, required this.animation, required this.child})
-      : super(key: key, listenable: animation);
+      {super.key, required this.animation, required this.child})
+      : super(listenable: animation);
 
   final Widget child;
   final Animation<double> animation;

@@ -5,7 +5,7 @@ import '../app_main/home/provider/counterStore.p.dart';
 import '../../utils/index.dart';
 
 class TestDemo extends StatefulWidget {
-  const TestDemo({Key? key, this.params}) : super(key: key);
+  const TestDemo({super.key, this.params});
   final dynamic params;
 
   @override

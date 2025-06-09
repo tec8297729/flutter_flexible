@@ -19,7 +19,7 @@ enum InputType {
 
 class CustomInput extends StatefulWidget {
   const CustomInput({
-    Key? key,
+    super.key,
     this.controller,
     this.inputFormatters,
     this.hintText,
@@ -30,7 +30,7 @@ class CustomInput extends StatefulWidget {
     this.inputType = InputType.normal,
     this.margin,
     this.onTapCaptcha,
-  }) : super(key: key);
+  });
 
   /// 文本controller类，如果传入需要手动销毁
   final TextEditingController? controller;

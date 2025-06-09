@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /// 基础白页组件，带顶部X
 class BasicSafeArea extends StatefulWidget {
   const BasicSafeArea({
-    Key? key,
+    super.key,
     this.children,
     this.closeFn,
     this.isShowRightChild = true,
     this.rightText,
     this.rightChildFn,
-  }) : super(key: key);
+  });
 
   /// 内容组件N个
   final List<Widget>? children;

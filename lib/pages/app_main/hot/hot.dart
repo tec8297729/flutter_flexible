@@ -2,7 +2,7 @@ import '../../../utils/index.dart';
 import 'package:flutter/material.dart';
 
 class Hot extends StatefulWidget {
-  const Hot({Key? key, this.params}) : super(key: key);
+  const Hot({super.key, this.params});
   final dynamic params;
 
   @override

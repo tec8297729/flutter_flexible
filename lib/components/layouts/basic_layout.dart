@@ -4,10 +4,10 @@ import '../../config/app_config.dart' show AppConfig;
 
 class BasicLayout extends StatelessWidget {
   const BasicLayout({
-    Key? key,
+    super.key,
     required this.child,
     this.designSize,
-  }) : super(key: key);
+  });
   final Widget child;
   final Size? designSize;
 
