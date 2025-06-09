@@ -38,7 +38,7 @@ class _HeadUserBoxState extends State<HeadUserBox> {
       child: ElevatedButton(
         onPressed: onTap,
         style: ButtonStyle(
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
             ),

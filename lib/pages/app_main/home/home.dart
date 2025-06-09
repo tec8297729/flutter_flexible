@@ -7,7 +7,7 @@ import '../../../config/app_env.dart' show appEnv;
 import 'provider/counterStore.p.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key, this.params}) : super(key: key);
+  const Home({super.key, this.params});
   final dynamic params;
 
   @override
@@ -56,6 +56,12 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 );
               },
             ),
+            Text('about'),
+            _button('about',onPressed: (){
+              Navigator.pushNamed(context,
+                RouteName.about,
+                arguments: {'data': '别名路由传参666'},);
+            }),
             Text('状态管理值：${context.watch<CounterStore>().value}'),
             _button(
               '加+',

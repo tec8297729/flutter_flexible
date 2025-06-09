@@ -37,9 +37,9 @@ class AppMain extends StatefulWidget {
   final dynamic params;
 
   const AppMain({
-    Key? key,
+    super.key,
     this.params,
-  }) : super(key: key);
+  });
 
   @override
   State<AppMain> createState() => _AppMainState();

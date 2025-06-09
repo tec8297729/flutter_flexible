@@ -19,8 +19,6 @@ final ThemeData themeBlueGrey = ThemeData(
     cursorColor: Color(0xff4285f4),
     selectionHandleColor: Color(0xff90a4ae),
   ),
-  dialogBackgroundColor: const Color(0xffffffff),
-  indicatorColor: const Color(0xff607d8b),
   hintColor: const Color(0x8a000000),
   buttonTheme: const ButtonThemeData(
     textTheme: ButtonTextTheme.normal,
@@ -48,12 +46,10 @@ final ThemeData themeBlueGrey = ThemeData(
       secondary: Color(0xff607d8b),
       secondaryContainer: Color(0xff455a64),
       surface: Color(0xffffffff),
-      background: Color(0xffb0bec5),
       error: Color(0xffd32f2f),
       onPrimary: Color(0xffffffff),
       onSecondary: Color(0xffffffff),
       onSurface: Color(0xff000000),
-      onBackground: Color(0xffffffff),
       onError: Color(0xffffffff),
       brightness: Brightness.light,
     ),
@@ -396,11 +392,11 @@ final ThemeData themeBlueGrey = ThemeData(
   )),
   checkboxTheme: CheckboxThemeData(
     fillColor:
-        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-      if (states.contains(MaterialState.disabled)) {
+        WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+      if (states.contains(WidgetState.disabled)) {
         return null;
       }
-      if (states.contains(MaterialState.selected)) {
+      if (states.contains(WidgetState.selected)) {
         return const Color(0xff546e7a);
       }
       return null;
@@ -408,11 +404,11 @@ final ThemeData themeBlueGrey = ThemeData(
   ),
   radioTheme: RadioThemeData(
     fillColor:
-        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-      if (states.contains(MaterialState.disabled)) {
+        WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+      if (states.contains(WidgetState.disabled)) {
         return null;
       }
-      if (states.contains(MaterialState.selected)) {
+      if (states.contains(WidgetState.selected)) {
         return const Color(0xff546e7a);
       }
       return null;
@@ -420,28 +416,28 @@ final ThemeData themeBlueGrey = ThemeData(
   ),
   switchTheme: SwitchThemeData(
     thumbColor:
-        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-      if (states.contains(MaterialState.disabled)) {
+        WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+      if (states.contains(WidgetState.disabled)) {
         return null;
       }
-      if (states.contains(MaterialState.selected)) {
+      if (states.contains(WidgetState.selected)) {
         return const Color(0xff546e7a);
       }
       return null;
     }),
     trackColor:
-        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-      if (states.contains(MaterialState.disabled)) {
+        WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+      if (states.contains(WidgetState.disabled)) {
         return null;
       }
-      if (states.contains(MaterialState.selected)) {
+      if (states.contains(WidgetState.selected)) {
         return const Color(0xff546e7a);
       }
       return null;
     }),
   ),
   colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
-      .copyWith(background: const Color(0xffb0bec5))
+      .copyWith(surface: const Color(0xffb0bec5))
       .copyWith(error: const Color(0xffd32f2f)),
   bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xffffffff)),
   // 设置顶部AppBar的底色
