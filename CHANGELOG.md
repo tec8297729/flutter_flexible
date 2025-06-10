@@ -1,5 +1,9 @@
 # 近期更新记录
 
+## v2.1.11
+
+* 修复合并[PR25](https://github.com/tec8297729/flutter_flexible/pull/25)
+
 ## v2.1.10
 
 * 修复[PR24](https://github.com/tec8297729/flutter_flexible/pull/24)

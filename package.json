@@ -1,6 +1,6 @@
 {
 	"name": "flutter_flexible",
-	"version": "2.1.10",
+	"version": "2.1.11",
 	"scripts": {
 		"start": "npm run dev",
 		"dev": "flutter run --dart-define=INIT_ENV=dev --dart-define=ANDROID_CHANNEL=flutter",
@@ -19,6 +19,7 @@
 		"build-windows:test": "flutter build windows --dart-define=INIT_ENV=test",
 		"build-windows:pre": "flutter build windows --dart-define=INIT_ENV=pre",
 		"build-windows:prod": "flutter build windows --dart-define=INIT_ENV=prod",
+		"tags": "node ./scripts/build_tag.js",
 		"appkey": "keytool -printcert -jarfile ./build/app/outputs/apk/release/app-release.apk",
 		"upsdk": "flutter upgrade"
 	}
