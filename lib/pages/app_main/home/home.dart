@@ -56,12 +56,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 );
               },
             ),
-            Text('about'),
-            _button('about',onPressed: (){
-              Navigator.pushNamed(context,
-                RouteName.about,
-                arguments: {'data': '别名路由传参666'},);
-            }),
             Text('状态管理值：${context.watch<CounterStore>().value}'),
             _button(
               '加+',
