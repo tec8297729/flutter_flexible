@@ -347,8 +347,8 @@ final ThemeData themeLightBlue = ThemeData(
     ),
   ),
   tabBarTheme: const TabBarThemeData(
-    // 保持原有属性不变
-  ),
+      // 保持原有属性不变
+      ),
   chipTheme: const ChipThemeData(
     backgroundColor: Color(0x1f000000),
     brightness: Brightness.light,
@@ -435,9 +435,8 @@ final ThemeData themeLightBlue = ThemeData(
   colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.lightBlue)
       .copyWith(surface: const Color(0xff81d4fa))
       .copyWith(error: const Color(0xffd32f2f)),
-  bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xffffffff)),
-  // 设置顶部AppBar的底色
+  bottomAppBarTheme: const BottomAppBarThemeData(color: Color(0xffffffff)),
   appBarTheme: const AppBarTheme(
-    color: Colors.lightBlue,
+    backgroundColor: Colors.lightBlue,
   ),
 );

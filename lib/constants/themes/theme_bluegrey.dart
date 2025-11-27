@@ -439,9 +439,10 @@ final ThemeData themeBlueGrey = ThemeData(
   colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
       .copyWith(surface: const Color(0xffb0bec5))
       .copyWith(error: const Color(0xffd32f2f)),
-  bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xffffffff)),
-  // 设置顶部AppBar的底色
+  bottomAppBarTheme: const BottomAppBarThemeData(
+    color: Color(0xffffffff),
+  ),
   appBarTheme: const AppBarTheme(
-    color: Colors.blueGrey,
+    backgroundColor: Colors.blueGrey,
   ),
 );
