@@ -1,5 +1,10 @@
 # 近期更新记录
 
+## v2.1.12
+
+* 更新第三方依赖
+* 修理主题色模板相关API
+
 ## v2.1.11
 
 * 修复合并[PR25](https://github.com/tec8297729/flutter_flexible/pull/25)
