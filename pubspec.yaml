@@ -28,7 +28,7 @@ dependencies:
   provider: 6.1.5+1
   flutter_screenutil: 5.9.3
   jh_debug: 2.0.1
-  ana_page_loop: ^1.0.1
+  ana_page_loop: 1.0.1
   shared_preferences: 2.5.3 # 持久性存储
   synchronized: 3.4.0
   ota_update: 7.0.2
