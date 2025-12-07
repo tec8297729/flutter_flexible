@@ -4,7 +4,7 @@ import '../pages/error_page/error_page.dart';
 import '../pages/app_main/app_main.dart';
 import '../pages/splash/splash.dart';
 import '../pages/test_demo/test_demo.dart';
-import '../pages/Login/Login.dart';
+import '../pages/login/login.dart';
 
 final String initialRoute = RouteName.splashPage; // 初始默认显示的路由
 
