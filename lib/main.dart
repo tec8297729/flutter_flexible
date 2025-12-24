@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_flexible/components/layouts/basic_layout.dart';
+import '/components/layouts/basic_layout.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:jh_debug/jh_debug.dart' show DebugMode, jhDebug, jhDebugMain;

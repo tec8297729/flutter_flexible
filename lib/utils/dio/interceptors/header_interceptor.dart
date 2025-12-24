@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_flexible/config/app_config.dart';
+import '/config/app_config.dart';
 
 /*
  * header拦截器
